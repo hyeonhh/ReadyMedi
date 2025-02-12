@@ -23,7 +23,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -41,15 +41,26 @@ android {
 
 dependencies {
 
-    implementation ("com.google.mlkit:translate:17.0.3")
+    // CameraX
+    implementation("androidx.camera:camera-core:1.4.1")
+    implementation("androidx.camera:camera-camera2:1.4.1")
+    implementation("androidx.camera:camera-lifecycle:1.4.1")
+    implementation("androidx.camera:camera-view:1.4.1")
+    implementation("androidx.camera:camera-extensions:1.4.1")
+    implementation("androidx.camera:camera-effects:1.4.1")
 
-    //Firebase
+    // text recognition
+    implementation("com.google.android.gms:play-services-mlkit-text-recognition-korean:16.0.1")
+
+    // translation
+    implementation("com.google.mlkit:translate:17.0.3")
+
+    // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
     implementation("com.google.firebase:firebase-analytics")
 
-    //Timber
+    // Timber
     implementation(libs.timber)
-
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
