@@ -41,8 +41,8 @@ android {
 
 dependencies {
 
-    //vertex ai
-    implementation("com.google.firebase:firebase-vertexai")
+    implementation ("com.google.mlkit:translate:17.0.3")
+
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
     implementation("com.google.firebase:firebase-analytics")
