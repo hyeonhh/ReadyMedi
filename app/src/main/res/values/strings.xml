@@ -1,3 +1,4 @@
 <resources>
+    <string name="kakao_rest_api_key">3f5dd6638969a61dce537c28f62bd14a</string>
     <string name="app_name">MedicalConnect</string>
 </resources>
