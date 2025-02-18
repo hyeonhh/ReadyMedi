@@ -30,11 +30,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="com.google.android.gms.ml.vision.DEPENDENCIES"
@@ -42,6 +37,20 @@
             <meta-data
                 android:name="com.google.mlkit.vision.DEPENDENCIES"
                 android:value="ocr" />
+        </activity>
+
+        <activity android:name=".ui.onboarding.OnBoardingActivity"
+            android:exported="true">
+
+
+        </activity>
+        <activity android:name=".ui.auth.AuthActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

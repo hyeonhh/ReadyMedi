@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav"
+    app:startDestination="@id/languageSelectFragment">
+
+    <fragment
+        android:id="@+id/languageSelectFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.LanguageSelectFragment"
+        tools:layout="@layout/fragment_language_select"
+        android:label="LanguageSelectFragment" >
+        <action
+            android:id="@+id/action_languageSelectFragment_to_diseaseSelectFragment"
+            app:destination="@id/diseaseSelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diseaseSelectFragment"
+        tools:layout="@layout/fragment_disease_select"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.DiseaseSelectFragment"
+        android:label="DiseaseSelectFragment" />
+</navigation>

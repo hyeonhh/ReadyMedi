@@ -3,7 +3,9 @@ package com.teammeditalk.medicalconnect.ui.map
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.viewModels
@@ -84,6 +86,15 @@ class MapFragment :
         }
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        checkLocationPermission()
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?,
@@ -91,7 +102,6 @@ class MapFragment :
         super.onViewCreated(view, savedInstanceState)
 
         // 여기를 바인딩으로 안바꿔줘서 라이브러리가 적용 안된 거였다!!
-        checkLocationPermission()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         binding.mapView.start(
             object : MapLifeCycleCallback() {
