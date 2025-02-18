@@ -46,6 +46,19 @@ android {
 }
 
 dependencies {
+
+    // xlsx 데이터 다루기
+    implementation("org.apache.poi:poi:5.2.3")
+    implementation("org.apache.poi:poi-ooxml:5.2.3")
+
+    // navigation
+    val nav_version = "2.8.7"
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 

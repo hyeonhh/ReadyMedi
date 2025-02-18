@@ -1,4 +1,9 @@
 package com.teammeditalk.medicalconnect.ui.home
 
-class HomeFragment {
-}
+import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.FragmentHomeBinding
+
+class HomeFragment :
+    BaseFragment<FragmentHomeBinding>(
+        FragmentHomeBinding::inflate,
+    )

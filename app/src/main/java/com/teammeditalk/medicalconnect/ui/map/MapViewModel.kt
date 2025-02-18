@@ -3,20 +3,36 @@ package com.teammeditalk.medicalconnect.ui.map
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.teammeditalk.medicalconnect.BuildConfig
+import com.teammeditalk.medicalconnect.data.client.ForeignLanguageClient
 import com.teammeditalk.medicalconnect.data.client.KakaoClient
 import com.teammeditalk.medicalconnect.data.client.RetrofitClient
+import com.teammeditalk.medicalconnect.data.model.foreign.LangAvailablePharmacy
 import com.teammeditalk.medicalconnect.data.model.search.SearchLocationItem
+import com.teammeditalk.medicalconnect.ui.ExcelHelper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class MapViewModel : ViewModel() {
+    private val _langPharmacyList = MutableStateFlow(listOf<LangAvailablePharmacy>())
+    val langPharmacyList = _langPharmacyList.asStateFlow()
+
     private val _hospitalList = MutableStateFlow(listOf<SearchLocationItem>())
     val hospitalList = _hospitalList.asStateFlow()
 
     private val _pharmacyList = MutableStateFlow(listOf<SearchLocationItem>())
     val pharmacyList = _pharmacyList.asStateFlow()
+
+    // 외국어 가능 약국 리스트
+    fun loadForeignLanguageAvailablePharmacyList(excelHelper: ExcelHelper) {
+        viewModelScope.launch {
+            val result = excelHelper.readForeignLanguageList()
+            if (result.isNotEmpty()) {
+                _langPharmacyList.value = result
+            }
+        }
+    }
 
     fun searchHospitalByKeyword(
         latitude: String,
@@ -51,8 +67,6 @@ class MapViewModel : ViewModel() {
                     )
                 }
                 _hospitalList.value = list
-                Timber.d("_hospitalList :${_hospitalList.value}")
-
                 Timber.d("success search hospital :${result.body()}")
             } else {
                 Timber.e("failed to search hospital :${result.errorBody()}")
@@ -60,39 +74,70 @@ class MapViewModel : ViewModel() {
         }
     }
 
+    private fun extractRegion(address: String): String =
+        try {
+            // 1. 공백으로 분리
+            val parts = address.split(" ")
+            // 2. 두 번째 요소(index 1)를 가져옴
+            parts.getOrNull(1) ?: ""
+        } catch (e: Exception) {
+            "" // 에러 발생 시 빈 문자열 반환
+        }
+
     fun searchPharmacyLocation(
         longitude: String,
         latitude: String,
         page: Int,
     ) {
         viewModelScope.launch {
-            val result =
-                KakaoClient.kakaoSearchService.searchLocationByKeyword(
-                    category_group_code = "PM9",
-                    x = longitude,
-                    y = latitude,
-                    page = page,
-                )
-            if (result.isSuccessful) {
-                val list = mutableListOf<SearchLocationItem>()
-                result.body()?.documents?.map {
-                    list.add(
-                        SearchLocationItem(
-                            id = it.id,
-                            name = it.place_name,
-                            categoryName = it.category_name,
-                            phone = it.phone,
-                            address = it.address_name,
-                            latitude = it.y,
-                            longitude = it.x,
-                            placeUrl = it.place_url,
-                            distance = it.distance,
-                        ),
+            if (_langPharmacyList.value.isNotEmpty()) {
+                val result =
+                    KakaoClient.kakaoSearchService.searchLocationByKeyword(
+                        category_group_code = "PM9",
+                        x = longitude,
+                        y = latitude,
+                        page = page,
                     )
+                if (result.isSuccessful) {
+                    val list = mutableListOf<SearchLocationItem>()
+
+                    result.body()?.documents?.map { document ->
+                        // 1. 구 지역을 추출
+                        val region = extractRegion(document.address_name)
+                        // 2. 외국어 가능 약국 명단에서 해당 지역 데이터 비교
+
+                        if (_langPharmacyList.value.isEmpty()) return@launch
+                        val filteredList =
+                            _langPharmacyList.value.filter {
+                                it.region == region
+                            }
+
+                        // 만약 해당 지역 데이터에 현재 약국에 있다면 , 그 약국의 가능한 외국어 리스트 가져오기
+                        val filteredAddress =
+                            filteredList
+                                .find {
+                                    it.address.contains(document.road_address_name)
+                                }?.availableLanguageList ?: emptyList()
+
+                        list.add(
+                            SearchLocationItem(
+                                id = document.id,
+                                name = document.place_name,
+                                categoryName = document.category_name,
+                                phone = document.phone,
+                                address = document.road_address_name,
+                                latitude = document.y,
+                                longitude = document.x,
+                                placeUrl = document.place_url,
+                                distance = document.distance,
+                                availableForeignLanguageList = filteredAddress,
+                            ),
+                        )
+                    }
+                    _pharmacyList.value = list
+                } else {
+                    Timber.e("failed to get pharmacy list : ${result.errorBody()}")
                 }
-                _pharmacyList.value = list
-            } else {
-                Timber.e("failed to get pharmacy list : ${result.errorBody()}")
             }
         }
     }
@@ -114,6 +159,23 @@ class MapViewModel : ViewModel() {
                 Timber.d("success :${result.body()?.body?.items}")
             } else {
                 Timber.d("failed to get location :${result.errorBody()}")
+            }
+        }
+    }
+
+    fun getForeignLanguageAvailableList() {
+        viewModelScope.launch {
+            val apiKey = BuildConfig.MedicalApiKey
+            val result =
+                ForeignLanguageClient.foreignLanguageService.getForeignLanguageAvailableResponse(
+                    serviceKey = apiKey,
+                    page = 1,
+                    perPage = 10,
+                )
+            if (result.isSuccessful) {
+                Timber.d("success :${result.body()?.data}")
+            } else {
+                Timber.d("failed to get foreignLanguage response :${result.errorBody()}")
             }
         }
     }

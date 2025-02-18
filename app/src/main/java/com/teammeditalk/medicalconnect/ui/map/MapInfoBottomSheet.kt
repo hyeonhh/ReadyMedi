@@ -33,7 +33,7 @@ class MapInfoBottomSheet(
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvName.text = info.name
-        binding.tvForeignLanguageAvailable.text = "NO"
+        binding.tvForeignLanguageAvailable.text = info.availableForeignLanguageList.toString()
         binding.tvAddress.text = info.address
         binding.tvCategory.text = info.categoryName
         binding.tvPhone.text = info.phone

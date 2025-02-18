@@ -11,6 +11,7 @@ data class SearchLocationItem(
     val longitude: String = "",
     val placeUrl: String = "",
     val distance: String = "",
+    val availableForeignLanguageList: List<String> = emptyList(),
 )
 
 // data class SearchLocationItem(
