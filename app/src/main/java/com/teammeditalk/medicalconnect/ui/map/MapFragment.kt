@@ -39,7 +39,6 @@ class MapFragment :
     private var latitude = 0.0
     private var longitude = 0.0
     private val excelHelper by lazy { ExcelHelper(requireContext()) }
-
     private val viewModel: MapViewModel by viewModels()
 
     // 요청할 위치 권한 목록입니다.

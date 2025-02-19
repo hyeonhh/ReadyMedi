@@ -11,7 +11,6 @@ plugins {
 android {
     namespace = "com.teammeditalk.medicalconnect"
     compileSdk = 35
-
     defaultConfig {
         applicationId = "com.teammeditalk.medicalconnect"
         minSdk = 30
@@ -21,6 +20,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "KakaoApiKey", getApiKey())
         buildConfigField("String", "MedicalApiKey", getMedicalApiKey())
+        buildConfigField("String", "FirebaseClientId", getFirebaseClientId())
     }
 
     buildTypes {
@@ -46,6 +46,15 @@ android {
 }
 
 dependencies {
+
+    implementation("androidx.credentials:credentials:1.5.0-alpha05")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0-alpha05")
+
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
 
     // xlsx 데이터 다루기
     implementation("org.apache.poi:poi:5.2.3")
@@ -137,6 +146,19 @@ fun getMedicalApiKey(): String {
     if (localProperties.exists()) {
         properties.load(localProperties.inputStream())
         return "\"${properties.getProperty("medical.api.key")}\""
+    } else {
+        throw GradleException("local.properties not found!")
+    }
+}
+
+// Firebase google login client id
+fun getFirebaseClientId(): String {
+    val properties = Properties()
+    val localProperties = File(rootProject.projectDir, "local.properties")
+
+    if (localProperties.exists()) {
+        properties.load(localProperties.inputStream())
+        return "\"${properties.getProperty("firebase.client.id")}\""
     } else {
         throw GradleException("local.properties not found!")
     }
