@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MediReady</string>
+    <string name="disease_title">Do you have any chronic diseases?</string>
+    <string name="family_disease_title">Do any of your family members have a medical history?</string>
+    <string name="drug_title">Are you taking any medications?</string>
+    <string name="allergy_title">Do you have any allergies?</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_location">Map</string>
+    <string name="menu_all">All</string>
+    <string name="next">Next</string>
+</resources>

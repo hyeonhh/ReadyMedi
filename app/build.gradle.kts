@@ -21,6 +21,7 @@ android {
         buildConfigField("String", "KakaoApiKey", getApiKey())
         buildConfigField("String", "MedicalApiKey", getMedicalApiKey())
         buildConfigField("String", "FirebaseClientId", getFirebaseClientId())
+        buildConfigField("String", "KakaoNativeAppKey", getKakaoNativeAppKey())
     }
 
     buildTypes {
@@ -46,6 +47,8 @@ android {
 }
 
 dependencies {
+    // datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     implementation("androidx.credentials:credentials:1.5.0-alpha05")
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0-alpha05")
@@ -159,6 +162,19 @@ fun getFirebaseClientId(): String {
     if (localProperties.exists()) {
         properties.load(localProperties.inputStream())
         return "\"${properties.getProperty("firebase.client.id")}\""
+    } else {
+        throw GradleException("local.properties not found!")
+    }
+}
+
+// Firebase google login client id
+fun getKakaoNativeAppKey(): String {
+    val properties = Properties()
+    val localProperties = File(rootProject.projectDir, "local.properties")
+
+    if (localProperties.exists()) {
+        properties.load(localProperties.inputStream())
+        return "\"${properties.getProperty("kakao.native.app.key")}\""
     } else {
         throw GradleException("local.properties not found!")
     }

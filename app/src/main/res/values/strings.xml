@@ -1,4 +1,15 @@
 <resources>
-    <string name="kakao_rest_api_key">3f5dd6638969a61dce537c28f62bd14a</string>
-    <string name="app_name">MedicalConnect</string>
+    <string name="app_name">MediReady</string>
+    <string name="disease_title">지병이 있으신가요?</string>
+    <string name="family_disease_title">가족분들 중에 병력이 있으신가요?</string>
+    <string name="drug_title">먹고 있는 약이 있으신가요?</string>
+    <string name="allergy_title">알레르기가 있으신가요?</string>
+    <string name="menu_home">홈</string>
+    <string name="menu_location">지도</string>
+    <string name="menu_all">전체</string>
+    <string name="next">다음</string>
+
+
+
+
 </resources>

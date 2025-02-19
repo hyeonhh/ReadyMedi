@@ -18,5 +18,23 @@
         android:id="@+id/diseaseSelectFragment"
         tools:layout="@layout/fragment_disease_select"
         android:name="com.teammeditalk.medicalconnect.ui.onboarding.DiseaseSelectFragment"
-        android:label="DiseaseSelectFragment" />
+        android:label="DiseaseSelectFragment" >
+        <action
+            android:id="@+id/action_diseaseSelectFragment_to_familyDiseaseSelectFragment"
+            app:destination="@id/familyDiseaseSelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allergySelectFragment"
+        tools:layout="@layout/fragment_allergy_select"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.AllergySelectFragment"
+        android:label="AllergySelectFragment" />
+    <fragment
+        android:id="@+id/familyDiseaseSelectFragment"
+        tools:layout="@layout/fragment_family_disease_select"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.FamilyDiseaseSelectFragment"
+        android:label="FamilyDiseaseSelectFragment" >
+        <action
+            android:id="@+id/action_familyDiseaseSelectFragment_to_allergySelectFragment"
+            app:destination="@id/allergySelectFragment" />
+    </fragment>
 </navigation>

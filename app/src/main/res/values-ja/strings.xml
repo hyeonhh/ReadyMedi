@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MediReady</string>
+    <string name="disease_title">持病はありますか？</string>
+    <string name="drug_title">服用中のお薬はありますか？</string>
+    <string name="family_disease_title">ご家族の中で病歴のある方はいらっしゃいますか？</string>
+    <string name="allergy_title">アレルギーはありますか？</string>
+    <string name="menu_home">ホーム</string>
+    <string name="menu_location">マップ</string>
+    <string name="menu_all">すべて</string>
+    <string name="next">次へ</string>
+</resources>

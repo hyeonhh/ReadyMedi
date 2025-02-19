@@ -1,5 +1,6 @@
 package com.teammeditalk.medicalconnect.ui.onboarding
 
+import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseActivity
@@ -9,6 +10,8 @@ class OnBoardingActivity :
     BaseActivity<ActivityOnboardingBinding>(
         ActivityOnboardingBinding::inflate,
     ) {
+    private val onBoardingViewModel: OnBoardingViewModel by viewModels()
+
     private val navController by lazy {
         val navHostFragment =
             supportFragmentManager

@@ -42,6 +42,7 @@ class MapViewModel : ViewModel() {
         viewModelScope.launch {
             val result =
                 KakaoClient.kakaoSearchService.searchLocationByKeyword(
+                    authorization = "KakaoAK ${BuildConfig.KakaoApiKey}",
                     category_group_code = "HP8",
                     x = longitude,
                     y = latitude,
@@ -93,6 +94,7 @@ class MapViewModel : ViewModel() {
             if (_langPharmacyList.value.isNotEmpty()) {
                 val result =
                     KakaoClient.kakaoSearchService.searchLocationByKeyword(
+                        authorization = "KakaoAK ${BuildConfig.KakaoApiKey}",
                         category_group_code = "PM9",
                         x = longitude,
                         y = latitude,

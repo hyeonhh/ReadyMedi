@@ -24,7 +24,7 @@ object KakaoClient {
                 val request =
                     original
                         .newBuilder()
-                        .header("Authorization", "KakaoAK $API_KEY")
+                        .header("Authorization", "KakaoAK ${BuildConfig.KakaoApiKey}")
                         .header("content-Type", "application/json")
                         .header("charset", "UTF-8")
                         .build()

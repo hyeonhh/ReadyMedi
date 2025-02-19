@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MediReady</string>
+    <string name="disease_title">您有慢性病吗？</string>
+    <string name="drug_title">您正在服用药物吗？</string>
+    <string name="family_disease_title">您的家人中有人有病史吗？</string>
+    <string name="allergy_title">您有过敏症吗？</string>
+    <string name="menu_home">首页</string>
+    <string name="menu_location">地图</string>
+    <string name="menu_all">全部</string>
+    <string name="next">下一步</string>
+</resources>

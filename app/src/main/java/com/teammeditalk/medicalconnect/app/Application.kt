@@ -1,6 +1,7 @@
 package com.teammeditalk.medicalconnect.app
 
 import android.app.Application
+import android.content.Context
 import com.google.android.datatransport.runtime.BuildConfig
 import com.kakao.vectormap.KakaoMapSdk
 import timber.log.Timber
@@ -8,6 +9,10 @@ import timber.log.Timber
 class Application : Application() {
     private fun setupTimber() {
         Timber.plant(Timber.DebugTree())
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
     }
 
     override fun onCreate() {
@@ -18,6 +23,6 @@ class Application : Application() {
             Timber.plant(Timber.DebugTree())
         }
 
-        KakaoMapSdk.init(this, "b03aaef5a96230996325f15fcf69042e")
+        KakaoMapSdk.init(this, com.teammeditalk.medicalconnect.BuildConfig.KakaoNativeAppKey)
     }
 }
