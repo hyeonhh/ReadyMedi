@@ -9,4 +9,22 @@
     <string name="menu_location">マップ</string>
     <string name="menu_all">すべて</string>
     <string name="next">次へ</string>
+
+    <string name="symptom_region_question">痛みのある部位はどこですか？</string>
+    <string name="symptom_start_question">症状はいつから始まりましたか？</string>
+    <string name="symptom_type_question">痛みの性質はどのようなものですか？</string>
+    <string name="symptom_degree_question">痛みの強さは1～10のどのくらいですか？</string>
+    <string name="symptom_duration_question">痛みはどのくらい続いていますか？</string>
+    <string name="symptom_effect_question">痛みを和らげる、または悪化させる要因は何ですか？</string>
+    <string name="other_symptom_question">他に伴う症状はありますか？</string>
+    <string name="additonal_comment_question">その他に伝えたいことはありますか？（自由記入）</string>
+
+    <string name="anesthesia_history_question">麻酔が効きにくかったことはありますか？</string>
+    <string name="medication_side_effect_question">お薬や注射による副作用を経験されたことはありますか？</string>
+    <string name="previous_injury_treatment_question">過去に怪我で治療を受けた部位はありますか？</string>
+
+    <string name="pregnancy_possibility_question">妊娠の可能性はありますか？／現在妊娠中ですか？</string>
+    <string name="menstruation_date_question">最近の生理の開始日と終了日を教えてください</string>
+    <string name="menstruation_regularity_question">生理は規則的ですか？</string>
+
 </resources>

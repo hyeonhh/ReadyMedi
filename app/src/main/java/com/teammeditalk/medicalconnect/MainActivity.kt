@@ -5,7 +5,9 @@ import com.teammeditalk.medicalconnect.base.BaseActivity
 import com.teammeditalk.medicalconnect.databinding.ActivityMainBinding
 import com.teammeditalk.medicalconnect.ui.home.HomeFragment
 import com.teammeditalk.medicalconnect.ui.map.MapFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity :
     BaseActivity<ActivityMainBinding>(
         ActivityMainBinding::inflate,

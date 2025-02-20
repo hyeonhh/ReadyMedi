@@ -4,8 +4,10 @@ import android.app.Application
 import android.content.Context
 import com.google.android.datatransport.runtime.BuildConfig
 import com.kakao.vectormap.KakaoMapSdk
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class Application : Application() {
     private fun setupTimber() {
         Timber.plant(Timber.DebugTree())

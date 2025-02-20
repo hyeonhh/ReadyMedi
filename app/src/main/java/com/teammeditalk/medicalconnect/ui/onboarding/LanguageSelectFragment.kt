@@ -6,8 +6,10 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentLanguageSelectBinding
 import com.teammeditalk.medicalconnect.ui.language.LanguageUtil
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class LanguageSelectFragment :
     BaseFragment<FragmentLanguageSelectBinding>(
         FragmentLanguageSelectBinding::inflate,

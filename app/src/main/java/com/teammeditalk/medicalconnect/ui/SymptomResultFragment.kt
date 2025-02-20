@@ -5,12 +5,14 @@ import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.base.BaseFragment
-import com.teammeditalk.medicalconnect.databinding.FragmentSypmtomResultBinding
+import com.teammeditalk.medicalconnect.databinding.FragmentSymptomResultBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SymptomResultFragment :
-    BaseFragment<FragmentSypmtomResultBinding>(
-        FragmentSypmtomResultBinding::inflate,
+    BaseFragment<FragmentSymptomResultBinding>(
+        FragmentSymptomResultBinding::inflate,
     ) {
     private fun setUpTranslator() {
         val symptomPrompt = "이 부위가 바늘로 찌르는 것처럼 콕콕 아파요"

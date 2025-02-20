@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.teammeditalk.medicalconnect";
+option java_multiple_files = true;
+
+
+message UserInfo {
+  string language = 1; // 유저의 모국어
+}
+
+message UserHealthInfo {
+  // 유저 질병
+  repeated string diseaseInfo = 1;
+  // 유저 가족력
+  repeated string familyDisease = 2;
+  // 유저가 복용중인 약물
+  repeated string drugInfo = 3;
+  // 유저의 알레르기 여부
+  repeated string allergyInfo = 4;
+
+}

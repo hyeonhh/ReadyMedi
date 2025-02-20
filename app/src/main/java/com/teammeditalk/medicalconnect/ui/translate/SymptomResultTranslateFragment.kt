@@ -6,8 +6,10 @@ import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSypmtomResultTranslateBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SymptomResultTranslateFragment :
     BaseFragment<FragmentSypmtomResultTranslateBinding>(
         FragmentSypmtomResultTranslateBinding::inflate,

@@ -25,11 +25,13 @@ import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.data.model.search.SearchLocationItem
 import com.teammeditalk.medicalconnect.databinding.FragmentMapBinding
 import com.teammeditalk.medicalconnect.ui.ExcelHelper
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MapFragment :
     BaseFragment<FragmentMapBinding>(
         FragmentMapBinding::inflate,

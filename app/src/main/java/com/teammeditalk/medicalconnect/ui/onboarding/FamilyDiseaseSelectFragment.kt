@@ -4,7 +4,9 @@ import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentFamilyDiseaseSelectBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FamilyDiseaseSelectFragment :
     BaseFragment<FragmentFamilyDiseaseSelectBinding>(
         FragmentFamilyDiseaseSelectBinding::inflate,

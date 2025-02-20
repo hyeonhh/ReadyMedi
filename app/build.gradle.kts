@@ -6,6 +6,8 @@ plugins {
     id("com.google.gms.google-services")
     alias(libs.plugins.kotlin.kapt)
     kotlin("plugin.serialization") version "2.1.0"
+    id("com.google.protobuf") version "0.9.4"
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -46,9 +48,19 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
 dependencies {
-    // datastore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+
+    // proto
+    implementation(libs.protobuf.kotlin)
+    implementation(libs.androidx.datastore.core)
+    implementation("androidx.datastore:datastore:1.0.0")
 
     implementation("androidx.credentials:credentials:1.5.0-alpha05")
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0-alpha05")
@@ -177,5 +189,25 @@ fun getKakaoNativeAppKey(): String {
         return "\"${properties.getProperty("kakao.native.app.key")}\""
     } else {
         throw GradleException("local.properties not found!")
+    }
+}
+
+protobuf {
+    val protobufVersion =
+        libs.versions.protobuf
+            .asProvider()
+            .get()
+
+    protoc {
+        artifact = "com.google.protobuf:protoc:$protobufVersion"
+    }
+
+    generateProtoTasks {
+        all().forEach {
+            it.plugins {
+                register("kotlin") { option("lite") }
+                register("java") { option("lite") }
+            }
+        }
     }
 }

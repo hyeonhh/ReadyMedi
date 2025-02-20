@@ -18,9 +18,11 @@ import com.teammeditalk.medicalconnect.BuildConfig
 import com.teammeditalk.medicalconnect.base.BaseActivity
 import com.teammeditalk.medicalconnect.databinding.ActivityAuthBinding
 import com.teammeditalk.medicalconnect.ui.onboarding.OnBoardingActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+@AndroidEntryPoint
 class AuthActivity :
     BaseActivity<ActivityAuthBinding>(
         ActivityAuthBinding::inflate,

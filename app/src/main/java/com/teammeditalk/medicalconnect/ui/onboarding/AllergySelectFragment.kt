@@ -5,7 +5,9 @@ import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.MainActivity
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentAllergySelectBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AllergySelectFragment :
     BaseFragment<FragmentAllergySelectBinding>(
         FragmentAllergySelectBinding::inflate,

@@ -9,4 +9,21 @@
     <string name="menu_location">地图</string>
     <string name="menu_all">全部</string>
     <string name="next">下一步</string>
+
+    <string name="symptom_region_question">哪里疼痛？</string>
+    <string name="symptom_start_question">症状是什么时候开始的？</string>
+    <string name="symptom_type_question">疼痛的性质是怎样的？</string>
+    <string name="symptom_degree_question">疼痛程度是多少？请用1-10表示</string>
+    <string name="symptom_duration_question">疼痛持续了多长时间？</string>
+    <string name="symptom_effect_question">有什么因素会减轻或加重疼痛？</string>
+    <string name="other_symptom_question">有其他伴随症状吗？</string>
+    <string name="additonal_comment_question">还有其他想要告诉我们的吗？（选填）</string>
+
+    <string name="anesthesia_history_question">您是否有麻醉效果不好的经历？</string>
+    <string name="medication_side_effect_question">您是否有过药物或注射的副作用？</string>
+    <string name="previous_injury_treatment_question">您过去是否有受伤需要治疗的部位？</string>
+
+    <string name="pregnancy_possibility_question">您是否怀孕或有怀孕的可能？</string>
+    <string name="menstruation_date_question">最近一次月经的开始和结束时间是什么时候？</string>
+    <string name="menstruation_regularity_question">您的月经周期规律吗？</string>
 </resources>

@@ -1,21 +1,35 @@
-package com.teammeditalk.medicalconnect.data.client
+package com.teammeditalk.medicalconnect.data.network
 
 import com.teammeditalk.medicalconnect.BuildConfig
+import com.teammeditalk.medicalconnect.data.qualifier.KakaoRetrofit
+import com.teammeditalk.medicalconnect.data.qualifier.LocationRetrofit
 import com.teammeditalk.medicalconnect.data.service.KakaoSearchService
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-object KakaoClient {
-    private const val BASE_URL = "https://dapi.kakao.com/"
-    private const val API_KEY = BuildConfig.KakaoApiKey
-    private val loggingInterceptor =
+@Module
+@InstallIn(SingletonComponent::class)
+object KakaoModule {
+    // 1. logging interceptor
+    @Provides
+    @Singleton
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BASIC
         }
 
-    private val okHttpClient =
+    // 2. okhttpclient
+    @Provides
+    @Singleton
+    @KakaoRetrofit
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
@@ -31,13 +45,25 @@ object KakaoClient {
                 it.proceed(request)
             }.build()
 
-    private val retrofit =
+    // 3. retrofit
+
+    @Provides
+    @Singleton
+    @KakaoRetrofit
+    fun provideRetrofit(
+        @LocationRetrofit okHttpClient: OkHttpClient,
+    ): Retrofit =
         Retrofit
             .Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("https://dapi.kakao.com/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    val kakaoSearchService: KakaoSearchService = retrofit.create(KakaoSearchService::class.java)
+    // 4. service
+    @Provides
+    @Singleton
+    fun provideKakaoSearchService(
+        @KakaoRetrofit retrofit: Retrofit,
+    ): KakaoSearchService = retrofit.create(KakaoSearchService::class.java)
 }

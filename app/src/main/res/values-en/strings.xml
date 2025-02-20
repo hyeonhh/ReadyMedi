@@ -9,4 +9,24 @@
     <string name="menu_location">Map</string>
     <string name="menu_all">All</string>
     <string name="next">Next</string>
+
+    <string name="symptom_region_question">Where does it hurt?</string>
+    <string name="symptom_start_question">When did your symptoms begin?</string>
+    <string name="symptom_type_question">How would you describe the type of pain?</string>
+    <string name="symptom_degree_question">On a scale of 1-10, how severe is your pain?</string>
+    <string name="symptom_duration_question">How long have you been experiencing this pain?</string>
+    <string name="symptom_effect_question">What factors improve or worsen your pain?</string>
+    <string name="other_symptom_question">Do you have any other accompanying symptoms?</string>
+    <string name="additonal_comment_question">Is there anything else you would like to tell us? (Optional)</string>
+
+    <string name="anesthesia_history_question">Have you ever had problems with anesthesia?</string>
+    <string name="medication_side_effect_question">Have you experienced any side effects from medications or injections?</string>
+    <string name="previous_injury_treatment_question">Have you had any previous injuries that required treatment?</string>
+
+    <string name="pregnancy_possibility_question">Are you pregnant or is there a possibility of pregnancy?</string>
+    <string name="menstruation_date_question">When was your last menstrual period (start and end dates)?</string>
+    <string name="menstruation_regularity_question">Is your menstrual cycle regular?</string>
+
+
+
 </resources>
