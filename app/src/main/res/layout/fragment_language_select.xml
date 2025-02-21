@@ -90,13 +90,14 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_chinese" />
 
     <com.google.android.material.button.MaterialButton
+        android:padding="20dp"
         android:id="@+id/btn_next"
+        android:backgroundTint="@color/blue50"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

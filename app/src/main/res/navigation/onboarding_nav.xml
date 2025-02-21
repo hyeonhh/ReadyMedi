@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/languageSelectFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.onboarding.LanguageSelectFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.language.LanguageSelectFragment"
         tools:layout="@layout/fragment_language_select"
         android:label="LanguageSelectFragment" >
         <action
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/diseaseSelectFragment"
         tools:layout="@layout/fragment_disease_select"
-        android:name="com.teammeditalk.medicalconnect.ui.onboarding.DiseaseSelectFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.disease.DiseaseSelectFragment"
         android:label="DiseaseSelectFragment" >
         <action
             android:id="@+id/action_diseaseSelectFragment_to_familyDiseaseSelectFragment"
@@ -26,12 +26,12 @@
     <fragment
         android:id="@+id/allergySelectFragment"
         tools:layout="@layout/fragment_allergy_select"
-        android:name="com.teammeditalk.medicalconnect.ui.onboarding.AllergySelectFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.allergy.AllergySelectFragment"
         android:label="AllergySelectFragment" />
     <fragment
         android:id="@+id/familyDiseaseSelectFragment"
         tools:layout="@layout/fragment_family_disease_select"
-        android:name="com.teammeditalk.medicalconnect.ui.onboarding.FamilyDiseaseSelectFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.family.FamilyDiseaseSelectFragment"
         android:label="FamilyDiseaseSelectFragment" >
         <action
             android:id="@+id/action_familyDiseaseSelectFragment_to_allergySelectFragment"

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tv_symptom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="어떤 증상이 있나요?"
+        android:textAppearance="@style/Title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:layout_margin="10dp"
+        android:id="@+id/layout_respiratory"
+        app:layout_constraintStart_toStartOf="@id/tv_symptom"
+        app:layout_constraintTop_toBottomOf="@id/tv_symptom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_respiratory"/>
+
+
+    <include
+        android:id="@+id/layout_digestive"
+        app:layout_constraintTop_toBottomOf="@id/layout_respiratory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        layout="@layout/layout_digestive"/>
+
+    <include
+        android:id="@+id/layout_fatigue"
+        app:layout_constraintTop_toBottomOf="@id/layout_digestive"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_fatigue"/>
+
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/layout_fatigue"
+        android:id="@+id/layout_allergy"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_allergy"/>
+
+<include
+    app:layout_constraintTop_toBottomOf="@id/layout_allergy"
+    layout="@layout/layout_chronic"
+    android:layout_margin="10dp"
+    android:id="@+id/layout_chronic"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/layout_chronic"
+        android:id="@+id/layout_joint"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_joint"/>
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/layout_joint"
+        android:id="@+id/layout_injury"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_injury"/>
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/layout_injury"
+        android:id="@+id/layout_dental"
+        android:layout_margin="10dp"
+        layout="@layout/layout_dental"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <include
+        android:id="@+id/layout_breast"
+        layout="@layout/layout_breast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_dental" />
+
+    <include
+        android:id="@+id/layout_women"
+        layout="@layout/layout_womens"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_breast" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:padding="20dp"
+        android:id="@+id/btn_next"
+        android:backgroundTint="@color/blue50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
