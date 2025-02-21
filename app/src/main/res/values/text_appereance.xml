@@ -2,45 +2,91 @@
 <resources>
     <!-- 제목용 텍스트 스타일 -->
     <style name="Title1" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.0</item>  <!-- 140% -->
         <item name="android:textSize">28sp</item>
         <item name="android:fontFamily">@font/pretendard_variable</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Title2" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.4</item>  <!-- 140% -->
         <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">@font/pretendard_variable</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="SubTitle1" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.4</item>  <!-- 140% -->
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/pretendard_variable</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="SubTitle2" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.4</item>  <!-- 140% -->
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/pretendard_variable</item>
     </style>
     <style name="Body1_Normal" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.0</item>  <!-- 140% -->
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/pretendard_variable</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-<!--    <style name="SubTitle2" parent="TextAppearance.AppCompat.Title">-->
-<!--        <item name="android:textSize">18sp</item>-->
-<!--        <item name="android:fontFamily">@font/pretendard_variable</item>-->
-<!--    </style>-->
+    <style name="Body2_Normal" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.0</item>  <!-- 140% -->
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendard_variable</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
-<!--    <style name="SubTitle2" parent="TextAppearance.AppCompat.Title">-->
-<!--        <item name="android:textSize">18sp</item>-->
-<!--        <item name="android:fontFamily">@font/pretendard_variable</item>-->
-<!--    </style>-->
+    <style name="Body2_Reading" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.4</item>  <!-- 140% -->
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendard_variable</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 
 
+    <style name="Body3_Normal" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.0</item>  <!-- 140% -->
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/pretendard_variable</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+    <style name="Body3_Reading" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.4</item>  <!-- 140% -->
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/pretendard_variable</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="Label1_Normal" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.0</item>  <!-- 140% -->
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_variable</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Label1_Reading" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.4</item>  <!-- 140% -->
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_variable</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Label2" parent="TextAppearance.AppCompat.Title">
+        <item name="android:lineSpacingMultiplier">1.0</item>  <!-- 140% -->
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/pretendard_variable</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 
 
