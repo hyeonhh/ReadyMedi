@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomChipStyle"
+        parent="@style/Widget.Material3.Chip.Suggestion">
+        <item name="chipStrokeColor">@color/chip_stroke_color</item>
+        <item name="chipBackgroundColor">@color/white</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="chipCornerRadius">100dp</item>
+        <item name="android:textColor">@color/chip_color</item>
+    </style>
+    
+    <style name="CustomButtonStyle"
+        parent="@style/ThemeOverlay.Material3.Button">
+        <item  name="cornerRadius">16dp</item>
+        <item name="backgroundTint">@color/blue90</item>
+        <item  name="android:padding">20dp</item>
+    </style>
+</resources>

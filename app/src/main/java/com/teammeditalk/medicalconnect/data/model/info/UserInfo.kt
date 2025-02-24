@@ -1,8 +1,7 @@
 package com.teammeditalk.medicalconnect.data.model.info
 
-data class UserInfo(
-    val language: String,
-    val disease: List<String>,
-    val allergy: List<String>,
-    val family_disease: List<String>,
+data class HealthInfo(
+    val disease: List<String> = emptyList(),
+    val allergy: List<String> = emptyList(),
+    val family_disease: List<String> = emptyList(),
 )

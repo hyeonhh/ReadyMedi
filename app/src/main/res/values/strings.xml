@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MediReady</string>
-    <string name="disease_title">지병이 있으신가요?</string>
-    <string name="family_disease_title">가족분들 중에 병력이 있으신가요?</string>
-    <string name="drug_title">먹고 있는 약이 있으신가요?</string>
-    <string name="allergy_title">알레르기가 있으신가요?</string>
+    <string name="disease_title">현재 앓고 계신 지병을\n모두 선택해주세요</string>
+    <string name="family_disease_title">가족력이 있다면 선택해주세요</string>
+    <string name="drug_title">복용하고 있는 약이 있다면 선택해주세요</string>
+    <string name="drug_subtitle">과거 피임약 복용 이력도 포함하여 선택해주세요</string>
+    <string name="allergy_title">알레르기가 있다면 선택해주세요</string>
     <string name="menu_home">홈</string>
     <string name="menu_location">지도</string>
     <string name="menu_all">전체</string>

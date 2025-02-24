@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MediReady</string>
-    <string name="disease_title">您有慢性病吗？</string>
+    <string name="disease_title">请选择您目前所患有的所有慢性病</string>
     <string name="drug_title">您正在服用药物吗？</string>
     <string name="family_disease_title">您的家人中有人有病史吗？</string>
     <string name="allergy_title">您有过敏症吗？</string>

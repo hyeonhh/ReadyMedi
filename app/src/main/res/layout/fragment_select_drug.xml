@@ -52,6 +52,13 @@
             android:layout_width="0dp"
             android:layout_height="5dp"
             android:layout_marginEnd="10dp"
+            android:background="@color/gray20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
             android:background="@color/blue90"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -65,15 +72,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="5dp"
-            android:background="@color/gray20"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </LinearLayout>
+
+
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView"
@@ -89,75 +90,118 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/family_disease_title"
+        android:text="@string/drug_title"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
         app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
+    <TextView
+        android:textAppearance="@style/Body3_Reading"
+        android:id="@+id/textView13"
+        android:textColor="@color/gray50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drug_subtitle"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
 
     <com.google.android.material.chip.ChipGroup
+        app:chipSpacingVertical="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        style="@style/CustomChipStyle"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <com.google.android.material.chip.Chip
-            style="@style/CustomChipStyle"
             android:id="@+id/chip1"
+            style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="뇌졸중" />
+            android:text="혈압약" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip2"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="심장병" />
+            android:text="심장약" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip3"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="고혈압" />
+            android:text="당뇨약" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="당뇨" />
+            android:text="항생제" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="위암" />
+            android:text="항암제" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="대장암" />
+            android:text="한약" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip7"
+            android:id="@+id/chip8"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="난소암" />
+            android:text="피임약" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip9"
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="진통소염제" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip10"
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="경구 스테로이드" />
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip11"
+            style="@style/CustomChipStyle"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="폐경 관련 여성 호르몬제" />
+
 
     </com.google.android.material.chip.ChipGroup>
+
+    <include
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        android:id="@+id/layout_language_warn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_language_warning"/>
+
     <com.google.android.material.button.MaterialButton
-        style="@style/CustomButtonStyle"
         android:id="@+id/btn_next"
+        style="@style/CustomButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/next"

@@ -1,56 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20sp"
+    android:fillViewport="true"
+    android:background="@color/blue20"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:padding="20sp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:background="@android:color/transparent"
+        android:id="@+id/btn_back"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@color/gray20"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/blue90"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@color/gray20"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/gray20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@color/gray20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/disease_title"
+        android:textAlignment="viewStart"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
         app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_당뇨"
-        style="@style/Widget.Material3.Button.OutlinedButton"
+    <include
+        android:id="@+id/layout_cancer"
+        layout="@layout/layout_cancer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="당뇨"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@id/textView6" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_고혈압"
-        style="@style/Widget.Material3.Button.OutlinedButton"
+    <include
+        android:layout_marginTop="10dp"
+        layout="@layout/layout_other_disease"
+        app:layout_constraintTop_toBottomOf="@+id/layout_cancer"
+        android:id="@+id/layout_other_disease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <include
+        android:id="@+id/layout_surgery"
+        layout="@layout/layout_surgery_chip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="고혈압"
-        app:layout_constraintTop_toBottomOf="@+id/btn_당뇨"
-        tools:layout_editor_absoluteX="20dp" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_other_disease" />
+
 
     <com.google.android.material.button.MaterialButton
-        android:padding="20dp"
+        style="@style/CustomButtonStyle"
         android:id="@+id/btn_next"
-        android:backgroundTint="@color/blue50"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/next"
@@ -59,3 +142,5 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MediReady</string>
-    <string name="disease_title">持病はありますか？</string>
+    <string name="disease_title">現在お持ちの持病をすべて選択してください</string>
     <string name="drug_title">服用中のお薬はありますか？</string>
     <string name="family_disease_title">ご家族の中で病歴のある方はいらっしゃいますか？</string>
     <string name="allergy_title">アレルギーはありますか？</string>

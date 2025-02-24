@@ -1,8 +1,9 @@
-package com.teammeditalk.medicalconnect.data.network
+package com.teammeditalk.medicalconnect.data.module
 
 import com.teammeditalk.medicalconnect.BuildConfig
-import com.teammeditalk.medicalconnect.data.qualifier.ForeignLangRetrofit
-import com.teammeditalk.medicalconnect.data.service.ForeignLanguageService
+import com.teammeditalk.medicalconnect.data.qualifier.KakaoRetrofit
+import com.teammeditalk.medicalconnect.data.qualifier.LocationRetrofit
+import com.teammeditalk.medicalconnect.data.service.KakaoSearchService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,17 +16,21 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ForeignLangModule {
+object KakaoModule {
+    // 1. logging interceptor
     @Provides
     @Singleton
-    fun provideApiKey(): String = BuildConfig.MedicalApiKey
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
 
+    // 2. okhttpclient
     @Provides
     @Singleton
-    @ForeignLangRetrofit
-    fun provideOkhttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
-        val apiKey = BuildConfig.MedicalApiKey
-        return OkHttpClient
+    @KakaoRetrofit
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+        OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor {
@@ -33,30 +38,32 @@ object ForeignLangModule {
                 val request =
                     original
                         .newBuilder()
-                        .header("Authorization", "Infuser $apiKey")
+                        .header("Authorization", "KakaoAK ${BuildConfig.KakaoApiKey}")
                         .header("content-Type", "application/json")
                         .header("charset", "UTF-8")
                         .build()
                 it.proceed(request)
             }.build()
-    }
+
+    // 3. retrofit
 
     @Provides
     @Singleton
-    @ForeignLangRetrofit
+    @KakaoRetrofit
     fun provideRetrofit(
-        @ForeignLangRetrofit okHttpClient: OkHttpClient,
+        @LocationRetrofit okHttpClient: OkHttpClient,
     ): Retrofit =
         Retrofit
             .Builder()
-            .baseUrl("https://api.odcloud.kr/")
+            .baseUrl("https://dapi.kakao.com/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+    // 4. service
     @Provides
     @Singleton
-    fun provideForeignLangService(
-        @ForeignLangRetrofit retrofit: Retrofit,
-    ): ForeignLanguageService = retrofit.create(ForeignLanguageService::class.java)
+    fun provideKakaoSearchService(
+        @KakaoRetrofit retrofit: Retrofit,
+    ): KakaoSearchService = retrofit.create(KakaoSearchService::class.java)
 }

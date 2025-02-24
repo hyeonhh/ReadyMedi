@@ -1,5 +1,5 @@
 
-package com.teammeditalk.medicalconnect.data.network
+package com.teammeditalk.medicalconnect.data.module
 
 import com.teammeditalk.medicalconnect.data.qualifier.LocationRetrofit
 import com.teammeditalk.medicalconnect.data.service.LocationService

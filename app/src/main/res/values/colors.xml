@@ -2,5 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="navy_blue_50">#801C2C58</color>
+
+
+    <color name="blue20">#EEF2FB</color>
     <color name="blue50">#6481F2</color>
+    <color name="blue90">#1D284C</color>
+    <color name="gray10">#F8F9FC</color>
+    <color name="gray20">#E3E5EB</color>
+    <color name="gray30">#C3C6CC</color>
+    <color name="gray40">#ABAFB7</color>
+    <color name="gray50">#8D8F95</color>
+    <color name="gray60">#727479</color>
+    <color name="gray70">#5B5B5C</color>
+    <color name="gray80">#434344</color>
+    <color name="gray90">#282929</color>
+    <color name="gray95">#0C0C0D</color>
+
 </resources>
