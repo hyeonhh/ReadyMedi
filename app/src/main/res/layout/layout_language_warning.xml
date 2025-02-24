@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_language_warn"
+    android:background="@drawable/shape_rectangle_language_warning"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_warn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="22dp"
+        android:src="@drawable/ic_warning_20dp"
+        android:layout_marginEnd="19dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_warn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_warn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:paddingVertical="16dp"
+        android:text="필수항목을 선택해주세요"
+        android:textAppearance="@style/Body1_Normal"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_warn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
