@@ -19,6 +19,7 @@ class DiseaseSelectFragment :
     ) {
     private val navController by lazy { findNavController() }
     private val viewModel: OnBoardingViewModel by activityViewModels()
+    private val diseaseList: MutableList<String> = mutableListOf()
 
     private fun onChipClick(view: View) {
         view as Chip
@@ -28,7 +29,6 @@ class DiseaseSelectFragment :
             view.setTextColor(ContextCompat.getColor(requireContext(), R.color.blue50))
         } else {
             view.setChipStrokeColorResource(R.color.gray10)
-            //  view.setTextColor(resources.getColor(R.color.gray10, null))
             view.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray95))
         }
     }
@@ -36,6 +36,28 @@ class DiseaseSelectFragment :
     override fun onBindLayout() {
         super.onBindLayout()
         binding.btnNext.setOnClickListener {
+            with(binding.layoutCancer.chipGroup) {
+                val checkedChipList = checkedChipIds
+                checkedChipList.forEach {
+                    val chip = findViewById<Chip>(it)
+                    diseaseList.add(chip.text.toString())
+                }
+            }
+            with(binding.layoutOtherDisease.chipGroup) {
+                val checkedChipList = checkedChipIds
+                checkedChipList.forEach {
+                    val chip = findViewById<Chip>(it)
+                    diseaseList.add(chip.text.toString())
+                }
+            }
+            with(binding.layoutSurgery.chipGroup) {
+                val checkedChipList = checkedChipIds
+                checkedChipList.forEach {
+                    val chip = findViewById<Chip>(it)
+                    diseaseList.add(chip.text.toString())
+                }
+            }
+            viewModel.saveUserDisease(diseaseList)
             navController.navigate(R.id.familyDiseaseSelectFragment)
         }
 

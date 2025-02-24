@@ -15,6 +15,7 @@
 
     <com.google.android.material.chip.ChipGroup
         android:layout_marginTop="10dp"
+        app:chipSpacingVertical="0dp"
         android:id="@+id/chip_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

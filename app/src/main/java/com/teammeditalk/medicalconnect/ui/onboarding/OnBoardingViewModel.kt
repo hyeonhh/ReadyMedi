@@ -41,6 +41,7 @@ class OnBoardingViewModel
                             .setLanguage(language)
                             .build()
                     }
+                    Timber.d("success to save language")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.e("failed to save language :${e.message}")
@@ -58,6 +59,7 @@ class OnBoardingViewModel
                             .addAllDiseaseInfo(disease)
                             .build()
                     }
+                    Timber.d("success to save user disease $disease")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.d("failed to save user disease ${e.message}")
@@ -75,6 +77,7 @@ class OnBoardingViewModel
                             .addAllFamilyDisease(familyDisease)
                             .build()
                     }
+                    Timber.d("success to save family disease $familyDisease")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.d("failed to save user family disease :${e.message}")
@@ -92,6 +95,7 @@ class OnBoardingViewModel
                             .addAllAllergyInfo(allergy)
                             .build()
                     }
+                    Timber.e("success to save allergy :$allergy")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.e("failed to save allergy :${e.message}")
@@ -109,6 +113,7 @@ class OnBoardingViewModel
                             .addAllDrugInfo(drug)
                             .build()
                     }
+                    Timber.e("success to save drug :$drug")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.e("failed to save drug :${e.message}")

@@ -97,6 +97,8 @@
 
 
     <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        app:chipSpacingVertical="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
