@@ -15,7 +15,7 @@ class AdditionalInputFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
-        binding.btnNext.setOnClickListener {
+        binding.btnComplete.setOnClickListener {
             navController.navigate(R.id.symptomResultFragment)
         }
     }

@@ -3,55 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:padding="20dp"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageButton
-        android:id="@+id/imageButton8"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_back"
+        android:id="@+id/imageButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView43"
+        android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="@string/other_symptom_question"
-        android:textAppearance="@style/Title2"
+        android:text="@string/menstruation_date_question"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton8" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
-    <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:id="@+id/selectBox9"
+    <com.teammeditalk.medicalconnect.ui.util.ExposedDropdownMenu
+        android:id="@+id/exposed_drop_down_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:menuTitle="선택" />
+
+    <include
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:language="예"
+        android:id="@+id/layout_select_box"
+        layout="@layout/layout_language_warning"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView43" />
-
-
-    <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:language="아니요"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBox9" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/CustomButtonStyle2"
+        style="@style/CustomButtonStyle_Disabled"
         android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,5 +56,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,20 +17,20 @@
     <string name="symptom_duration_question">통증의 지속 시간이 얼마나 되나요?</string>
     <string name="symptom_effect_question">통증은 언제 악화되나요?</string>
     <string name="other_symptom_question">동반되는 다른 증상이 있나요? </string>
-    <string name="additonal_comment_question">추가로 전달하고 싶은 내용이 있나요?(자유 입력)</string>
+    <string name="additonal_comment_question">추가로 전달하고 싶은\n 내용이 있나요?</string>
 
     <!-- 마취 관련 -->
     <string name="anesthesia_history_question">마취가 잘 안된 적이 있나요?</string>
 
     <!-- 부작용 관련 -->
-    <string name="medication_side_effect_question">약 복용이나 주사로 인한 부작용이 있었나요?</string>
+    <string name="medication_side_effect_question">약 복용이나\n주사로 인한 부작용이 있었나요?</string>
 
     <!-- 과거 치료 이력 -->
-    <string name="previous_injury_treatment_question">과거에 다쳐서 치료받은 부위가 있나요?</string>
+    <string name="previous_injury_treatment_question">과거에 다쳐서\n치료받은 부위가 있나요?</string>
 
     <!-- 임신 관련 -->
-    <string name="pregnancy_possibility_question">임신 가능성이 있나요? / 현재 임신 중인가요?</string>
-    <string name="menstruation_date_question">최근 생리 시작 및 종료 시기는 언제인가요?</string>
+    <string name="pregnancy_possibility_question">임신 가능성이 있거나\n현재 임신 중인가요?</string>
+    <string name="menstruation_date_question">가장 마지막 생리는 언제인가요?</string>
     <string name="menstruation_regularity_question">월경 주기가 규칙적인 편인가요?</string>
     
 
