@@ -225,7 +225,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_marginHorizontal="20dp"
         android:id="@+id/btn_next"
-        style="@style/CustomButtonStyle"
+        style="@style/CustomButtonStyle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

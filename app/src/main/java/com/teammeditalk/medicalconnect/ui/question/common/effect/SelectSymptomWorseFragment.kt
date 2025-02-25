@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 // 통증을 완화 또는 악화 시키는 요인
 @AndroidEntryPoint
-class SelectSymptomEffectFragment :
+class SelectSymptomWorseFragment :
     BaseFragment<FragmentSelectSympmtomEffectBinding>(
         FragmentSelectSympmtomEffectBinding::inflate,
     ) {
