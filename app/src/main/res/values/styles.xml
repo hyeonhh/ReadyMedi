@@ -8,6 +8,14 @@
         <item name="chipCornerRadius">100dp</item>
         <item name="android:textColor">@color/chip_color</item>
     </style>
+
+    <style name="CustomButtonStyle_Disabled"
+        parent="@style/ThemeOverlay.Material3.Button">
+        <item  name="cornerRadius">16dp</item>
+        <item name="backgroundTint">@color/gray80</item>
+        <item  name="android:padding">20dp</item>
+        <item name="android:textColor">@color/gray50</item>
+    </style>
     
     <style name="CustomButtonStyle"
         parent="@style/ThemeOverlay.Material3.Button">
@@ -15,4 +23,14 @@
         <item name="backgroundTint">@color/blue90</item>
         <item  name="android:padding">20dp</item>
     </style>
+
+
+    <style name="CustomButtonStyle2"
+        parent="@style/ThemeOverlay.Material3.Button">
+        <item  name="cornerRadius">16dp</item>
+        <item name="backgroundTint">@color/blue50</item>
+        <item  name="android:padding">20dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

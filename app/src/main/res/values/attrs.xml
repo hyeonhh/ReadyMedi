@@ -6,4 +6,16 @@
         <attr name="textColor" format="color"/>
         <attr name="language" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="SelectCategory">
+        <attr name="isCategorySelected" format="boolean"/>
+        <attr name="categoryTitle" format="string"/>
+        <attr name="categoryContent" format="string"/>
+        <attr name="categoryStrokeColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ExposedDropdownMenu">
+        <attr name="menuTitle" format="string"/>
+    </declare-styleable>
+
 </resources>

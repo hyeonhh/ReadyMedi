@@ -9,6 +9,8 @@
         android:id="@+id/imageView"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,55 +30,52 @@
         android:id="@+id/btn_symptom"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+    <LinearLayout
+        android:id="@+id/layout_joint"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_symptom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="무릎이 아프고 걷기 힘들어요" />
+        app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="어깨가 아프고 팔을 들기 힘들어요" />
+    <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+        app:categoryTitle="무릎 통증"
+        app:categoryContent="무릎이 아프고 걷기 힘들어요"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="허리가 아프고 구부리기 힘들어요"
-            />
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="어깨 통증"
+            app:categoryContent="어깨가 아프고 팔을 들기 힘들어요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="목이 아프고 돌리기 힘들어요" />
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="허리 통증"
+            app:categoryContent="허리가 아프고 구부리기 힘들어요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="손목/발목이 아프고 붓기가 있어요" />
-
-    </com.google.android.material.chip.ChipGroup>
-
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="목 통증"
+            app:categoryContent="목이 아프고 움직이기 힘들어요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="손/발목 통증"
+            app:categoryContent="손목/발목이 아프고 붓기가 있어요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 
 

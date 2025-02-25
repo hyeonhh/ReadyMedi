@@ -1,6 +1,7 @@
 package com.teammeditalk.medicalconnect.ui.question.common.symptom
 
 import android.view.View
+import androidx.core.view.children
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
@@ -26,120 +27,75 @@ class SelectSymptomFragment :
         }
 
         with(binding.layoutRespiratory) {
+            for (child in layoutSymptomCategory.children) {
+                child.setOnClickListener {
+                    it.isSelected = !it.isSelected
+                }
+            }
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutSymptomCategory.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
-            chip4.setOnClickListener { onChipClick(it) }
-            chip5.setOnClickListener { onChipClick(it) }
         }
 
         with(binding.layoutDigestive) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
-
-                chip1.setOnClickListener { onChipClick(it) }
-                chip2.setOnClickListener { onChipClick(it) }
-                chip3.setOnClickListener { onChipClick(it) }
-                chip4.setOnClickListener { onChipClick(it) }
-                chip5.setOnClickListener { onChipClick(it) }
+                layoutDigestive.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
         }
 
         with(binding.layoutFatigue) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutFatigue.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
-            chip4.setOnClickListener { onChipClick(it) }
-            chip5.setOnClickListener { onChipClick(it) }
         }
 
         with(binding.layoutAllergy) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutAllergy.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
-            chip4.setOnClickListener { onChipClick(it) }
         }
 
         with(binding.layoutChronic) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
-
-                chip1.setOnClickListener { onChipClick(it) }
-                chip2.setOnClickListener { onChipClick(it) }
-                chip3.setOnClickListener { onChipClick(it) }
+                layoutChronic.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
         }
 
         with(binding.layoutJoint) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutJoint.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
-            chip4.setOnClickListener { onChipClick(it) }
-            chip5.setOnClickListener { onChipClick(it) }
         }
         with(binding.layoutInjury) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutInjury.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
         }
 
         with(binding.layoutDental) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutDental.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
-            chip4.setOnClickListener { onChipClick(it) }
-            chip5.setOnClickListener { onChipClick(it) }
-            chip6.setOnClickListener { onChipClick(it) }
-            chip7.setOnClickListener { onChipClick(it) }
-            chip8.setOnClickListener { onChipClick(it) }
-            chip9.setOnClickListener { onChipClick(it) }
         }
         with(binding.layoutBreast) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutBreast.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
         }
         with(binding.layoutWomen) {
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                chipGroup.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutWomen.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
-            chip1.setOnClickListener { onChipClick(it) }
-            chip2.setOnClickListener { onChipClick(it) }
-            chip3.setOnClickListener { onChipClick(it) }
-            chip4.setOnClickListener { onChipClick(it) }
-            chip5.setOnClickListener { onChipClick(it) }
         }
     }
 }

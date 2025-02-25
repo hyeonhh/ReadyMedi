@@ -9,6 +9,8 @@
         android:id="@+id/imageView"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="20dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,44 +30,44 @@
         android:id="@+id/btn_symptom"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="당뇨병 검사/ 관리를 받고 싶어요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="갑상선 검사/관리를 받고 싶어요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="콜레스테롤, 혈압이 높아요"
-            />
 
 
-    </com.google.android.material.chip.ChipGroup>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+    android:id="@+id/layout_chronic"
+    android:visibility="gone"
+    app:layout_constraintTop_toBottomOf="@id/btn_symptom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+        app:categoryTitle="당뇨"
+        app:categoryContent="당뇨병 검사/관리를 받고 싶어요"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="갑상선"
+            app:categoryContent="갑상선 검사/ 관리를 받고 싶어요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="콜레스테롤/혈압"
+            app:categoryContent="콜레스트롤/혈압이 높아요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

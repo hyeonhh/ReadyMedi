@@ -3,12 +3,32 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
+    <color name="red10">#FFFAFA</color>
+    <color name="red20">#FFE3E3</color>
+    <color name="red30">#FFA99D</color>
+    <color name="red40">#FF7664</color>
+    <color name="red50">#FF1F00</color>
+    <color name="red60">#CE1A02</color>
+    <color name="red70">#971200</color>
+    <color name="red80">#710E00</color>
+    <color name="red90">#4A0900</color>
+    <color name="red95">#380700</color>
+
+    <color name="orange50">#FF8000</color>
+    <color name="orange60">#EE773F</color>
+
+
+    <color name="blue">#F8F9FC</color>
+    <color name="blue20">#EEF2FB</color>
+    <color name="blue30">#E1EAFF</color>
+    <color name="blue40">#86ABFF</color>
+    <color name="blue50">#6481F2</color>
+    <color name="blue90">#1D284C</color>
     <color name="navy_blue_50">#801C2C58</color>
 
 
-    <color name="blue20">#EEF2FB</color>
-    <color name="blue50">#6481F2</color>
-    <color name="blue90">#1D284C</color>
+    <color name="gray_divider">#D9D9D9</color>
     <color name="gray10">#F8F9FC</color>
     <color name="gray20">#E3E5EB</color>
     <color name="gray30">#C3C6CC</color>

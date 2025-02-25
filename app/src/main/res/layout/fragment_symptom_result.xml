@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/blue20"
     android:fillViewport="true"
     android:padding="20dp"
     android:layout_height="match_parent">
@@ -11,75 +12,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:background="@color/design_default_color_background"
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="감기 증상이 있어요"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton2"
-        style="@style/Widget.Material3.Button.TextButton"
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:background="@drawable/baseline_circle_24"
+        android:id="@+id/shapeableImageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="한국어로 번역"
+        android:layout_marginTop="13dp"
+        android:text="증상 보고서"
+        android:textAppearance="@style/Title2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shapeableImageView2" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/btn_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <TextView
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="결과지"
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@color/design_default_color_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton2" />
-
-    <TextView
-        android:background="@color/cardview_light_background"
-        android:id="@+id/textView10"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="개인 건강 정보"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        tools:layout_editor_absoluteX="20dp" />
-
-    <TextView
-        android:id="@+id/tv_map"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/cardview_light_background"
-        android:gravity="center"
-        android:text="근처 내과 보러가기"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        tools:layout_editor_absoluteX="20dp" />
-
-    <TextView
-        android:gravity="center"
+    <include
+        android:id="@+id/layout_user_health_info"
+        app:layout_constraintTop_toBottomOf="@id/btn_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/cardview_light_background"
-        android:text="감기 증상이 있어요 라고 하면서 이 화면을 보여주세요"
-        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/layout_user_health_info"/>
+
+    <include
+        android:id="@+id/layout_current_symptom"
+        layout="@layout/layout_current_symptom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_map" />
+        app:layout_constraintTop_toBottomOf="@id/layout_user_health_info" />
+
+    <include
+        android:id="@+id/layout_additional_input"
+        layout="@layout/layout_additional_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_current_symptom" />
+
+    <include
+        layout="@layout/layout_hospital_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_additional_input"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ class SelectBox(
         onClick(selected)
     }
 
+    // 뷰 설정
     private fun initView() {
         val layoutInflater = LayoutInflater.from(context)
         binding = CustomSelectBoxUnselectedBinding.inflate(layoutInflater, this, false)
@@ -34,7 +35,8 @@ class SelectBox(
         addView(binding.root)
     }
 
-    fun onClick(isSelected: Boolean) {
+    // 이벤트 설정
+    private fun onClick(isSelected: Boolean) {
         context.theme
             .obtainStyledAttributes(
                 attributeSet,

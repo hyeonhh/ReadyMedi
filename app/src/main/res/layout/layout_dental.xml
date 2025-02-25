@@ -9,6 +9,7 @@
         android:id="@+id/imageView"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="20dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,85 +29,62 @@
         android:id="@+id/btn_symptom"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
+    <LinearLayout
+        android:id="@+id/layout_dental"
         android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이가 시리고 아파요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="충치가 있는 것 같아요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이가 깨졌어요"
-            />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="치아가 흔들려요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip5"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="잇몸이 붓고 피가 나요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="잇몸이 아프고 입에서 냄새가 나요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="입 안이 헐었어요" />
-
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="턱관절이 아프고 소리가 나요" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip9"
-            android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_symptom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="입을 벌리거나 다물기 힘들어요" />
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="치아"
+            app:categoryContent="이가 시리고 아파요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="치아"
+            app:categoryContent="이가 시리고 아파요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="충치"
+            app:categoryContent="충치가 있어요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="치아 파절"
+            app:categoryContent="치아가 깨졌어요/흔들려요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="잇몸"
+            app:categoryContent="잇몸에 문제가 있어요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="턱 관절"
+            app:categoryContent="턱 관절이 아파요"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
-
-
-    </com.google.android.material.chip.ChipGroup>
-
+</LinearLayout>
 
 
 

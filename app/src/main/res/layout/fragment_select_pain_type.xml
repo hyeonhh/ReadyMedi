@@ -1,31 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="20dp"
+    android:fillViewport="true"
+
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:gravity="center"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/symptom_type_question"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="match_parent">
+
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:padding="20dp"
-        android:id="@+id/btn_next"
-        android:backgroundTint="@color/blue50"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/symptom_type_question"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:isSelected="false"
+            app:language="뻐근해요"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:isSelected="false"
+            app:language="날카로운 통증"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type1"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:isSelected="false"
+            app:language="둔한 통증"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type2"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:isSelected="false"
+            app:language="쑤시는 통증"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type3"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:isSelected="false"
+            app:language="타는 듯한 통증"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type4"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:isSelected="false"
+            app:language="저리는 듯한 통증"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type5"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:isSelected="false"
+            app:language="칼로 베이는 듯한 통증"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type6"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:isSelected="false"
+            app:language="짓누르는듯한 통증"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type7"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectBox
+            android:id="@+id/selectBox_type9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:isSelected="false"
+            app:language="잘모르겠음"
+            app:layout_constraintBottom_toTopOf="@+id/btn_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectBox_type8"
+            app:strokeColor="@color/gray20"
+            app:textColor="@color/gray30" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            style="@style/CustomButtonStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
