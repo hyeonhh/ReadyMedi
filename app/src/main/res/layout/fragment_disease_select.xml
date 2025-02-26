@@ -83,10 +83,10 @@
         android:id="@+id/shapeableImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
 
@@ -113,12 +113,14 @@
         app:layout_constraintTop_toBottomOf="@id/textView6" />
 
     <include
-        android:layout_marginTop="10dp"
-        layout="@layout/layout_other_disease"
-        app:layout_constraintTop_toBottomOf="@+id/layout_cancer"
         android:id="@+id/layout_other_disease"
+        layout="@layout/layout_other_disease"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_cancer" />
 
     <include
         android:id="@+id/layout_surgery"
@@ -126,8 +128,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
         app:layout_constraintTop_toBottomOf="@id/layout_other_disease" />
 
 

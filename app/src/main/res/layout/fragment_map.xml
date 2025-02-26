@@ -10,8 +10,60 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:textAppearance="@style/Body3_Normal"
+        android:id="@+id/btn_is_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rectangle_map_filter"
+        android:minWidth="70dp"
+        android:padding="10dp"
+        android:text="영업중"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/rectangle_map_filter_icon"
+        android:padding="10dp"
+        android:text="외국어 가능"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/Body3_Normal"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_is_open"
+        app:layout_constraintStart_toEndOf="@+id/btn_is_open"
+        app:layout_constraintTop_toTopOf="@+id/btn_is_open" />
+
+    <ImageButton
+        android:id="@+id/btn_pill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_pill_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_lang" />
+
+    <ImageButton
+        android:id="@+id/btn_hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_hospital_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pill" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

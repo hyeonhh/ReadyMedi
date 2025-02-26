@@ -64,6 +64,7 @@ class MapViewModel
                     documents?.map {
                         list.add(
                             SearchLocationItem(
+                                type = "Hospital",
                                 id = it.id,
                                 name = it.place_name,
                                 categoryName = it.category_name,
@@ -132,6 +133,7 @@ class MapViewModel
 
                             list.add(
                                 SearchLocationItem(
+                                    type = "Phar",
                                     id = document.id,
                                     name = document.place_name,
                                     categoryName = document.category_name,

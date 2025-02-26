@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="139dp"
+    android:height="152dp"
+    android:viewportWidth="139"
+    android:viewportHeight="152">
+
+    <path
+        android:pathData="M37.5,70.95C22.74,49.56 20,47.36 20,39.5C20,28.73 28.73,20 39.5,20C50.27,20 59,28.73 59,39.5C59,47.36 56.26,49.56 41.5,70.95C40.54,72.35 38.46,72.35 37.5,70.95Z"
+        android:fillColor="@color/gray20"
+        android:strokeColor="@color/white"
+        android:strokeWidth="1" />
+
+    <path
+        android:pathData="M39.5,39.5m-15.6,0a15.6,15.6 0,1 1,31.2 0a15.6,15.6 0,1 1,-31.2 0"
+        android:fillColor="#ffffff"/>
+
+    <!-- 중앙에 추가된 아이콘 - translate와 scale 적용 -->
+    <group
+        android:pivotX="14"
+        android:pivotY="15"
+        android:translateX="27.5"
+        android:translateY="29"
+        android:scaleX="1.5"
+        android:scaleY="1.5">
+
+        <path
+            android:pathData="M18.75,14.291H14.75V18.291H10.75V14.291H6.75V10.291H10.75V6.291H14.75V10.291H18.75"
+            android:fillColor="#099836"/>
+
+    </group>
+</vector>
