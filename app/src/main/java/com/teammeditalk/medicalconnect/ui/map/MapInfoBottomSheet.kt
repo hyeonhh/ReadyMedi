@@ -1,7 +1,5 @@
 package com.teammeditalk.medicalconnect.ui.map
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,17 +29,26 @@ class MapInfoBottomSheet(
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
+        if (info.availableForeignLanguageList.isEmpty()) {
+            binding.ivLangAvailable.visibility = View.GONE
+        } else {
+            View.VISIBLE
+        }
 
         binding.tvName.text = info.name
-        binding.tvForeignLanguageAvailable.text = info.availableForeignLanguageList.toString()
+        binding.tvForeignLanguageAvailable.text =
+            if (info.availableForeignLanguageList.isNotEmpty()) {
+                info.availableForeignLanguageList
+                    .toString()
+                    .replace(
+                        ",",
+                        " ",
+                    )
+            } else {
+                "없음"
+            }
         binding.tvAddress.text = info.address
         binding.tvCategory.text = info.categoryName
         binding.tvPhone.text = info.phone
-        binding.tvPlaceUrl.text = info.placeUrl
-
-        binding.tvPlaceUrl.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(info.placeUrl))
-            startActivity(intent)
-        }
     }
 }
