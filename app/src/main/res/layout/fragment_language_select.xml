@@ -127,41 +127,44 @@
 
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:layout_marginTop="30dp"
         android:id="@+id/selectBox_english"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:boxContent="English"
         app:isSelected="false"
-        app:language="English"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:strokeColor="@color/gray20"
-        app:textColor="@color/gray30"
-        tools:layout_editor_absoluteX="20dp" />
+        app:textColor="@color/gray30" />
 
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:layout_marginTop="10dp"
         android:id="@+id/selectBox_chinese"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxContent="Chinese"
         app:isSelected="false"
-        app:language="Chinese"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectBox_english"
         app:strokeColor="@color/gray20"
-        app:textColor="@color/gray30"
-        tools:layout_editor_absoluteX="20dp" />
+        app:textColor="@color/gray30" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:layout_marginTop="10dp"
         android:id="@+id/selectBox_japanese"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxContent="Japanese"
         app:isSelected="false"
-        app:language="Japanese"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectBox_chinese"
         app:strokeColor="@color/gray20"
-        app:textColor="@color/gray30"
-        tools:layout_editor_absoluteX="24dp" />
+        app:textColor="@color/gray30" />
 
     <include
         android:visibility="gone"

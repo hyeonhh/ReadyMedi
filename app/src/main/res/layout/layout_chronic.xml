@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="당뇨/고혈압"
+        android:text="@string/diabetes_hypertension"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -37,37 +37,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-
-
     <LinearLayout
         android:layout_marginTop="10dp"
-    android:id="@+id/layout_chronic"
-    android:visibility="gone"
-    app:layout_constraintTop_toBottomOf="@id/btn_symptom"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent">
-
-    <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-        app:categoryTitle="당뇨"
-        app:categoryContent="당뇨병 검사/관리를 받고 싶어요"
+        android:id="@+id/layout_chronic"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btn_symptom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="갑상선"
-            app:categoryContent="갑상선 검사/ 관리를 받고 싶어요"
+            app:categoryTitle="@string/symptom_diabetes"
+            app:categoryContent="@string/symptom_diabetes_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="콜레스테롤/혈압"
-            app:categoryContent="콜레스트롤/혈압이 높아요"
+            app:categoryTitle="@string/symptom_thyroid"
+            app:categoryContent="@string/symptom_thyroid_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="@string/symptom_cholesterol_bp"
+            app:categoryContent="@string/symptom_cholesterol_bp_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

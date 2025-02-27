@@ -15,7 +15,7 @@ class SelectBox(
 ) : ConstraintLayout(context, attributeSet) {
     private var isSelected: Boolean = false
     private lateinit var binding: CustomSelectBoxUnselectedBinding
-    private lateinit var tvLanguage: TextView
+    private lateinit var tvContent: TextView
 
     init {
         initView()
@@ -27,11 +27,13 @@ class SelectBox(
         onClick(selected)
     }
 
+    fun getContent(): String = binding.tvContent.text.toString()
+
     // 뷰 설정
     private fun initView() {
         val layoutInflater = LayoutInflater.from(context)
         binding = CustomSelectBoxUnselectedBinding.inflate(layoutInflater, this, false)
-        tvLanguage = binding.tvLanguage
+        tvContent = binding.tvContent
         addView(binding.root)
     }
 
@@ -50,18 +52,18 @@ class SelectBox(
                             R.styleable.SelectBox_textColor,
                             context.getColor(R.color.blue50),
                         )
-                    tvLanguage.setTextColor(textColor)
-                    tvLanguage.setTextAppearance(R.style.Body2_Normal)
+                    tvContent.setTextColor(textColor)
+                    tvContent.setTextAppearance(R.style.Body2_Normal)
                     binding.layoutSelectBox.setBackgroundResource(R.drawable.shape_blue_rectangle_12dp_selected)
                     binding.icCheck.visibility = View.VISIBLE
                 } else {
                     val textColor =
                         getColor(
                             R.styleable.SelectBox_textColor,
-                            context.getColor(R.color.gray50),
+                            context.getColor(R.color.gray70),
                         )
-                    binding.tvLanguage.setTextColor(textColor)
-                    tvLanguage.setTextAppearance(R.style.Body2_Normal)
+                    binding.tvContent.setTextColor(textColor)
+                    tvContent.setTextAppearance(R.style.Body2_Normal)
                     binding.layoutSelectBox.setBackgroundResource(R.drawable.shape_rectangle_12dp_unselected)
                     binding.icCheck.visibility = View.GONE
                 }
@@ -78,7 +80,7 @@ class SelectBox(
             ).apply {
                 try {
                     isSelected = getBoolean(R.styleable.SelectBox_isSelected, false)
-                    tvLanguage.text = getString(R.styleable.SelectBox_language) ?: "선택 전"
+                    tvContent.text = getString(R.styleable.SelectBox_boxContent) ?: "선택 전"
                 } finally {
                     recycle()
                 }

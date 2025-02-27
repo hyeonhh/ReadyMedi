@@ -18,9 +18,8 @@
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_hospital_25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomSheetDragHandleView" />
 
@@ -88,7 +87,6 @@
         android:layout_width="0dp"
         android:textAppearance="@style/Body2_Normal"
         android:layout_height="wrap_content"
-        android:text="서울 보라매로 9길 4"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"

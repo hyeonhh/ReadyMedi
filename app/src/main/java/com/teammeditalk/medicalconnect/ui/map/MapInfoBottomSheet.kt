@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.data.model.search.SearchLocationItem
 import com.teammeditalk.medicalconnect.databinding.FragmentMapBottomSheetBinding
 
@@ -35,6 +36,11 @@ class MapInfoBottomSheet(
             View.VISIBLE
         }
 
+        if (info.type == "Hospital") {
+            binding.imageView12.setBackgroundResource(R.drawable.ic_hospital_25dp)
+        } else {
+            binding.imageView12.setBackgroundResource(R.drawable.ic_pill)
+        }
         binding.tvName.text = info.name
         binding.tvForeignLanguageAvailable.text =
             if (info.availableForeignLanguageList.isNotEmpty()) {
@@ -48,7 +54,8 @@ class MapInfoBottomSheet(
                 "없음"
             }
         binding.tvAddress.text = info.address
-        binding.tvCategory.text = info.categoryName
+//        binding.tvTime.text = info.time.toString()
+        binding.tvCategory.text = info.categoryName.replaceBeforeLast(" ", "")
         binding.tvPhone.text = info.phone
     }
 }

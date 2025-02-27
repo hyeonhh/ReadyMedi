@@ -33,7 +33,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="5dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             android:layout_marginEnd="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="5dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,10 +79,10 @@
         android:id="@+id/shapeableImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/textView6"
@@ -112,49 +112,49 @@
             android:id="@+id/chip1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="뇌졸중" />
+            android:text="@string/stroke" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip2"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="심장병" />
+            android:text="@string/heart_disease" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip3"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="고혈압" />
+            android:text="@string/hypertension" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="당뇨" />
+            android:text="@string/diabetes" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="위암" />
+            android:text="@string/stomach_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="대장암" />
+            android:text="@string/colorectal_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip7"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="난소암" />
+            android:text="@string/ovarian_cancer" />
 
     </com.google.android.material.chip.ChipGroup>
     <com.google.android.material.button.MaterialButton

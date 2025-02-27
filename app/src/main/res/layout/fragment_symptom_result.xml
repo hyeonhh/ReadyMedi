@@ -54,17 +54,20 @@
         android:id="@+id/btn_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="47dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <include
         android:id="@+id/layout_user_health_info"
-        app:layout_constraintTop_toBottomOf="@id/btn_switch"
+        layout="@layout/layout_user_health_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/layout_user_health_info"/>
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_switch" />
 
     <include
         android:id="@+id/layout_current_symptom"

@@ -1,6 +1,7 @@
 package com.teammeditalk.medicalconnect
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import com.teammeditalk.medicalconnect.base.BaseActivity
 import com.teammeditalk.medicalconnect.databinding.ActivityMainBinding
 import com.teammeditalk.medicalconnect.ui.home.HomeFragment
@@ -13,6 +14,7 @@ class MainActivity :
         ActivityMainBinding::inflate,
     ) {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 

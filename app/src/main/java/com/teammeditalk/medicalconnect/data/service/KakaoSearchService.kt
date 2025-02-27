@@ -13,7 +13,7 @@ interface KakaoSearchService {
         @Query("category_group_code") category_group_code: String = "HP8",
         @Query("x") x: String,
         @Query("y") y: String,
-        @Query("radius") radius: Int = 2000,
+        @Query("radius") radius: Int = 20000,
         @Query("page") page: Int,
         @Query("sort") sort: String = "distance",
     ): Response<HospitalSearchResponse>

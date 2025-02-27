@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectSymptomEffectFragment"
-        tools:layout="@layout/fragment_select_sympmtom_effect"
+        tools:layout="@layout/fragment_select_symptom_worse"
         android:name="com.teammeditalk.medicalconnect.ui.question.common.effect.SelectSymptomWorseFragment"
         android:label="SelectSymptomEffectFragment" >
 
@@ -84,7 +84,11 @@
         android:id="@+id/additionalInputFragment"
         tools:layout="@layout/fragment_additional_input"
         android:name="com.teammeditalk.medicalconnect.ui.question.common.input.AdditionalInputFragment"
-        android:label="AdditionalInputFragment" />
+        android:label="AdditionalInputFragment" >
+        <action
+            android:id="@+id/action_additionalInputFragment_to_loadingFragment"
+            app:destination="@id/loadingFragment" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_symptom_result"
         android:id="@+id/symptomResultFragment"
@@ -104,8 +108,8 @@
     </fragment>
     <fragment
         android:id="@+id/selectSymptomBetterFragment"
-        tools:layout="@layout/fragment_select_symptom_better"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.effect.SelectSymptomBetterFragment"
+        tools:layout="@layout/fragment_select_symptom_release"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.effect.SelectSymptomReleaseFragment"
         android:label="SelectSymptomBetterFragment" >
         <action
             android:id="@+id/action_selectSymptomBetterFragment_to_selectOtherSymptomFragment"
@@ -167,6 +171,14 @@
         <action
             android:id="@+id/action_injuryHistoryFragment_to_selectOtherSymptomFragment"
             app:destination="@id/selectOtherSymptomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.loading.LoadingFragment"
+        android:label="LoadingFragment" >
+        <action
+            android:id="@+id/action_loadingFragment_to_symptomResultFragment"
+            app:destination="@id/symptomResultFragment" />
     </fragment>
 
 

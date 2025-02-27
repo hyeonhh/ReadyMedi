@@ -26,4 +26,336 @@
     <string name="pregnancy_possibility_question">您是否怀孕或有怀孕的可能？</string>
     <string name="menstruation_date_question">最近一次月经的开始和结束时间是什么时候？</string>
     <string name="menstruation_regularity_question">您的月经周期规律吗？</string>
+
+    <!-- 암 질환 관련 중문 문자열 -->
+    <string name="cancer">癌症</string>
+    <string name="stomach_cancer">胃癌</string>
+    <string name="liver_cancer">肝癌</string>
+    <string name="colorectal_cancer">结肠癌</string>
+    <string name="lung_cancer">肺癌</string>
+    <string name="pancreatic_cancer">胰腺癌</string>
+    <string name="oral_cancer">口腔癌</string>
+    <string name="breast_cancer">乳腺癌</string>
+    <string name="thyroid_cancer">甲状腺癌</string>
+    <string name="skin_cancer">皮肤癌</string>
+    <string name="cervical_cancer">宫颈癌</string>
+
+    <!-- 기타질환 관련 중문 문자열 -->
+    <string name="other_diseases">其他疾病</string>
+    <string name="diabetes">糖尿病</string>
+    <string name="hypertension">高血压</string>
+    <string name="reflux_esophagitis">反流性食管炎</string>
+    <string name="urinary_stone">尿路结石</string>
+    <string name="colon_polyp">结肠息肉</string>
+    <string name="chronic_viral_infection">慢性病毒感染</string>
+    <string name="intestinal_disease">肠道疾病</string>
+    <string name="gallstone">胆结石</string>
+    <string name="liver_cirrhosis">肝硬化</string>
+    <string name="thyroid_disease">甲状腺疾病</string>
+
+    <!-- 수술력 관련 중문 문자열 -->
+    <string name="surgical_history">手术史</string>
+    <string name="spine_surgery">脊椎手术史</string>
+    <string name="abdominal_surgery">腹部手术史</string>
+    <string name="esophageal_surgery">食道手术史</string>
+    <string name="tonsillectomy">扁桃体切除术史</string>
+    <string name="endoscopic_surgery">内窥镜手术史</string>
+    <string name="colon_resection">结肠切除术</string>
+    <string name="cholecystectomy">胆囊切除术</string>
+    <string name="gastrectomy">胃切除术</string>
+
+    <!-- 가족력 -->
+    <string name="stroke">脑卒中</string>
+    <string name="heart_disease">心脏病</string>
+    <string name="ovarian_cancer">卵巢癌</string>
+
+    <!-- 복용 약 관련 -->
+    <string name="blood_pressure_medication">降压药</string>
+    <string name="heart_medication">心脏药</string>
+    <string name="diabetes_medication">糖尿病药</string>
+    <string name="antibiotics">抗生素</string>
+    <string name="anticancer_drugs">抗癌药</string>
+    <string name="herbal_medicine">中药</string>
+    <string name="contraceptive">避孕药</string>
+    <string name="anti_inflammatory">止痛消炎药</string>
+    <string name="oral_steroid">口服类固醇</string>
+    <string name="menopause_hormone">更年期女性荷尔蒙药</string>
+
+    <!-- 약물 복용 빈도 관련 문자열 -->
+    <string name="medication_frequency_question">您多久服用一次?</string>
+    <string name="days_unit">天</string>
+    <string name="times_unit">次</string>
+
+    <!-- 약물 복용 시작 시점 관련 문자열 -->
+    <string name="medication_start_time_question">您从什么时候开始服用的?</string>
+    <string name="dropdown_default_text">选择</string>
+
+    <!-- 식품 알레르기 관련 문자열 -->
+    <string name="food_allergy_title">食物过敏</string>
+    <string name="egg">鸡蛋</string>
+    <string name="milk">牛奶</string>
+    <string name="soybean">大豆</string>
+    <string name="wheat">小麦</string>
+    <string name="seafood">海鲜</string>
+    <string name="rice">米饭</string>
+    <string name="nuts">坚果</string>
+
+    <!-- 약물 알레르기 관련 문자열 -->
+    <string name="drug_allergy_title">药物过敏</string>
+    <string name="pain_killer">止痛药</string>
+    <string name="aspirin">阿司匹林</string>
+    <string name="anticonvulsant">抗惊厥药</string>
+    <string name="contrast_media">造影剂</string>
+
+    <!-- 기타 알레르기 관련 문자열 -->
+    <string name="other_allergy_title">其他过敏</string>
+    <string name="pollen">花粉</string>
+    <string name="air">空气</string>
+    <string name="mold">霉菌</string>
+    <string name="animal">动物</string>
+
+    <!-- 앱 시작 관련 문자열 -->
+    <string name="start_readymedi">开始使用 ReadyMedi</string>
+
+    <!-- 증상 입력 위젯 관련 문자열 -->
+    <string name="symptom_guidance_text">输入您的症状\n并直接展示给医务人员</string>
+    <string name="enter_symptoms">输入症状</string>
+
+    <!-- 호흡기 증상 카테고리 관련 문자열 -->
+    <string name="respiratory_symptoms">感冒/呼吸系统症状</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_cough">咳嗽</string>
+    <string name="symptom_runny_nose">流鼻涕</string>
+    <string name="symptom_fever">发热</string>
+    <string name="symptom_sore_throat">咽喉痛</string>
+    <string name="symptom_dyspnea">呼吸困难</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_cough_desc">我有咳嗽和痰</string>
+    <string name="symptom_runny_nose_desc">我流鼻涕并且鼻子堵塞</string>
+    <string name="symptom_fever_desc">我发烧并且身体疼痛</string>
+    <string name="symptom_sore_throat_desc">我的喉咙疼痛、肿胀并且声音嘶哑</string>
+    <string name="symptom_dyspnea_desc">我呼吸困难</string>
+
+    <!-- 소화기/순환기 증상 카테고리 관련 문자열 -->
+    <string name="digestive_circulatory_symptoms">消化/循环系统症状</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_abdominal_pain">腹痛</string>
+    <string name="symptom_heartburn">胃灼热</string>
+    <string name="symptom_nausea">恶心</string>
+    <string name="symptom_bowel_issue">腹泻/便秘</string>
+    <string name="symptom_indigestion">消化不良</string>
+    <string name="symptom_chest_pain">胸痛</string>
+    <string name="symptom_heart_palpitation">心悸</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_abdominal_pain_desc">我肚子疼且腹胀</string>
+    <string name="symptom_heartburn_desc">我胃灼热且有酸液反流</string>
+    <string name="symptom_nausea_desc">我感到恶心并呕吐</string>
+    <string name="symptom_bowel_issue_desc">我持续腹泻或便秘</string>
+    <string name="symptom_indigestion_desc">我消化不良</string>
+    <string name="symptom_chest_pain_desc">我胸痛并有压迫感</string>
+    <string name="symptom_heart_palpitation_desc">我心跳快速或不规律</string>
+
+    <!-- 피로/무기력 증상 카테고리 관련 문자열 -->
+    <string name="fatigue_symptoms">疲劳/无力症状</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_fatigue">疲劳感</string>
+    <string name="symptom_headache_dizziness">头痛/头晕</string>
+    <string name="symptom_muscle_pain">肌肉疼痛</string>
+    <string name="symptom_insomnia">失眠</string>
+    <string name="symptom_weight_change">体重突然变化</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_fatigue_desc">我一直感到疲倦和虚弱</string>
+    <string name="symptom_headache_dizziness_desc">我感到头晕并且头痛</string>
+    <string name="symptom_muscle_pain_desc">我的身体到处疼痛酸痛</string>
+    <string name="symptom_insomnia_desc">我难以入睡</string>
+    <string name="symptom_weight_change_desc">我的体重突然发生变化</string>
+
+    <!-- 알레르기/면역 증상 카테고리 관련 문자열 -->
+    <string name="allergy_immune_symptoms">过敏/免疫症状</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_skin_allergy">皮肤过敏</string>
+    <string name="symptom_respiratory_allergy">呼吸道过敏</string>
+    <string name="symptom_food_allergy">食物过敏</string>
+    <string name="symptom_swelling">水肿</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_skin_allergy_desc">我的皮肤发痒并出现荨麻疹</string>
+    <string name="symptom_respiratory_allergy_desc">我打喷嚏并且眼睛发痒</string>
+    <string name="symptom_food_allergy_desc">我吃特定食物时会过敏</string>
+    <string name="symptom_swelling_desc">我的身体出现水肿</string>
+
+    <!-- 당뇨/고혈압 관련 문자열 -->
+    <string name="diabetes_hypertension">糖尿病/高血压</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_diabetes">糖尿病</string>
+    <string name="symptom_thyroid">甲状腺</string>
+    <string name="symptom_cholesterol_bp">胆固醇/血压</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_diabetes_desc">我想接受糖尿病检查/管理</string>
+    <string name="symptom_thyroid_desc">我想接受甲状腺检查/管理</string>
+    <string name="symptom_cholesterol_bp_desc">我的胆固醇/血压很高</string>
+
+    <!-- 관절/뼈 관련 문자열 -->
+    <string name="joint_bone">关节/骨骼</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_knee_pain">膝盖疼痛</string>
+    <string name="symptom_shoulder_pain">肩膀疼痛</string>
+    <string name="symptom_back_pain">背部疼痛</string>
+    <string name="symptom_neck_pain">颈部疼痛</string>
+    <string name="symptom_wrist_ankle_pain">手腕/脚踝疼痛</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_knee_pain_desc">我的膝盖疼痛并且行走困难</string>
+    <string name="symptom_shoulder_pain_desc">我的肩膀疼痛并且难以举起手臂</string>
+    <string name="symptom_back_pain_desc">我的背部疼痛并且难以弯腰</string>
+    <string name="symptom_neck_pain_desc">我的颈部疼痛并且难以移动</string>
+    <string name="symptom_wrist_ankle_pain_desc">我的手腕/脚踝疼痛并且有肿胀</string>
+
+    <!-- 외부/부상 관련 문자열 -->
+    <string name="external_injury">外伤/损伤</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_accident">事故/受伤</string>
+    <string name="symptom_sports_injury">运动伤害</string>
+    <string name="symptom_fracture">疑似骨折</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_accident_desc">我遭遇了事故/受伤</string>
+    <string name="symptom_sports_injury_desc">我在运动时受伤了</string>
+    <string name="symptom_fracture_desc">我觉得骨头断了</string>
+
+    <!-- 치아/잇몸/턱 관련 문자열 -->
+    <string name="dental_jaw">牙齿/牙龈/下颚</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_tooth">牙痛</string>
+    <string name="symptom_cavity">蛀牙</string>
+    <string name="symptom_tooth_fracture">牙齿断裂</string>
+    <string name="symptom_gum">牙龈问题</string>
+    <string name="symptom_jaw_joint">颞下颌关节</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_tooth_desc">我的牙齿敏感并且疼痛</string>
+    <string name="symptom_cavity_desc">我有蛀牙</string>
+    <string name="symptom_tooth_fracture_desc">我的牙齿断裂/松动</string>
+    <string name="symptom_gum_desc">我的牙龈有问题</string>
+    <string name="symptom_jaw_joint_desc">我的颞下颌关节疼痛</string>
+
+    <!-- 유방질환 관련 문자열 -->
+    <string name="breast_disease">乳腺疾病</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_breast_mass">乳房肿块</string>
+    <string name="symptom_breast_pain">乳房疼痛</string>
+    <string name="symptom_nipple_discharge">乳头分泌物</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_breast_mass_desc">我能摸到乳房有肿块</string>
+    <string name="symptom_breast_pain_desc">我的乳房疼痛且不舒服</string>
+    <string name="symptom_nipple_discharge_desc">我的乳头有分泌物</string>
+
+    <!-- 여성질환 관련 문자열 -->
+    <string name="womens_health">妇科疾病</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_menstrual_cycle">月经周期</string>
+    <string name="symptom_pelvic_pain">盆腔疼痛</string>
+    <string name="symptom_menstrual_pain">月经</string>
+    <string name="symptom_vaginal_itching">阴道瘙痒</string>
+    <string name="symptom_discharge">分泌物</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_menstrual_cycle_desc">我的月经周期不规律</string>
+    <string name="symptom_pelvic_pain_desc">我有盆腔和腹部疼痛</string>
+    <string name="symptom_menstrual_pain_desc">我有月经痛</string>
+    <string name="symptom_vaginal_itching_desc">我有阴道瘙痒/疼痛</string>
+    <string name="symptom_discharge_desc">我的分泌物有异常颜色或气味</string>
+
+
+    <!-- 통증 유형 선택 옵션 -->
+    <string name="pain_type_stabbing">刺痛</string>
+    <string name="pain_type_pressing">压迫性疼痛</string>
+    <string name="pain_type_throbbing">跳痛/搏动性疼痛</string>
+    <string name="pain_type_burning">灼烧感</string>
+    <string name="pain_type_sharp">锐痛/割痛</string>
+    <string name="pain_type_tingling">刺痛/麻痛</string>
+    <string name="pain_type_unknown">不确定</string>
+
+    <string name="pain_scale_instruction">请选择1到10之间的数字</string>
+
+    <!-- 지속성 유형 -->
+    <string name="duration_intermittent">间歇性出现</string>
+    <string name="duration_continuous">持续性出现</string>
+    <string name="duration_unknown">不确定</string>
+
+    <!-- 영향 요인 옵션 -->
+    <string name="effect_posture">姿势</string>
+    <string name="effect_cough">咳嗽</string>
+    <string name="effect_movement">运动</string>
+    <string name="effect_urination">排尿</string>
+    <string name="effect_unknown">不确定</string>
+
+    <!-- 완화 요인 -->
+    <string name="pain_relief_title">什么时候疼痛会缓解？</string>
+    <string name="pain_relief_option_1">服用止痛药</string>
+    <string name="pain_relief_option_2">冷热敷</string>
+    <string name="pain_relief_option_3">改变姿势</string>
+    <string name="pain_relief_option_4">按摩，指压</string>
+    <string name="pain_relief_option_5">不确定</string>
+
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="content_input_hint">输入内容</string>
+
+    <string name="current_symptoms">当前症状</string>
+    <string name="symptom">症状</string>
+    <string name="detailed_symptom">详细症状</string>
+    <string name="painful_area">疼痛部位</string>
+    <string name="symptom_start_date">症状发生日期</string>
+    <string name="pain_character">疼痛性质</string>
+    <string name="pain_intensity">疼痛强度</string>
+    <string name="pain_duration">疼痛持续时间</string>
+    <string name="past_treatment">过去治疗经验</string>
+    <string name="anesthesia_experience">麻醉经验</string>
+
+    <string name="personal_health_info">个人健康信息</string>
+    <string name="chronic_disease">慢性病</string>
+    <string name="family_history">家族病史</string>
+    <string name="allergies">过敏症</string>
+    <string name="medications">服用药物</string>
+
+    <string name="hospital_guidance_prefix">有这些症状时，应该去</string>
+    <string name="hospital_guidance_suffix">就诊</string>
+    <string name="pharmacy_guidance">如果症状轻微，也可以在药店购买药物</string>
+    <string name="find_nearby_button">查找附近的诊所和药店</string>
+
+    <!-- 진료과 -->
+    <string name="hospital_department_internal">内科</string>
+    <string name="hospital_department_orthopedic">骨科</string>
+    <string name="hospital_department_general">普通外科</string>
+    <string name="hospital_department_dental">牙科</string>
+    <string name="hospital_department_obgyn">妇产科</string>
+
+
+    <string name="find_nearby_internal">近くの内科・薬局を探す</string>
+    <string name="find_nearby_orthopedic">近くの整形外科・薬局を探す</string>
+    <string name="find_nearby_general">近くの一般外科・薬局を探す</string>
+    <string name="find_nearby_dental">近くの歯科・薬局を探す</string>
+    <string name="find_nearby_obgyn">近くの産婦人科・薬局を探す</string>
+
+    <string name="view_report_text">查看报告</string>
+    <string name="symptom_question">你有什么症状？</string>
+
+
+
 </resources>

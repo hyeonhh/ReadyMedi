@@ -1,4 +1,4 @@
-package com.teammeditalk.medicalconnect.ui.question.common.start
+package com.teammeditalk.medicalconnect.ui.question.common.start.decorator
 
 import android.content.Context
 import android.graphics.Color

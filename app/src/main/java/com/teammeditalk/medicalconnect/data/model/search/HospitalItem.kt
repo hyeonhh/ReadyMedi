@@ -2,6 +2,7 @@ package com.teammeditalk.medicalconnect.data.model.search
 
 // 병원 개별 아이템
 data class SearchLocationItem(
+    val time: String = "",
     val type: String = "Hospital",
     val id: String? = null,
     val name: String = "",

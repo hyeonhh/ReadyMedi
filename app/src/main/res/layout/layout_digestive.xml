@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="소화기/순환기 증상"
+            android:text="@string/digestive_circulatory_symptoms"
             android:textAppearance="@style/Body1_Normal"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -50,55 +50,53 @@
             app:layout_constraintTop_toBottomOf="@id/imageView">
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:categoryContent="배가 아프고 더부룩해요"
-                app:categoryTitle="복통"
-                app:isCategorySelected="false" />
-
-
-            <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:categoryContent="속이 쓰리고 신물이 올라와요"
-                app:categoryTitle="속쓰림"
-                app:isCategorySelected="false" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:categoryContent="@string/symptom_abdominal_pain_desc"
+            app:categoryTitle="@string/symptom_abdominal_pain"
+            app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="구역질 나고 토해요"
-                app:categoryTitle="메스꺼움"
+                app:categoryContent="@string/symptom_heartburn_desc"
+                app:categoryTitle="@string/symptom_heartburn"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="설사 혹은 변비가 계속 돼요"
-                app:categoryTitle="설사/변비"
+                app:categoryContent="@string/symptom_nausea_desc"
+                app:categoryTitle="@string/symptom_nausea"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="소화가 잘 안돼요"
-                app:categoryTitle="소화불량"
+                app:categoryContent="@string/symptom_bowel_issue_desc"
+                app:categoryTitle="@string/symptom_bowel_issue"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="가슴이 아프고 압박감이 있어요"
-                app:categoryTitle="흉통"
+                app:categoryContent="@string/symptom_indigestion_desc"
+                app:categoryTitle="@string/symptom_indigestion"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="심장이 빠르게 뛰거나 불규칙해요"
-                app:categoryTitle="심장박동 이상"
+                app:categoryContent="@string/symptom_chest_pain_desc"
+                app:categoryTitle="@string/symptom_chest_pain"
                 app:isCategorySelected="false" />
 
+            <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:categoryContent="@string/symptom_heart_palpitation_desc"
+                app:categoryTitle="@string/symptom_heart_palpitation"
+                app:isCategorySelected="false" />
 
         </LinearLayout>
 

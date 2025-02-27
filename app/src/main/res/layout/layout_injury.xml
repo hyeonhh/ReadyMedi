@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="외부/부상"
+        android:text="@string/external_injury"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -47,26 +47,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-    <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-        app:categoryTitle="사고/부상"
-        app:categoryContent="사고/부상을 당했어요"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="운동 부상"
-            app:categoryContent="운동하다 다쳤어요"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="골절 의심"
-            app:categoryContent="뼈가 부러진 것 같아요"
+            app:categoryTitle="@string/symptom_accident"
+            app:categoryContent="@string/symptom_accident_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-
-
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="@string/symptom_sports_injury"
+            app:categoryContent="@string/symptom_sports_injury_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="@string/symptom_fracture"
+            app:categoryContent="@string/symptom_fracture_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

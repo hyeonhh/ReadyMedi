@@ -8,7 +8,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="수술력"
+        android:text="@string/surgical_history"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,36 +28,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
            style="@style/CustomChipStyle"
-            android:text="척추 수술력" />
+            android:text="@string/spine_surgery" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-
-            android:text="복부 수술력" />
+            android:text="@string/abdominal_surgery" />
 
         <com.google.android.material.chip.Chip
         android:id="@+id/chip3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
             style="@style/CustomChipStyle"
-            android:text="식도 수술력" />
+            android:text="@string/esophageal_surgery" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="편도절제 수술력" />
+            android:text="@string/tonsillectomy" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="내시경 수술력" />
+            android:text="@string/endoscopic_surgery" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
@@ -65,21 +64,21 @@
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
             app:chipStrokeColor="@color/gray20"
-            android:text="대장 절제술" />
+            android:text="@string/colon_resection" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="담낭 절제술" />
+            android:text="@string/cholecystectomy" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="위 절제술" />
+            android:text="@string/gastrectomy" />
 
     </com.google.android.material.chip.ChipGroup>
 

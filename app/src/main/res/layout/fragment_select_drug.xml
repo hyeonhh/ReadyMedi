@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:fillViewport="true"
     android:background="@color/blue20"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <ImageButton
@@ -33,7 +38,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="5dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             android:layout_marginEnd="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +48,7 @@
             android:layout_width="0dp"
             android:layout_height="5dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,7 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="5dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <View
@@ -75,15 +80,14 @@
     </LinearLayout>
 
 
-
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/textView6"
@@ -122,63 +126,63 @@
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="혈압약" />
+            android:text="@string/blood_pressure_medication" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip2"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="심장약" />
+            android:text="@string/heart_medication" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip3"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="당뇨약" />
+            android:text="@string/diabetes_medication" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="항생제" />
+            android:text="@string/antibiotics" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="항암제" />
+            android:text="@string/anticancer_drugs" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="한약" />
+            android:text="@string/herbal_medicine" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip8"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="피임약" />
+            android:text="@string/contraceptive" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip9"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="진통소염제" />
+            android:text="@string/anti_inflammatory" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip10"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="경구 스테로이드" />
+            android:text="@string/oral_steroid" />
 
 
         <com.google.android.material.chip.Chip
@@ -187,7 +191,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="폐경 관련 여성 호르몬제" />
+            android:text="@string/menopause_hormone" />
 
 
     </com.google.android.material.chip.ChipGroup>
@@ -199,6 +203,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/layout_language_warning"/>
+
+
+    <include
+        android:id="@+id/layout_drug_duration"
+        layout="@layout/layout_drug_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_group" />
+
+
+    <include
+        android:id="@+id/layout_drug_start"
+        layout="@layout/layout_drug_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_drug_duration" />
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
@@ -212,3 +240,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

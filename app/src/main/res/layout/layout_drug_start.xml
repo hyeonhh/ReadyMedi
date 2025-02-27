@@ -5,25 +5,22 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_test"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView45"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="번역 결과 : "
-        android:textSize="20sp"
+        android:text="@string/medication_start_time_question"
+        android:textAppearance="@style/Body1_Normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_result"
+    <com.teammeditalk.medicalconnect.ui.util.ExposedDropdownMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_test" />
+        app:layout_constraintTop_toBottomOf="@+id/textView45"
+        app:menuTitle="@string/dropdown_default_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

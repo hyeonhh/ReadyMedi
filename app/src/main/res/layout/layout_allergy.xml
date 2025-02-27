@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="알레르기/면역 증상"
+        android:text="@string/allergy_immune_symptoms"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -48,31 +48,29 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="피부 알레르기"
-            app:categoryContent="피부가 가렵고 두드러기가 나요"
+            app:categoryTitle="@string/symptom_skin_allergy"
+            app:categoryContent="@string/symptom_skin_allergy_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="호흡기 알레르기"
-            app:categoryContent="재채기가 나고 눈이 가려워요"
+            app:categoryTitle="@string/symptom_respiratory_allergy"
+            app:categoryContent="@string/symptom_respiratory_allergy_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="음식 알레르기"
-            app:categoryContent="음식을 먹으면 알레르기가 생겨요"
+            app:categoryTitle="@string/symptom_food_allergy"
+            app:categoryContent="@string/symptom_food_allergy_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="부종"
-            app:categoryContent="몸에 부종이 생겼어요"
+            app:categoryTitle="@string/symptom_swelling"
+            app:categoryContent="@string/symptom_swelling_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="관절/뼈"
+        android:text="@string/joint_bone"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -47,36 +47,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-    <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-        app:categoryTitle="무릎 통증"
-        app:categoryContent="무릎이 아프고 걷기 힘들어요"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="어깨 통증"
-            app:categoryContent="어깨가 아프고 팔을 들기 힘들어요"
+            app:categoryTitle="@string/symptom_knee_pain"
+            app:categoryContent="@string/symptom_knee_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="허리 통증"
-            app:categoryContent="허리가 아프고 구부리기 힘들어요"
+            app:categoryTitle="@string/symptom_shoulder_pain"
+            app:categoryContent="@string/symptom_shoulder_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="목 통증"
-            app:categoryContent="목이 아프고 움직이기 힘들어요"
+            app:categoryTitle="@string/symptom_back_pain"
+            app:categoryContent="@string/symptom_back_pain_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="@string/symptom_neck_pain"
+            app:categoryContent="@string/symptom_neck_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="손/발목 통증"
-            app:categoryContent="손목/발목이 아프고 붓기가 있어요"
+            app:categoryTitle="@string/symptom_wrist_ankle_pain"
+            app:categoryContent="@string/symptom_wrist_ankle_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

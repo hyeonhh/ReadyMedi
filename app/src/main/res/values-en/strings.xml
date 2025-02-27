@@ -27,6 +27,338 @@
     <string name="menstruation_date_question">When was your last menstrual period (start and end dates)?</string>
     <string name="menstruation_regularity_question">Is your menstrual cycle regular?</string>
 
+    <!-- 암질환 -->
+    <string name="cancer">Cancer</string>
+    <string name="stomach_cancer">Stomach Cancer</string>
+    <string name="liver_cancer">Liver Cancer</string>
+    <string name="colorectal_cancer">Colorectal Cancer</string>
+    <string name="lung_cancer">Lung Cancer</string>
+    <string name="pancreatic_cancer">Pancreatic Cancer</string>
+    <string name="oral_cancer">Oral Cancer</string>
+    <string name="breast_cancer">Breast Cancer</string>
+    <string name="thyroid_cancer">Thyroid Cancer</string>
+    <string name="skin_cancer">Skin Cancer</string>
+    <string name="cervical_cancer">Cervical Cancer</string>
+
+    <!-- 기타질환 관련 영문 문자열 -->
+    <string name="other_diseases">Other Diseases</string>
+    <string name="diabetes">Diabetes</string>
+    <string name="hypertension">Hypertension</string>
+    <string name="reflux_esophagitis">Reflux Esophagitis</string>
+    <string name="urinary_stone">Urinary Stone</string>
+    <string name="colon_polyp">Colon Polyp</string>
+    <string name="chronic_viral_infection">Chronic Viral Infection</string>
+    <string name="intestinal_disease">Intestinal Disease</string>
+    <string name="gallstone">Gallstone</string>
+    <string name="liver_cirrhosis">Liver Cirrhosis</string>
+    <string name="thyroid_disease">Thyroid Disease</string>
+
+    <!-- 수술력 관련 영문 문자열 -->
+    <string name="surgical_history">Surgical History</string>
+    <string name="spine_surgery">Spine Surgery</string>
+    <string name="abdominal_surgery">Abdominal Surgery</string>
+    <string name="esophageal_surgery">Esophageal Surgery</string>
+    <string name="tonsillectomy">Tonsillectomy</string>
+    <string name="endoscopic_surgery">Endoscopic Surgery</string>
+    <string name="colon_resection">Colon Resection</string>
+    <string name="cholecystectomy">Cholecystectomy</string>
+    <string name="gastrectomy">Gastrectomy</string>
+
+    <!-- 가족력  문자열 리소스 -->
+    <string name="stroke">Stroke</string>
+    <string name="heart_disease">Heart Disease</string>
+    <string name="ovarian_cancer">Ovarian Cancer</string>
+
+    <!-- 복용 양 관련 -->
+    <string name="blood_pressure_medication">Blood Pressure Medication</string>
+    <string name="heart_medication">Heart Medication</string>
+    <string name="diabetes_medication">Diabetes Medication</string>
+    <string name="antibiotics">Antibiotics</string>
+    <string name="anticancer_drugs">Anticancer Drugs</string>
+    <string name="herbal_medicine">Herbal Medicine</string>
+    <string name="contraceptive">Contraceptives</string>
+    <string name="anti_inflammatory">Anti-inflammatory Analgesics</string>
+    <string name="oral_steroid">Oral Steroids</string>
+    <string name="menopause_hormone">Menopause Hormone Therapy</string>
+
+    <!-- 약물 복용 빈도 관련 문자열 -->
+    <string name="medication_frequency_question">How often do you take this medication?</string>
+    <string name="days_unit">every</string>
+    <string name="times_unit">times</string>
+
+
+    <!-- 약물 복용 시작 시점 관련 문자열 -->
+    <string name="medication_start_time_question">When did you start taking this medication?</string>
+    <string name="dropdown_default_text">Select</string>
+
+    <!-- 식품 알레르기 관련 문자열 -->
+    <string name="food_allergy_title">Food Allergies</string>
+    <string name="egg">Egg</string>
+    <string name="milk">Milk</string>
+    <string name="soybean">Soybean</string>
+    <string name="wheat">Wheat</string>
+    <string name="seafood">Seafood</string>
+    <string name="rice">Rice</string>
+    <string name="nuts">Nuts</string>
+
+    <!-- 약물 알레르기 관련 문자열 -->
+    <string name="drug_allergy_title">Drug Allergies</string>
+    <string name="pain_killer">Pain Killers</string>
+    <string name="aspirin">Aspirin</string>
+    <string name="anticonvulsant">Anticonvulsant</string>
+    <string name="contrast_media">Contrast Medium</string>
+
+    <!-- 기타 알레르기 관련 문자열 -->
+    <string name="other_allergy_title">Other Allergies</string>
+    <string name="pollen">Pollen</string>
+    <string name="air">Air</string>
+    <string name="mold">Mold</string>
+    <string name="animal">Animal</string>
+
+    <!-- 앱 시작 관련 문자열 -->
+    <string name="start_readymedi">Get Started with ReadyMedi</string>
+
+    <!-- 증상 입력 위젯 관련 문자열 -->
+    <string name="symptom_guidance_text">Enter your symptoms\nand show them directly to medical staff</string>
+    <string name="enter_symptoms">Enter Symptoms</string>
+
+    <!-- 호흡기 증상 카테고리 관련 문자열 -->
+    <string name="respiratory_symptoms">Cold/Respiratory Symptoms</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_cough">Cough</string>
+    <string name="symptom_runny_nose">Runny Nose</string>
+    <string name="symptom_fever">Fever</string>
+    <string name="symptom_sore_throat">Sore Throat</string>
+    <string name="symptom_dyspnea">Difficulty Breathing</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_cough_desc">I have a cough with phlegm</string>
+    <string name="symptom_runny_nose_desc">My nose is runny and congested</string>
+    <string name="symptom_fever_desc">I have a fever and body aches</string>
+    <string name="symptom_sore_throat_desc">My throat is painful, swollen, and hoarse</string>
+    <string name="symptom_dyspnea_desc">I have difficulty breathing</string>
+
+    <!-- 소화기/순환기 증상 카테고리 관련 문자열 -->
+    <string name="digestive_circulatory_symptoms">Digestive/Circulatory Symptoms</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_abdominal_pain">Abdominal Pain</string>
+    <string name="symptom_heartburn">Heartburn</string>
+    <string name="symptom_nausea">Nausea</string>
+    <string name="symptom_bowel_issue">Diarrhea/Constipation</string>
+    <string name="symptom_indigestion">Indigestion</string>
+    <string name="symptom_chest_pain">Chest Pain</string>
+    <string name="symptom_heart_palpitation">Heart Palpitations</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_abdominal_pain_desc">I have stomach pain and bloating</string>
+    <string name="symptom_heartburn_desc">I feel burning in my stomach and acid reflux</string>
+    <string name="symptom_nausea_desc">I feel nauseated and vomit</string>
+    <string name="symptom_bowel_issue_desc">I have persistent diarrhea or constipation</string>
+    <string name="symptom_indigestion_desc">I have difficulty digesting food</string>
+    <string name="symptom_chest_pain_desc">I have chest pain and pressure</string>
+    <string name="symptom_heart_palpitation_desc">My heart beats fast or irregularly</string>
+
+    <!-- 피로/무기력 증상 카테고리 관련 문자열 -->
+    <string name="fatigue_symptoms">Fatigue/Lethargy Symptoms</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_fatigue">Fatigue</string>
+    <string name="symptom_headache_dizziness">Headache/Dizziness</string>
+    <string name="symptom_muscle_pain">Muscle Pain</string>
+    <string name="symptom_insomnia">Insomnia</string>
+    <string name="symptom_weight_change">Sudden Weight Change</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_fatigue_desc">I feel constantly tired and weak</string>
+    <string name="symptom_headache_dizziness_desc">I feel dizzy and have headaches</string>
+    <string name="symptom_muscle_pain_desc">My body aches and feels sore all over</string>
+    <string name="symptom_insomnia_desc">I have trouble sleeping</string>
+    <string name="symptom_weight_change_desc">My weight has changed suddenly</string>
+
+    <!-- 알레르기/면역 증상 카테고리 관련 문자열 -->
+    <string name="allergy_immune_symptoms">Allergy/Immune Symptoms</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_skin_allergy">Skin Allergy</string>
+    <string name="symptom_respiratory_allergy">Respiratory Allergy</string>
+    <string name="symptom_food_allergy">Food Allergy</string>
+    <string name="symptom_swelling">Swelling</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_skin_allergy_desc">My skin is itchy and I have hives</string>
+    <string name="symptom_respiratory_allergy_desc">I\'m sneezing and my eyes are itchy</string>
+    <string name="symptom_food_allergy_desc">I develop allergies when I eat certain foods</string>
+    <string name="symptom_swelling_desc">I have swelling in my body</string>
+
+    <!-- 당뇨/고혈압 관련 문자열 -->
+    <string name="diabetes_hypertension">Diabetes/Hypertension</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_diabetes">Diabetes</string>
+    <string name="symptom_thyroid">Thyroid</string>
+    <string name="symptom_cholesterol_bp">Cholesterol/Blood Pressure</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_diabetes_desc">I would like to get diabetes testing/management</string>
+    <string name="symptom_thyroid_desc">I would like to get thyroid testing/management</string>
+    <string name="symptom_cholesterol_bp_desc">My cholesterol/blood pressure is high</string>
+
+    <!-- 관절/뼈 관련 문자열 -->
+    <string name="joint_bone">Joint/Bone</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_knee_pain">Knee Pain</string>
+    <string name="symptom_shoulder_pain">Shoulder Pain</string>
+    <string name="symptom_back_pain">Back Pain</string>
+    <string name="symptom_neck_pain">Neck Pain</string>
+    <string name="symptom_wrist_ankle_pain">Wrist/Ankle Pain</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_knee_pain_desc">My knee hurts and I have difficulty walking</string>
+    <string name="symptom_shoulder_pain_desc">My shoulder hurts and I have difficulty lifting my arm</string>
+    <string name="symptom_back_pain_desc">My back hurts and I have difficulty bending</string>
+    <string name="symptom_neck_pain_desc">My neck hurts and I have difficulty moving it</string>
+    <string name="symptom_wrist_ankle_pain_desc">My wrist/ankle hurts and is swollen</string>
+
+    <!-- 외부/부상 관련 문자열 -->
+    <string name="external_injury">External Injury</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_accident">Accident/Injury</string>
+    <string name="symptom_sports_injury">Sports Injury</string>
+    <string name="symptom_fracture">Suspected Fracture</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_accident_desc">I had an accident/injury</string>
+    <string name="symptom_sports_injury_desc">I was injured while exercising</string>
+    <string name="symptom_fracture_desc">I think I broke a bone</string>
+
+    <!-- 치아/잇몸/턱 관련 문자열 -->
+    <string name="dental_jaw">Teeth/Gums/Jaw</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_tooth">Tooth Pain</string>
+    <string name="symptom_cavity">Cavity</string>
+    <string name="symptom_tooth_fracture">Tooth Fracture</string>
+    <string name="symptom_gum">Gum Problems</string>
+    <string name="symptom_jaw_joint">Jaw Joint</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_tooth_desc">My teeth are sensitive and painful</string>
+    <string name="symptom_cavity_desc">I have a cavity</string>
+    <string name="symptom_tooth_fracture_desc">My tooth is broken/loose</string>
+    <string name="symptom_gum_desc">I have a problem with my gums</string>
+    <string name="symptom_jaw_joint_desc">My jaw joint hurts</string>
+
+    <!-- 유방질환 관련 문자열 -->
+    <string name="breast_disease">Breast Disorders</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_breast_mass">Breast Mass</string>
+    <string name="symptom_breast_pain">Breast Pain</string>
+    <string name="symptom_nipple_discharge">Nipple Discharge</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_breast_mass_desc">I can feel a lump in my breast</string>
+    <string name="symptom_breast_pain_desc">My breast is painful and uncomfortable</string>
+    <string name="symptom_nipple_discharge_desc">There is discharge from my nipple</string>
+
+    <!-- 여성질환 관련 문자열 -->
+    <string name="womens_health">Women\'s Health</string>
+
+    <!-- 세부 카테고리 제목 -->
+    <string name="symptom_menstrual_cycle">Menstrual Cycle</string>
+    <string name="symptom_pelvic_pain">Pelvic Pain</string>
+    <string name="symptom_menstrual_pain">Menstruation</string>
+    <string name="symptom_vaginal_itching">Vaginal Itching</string>
+    <string name="symptom_discharge">Discharge</string>
+
+    <!-- 세부 카테고리 설명 -->
+    <string name="symptom_menstrual_cycle_desc">My menstrual cycle is irregular</string>
+    <string name="symptom_pelvic_pain_desc">I have pelvic and abdominal pain</string>
+    <string name="symptom_menstrual_pain_desc">I have menstrual cramps</string>
+    <string name="symptom_vaginal_itching_desc">I have vaginal itching/pain</string>
+    <string name="symptom_discharge_desc">I have discharge with abnormal color or odor</string>
+
+    <!-- 통증 유형 선택 옵션 -->
+    <string name="pain_type_stabbing">Stabbing pain</string>
+    <string name="pain_type_pressing">Pressing/Squeezing pain</string>
+    <string name="pain_type_throbbing">Throbbing/Pulsating pain</string>
+    <string name="pain_type_burning">Burning pain</string>
+    <string name="pain_type_sharp">Sharp/Cutting pain</string>
+    <string name="pain_type_tingling">Tingling/Numbing pain</string>
+    <string name="pain_type_unknown">Not sure</string>
+
+    <string name="pain_scale_instruction">Please select a number from 1 to 10</string>
+
+    <!-- 지속성 유형 -->
+    <string name="duration_intermittent">Occurs intermittently</string>
+    <string name="duration_continuous">Occurs continuously</string>
+    <string name="duration_unknown">Not sure</string>
+
+    <!-- 영향 요인 옵션 -->
+    <string name="effect_posture">Posture</string>
+    <string name="effect_cough">Coughing</string>
+    <string name="effect_movement">Movement</string>
+    <string name="effect_urination">Urination</string>
+    <string name="effect_unknown">Not sure</string>
+
+    <!-- Pain relief screen -->
+    <string name="pain_relief_title">When is your pain relieved?</string>
+    <string name="pain_relief_option_1">Taking pain medication</string>
+    <string name="pain_relief_option_2">Hot/cold compress</string>
+    <string name="pain_relief_option_3">Changing posture</string>
+    <string name="pain_relief_option_4">Massage, acupressure</string>
+    <string name="pain_relief_option_5">Not sure</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="content_input_hint">Enter content</string>
+
+    <!-- 증상 보고서 -->
+    <string name="current_symptoms">Current Symptoms</string>
+    <string name="symptom">Symptom</string>
+    <string name="detailed_symptom">Detailed Symptom</string>
+    <string name="painful_area">Painful Area</string>
+    <string name="symptom_start_date">Symptom Start Date</string>
+    <string name="pain_character">Pain Character</string>
+    <string name="pain_intensity">Pain Intensity</string>
+    <string name="pain_duration">Pain Duration</string>
+    <string name="past_treatment">Past Treatment Experience</string>
+    <string name="anesthesia_experience">Anesthesia Experience</string>
+
+    <string name="personal_health_info">Personal Health Information</string>
+    <string name="chronic_disease">Chronic Disease</string>
+    <string name="family_history">Family History</string>
+    <string name="allergies">Allergies</string>
+    <string name="medications">Medications</string>
+
+    <string name="hospital_guidance_prefix">With these symptoms, you could visit</string>
+    <string name="hospital_guidance_suffix">""</string>
+    <string name="pharmacy_guidance">For mild symptoms, you can also get medicine from a pharmacy</string>
+    <string name="find_nearby_button">Find nearby clinics and pharmacies</string>
+
+    <!-- Medical Departments -->
+    <string name="hospital_department_internal">Internal Medicine</string>
+    <string name="hospital_department_orthopedic">Orthopedics</string>
+    <string name="hospital_department_general">General Surgery</string>
+    <string name="hospital_department_dental">Dentistry</string>
+    <string name="hospital_department_obgyn">Obstetrics·Gynecology</string>
+
+    <!--  진료과별 버튼  -->
+    <string name="find_nearby_internal">Find nearby Internal Medicine clinics and pharmacies</string>
+    <string name="find_nearby_orthopedic">Find nearby Orthopedic clinics and pharmacies</string>
+    <string name="find_nearby_general">Find nearby General Surgery clinics and pharmacies</string>
+    <string name="find_nearby_dental">Find nearby Dental clinics and pharmacies</string>
+    <string name="find_nearby_obgyn">Find nearby OB/GYN clinics and pharmacies</string>
+
+    <string name="view_report_text">View Report</string>
+
+    <string name="symptom_question">What symptoms do you have?</string>
+
 
 
 </resources>

@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="5dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             android:layout_marginEnd="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +44,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="5dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             android:layout_marginEnd="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="5dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="5dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/gray20"
+            android:background="@color/blue90"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <View
@@ -82,16 +82,17 @@
         android:id="@+id/shapeableImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     <TextView
         android:id="@+id/tv_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
         android:text="@string/allergy_title"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -130,7 +131,7 @@
         android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="완료"
+        android:text="@string/start_readymedi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

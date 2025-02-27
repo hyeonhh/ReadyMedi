@@ -8,7 +8,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="암질환"
+        android:text="@string/cancer"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,57 +27,50 @@
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="위암" />
+            android:text="@string/stomach_cancer" />
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:id="@+id/chip2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="대장암" />
+            android:text="@string/liver_cancer" />
 
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="위암" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="간암" />
+            android:text="@string/colorectal_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="유방암" />
+            android:text="@string/lung_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="폐암" />
+            android:text="@string/pancreatic_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="구강암" />
+            android:text="@string/oral_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="췌장암" />
+            android:text="@string/breast_cancer" />
 
 
         <com.google.android.material.chip.Chip
@@ -85,21 +78,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="자붕경부암 " />
+            android:text="@string/thyroid_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="피부암" />
+            android:text="@string/skin_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
-            android:text="갑상선" />
+            android:text="@string/cervical_cancer" />
 
     </com.google.android.material.chip.ChipGroup>
 

@@ -9,7 +9,7 @@
 
     <ImageButton
         android:background="@android:color/transparent"
-        android:id="@+id/imageButton5"
+        android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_back"
@@ -24,9 +24,10 @@
         android:text="@string/additonal_comment_question"
         android:textAppearance="@style/Title2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.TextInput3Sentence
+        android:id="@+id/edit_text"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +40,7 @@
         android:id="@+id/btn_complete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="보고서 보기"
+        android:text="@string/view_report_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

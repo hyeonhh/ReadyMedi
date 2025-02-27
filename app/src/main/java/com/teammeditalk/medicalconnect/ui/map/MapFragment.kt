@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.ContextCompat.getColor
@@ -105,6 +106,13 @@ class MapFragment :
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    private fun showHospitalMenu() {
+        val popup = PopupMenu(requireContext(), binding.hospitalTypeDropDownMenu)
+        val menuRes = R.menu.hospital_type_menu
+        popup.menuInflater.inflate(menuRes, popup.menu)
+        popup.show()
+    }
+
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?,
@@ -114,6 +122,10 @@ class MapFragment :
         // 여기를 바인딩으로 안바꿔줘서 라이브러리가 적용 안된 거였다!!
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         with(binding) {
+            binding.hospitalTypeDropDownMenu.setOnClickListener {
+                Timber.d("click")
+                showHospitalMenu()
+            }
             btnIsOpen.setOnClickListener {
                 it.isSelected = !it.isSelected
                 if (it.isSelected) {
@@ -126,8 +138,24 @@ class MapFragment :
                 it.isSelected = !it.isSelected
                 if (it.isSelected) {
                     btnLang.setTextColor(getColor(requireContext(), R.color.white))
+
+                    lifecycleScope.launch {
+                        viewModel.pharmacyList.collectLatest {
+                            val list =
+                                it
+                                    .filter {
+                                        it.availableForeignLanguageList.isNotEmpty()
+                                    }.apply {
+                                        Timber.d("외국어 가능 약국 :$it")
+                                    }
+                            val bitmap = vectorToBitmap(R.drawable.pha_pin)
+                            removePharLabel()
+                            putLabelOnLocation(bitmap, list)
+                        }
+                    }
                 } else {
                     btnLang.setTextColor(getColor(requireContext(), R.color.gray70))
+                    removePharLabel()
                 }
             }
 
@@ -178,6 +206,7 @@ class MapFragment :
         kakaoMap?.setOnLabelClickListener { kakaoMap, labelLayer, label ->
             val bottomSheet = MapInfoBottomSheet(label.tag as SearchLocationItem)
             bottomSheet.show(parentFragmentManager, "dialog")
+            Timber.d("클릭 :${label.tag}")
             true
         }
     }
@@ -361,7 +390,7 @@ class MapFragment :
         lifecycleScope.launch {
             viewModel.pharmacyList.collectLatest {
                 if (it.isNotEmpty()) {
-                    val bitmap = vectorToBitmap(R.drawable.pha_pin)
+                    val bitmap = vectorToBitmap(R.drawable.map_pin__2_)
                     putLabelOnLocation(bitmap, it)
                 }
             }

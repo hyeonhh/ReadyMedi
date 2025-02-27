@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="여성질환"
+        android:text="@string/womens_health"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -47,43 +47,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-    <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-        app:categoryTitle="월경 주기"
-        app:categoryContent="월경 주기가 불규칙해요"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="골반통"
-            app:categoryContent="골반통과 복통이 있어요"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="월경"
-            app:categoryContent="월결통이 있어요"
+            app:categoryTitle="@string/symptom_menstrual_cycle"
+            app:categoryContent="@string/symptom_menstrual_cycle_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="질 가려움증"
-            app:categoryContent="질 가려움증/통증이 있어요"
+            app:categoryTitle="@string/symptom_pelvic_pain"
+            app:categoryContent="@string/symptom_pelvic_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="분비물"
-            app:categoryContent="분비물 색깔, 냄새가 있어요"
+            app:categoryTitle="@string/symptom_menstrual_pain"
+            app:categoryContent="@string/symptom_menstrual_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="@string/symptom_vaginal_itching"
+            app:categoryContent="@string/symptom_vaginal_itching_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-
-
+        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:categoryTitle="@string/symptom_discharge"
+            app:categoryContent="@string/symptom_discharge_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

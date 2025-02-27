@@ -1,53 +1,37 @@
 package com.teammeditalk.medicalconnect.ui.result
 
-import com.google.mlkit.common.model.DownloadConditions
-import com.google.mlkit.nl.translate.TranslateLanguage
-import com.google.mlkit.nl.translate.Translation
-import com.google.mlkit.nl.translate.TranslatorOptions
+import com.skydoves.balloon.BalloonSizeSpec
+import com.skydoves.balloon.createBalloon
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSymptomResultBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class SymptomResultFragment :
     BaseFragment<FragmentSymptomResultBinding>(
         FragmentSymptomResultBinding::inflate,
     ) {
-    private fun setUpTranslator() {
-        val symptomPrompt = "이 부위가 바늘로 찌르는 것처럼 콕콕 아파요"
-        val diseasePrompt = "갑상선 저하증이 있어요"
-
-        val options =
-            TranslatorOptions
-                .Builder()
-                .setSourceLanguage(TranslateLanguage.KOREAN)
-                .setTargetLanguage(TranslateLanguage.ENGLISH)
-                .build()
-        val englishKoreanTranslator = Translation.getClient(options)
-
-        val conditions =
-            DownloadConditions
-                .Builder()
-                .requireWifi()
-                .build()
-        englishKoreanTranslator
-            .downloadModelIfNeeded(conditions)
-            .addOnSuccessListener {
-                englishKoreanTranslator
-                    .translate(symptomPrompt)
-                    .addOnSuccessListener {
-                        Timber.d("success to translate :$it")
-                    }.addOnFailureListener {
-                        Timber.d("failed to translate :${it.message}")
-                    }
-            }.addOnFailureListener { exception ->
-                Timber.d("failed to download model :${exception.message}")
+    private fun showToolTip() {
+        val balloon =
+            context?.let {
+                createBalloon(it) {
+                    setText("의료진에게 보여줄 땐 여길 눌러주세요")
+                    setMarginRight(20)
+                    setPadding(10)
+                    setHeight(BalloonSizeSpec.WRAP)
+                    setWidth(BalloonSizeSpec.WRAP)
+                    setTextColorResource(R.color.white)
+                    setCornerRadius(30f)
+                    setBackgroundColorResource(R.color.orange50)
+                    build()
+                }
             }
+        balloon?.showAlignTop(binding.btnSwitch)
     }
 
     override fun onBindLayout() {
         super.onBindLayout()
-        setUpTranslator()
+        showToolTip()
     }
 }

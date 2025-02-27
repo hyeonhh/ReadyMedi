@@ -22,6 +22,10 @@ class SelectCategory(
         initAttrs()
     }
 
+    fun getContent(): Pair<String, String> =
+        tvTitle.text.toString() to
+            tvContent.text.toString()
+
     private fun initView() {
         val layoutInflater = LayoutInflater.from(context)
         binding = ItemSymptomBinding.inflate(layoutInflater, this, false)

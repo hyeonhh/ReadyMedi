@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="치아/잇몸/턱"
+        android:text="@string/dental_jaw"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -48,44 +48,33 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="치아"
-            app:categoryContent="이가 시리고 아파요"
+            app:categoryTitle="@string/symptom_tooth"
+            app:categoryContent="@string/symptom_tooth_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="치아"
-            app:categoryContent="이가 시리고 아파요"
+            app:categoryTitle="@string/symptom_cavity"
+            app:categoryContent="@string/symptom_cavity_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="충치"
-            app:categoryContent="충치가 있어요"
+            app:categoryTitle="@string/symptom_tooth_fracture"
+            app:categoryContent="@string/symptom_tooth_fracture_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="치아 파절"
-            app:categoryContent="치아가 깨졌어요/흔들려요"
+            app:categoryTitle="@string/symptom_gum"
+            app:categoryContent="@string/symptom_gum_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="잇몸"
-            app:categoryContent="잇몸에 문제가 있어요"
+            app:categoryTitle="@string/symptom_jaw_joint"
+            app:categoryContent="@string/symptom_jaw_joint_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-        <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="턱 관절"
-            app:categoryContent="턱 관절이 아파요"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-</LinearLayout>
-
-
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

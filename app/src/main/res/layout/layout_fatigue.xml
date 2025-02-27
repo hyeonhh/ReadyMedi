@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="피로/무기력 증상"
+        android:text="@string/fatigue_symptoms"
         android:textAppearance="@style/Body1_Normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -49,37 +49,32 @@
 
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="피로감"
-            app:categoryContent="계속 피곤하고 기운이 없어요"
+            app:categoryTitle="@string/symptom_fatigue"
+            app:categoryContent="@string/symptom_fatigue_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="두통/어지러움"
-            app:categoryContent="어지럽고 머리가 아파요"
+            app:categoryTitle="@string/symptom_headache_dizziness"
+            app:categoryContent="@string/symptom_headache_dizziness_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="근육통"
-            app:categoryContent="몸이 전체적으로 쑤시고 아파요"
+            app:categoryTitle="@string/symptom_muscle_pain"
+            app:categoryContent="@string/symptom_muscle_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="불면증"
-            app:categoryContent="잠을 잘 못자요"
+            app:categoryTitle="@string/symptom_insomnia"
+            app:categoryContent="@string/symptom_insomnia_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
-            app:categoryTitle="급격한 체중변화"
-            app:categoryContent="체중이 갑자기 변했어요"
+            app:categoryTitle="@string/symptom_weight_change"
+            app:categoryContent="@string/symptom_weight_change_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="감기/호흡기 증상"
+            android:text="@string/respiratory_symptoms"
             android:textAppearance="@style/Body1_Normal"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -53,37 +53,37 @@
                 android:id="@+id/category1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="기침과 가래가 있어요"
-                app:categoryTitle="기침"
+                app:categoryContent="@string/symptom_cough_desc"
+                app:categoryTitle="@string/symptom_cough"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:id="@+id/category2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="콧물이 나고 코가 막혀요"
-                app:categoryTitle="콧물"
+                app:categoryContent="@string/symptom_runny_nose_desc"
+                app:categoryTitle="@string/symptom_runny_nose"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="열이 나고 몸이 아파요"
-                app:categoryTitle="발열"
+                app:categoryContent="@string/symptom_fever_desc"
+                app:categoryTitle="@string/symptom_fever"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="몸이 아프고 붓고 쉬어요"
-                app:categoryTitle="인후통"
+                app:categoryContent="@string/symptom_sore_throat_desc"
+                app:categoryTitle="@string/symptom_sore_throat"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:categoryContent="숨쉬기가 힘들어요"
-                app:categoryTitle="호흡곤란"
+                app:categoryContent="@string/symptom_dyspnea_desc"
+                app:categoryTitle="@string/symptom_dyspnea"
                 app:isCategorySelected="false" />
         </LinearLayout>
 

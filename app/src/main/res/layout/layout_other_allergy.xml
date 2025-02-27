@@ -10,7 +10,7 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="기타 알레르기"
+        android:text="@string/other_allergy_title"
         android:textAppearance="@style/SubTitle2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,28 +29,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="꽃가루" />
+            android:text="@string/pollen" />
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:id="@+id/chip2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="대가" />
+            android:text="@string/air" />
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:id="@+id/chip3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="곰팡이" />
+            android:text="@string/mold" />
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:id="@+id/chip4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="동물" />
+            android:text="@string/animal" />
 
     </com.google.android.material.chip.ChipGroup>
 
