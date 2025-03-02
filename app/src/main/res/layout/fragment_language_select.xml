@@ -77,12 +77,12 @@
     </LinearLayout>
 
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="45dp"
-        android:id="@+id/shapeableImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/ic_launcher_background"
+        android:src="@drawable/ic_select_language"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -94,8 +94,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
-        app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
+        app:layout_constraintStart_toStartOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/icon" />
 
     <TextView
         android:id="@+id/tv_english"

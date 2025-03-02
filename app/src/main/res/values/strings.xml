@@ -115,7 +115,7 @@
 
     <!-- 앱 시작 관련 문자열 -->
     <string name="start_readymedi">ReadyMedi 시작하기</string>
-    <string name="symptom_guidance_text">증상을 입력하고\n그대로 의료진에게 보여주세요</string>
+    <string name="symptom_guidance_text">아픈데 어떻게 해야할지 모르겠다면?</string>
     <string name="enter_symptoms">증상 입력하기</string>
     <string name="symptom_question">어떤 증상이 있나요?</string>
     <string name="respiratory_symptoms">감기/호흡기 증상</string>

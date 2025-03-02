@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/home_symptom_widget_background"
     android:padding="20dp"
     android:id="@+id/home_symptom"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/ic_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/textView51"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/symptom_guidance_text"
         android:textAlignment="center"
         android:textAppearance="@style/SubTitle1"
         app:layout_constraintBottom_toTopOf="@+id/materialButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textAppearance="@style/Body3_Reading"
+        android:id="@+id/tv_sub_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="언어 걱정 없이\n레디메디와 함께 증상을 정확히 전달하세요"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
 
     <com.google.android.material.button.MaterialButton
-        app:cornerRadius="16dp"
-        android:padding="20dp"
-        android:text="@string/enter_symptoms"
         android:id="@+id/materialButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
         android:backgroundTint="@color/black"
+        android:padding="20dp"
+        android:text="@string/enter_symptoms"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_sub_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

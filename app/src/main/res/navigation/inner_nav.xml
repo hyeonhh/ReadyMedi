@@ -52,7 +52,7 @@
         <argument
             android:name="hospital_type"
             app:argType="string"
-            android:defaultValue="inner"/>
+            android:defaultValue="내과"/>
         <action
             android:id="@+id/action_selectInnerDurationFragment_to_innerSymptomWorseListFragment"
             app:destination="@id/innerSymptomWorseListFragment" />
@@ -65,7 +65,7 @@
         <argument
             android:name="hospital_type"
             app:argType="string"
-            android:defaultValue="inner"/>
+            android:defaultValue="내과"/>
         <action
             android:id="@+id/action_selectInnerRegionFragment_to_selectInnerStartFragment"
             app:destination="@id/selectInnerStartFragment" />
@@ -78,7 +78,7 @@
         <argument
             android:name="hospital_type"
             app:argType="string"
-            android:defaultValue="inner"/>
+            android:defaultValue="내과"/>
         <action
             android:id="@+id/action_selectInnerStartFragment_to_innerSymptomTypeFragment"
             app:destination="@id/innerSymptomTypeFragment" />
@@ -87,11 +87,16 @@
         android:id="@+id/selectInnerPainDegreeFragment"
         android:name="com.teammeditalk.medicalconnect.ui.question.common.degree.SelectPainDegreeFragment"
         android:label="SelectInnerPainDegreeFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="내과"/>
         <action
             android:id="@+id/action_selectInnerPainDegreeFragment_to_selectInnerDurationFragment"
             app:destination="@id/selectInnerDurationFragment" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_loading"
         android:id="@+id/innerLoadingFragment"
         android:name="com.teammeditalk.medicalconnect.ui.question.common.loading.LoadingFragment"
         android:label="LoadingFragment" >
@@ -104,9 +109,14 @@
             app:destination="@id/innerSymptomResultFragment" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_additional_input"
         android:id="@+id/innerAdditionalInputFragment"
         android:name="com.teammeditalk.medicalconnect.ui.question.common.input.AdditionalInputFragment"
         android:label="AdditionalInputFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="내과"/>
         <action
             android:id="@+id/action_additionalInputFragment2_to_loadingFragment"
             app:destination="@id/innerLoadingFragment" />
