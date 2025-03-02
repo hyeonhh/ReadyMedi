@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/selectSymptomRegionFragment"
+    android:id="@+id/dental_nav">
+
+
+    <fragment
+        tools:layout="@layout/fragment_select_symptom_region"
+        android:id="@+id/selectSymptomRegionFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
+        android:label="SelectDentalSymptomRegionFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+
+        <action
+            android:id="@+id/navigateToStartFromRegion"
+            app:destination="@id/selectDentalSymptomStartFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_symptom_start"
+        android:id="@+id/selectDentalSymptomStartFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.start.SelectSymptomStartFragment"
+        android:label="SelectDentalSymptomStartFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+        <action
+            android:id="@+id/action_selectSymptomStartFragment_to_selectPainTypeFragment"
+            app:destination="@id/selectDentalPainTypeFragment" />
+
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_dental_pain_type"
+        android:id="@+id/selectDentalPainTypeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.type.DentalSelectPainTypeFragment"
+        android:label="SelectDentalPainTypeFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+        <action
+            android:id="@+id/action_dentalSelectPainTypeFragment_to_selectPainDegreeFragment"
+            app:destination="@id/selectDentalPainDegreeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_pain_degree"
+        android:id="@+id/selectDentalPainDegreeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.degree.SelectPainDegreeFragment"
+        android:label="SelectDentalPainDegreeFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+        <action
+            android:id="@+id/action_selectPainDegreeFragment_to_selectDurationFragment"
+            app:destination="@id/selectDentalDurationFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_dental_worse"
+        android:id="@+id/selectDentalWorseListFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.worse.DentalSelectWorseListFragment"
+        android:label="SelectDentalWorseListFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+
+        <action
+            android:id="@+id/action_dentalSelectWorseListFragment_to_dentalSelectOtherSymptomFragment"
+            app:destination="@id/selectDentalOtherSymptomFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_anesthesia_history"
+        android:id="@+id/selectAnesthesiaHistoryFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.history.DentalSelectAnesthesiaHistoryFragment"
+        android:label="DentalSelectAnesthesiaHistoryFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+
+        <action
+            android:id="@+id/action_dentalSelectAnesthesiaHistoryFragment_to_dentalSelectSideEffectFragment"
+            app:destination="@id/dentalSelectSideEffectFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/layout_dental_side_effect_input"
+        android:id="@+id/dentalSelectSideEffectFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.side.DentalSelectSideEffectFragment"
+        android:label="DentalSelectSideEffectFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+
+        <action
+            android:id="@+id/action_dentalSelectSideEffectFragment_to_additionalInputFragment"
+            app:destination="@id/dentalAdditionalInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dentalAdditionalInputFragment"
+        tools:layout="@layout/fragment_additional_input"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.input.AdditionalInputFragment"
+        android:label="DentalAdditionalInputFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+
+        <action
+            android:id="@+id/action_additionalInputFragment_to_loadingFragment"
+            app:destination="@id/dentalLoadingFragment" />
+
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_dental_symtom_result"
+        android:id="@+id/dentalSymptomResultFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.result.DentalSymptomResultFragment"
+        android:label="DentalSymptomResultFragment" />
+
+    <fragment
+        tools:layout="@layout/fragment_loading"
+        android:id="@+id/dentalLoadingFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.loading.LoadingFragment"
+        android:label="DentalLoadingFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+        <action
+            android:id="@+id/action_loadingFragment2_to_dentalSymptomResultFragment"
+            app:destination="@id/dentalSymptomResultFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_duration"
+        android:id="@+id/selectDentalDurationFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.duration.SelectDurationFragment"
+        android:label="DentalSelectDurationFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+        <action
+            android:id="@+id/action_selectDurationFragment_to_dentalSelectWorseListFragment"
+            app:destination="@id/selectDentalWorseListFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_other_dental_symptom"
+        android:id="@+id/selectDentalOtherSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.other.DentalSelectOtherSymptomFragment"
+        android:label="DentalSelectOtherSymptomFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="치과"/>
+
+        <action
+            android:id="@+id/action_dentalSelectOtherSymptomFragment_to_dentalSelectAnesthesiaHistoryFragment"
+            app:destination="@id/selectAnesthesiaHistoryFragment" />
+    </fragment>
+</navigation>

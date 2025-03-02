@@ -10,7 +10,7 @@
     <ImageButton
         android:background="@android:color/transparent"
         android:src="@drawable/ic_back"
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.ExposedDropdownMenu
         android:id="@+id/exposed_drop_down_menu"

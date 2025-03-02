@@ -2,6 +2,7 @@ package com.teammeditalk.medicalconnect.ui.question.common.duration
 
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSelectDurationBinding
@@ -17,6 +18,7 @@ class SelectDurationFragment :
     private val navController by lazy { findNavController() }
     private val viewModel: QuestionViewModel by activityViewModels()
     private var selectedDuration: String = ""
+    private val args by navArgs<SelectDurationFragmentArgs>()
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -43,8 +45,24 @@ class SelectDurationFragment :
         }
         binding.btnBack.setOnClickListener { navController.popBackStack() }
         binding.btnNext.setOnClickListener {
+            when (args.hospitalType) {
+                "치과" -> {
+                    navController.navigate(R.id.selectDentalWorseListFragment)
+                }
+                "내과" -> {
+                    navController.navigate(R.id.innerSymptomWorseListFragment)
+                }
+                "일반" -> {
+                    navController.navigate(R.id.generalSymptomWorseListFragment)
+                }
+                "정형" -> {
+                    navController.navigate(R.id.injuryHistoryFragment)
+                }
+                "산부" -> {
+                    navController.navigate(R.id.pregnancyCheckFragment)
+                }
+            }
             viewModel.selectSymptomDuration(selectedDuration)
-            navController.navigate(R.id.selectSymptomEffectFragment)
         }
     }
 }

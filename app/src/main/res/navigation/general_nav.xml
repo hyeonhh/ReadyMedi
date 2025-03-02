@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/general_nav"
+    app:startDestination="@id/selectGeneralSymptomRegionFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_select_symptom_region"
+        android:id="@+id/selectGeneralSymptomRegionFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
+        android:label="SelectSymptomRegionFragment" >
+        <argument
+            android:defaultValue="일반"
+            android:name="hospital_type"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_selectSymptomRegionFragment2_to_selectSymptomStartFragment2"
+            app:destination="@id/selectGeneralSymptomStartFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_symptom_start"
+        android:id="@+id/selectGeneralSymptomStartFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.start.SelectSymptomStartFragment"
+        android:label="SelectSymptomStartFragment" >
+        <argument
+            android:defaultValue="일반"
+            android:name="hospital_type"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_selectSymptomStartFragment2_to_generalSymptomTypeFragment"
+            app:destination="@id/generalSymptomTypeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_general_symptom_type"
+        android:id="@+id/generalSymptomTypeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.type.GeneralSymptomTypeFragment"
+        android:label="GeneralSymptomTypeFragment" >
+        <action
+            android:id="@+id/action_generalSymptomTypeFragment_to_selectPainDegreeFragment2"
+            app:destination="@id/selectGeneralPainDegreeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_pain_degree"
+        android:id="@+id/selectGeneralPainDegreeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.degree.SelectPainDegreeFragment"
+        android:label="SelectPainDegreeFragment" >
+        <argument
+            android:defaultValue="일반"
+            android:name="hospital_type"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_selectPainDegreeFragment2_to_selectDurationFragment2"
+            app:destination="@id/selectGeneralDurationFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_duration"
+        android:id="@+id/selectGeneralDurationFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.duration.SelectDurationFragment"
+        android:label="SelectDurationFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_selectDurationFragment_to_generalSymptomWorseListFragment"
+            app:destination="@id/generalSymptomWorseListFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_general_symptom_worse_list"
+        android:id="@+id/generalSymptomWorseListFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.general.worse.GeneralSymptomWorseListFragment"
+        android:label="GeneralSymptomWorseListFragment" >
+        <action
+            android:id="@+id/action_generalSymptomWorseListFragment_to_generalOtherSymptomFragment"
+            app:destination="@id/generalOtherSymptomFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_general_other_symptom"
+        android:id="@+id/generalOtherSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.other.GeneralOtherSymptomFragment"
+        android:label="GeneralOtherSymptomFragment" >
+        <action
+            android:id="@+id/action_generalOtherSymptomFragment_to_additionalInputFragment"
+            app:destination="@id/generalAdditionalInputFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_additional_input"
+        android:id="@+id/generalAdditionalInputFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.input.AdditionalInputFragment"
+        android:label="AdditionalInputFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_additionalInputFragment_to_loadingFragment2"
+            app:destination="@id/generalLoadingFragment2" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_loading"
+        android:id="@+id/generalLoadingFragment2"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.loading.LoadingFragment"
+        android:label="LoadingFragment" >
+        <action
+            android:id="@+id/action_generalLoadingFragment2_to_generalSymptomResultFragment"
+            app:destination="@id/generalSymptomResultFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_general_symptom_result"
+        android:id="@+id/generalSymptomResultFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.result.GeneralSymptomResultFragment"
+        android:label="GeneralSymptomResultFragment" />
+</navigation>

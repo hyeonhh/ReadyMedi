@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inner_nav"
+    app:startDestination="@id/selectInnerRegionFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_inner_symptom_type"
+        android:id="@+id/innerSymptomTypeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.type.InnerSymptomTypeFragment"
+        android:label="InnerSymptomTypeFragment" >
+        <action
+            android:id="@+id/action_innerSymptomTypeFragment_to_selectInnerPainDegreeFragment"
+            app:destination="@id/selectInnerPainDegreeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_inner_symptom_worse_list"
+        android:id="@+id/innerSymptomWorseListFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.worse.InnerSymptomWorseListFragment"
+        android:label="InnerSymptomWorseListFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="inner"/>
+        <action
+            android:id="@+id/action_innerSymptomWorseListFragment_to_innerOtherSymptomFragment"
+            app:destination="@id/innerOtherSymptomFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_inner_other_symptom"
+        android:id="@+id/innerOtherSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.other.InnerOtherSymptomFragment"
+        android:label="InnerOtherSymptomFragment" >
+        <action
+            android:id="@+id/action_innerOtherSymptomFragment_to_additionalInputFragment"
+            app:destination="@id/innerAdditionalInputFragment" />
+        <action
+            android:id="@+id/action_innerOtherSymptomFragment_to_innerAdditionalInputFragment"
+            app:destination="@id/innerAdditionalInputFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_inner_symptom_result"
+        android:id="@+id/innerSymptomResultFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.result.InnerSymptomResultFragment"
+        android:label="InnerSymptomResultFragment" />
+    <fragment
+        tools:layout="@layout/fragment_select_duration"
+        android:id="@+id/selectInnerDurationFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.duration.SelectDurationFragment"
+        android:label="SelectInnerDurationFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="inner"/>
+        <action
+            android:id="@+id/action_selectInnerDurationFragment_to_innerSymptomWorseListFragment"
+            app:destination="@id/innerSymptomWorseListFragment" />
+    </fragment>
+    <fragment
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
+        tools:layout="@layout/fragment_select_symptom_region"
+        android:id="@+id/selectInnerRegionFragment"
+        android:label="SelectInnerRegionFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="inner"/>
+        <action
+            android:id="@+id/action_selectInnerRegionFragment_to_selectInnerStartFragment"
+            app:destination="@id/selectInnerStartFragment" />
+    </fragment>
+    <fragment
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.start.SelectSymptomStartFragment"
+        tools:layout="@layout/fragment_select_symptom_start"
+        android:id="@+id/selectInnerStartFragment"
+        android:label="SelectInnerStartFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="inner"/>
+        <action
+            android:id="@+id/action_selectInnerStartFragment_to_innerSymptomTypeFragment"
+            app:destination="@id/innerSymptomTypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectInnerPainDegreeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.degree.SelectPainDegreeFragment"
+        android:label="SelectInnerPainDegreeFragment" >
+        <action
+            android:id="@+id/action_selectInnerPainDegreeFragment_to_selectInnerDurationFragment"
+            app:destination="@id/selectInnerDurationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/innerLoadingFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.loading.LoadingFragment"
+        android:label="LoadingFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="내과"/>
+        <action
+            android:id="@+id/action_loadingFragment2_to_innerSymptomResultFragment"
+            app:destination="@id/innerSymptomResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/innerAdditionalInputFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.input.AdditionalInputFragment"
+        android:label="AdditionalInputFragment" >
+        <action
+            android:id="@+id/action_additionalInputFragment2_to_loadingFragment"
+            app:destination="@id/innerLoadingFragment" />
+        <action
+            android:id="@+id/action_innerAdditionalInputFragment_to_innerLoadingFragment"
+            app:destination="@id/innerLoadingFragment" />
+    </fragment>
+
+
+</navigation>

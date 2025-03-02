@@ -166,6 +166,19 @@
         app:strokeColor="@color/gray20"
         app:textColor="@color/gray30" />
 
+    <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:id="@+id/selectBox_korean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxContent="Korean"
+        app:isSelected="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectBox_japanese"
+        app:strokeColor="@color/gray20"
+        app:textColor="@color/gray30" />
+
     <include
         android:visibility="gone"
         android:id="@+id/layout_language_warn"

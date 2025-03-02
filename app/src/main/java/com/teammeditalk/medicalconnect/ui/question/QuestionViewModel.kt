@@ -1,17 +1,37 @@
 package com.teammeditalk.medicalconnect.ui.question
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.teammeditalk.medicalconnect.data.model.info.HealthInfo
 import com.teammeditalk.medicalconnect.data.model.symptom.SymptomResponse
+import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class QuestionViewModel
     @Inject
-    constructor() : ViewModel() {
+    constructor(
+        @ApplicationContext private val context: Context,
+    ) : ViewModel() {
+        init {
+            getUserHealthInfo()
+        }
+
+        private val _anesthesiaHistory = MutableStateFlow(false)
+        val anesthesiaHistory = _anesthesiaHistory.value
+
+        //   유저 건강 정보
+        private val _userHealthInfo = MutableStateFlow(HealthInfo())
+        val userHealthInfo = _userHealthInfo.asStateFlow()
+
         // 번역 내용
         private val _translatedResult = MutableStateFlow(SymptomResponse())
         val translatedResult = _translatedResult.asStateFlow()
@@ -28,6 +48,9 @@ class QuestionViewModel
 
         private val _selectedWorseList = MutableStateFlow(emptyList<String>())
         val selectedWorseList = _selectedWorseList.asStateFlow()
+
+        private val _selectedOtherList = MutableStateFlow(emptyList<String>())
+        val selectedOtherList = _selectedOtherList.asStateFlow()
 
         private val _selectedType = MutableStateFlow(emptyList<String>())
         val selectedType = _selectedType.asStateFlow()
@@ -46,6 +69,31 @@ class QuestionViewModel
 
         private val _selectedDuration = MutableStateFlow("")
         val selectedDuration = _selectedDuration.asStateFlow()
+
+        // 로컬에 저장된 내용 불러오기
+        private fun getUserHealthInfo() {
+            viewModelScope.launch {
+                context.userHealthPreferencesStore.data.collectLatest {
+                    _userHealthInfo.value =
+                        _userHealthInfo.value.copy(
+                            diseaseList = it.diseaseInfoList,
+                            familyDiseaseList = it.familyDiseaseList,
+                            allergyList = it.allergyInfoList,
+                            drugList = it.drugInfoList,
+                            drugTakingDuration = "",
+                            drugTakingCount = 0,
+                        )
+                }
+            }
+        }
+
+        fun setOtherSymptomList(other: List<String>) {
+            _selectedOtherList.value = other
+        }
+
+        fun setAnesthesiaHistory(answer: Boolean) {
+            _anesthesiaHistory.value = answer
+        }
 
         // 증상 성격
         fun setSymptomType(type: List<String>) {
@@ -98,23 +146,5 @@ class QuestionViewModel
             _category.value = hospitalCategory
 
             Timber.d("저장된 증상 카테고리 :${_selectedSymptom.value.first}\n증상 내용 : ${_selectedSymptom.value.second}\n병원 타입 : ${_category.value}")
-        }
-
-        fun processSymptomQuestion() {
-            _questionResult.value =
-                SymptomResponse(
-                    mainSymptom = _selectedSymptom.value.second,
-                    hospitalType = _category.value,
-                    region = "",
-                    start = _selectedDate.toString(),
-                    type = _selectedType.toString(),
-                    duration = _selectedDuration.value,
-                    worseList = _selectedWorseList.value,
-                    releaseList = _selectedReleaseList.value,
-                    otherSymptom = "",
-                    additionalComment = _additionalInput.value,
-                ).apply {
-                    Timber.d("최종 :$this")
-                }
         }
     }

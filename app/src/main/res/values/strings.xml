@@ -12,7 +12,6 @@
 
     <string name="symptom_region_question">아픈 부위가 어디인가요? *</string>
     <string name="symptom_start_question">언제부터 증상이 발생했나요?</string>
-    <string name="symptom_type_question">통증의 성격이 어떻게 되나요?</string>
     <string name="symptom_degree_question">통증의 강도가 어느 정도 인가요?</string>
     <string name="symptom_duration_question">통증의 지속 시간이 얼마나 되나요?</string>
     <string name="symptom_effect_question">어떻게 하면 증상이 심해지나요?</string>
@@ -278,12 +277,9 @@
 
     <!-- 통증 유형 선택 옵션 -->
     <string name="pain_type_stabbing">콕콕 찌르듯이 아픔</string>
-    <string name="pain_type_pressing">짓 누르듯이 아픔</string>
     <string name="pain_type_throbbing">욱신욱신 쑤시듯이 아픔</string>
-    <string name="pain_type_burning">타는 듯한 아픔</string>
     <string name="pain_type_sharp">날카롭게 베인듯한 아픔</string>
     <string name="pain_type_tingling">저리는 듯한 아픔</string>
-    <string name="pain_type_unknown">잘 모르겠어요</string>
     <string name="pain_scale_instruction">1~10까지 중 선택해주세요</string>
 
     <!-- 지속성 유형 -->
@@ -322,7 +318,10 @@
     <string name="pain_intensity">통증 강도</string>
     <string name="pain_duration">통증 지속시간</string>
     <string name="past_treatment">과거 치료경험</string>
-    <string name="anesthesia_experience">마취 경험</string>
+    <string name="anesthesia_experience">마취가 잘 되지 않았던 경험 여부</string>
+
+    <string name="symptoms_label">증상</string>
+
 
     <!-- 개인 건강 정보 화면 -->
     <string name="personal_health_info">개인 건강 정보</string>
@@ -353,5 +352,37 @@
     <string name="find_nearby_obgyn">주변 산부인과·약국 보기</string>
 
     <string name="view_report_text">보고서 보기</string>
+    <string name="additional_content">추가 내용</string>
+
+    <string name="chip_toothache">치통</string>
+    <string name="chip_cavity">충치</string>
+    <string name="chip_tooth_fracture">치아 파절</string>
+    <string name="chip_gum_pain">잇몸 통증</string>
+    <string name="chip_jaw_pain">턱관절 통증</string>
+
+    <string name="symptom_type_question">통증은 어떤 느낌인가요?</string>
+    <string name="pain_type_pressing">강하게 누르는 듯한 통증</string>
+    <string name="pain_type_piercing">날카롭게 찌르는 통증</string>
+    <string name="pain_type_pulsating">두근두근 뛰는 듯 통증</string>
+    <string name="pain_type_cramping">쥐어짜는 듯한 통증</string>
+    <string name="pain_type_burning">타는 듯한 뜨거운 통증</string>
+    <string name="pain_type_dull">묵직하게 아픈 통증</string>
+    <string name="pain_type_unknown">잘 모르겠어요</string>
+
+    <!-- Pain Types -->
+    <string name="pain_type_itching">가려움</string>
+
+    <string name="symptom_factor_posture_change">자세를 바꿀 때</string>
+    <string name="symptom_factor_before_meal">식사 전</string>
+    <string name="symptom_factor_after_meal">식사 후</string>
+    <string name="symptom_factor_after_waking">기상 직후</string>
+    <string name="symptom_factor_night_time">밤 시간대</string>
+
+    <!-- 증상 목록 -->
+    <string name="symptom_diarrhea">설사</string>
+    <string name="symptom_constipation">변비</string>
+    <string name="symptom_arrhythmia">심장박동 이상</string>
+    <string name="symptom_cholesterol">콜레스트롤 이상</string>
+    <string name="symptom_blood_pressure">혈압 이상</string>
 
 </resources>

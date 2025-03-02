@@ -9,11 +9,7 @@
         android:id="@+id/mapFragment"
         android:name="com.teammeditalk.medicalconnect.ui.map.MapFragment"
         tools:layout="@layout/fragment_map"
-        android:label="MapFragment" >
-        <action
-            android:id="@+id/action_mapFragment_to_symptomResultTranslateFragment"
-            app:destination="@id/symptomResultTranslateFragment" />
-    </fragment>
+        android:label="MapFragment" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
@@ -23,9 +19,4 @@
             android:id="@+id/action_homeFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/symptomResultTranslateFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.translate.SymptomResultTranslateFragment"
-        tools:layout="@layout/fragment_sypmtom_result_translate"
-        android:label="SymptomResultTranslateFragment" />
 </navigation>

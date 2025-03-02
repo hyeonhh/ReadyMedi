@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@android:color/transparent"
@@ -23,8 +23,8 @@
         android:layout_marginTop="30dp"
         android:text="@string/pregnancy_possibility_question"
         android:textAppearance="@style/Title2"
-        app:layout_constraintStart_toStartOf="@+id/imageButton7"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
+        app:layout_constraintStart_toStartOf="@+id/btn_back"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
         android:id="@+id/selectBox7"

@@ -5,181 +5,36 @@
     android:id="@+id/question_nav"
     app:startDestination="@id/selectSymptomFragment">
 
-    <fragment
-        tools:layout="@layout/fragment_select_symptom_region"
-        android:id="@+id/selectSymptomRegionFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.region.SelectSymptomRegionFragment"
-        android:label="SelectSymptomRegionFragment" >
-        <action
-            android:id="@+id/action_selectSymptomRegionFragment_to_selectSymptomStartFragment"
-            app:destination="@id/selectSymptomStartFragment" />
-    </fragment>
 
-    <fragment
-        tools:layout="@layout/fragment_select_symptom_start"
-        android:id="@+id/selectSymptomStartFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.start.SelectSymptomStartFragment"
-        android:label="SelectSymptomStartFragment" >
-        <action
-            android:id="@+id/action_selectSymptomStartFragment_to_selectPainTypeFragment"
-            app:destination="@id/selectPainTypeFragment" />
-    </fragment>
-
-
-    <fragment
-        tools:layout="@layout/fragment_select_pain_type"
-        android:id="@+id/selectPainTypeFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.type.SelectPainTypeFragment"
-        android:label="SelectPainTypeFragment" >
-        <action
-            android:id="@+id/action_selectPainTypeFragment_to_selectPainDegreeFragment"
-            app:destination="@id/selectPainDegreeFragment" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_select_pain_degree"
-        android:id="@+id/selectPainDegreeFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.degree.SelectPainDegreeFragment"
-        android:label="SelectPainDegreeFragment" >
-        <action
-            android:id="@+id/action_selectPainDegreeFragment_to_selectDurationFragment"
-            app:destination="@id/selectDurationFragment" />
-        <action
-            android:id="@+id/action_selectPainDegreeFragment_to_anesthesiaHistoryFragment"
-            app:destination="@id/anesthesiaHistoryFragment" />
-        <action
-            android:id="@+id/action_selectPainDegreeFragment_to_pregnancyCheckFragment"
-            app:destination="@id/pregnancyCheckFragment" />
-
-    </fragment>
-
-    <fragment
-        tools:layout="@layout/fragment_select_duration"
-        android:id="@+id/selectDurationFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.duration.SelectDurationFragment"
-        android:label="SelectDurationFragment" >
-        <action
-            android:id="@+id/action_selectDurationFragment_to_selectSymptomEffectFragment"
-            app:destination="@id/selectSymptomEffectFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/selectSymptomEffectFragment"
-        tools:layout="@layout/fragment_select_symptom_worse"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.effect.SelectSymptomWorseFragment"
-        android:label="SelectSymptomEffectFragment" >
-
-        <action
-            android:id="@+id/action_selectSymptomEffectFragment_to_selectSymptomBetterFragment"
-            app:destination="@id/selectSymptomBetterFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/selectOtherSymptomFragment"
-        tools:layout="@layout/fragment_select_other_symptom"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.other.SelectOtherSymptomFragment"
-        android:label="SelectOtherSymptomFragment" >
-        <action
-            android:id="@+id/action_selectOtherSymptomFragment_to_additionalInputFragment"
-            app:destination="@id/additionalInputFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/additionalInputFragment"
-        tools:layout="@layout/fragment_additional_input"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.input.AdditionalInputFragment"
-        android:label="AdditionalInputFragment" >
-        <action
-            android:id="@+id/action_additionalInputFragment_to_loadingFragment"
-            app:destination="@id/loadingFragment" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_symptom_result"
-        android:id="@+id/symptomResultFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.result.SymptomResultFragment"
-        android:label="SymptomResultFragment" />
     <fragment
         android:id="@+id/selectSymptomFragment"
         tools:layout="@layout/fragment_select_symptom"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.symptom.SelectSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.symptom.SelectSymptomFragment"
         android:label="SelectSymptomFragment" >
         <action
-            android:id="@+id/action_selectSymptomFragment_to_selectSymptomRegionFragment"
-            app:destination="@id/selectSymptomRegionFragment" />
+            android:id="@+id/action_selectSymptomFragment_to_inner_nav2"
+            app:destination="@id/inner_nav" />
         <action
-            android:id="@+id/action_selectSymptomFragment_to_selectSymptomStartFragment"
-            app:destination="@id/selectSymptomStartFragment" />
+            android:id="@+id/action_selectSymptomFragment_to_general_nav"
+            app:destination="@id/general_nav" />
+        <action
+            android:id="@+id/action_selectSymptomFragment_to_joint_nav"
+            app:destination="@id/joint_nav" />
+        <action
+            android:id="@+id/action_selectSymptomFragment_to_dental_nav2"
+            app:destination="@id/dental_nav" />
+        <action
+            android:id="@+id/action_selectSymptomFragment_to_woman_nav"
+            app:destination="@id/woman_nav" />
+        <action
+            android:id="@+id/action_selectSymptomFragment_to_inner_nav"
+            app:destination="@id/inner_nav" />
     </fragment>
-    <fragment
-        android:id="@+id/selectSymptomBetterFragment"
-        tools:layout="@layout/fragment_select_symptom_release"
-        android:name="com.teammeditalk.medicalconnect.ui.question.common.effect.SelectSymptomReleaseFragment"
-        android:label="SelectSymptomBetterFragment" >
-        <action
-            android:id="@+id/action_selectSymptomBetterFragment_to_selectOtherSymptomFragment"
-            app:destination="@id/selectOtherSymptomFragment" />
-        <action
-            android:id="@+id/action_selectSymptomBetterFragment_to_injuryHistoryFragment"
-            app:destination="@id/injuryHistoryFragment" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_pregnancy_check"
-        android:id="@+id/pregnancyCheckFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.obgy.PregnancyCheckFragment"
-        android:label="PregnancyCheckFragment" >
-        <action
-            android:id="@+id/action_pregnancyCheckFragment_to_lastPeriodFragment"
-            app:destination="@id/lastPeriodFragment" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_last_period"
-        android:id="@+id/lastPeriodFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.obgy.LastPeriodFragment"
-        android:label="LastPeriodFragment" >
-        <action
-            android:id="@+id/action_lastPeriodFragment_to_cycleRegularityFragment"
-            app:destination="@id/cycleRegularityFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/cycleRegularityFragment"
-        tools:layout="@layout/fragment_cycle_regularity"
-        android:name="com.teammeditalk.medicalconnect.ui.question.obgy.CycleRegularityFragment"
-        android:label="CycleRegularityFragment" >
-        <action
-            android:id="@+id/action_cycleRegularityFragment_to_additionalInputFragment"
-            app:destination="@id/additionalInputFragment" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_anesthesia_history"
-        android:id="@+id/anesthesiaHistoryFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.ds.AnesthesiaHistoryFragment"
-        android:label="AnesthesiaHistoryFragment" >
-        <action
-            android:id="@+id/action_anesthesiaHistoryFragment_to_medicationSideEffectFragment"
-            app:destination="@id/medicationSideEffectFragment" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_side_effect"
-        android:id="@+id/medicationSideEffectFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.ds.MedicationSideEffectFragment"
-        android:label="MedicationSideEffectFragment" >
-        <action
-            android:id="@+id/action_medicationSideEffectFragment_to_additionalInputFragment"
-            app:destination="@id/additionalInputFragment" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/fragment_injury_history"
-        android:id="@+id/injuryHistoryFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.orth.InjuryHistoryFragment"
-        android:label="InjuryHistoryFragment" >
-        <action
-            android:id="@+id/action_injuryHistoryFragment_to_selectOtherSymptomFragment"
-            app:destination="@id/selectOtherSymptomFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loadingFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.loading.LoadingFragment"
-        android:label="LoadingFragment" >
-        <action
-            android:id="@+id/action_loadingFragment_to_symptomResultFragment"
-            app:destination="@id/symptomResultFragment" />
-    </fragment>
+    <include app:graph="@navigation/inner_nav" />
+    <include app:graph="@navigation/dental_nav" />
+    <include app:graph="@navigation/general_nav" />
+    <include app:graph="@navigation/joint_nav" />
+    <include app:graph="@navigation/woman_nav" />
 
 
 </navigation>

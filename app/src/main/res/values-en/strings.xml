@@ -12,7 +12,6 @@
 
     <string name="symptom_region_question">Where does it hurt?</string>
     <string name="symptom_start_question">When did your symptoms begin?</string>
-    <string name="symptom_type_question">How would you describe the type of pain?</string>
     <string name="symptom_degree_question">On a scale of 1-10, how severe is your pain?</string>
     <string name="symptom_duration_question">How long have you been experiencing this pain?</string>
     <string name="symptom_effect_question">What factors improve or worsen your pain?</string>
@@ -284,12 +283,9 @@
 
     <!-- 통증 유형 선택 옵션 -->
     <string name="pain_type_stabbing">Stabbing pain</string>
-    <string name="pain_type_pressing">Pressing/Squeezing pain</string>
     <string name="pain_type_throbbing">Throbbing/Pulsating pain</string>
-    <string name="pain_type_burning">Burning pain</string>
     <string name="pain_type_sharp">Sharp/Cutting pain</string>
     <string name="pain_type_tingling">Tingling/Numbing pain</string>
-    <string name="pain_type_unknown">Not sure</string>
 
     <string name="pain_scale_instruction">Please select a number from 1 to 10</string>
 
@@ -349,16 +345,50 @@
     <string name="hospital_department_obgyn">Obstetrics·Gynecology</string>
 
     <!--  진료과별 버튼  -->
-    <string name="find_nearby_internal">Find nearby Internal Medicine clinics and pharmacies</string>
-    <string name="find_nearby_orthopedic">Find nearby Orthopedic clinics and pharmacies</string>
-    <string name="find_nearby_general">Find nearby General Surgery clinics and pharmacies</string>
-    <string name="find_nearby_dental">Find nearby Dental clinics and pharmacies</string>
-    <string name="find_nearby_obgyn">Find nearby OB/GYN clinics and pharmacies</string>
+    <string name="find_nearby_internal">Find nearby\nInternal Medicine clinics and pharmacies</string>
+    <string name="find_nearby_orthopedic">Find nearby\nOrthopedic clinics and pharmacies</string>
+    <string name="find_nearby_general">Find nearby\nGeneral Surgery clinics and pharmacies</string>
+    <string name="find_nearby_dental">Find nearby\nDental clinics and pharmacies</string>
+    <string name="find_nearby_obgyn">Find nearby\nOB/GYN clinics and pharmacies</string>
 
     <string name="view_report_text">View Report</string>
 
     <string name="symptom_question">What symptoms do you have?</string>
+    <string name="additional_content">Additional content</string>
 
+
+
+    <!-- 치아 관련 증상 -->
+    <string name="chip_toothache">Toothache</string>
+    <string name="chip_cavity">Cavity</string>
+    <string name="chip_tooth_fracture">Tooth Fracture</string>
+    <string name="chip_gum_pain">Gum Pain</string>
+    <string name="chip_jaw_pain">Jaw Pain</string>
+
+    <string name="symptom_type_question">How would you describe your pain?</string>
+    <string name="pain_type_pressing">Pressing pain like something heavy</string>
+    <string name="pain_type_piercing">Sharp, piercing pain</string>
+    <string name="pain_type_pulsating">Throbbing, pulsating pain</string>
+    <string name="pain_type_cramping">Cramping, squeezing pain</string>
+    <string name="pain_type_burning">Burning, hot pain</string>
+    <string name="pain_type_dull">Heavy, dull ache</string>
+    <string name="pain_type_unknown">I\'m not sure</string>
+    <style name="pain_type_itching">Itchy</style>
+
+    <string name="symptom_factor_posture_change">When changing position</string>
+    <string name="symptom_factor_before_meal">Before meals</string>
+    <string name="symptom_factor_after_meal">After meals</string>
+    <string name="symptom_factor_after_waking">Right after waking up</string>
+    <string name="symptom_factor_night_time">During nighttime</string>
+
+    <!-- Symptoms List -->
+    <string name="symptom_diarrhea">Diarrhea</string>
+    <string name="symptom_constipation">Constipation</string>
+    <string name="symptom_arrhythmia">Irregular Heartbeat</string>
+    <string name="symptom_cholesterol">Cholesterol Problems</string>
+    <string name="symptom_blood_pressure">Blood Pressure Issues</string>
+
+    <string name="symptoms_label">Symptoms</string>
 
 
 </resources>

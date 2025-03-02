@@ -12,7 +12,6 @@
 
     <string name="symptom_region_question">痛みのある部位はどこですか？</string>
     <string name="symptom_start_question">症状はいつから始まりましたか？</string>
-    <string name="symptom_type_question">痛みの性質はどのようなものですか？</string>
     <string name="symptom_degree_question">痛みの強さは1～10のどのくらいですか？</string>
     <string name="symptom_duration_question">痛みはどのくらい続いていますか？</string>
     <string name="symptom_effect_question">痛みを和らげる、または悪化させる要因は何ですか？</string>
@@ -284,12 +283,9 @@
 
     <!-- 통증 유형 선택 옵션 -->
     <string name="pain_type_stabbing">刺すような痛み</string>
-    <string name="pain_type_pressing">押されるような痛み</string>
     <string name="pain_type_throbbing">ズキズキする痛み</string>
-    <string name="pain_type_burning">焼けるような痛み</string>
     <string name="pain_type_sharp">鋭い切られるような痛み</string>
     <string name="pain_type_tingling">しびれるような痛み</string>
-    <string name="pain_type_unknown">わかりません</string>
 
     <string name="pain_scale_instruction">1から10までの数字を選んでください</string>
 
@@ -357,6 +353,40 @@
     <string name="view_report_text">レポートを見る</string>
 
     <string name="symptom_question">どんな症状がありますか？</string>
+    <string name="additional_content">追加内容</string>
+
+    <string name="chip_toothache">歯痛</string>
+    <string name="chip_cavity">虫歯</string>
+    <string name="chip_tooth_fracture">歯の破折</string>
+    <string name="chip_gum_pain">歯茎の痛み</string>
+    <string name="chip_jaw_pain">顎関節の痛み</string>
+
+    <string name="symptom_type_question">痛みはどのような感じですか？</string>
+    <string name="pain_type_pressing">重く押さえつけるような痛み</string>
+    <string name="pain_type_piercing">鋭く刺すような痛み</string>
+    <string name="pain_type_pulsating">ドキドキと脈打つような痛み</string>
+    <string name="pain_type_cramping">締め付けるような痛み</string>
+    <string name="pain_type_burning">焼けるような熱い痛み</string>
+    <string name="pain_type_dull">重くて鈍い痛み</string>
+    <string name="pain_type_unknown">よくわかりません</string>
+    <string name="pain_type_itching">かゆみ</string>
+
+
+
+    <string name="symptom_factor_posture_change">姿勢を変えるとき</string>
+    <string name="symptom_factor_before_meal">食事前</string>
+    <string name="symptom_factor_after_meal">食事後</string>
+    <string name="symptom_factor_after_waking">起床直後</string>
+    <string name="symptom_factor_night_time">夜間</string>
+
+    <string name="symptom_diarrhea">下痢</string>
+    <string name="symptom_constipation">便秘</string>
+    <string name="symptom_arrhythmia">不整脈</string>
+    <string name="symptom_cholesterol">コレステロールの問題</string>
+    <string name="symptom_blood_pressure">血圧の問題</string>
+
+    <string name="symptoms_label">症状</string>
+
 
 
 </resources>

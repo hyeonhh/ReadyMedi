@@ -1,29 +1,15 @@
 package com.teammeditalk.medicalconnect.ui.onboarding
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.teammeditalk.medicalconnect.UserHealthInfo
-import com.teammeditalk.medicalconnect.UserInfo
-import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer
-import com.teammeditalk.medicalconnect.data.serializer.UserPreferencesSerializer
+import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
+import com.teammeditalk.medicalconnect.data.serializer.UserPreferencesSerializer.userPreferencesStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
-
-private val Context.userHealthPreferencesStore: DataStore<UserHealthInfo> by dataStore(
-    fileName = "user_prefs.pb",
-    serializer = UserHealthPreferencesSerializer,
-)
-
-private val Context.userPreferencesStore: DataStore<UserInfo> by dataStore(
-    fileName = "user_lang.pb",
-    serializer = UserPreferencesSerializer,
-)
 
 @HiltViewModel
 class OnBoardingViewModel
@@ -38,6 +24,7 @@ class OnBoardingViewModel
                     context.userPreferencesStore.updateData {
                         it
                             .toBuilder()
+                            .clearLanguage()
                             .setLanguage(language)
                             .build()
                     }
@@ -56,6 +43,7 @@ class OnBoardingViewModel
                     context.userHealthPreferencesStore.updateData {
                         it
                             .toBuilder()
+                            .clearDiseaseInfo()
                             .addAllDiseaseInfo(disease)
                             .build()
                     }
@@ -74,6 +62,7 @@ class OnBoardingViewModel
                     context.userHealthPreferencesStore.updateData {
                         it
                             .toBuilder()
+                            .clearFamilyDisease()
                             .addAllFamilyDisease(familyDisease)
                             .build()
                     }
@@ -92,6 +81,7 @@ class OnBoardingViewModel
                     context.userHealthPreferencesStore.updateData {
                         it
                             .toBuilder()
+                            .clearAllergyInfo()
                             .addAllAllergyInfo(allergy)
                             .build()
                     }
@@ -110,6 +100,7 @@ class OnBoardingViewModel
                     context.userHealthPreferencesStore.updateData {
                         it
                             .toBuilder()
+                            .clearDrugInfo()
                             .addAllDrugInfo(drug)
                             .build()
                     }

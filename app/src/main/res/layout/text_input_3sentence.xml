@@ -9,13 +9,13 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:background="@android:color/transparent"
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="312dp"
         android:layout_marginEnd="6dp"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_count"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,39 +23,17 @@
 
         <EditText
             android:id="@+id/edit_text"
-            android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="60dp"
+            android:background="@android:color/transparent"
             android:maxLength="30"
+            android:minHeight="60dp"
             android:text="@string/content_input_hint"
-            android:textColorHint="@color/gray30"
             android:textAppearance="@style/Body2_Normal"
-            android:textColor="@color/gray80" />
+            android:textColor="@color/gray80"
+            android:textColorHint="@color/gray30" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:textColor="@color/gray30"
-        android:id="@+id/tv_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:text="0"
-        android:textAppearance="@style/Body2_Normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView40" />
-
-    <TextView
-        android:textColor="@color/gray30"
-        android:textAppearance="@style/Body2_Normal"
-        android:id="@+id/textView40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="/30"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_count" />
 
 
 

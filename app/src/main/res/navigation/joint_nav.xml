@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/joint_nav"
+    app:startDestination="@id/selectJointSymptomRegionFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_select_symptom_region"
+        android:id="@+id/selectJointSymptomRegionFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
+        android:label="SelectSymptomRegionFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="정형"/>
+        <action
+            android:id="@+id/action_selectJointSymptomRegionFragment_to_selectSymptomStartFragment"
+            app:destination="@id/selectJointSymptomStartFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_symptom_start"
+        android:id="@+id/selectJointSymptomStartFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.start.SelectSymptomStartFragment"
+        android:label="SelectSymptomStartFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="정형"/>
+        <action
+            android:id="@+id/action_selectSymptomStartFragment_to_selectJointPainTypeFragment"
+            app:destination="@id/selectJointPainTypeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_pain_type"
+        android:id="@+id/selectJointPainTypeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.type.SelectJointPainTypeFragment"
+        android:label="SelectJointPainTypeFragment" >
+        <action
+            android:id="@+id/action_selectJointPainTypeFragment_to_selectPainDegreeFragment"
+            app:destination="@id/selectPainDegreeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_pain_degree"
+        android:id="@+id/selectPainDegreeFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.degree.SelectPainDegreeFragment"
+        android:label="SelectPainDegreeFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="정형"/>
+        <action
+            android:id="@+id/action_selectPainDegreeFragment_to_selectDurationFragment2"
+            app:destination="@id/selectJointDurationFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_injury_history"
+        android:id="@+id/injuryHistoryFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.joint.history.InjuryHistoryFragment"
+        android:label="InjuryHistoryFragment" >
+        <action
+            android:id="@+id/action_injuryHistoryFragment_to_selectJointWorseListFragment"
+            app:destination="@id/selectJointWorseListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectJointWorseListFragment"
+        tools:layout="@layout/fragment_select_joint_worse_list"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.worse.SelectJointWorseListFragment"
+        android:label="SelectJointWorseListFragment" >
+        <action
+            android:id="@+id/action_selectJointWorseListFragment_to_selectJointOtherSymptomFragment"
+            app:destination="@id/selectJointOtherSymptomFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/layout_joint_other_symptom"
+        android:id="@+id/selectJointOtherSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.other.SelectJointOtherSymptomFragment"
+        android:label="SelectJointOtherSymptomFragment" >
+        <action
+            android:id="@+id/action_selectJointOtherSymptomFragment_to_additionalInputFragment"
+            app:destination="@id/jointAdditionalInputFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_additional_input"
+        android:id="@+id/jointAdditionalInputFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.input.AdditionalInputFragment"
+        android:label="AdditionalInputFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="정형"/>
+        <action
+            android:id="@+id/action_additionalInputFragment_to_loadingFragment3"
+            app:destination="@id/jointLoadingFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_loading"
+        android:id="@+id/jointLoadingFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.loading.LoadingFragment"
+        android:label="LoadingFragment" >
+        <argument
+            android:name="hospital_type"
+            app:argType="string"
+            android:defaultValue="정형"/>
+        <action
+            android:id="@+id/action_loadingFragment_to_fragmentJointSymptomResult"
+            app:destination="@id/fragmentJointSymptomResult" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_joint_symptom_result"
+        android:id="@+id/fragmentJointSymptomResult"
+        android:name="com.teammeditalk.medicalconnect.ui.question.joint.result.FragmentJointSymptomResult"
+        android:label="FragmentJointSymptomResult" />
+    <argument
+        android:name="hospital_type"
+        app:argType="string"
+        android:defaultValue="정형"/>
+    <fragment
+        tools:layout="@layout/fragment_select_duration"
+        android:id="@+id/selectJointDurationFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.duration.SelectDurationFragment"
+        android:label="SelectDurationFragment" >
+        <action
+            android:id="@+id/action_selectDurationFragment_to_injuryHistoryFragment"
+            app:destination="@id/injuryHistoryFragment" />
+    </fragment>
+</navigation>

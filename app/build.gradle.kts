@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.serialization") version "2.1.0"
     id("com.google.protobuf") version "0.9.4"
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {

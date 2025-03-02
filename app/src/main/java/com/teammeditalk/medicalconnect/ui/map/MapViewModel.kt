@@ -8,7 +8,7 @@ import com.teammeditalk.medicalconnect.data.model.search.SearchLocationItem
 import com.teammeditalk.medicalconnect.data.service.ForeignLanguageService
 import com.teammeditalk.medicalconnect.data.service.KakaoSearchService
 import com.teammeditalk.medicalconnect.data.service.LocationService
-import com.teammeditalk.medicalconnect.ui.ExcelHelper
+import com.teammeditalk.medicalconnect.ui.util.ExcelHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

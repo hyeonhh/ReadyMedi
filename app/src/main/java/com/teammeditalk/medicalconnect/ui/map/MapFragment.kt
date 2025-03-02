@@ -32,7 +32,7 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.data.model.search.SearchLocationItem
 import com.teammeditalk.medicalconnect.databinding.FragmentMapBinding
-import com.teammeditalk.medicalconnect.ui.ExcelHelper
+import com.teammeditalk.medicalconnect.ui.util.ExcelHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

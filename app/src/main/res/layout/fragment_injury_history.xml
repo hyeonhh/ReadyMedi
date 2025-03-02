@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="20dp"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@android:color/transparent"
@@ -22,8 +23,8 @@
         android:layout_marginTop="30dp"
         android:text="@string/previous_injury_treatment_question"
         android:textAppearance="@style/Title2"
-        app:layout_constraintStart_toStartOf="@+id/imageButton6"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+        app:layout_constraintStart_toStartOf="@+id/btn_back"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.TextInput3Sentence
         android:layout_width="match_parent"

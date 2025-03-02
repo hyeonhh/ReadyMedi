@@ -2,6 +2,7 @@ package com.teammeditalk.medicalconnect.ui.question.common.start
 
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
@@ -18,6 +19,7 @@ class SelectSymptomStartFragment :
     DateSelectionListener {
     private val viewModel: QuestionViewModel by activityViewModels()
     private val navController by lazy { findNavController() }
+    private val args by navArgs<SelectSymptomStartFragmentArgs>()
 
     private var selectedDate: String? = null
 
@@ -33,9 +35,26 @@ class SelectSymptomStartFragment :
         binding.btnNext.setOnClickListener {
             if (selectedDate != null) {
                 viewModel.selectSymptomStartDate(selectedDate!!)
-            }
+                when (args.hospitalType) {
+                    "치과" -> {
+                        navController.navigate(R.id.selectDentalPainTypeFragment)
+                    }
 
-            navController.navigate(R.id.selectPainTypeFragment)
+                    "내과" -> {
+                        navController.navigate(R.id.innerSymptomTypeFragment)
+                    }
+                    "정형" -> {
+                        navController.navigate(R.id.selectJointPainTypeFragment)
+                    }
+                    "일반" -> {
+                        navController.navigate(R.id.generalSymptomTypeFragment)
+                    }
+                    "산부" -> {
+                        navController.navigate(R.id.womenSymptomTypeFragment)
+                    }
+                    else -> {}
+                }
+            }
         }
     }
 

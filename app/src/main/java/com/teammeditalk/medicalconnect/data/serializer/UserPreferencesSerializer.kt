@@ -1,7 +1,10 @@
 package com.teammeditalk.medicalconnect.data.serializer
 
+import android.content.Context
 import androidx.datastore.core.CorruptionException
+import androidx.datastore.core.DataStore
 import androidx.datastore.core.Serializer
+import androidx.datastore.dataStore
 import com.google.protobuf.InvalidProtocolBufferException
 import com.teammeditalk.medicalconnect.UserInfo
 import java.io.InputStream
@@ -22,4 +25,9 @@ object UserPreferencesSerializer : Serializer<UserInfo> {
         t: UserInfo,
         output: OutputStream,
     ) = t.writeTo(output)
+
+    val Context.userPreferencesStore: DataStore<UserInfo> by dataStore(
+        fileName = "user_lang.pb",
+        serializer = UserPreferencesSerializer,
+    )
 }

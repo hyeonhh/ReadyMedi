@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/other_symptom_question"
+        android:textAppearance="@style/Title2"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:id="@+id/select_box_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:boxContent="@string/yes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+
+    <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:id="@+id/select_box_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxContent="@string/no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_box_yes" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/CustomButtonStyle2"
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/symptoms_label"
+        android:textAppearance="@style/Body1_Normal"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView43"
+        app:layout_constraintTop_toBottomOf="@+id/select_box_no" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group_symptoms"
+        android:visibility="gone"
+        android:layout_marginTop="19dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView39"
+        tools:layout_editor_absoluteX="20dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_cough"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_cough"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_cavity"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_cavity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_fever"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_fever"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_sore_throat"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_sore_throat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_dyspnea"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_dyspnea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_abdominal_pain"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_abdominal_pain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_heartburn"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_heartburn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_nausea"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_nausea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_diarrhea"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_diarrhea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_constipation"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_constipation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_indigestion"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_indigestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_chest_pain"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_chest_pain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_arrhythmia"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_arrhythmia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_diabetes"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_diabetes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_thyroid"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_thyroid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_cholesterol"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_cholesterol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_symptom_blood_pressure"
+            style="@style/CustomChipStyle"
+            android:text="@string/symptom_blood_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.chip.ChipGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

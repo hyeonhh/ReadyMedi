@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@android:color/transparent"
@@ -23,27 +23,28 @@
         android:layout_marginTop="30dp"
         android:text="@string/anesthesia_history_question"
         android:textAppearance="@style/Title2"
-        app:layout_constraintStart_toStartOf="@+id/imageButton7"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
+        app:layout_constraintStart_toStartOf="@+id/btn_back"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:id="@+id/selectBox7"
+        android:id="@+id/select_box_yes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        app:boxContent="예"
+        app:boxContent="@string/yes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:id="@+id/select_box_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:boxContent="아니요"
+        app:boxContent="@string/no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBox7" />
+        app:layout_constraintTop_toBottomOf="@+id/select_box_yes" />
 
     <Button
         android:id="@+id/btn_next"

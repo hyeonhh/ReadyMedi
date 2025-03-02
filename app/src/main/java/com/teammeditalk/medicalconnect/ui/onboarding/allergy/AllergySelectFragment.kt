@@ -3,9 +3,9 @@ package com.teammeditalk.medicalconnect.ui.onboarding.allergy
 import android.content.Intent
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
-import com.teammeditalk.medicalconnect.MainActivity
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentAllergySelectBinding
+import com.teammeditalk.medicalconnect.ui.main.MainActivity
 import com.teammeditalk.medicalconnect.ui.onboarding.OnBoardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

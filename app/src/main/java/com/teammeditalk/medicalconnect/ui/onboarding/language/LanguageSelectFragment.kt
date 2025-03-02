@@ -6,7 +6,6 @@ import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentLanguageSelectBinding
-import com.teammeditalk.medicalconnect.ui.language.LanguageUtil
 import com.teammeditalk.medicalconnect.ui.onboarding.OnBoardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -57,6 +56,14 @@ class LanguageSelectFragment :
                 selectBoxEnglish.updateSelected(false)
                 selectBoxJapanese.updateSelected(false)
                 selectedLanguage = "zh"
+                binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.GONE
+            }
+            selectBoxKorean.setOnClickListener {
+                selectBoxChinese.updateSelected(false)
+                selectBoxEnglish.updateSelected(false)
+                selectBoxJapanese.updateSelected(false)
+                selectBoxKorean.updateSelected(true)
+                selectedLanguage = "ko"
                 binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.GONE
             }
         }

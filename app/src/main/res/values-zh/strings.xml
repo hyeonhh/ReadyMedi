@@ -12,7 +12,6 @@
 
     <string name="symptom_region_question">哪里疼痛？</string>
     <string name="symptom_start_question">症状是什么时候开始的？</string>
-    <string name="symptom_type_question">疼痛的性质是怎样的？</string>
     <string name="symptom_degree_question">疼痛程度是多少？请用1-10表示</string>
     <string name="symptom_duration_question">疼痛持续了多长时间？</string>
     <string name="symptom_effect_question">有什么因素会减轻或加重疼痛？</string>
@@ -284,12 +283,9 @@
 
     <!-- 통증 유형 선택 옵션 -->
     <string name="pain_type_stabbing">刺痛</string>
-    <string name="pain_type_pressing">压迫性疼痛</string>
     <string name="pain_type_throbbing">跳痛/搏动性疼痛</string>
-    <string name="pain_type_burning">灼烧感</string>
     <string name="pain_type_sharp">锐痛/割痛</string>
     <string name="pain_type_tingling">刺痛/麻痛</string>
-    <string name="pain_type_unknown">不确定</string>
 
     <string name="pain_scale_instruction">请选择1到10之间的数字</string>
 
@@ -356,6 +352,43 @@
     <string name="view_report_text">查看报告</string>
     <string name="symptom_question">你有什么症状？</string>
 
+
+    <string name="additional_content">附加内容</string>
+
+    <!-- 치아 관련 -->
+    <string name="chip_toothache">牙痛</string>
+    <string name="chip_cavity">蛀牙</string>
+    <string name="chip_tooth_fracture">牙齿断裂</string>
+    <string name="chip_gum_pain">牙龈疼痛</string>
+    <string name="chip_jaw_pain">颌关节疼痛</string>
+
+    <string name="symptom_type_question">您的疼痛感觉如何？</string>
+    <string name="pain_type_pressing">压迫性疼痛</string>
+    <string name="pain_type_piercing">尖锐刺痛</string>
+    <string name="pain_type_pulsating">跳动性疼痛</string>
+    <string name="pain_type_cramping">绞痛，挤压感</string>
+    <string name="pain_type_burning">灼烧感，发热痛</string>
+    <string name="pain_type_dull">沉重钝痛</string>
+    <string name="pain_type_unknown">我不确定</string>
+
+    <!-- Pain Types -->
+    <string name="pain_type_itching">瘙痒</string>
+
+    <string name="symptom_factor_posture_change">改变姿势时</string>
+    <string name="symptom_factor_before_meal">餐前</string>
+    <string name="symptom_factor_after_meal">餐后</string>
+    <string name="symptom_factor_after_waking">刚起床时</string>
+    <string name="symptom_factor_night_time">夜间</string>
+
+    <string name="symptom_diarrhea">腹泻</string>
+    <string name="symptom_constipation">便秘</string>
+    <string name="symptom_arrhythmia">心律不齐</string>
+    <string name="symptom_cholesterol">胆固醇问题</string>
+    <string name="symptom_blood_pressure">血压问题</string>
+
+
+
+    <string name="symptoms_label">症状</string>
 
 
 </resources>
