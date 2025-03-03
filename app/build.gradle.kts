@@ -11,6 +11,15 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+configurations.all {
+    resolutionStrategy {
+        // force와 exclude 구문을 수정
+        force("com.google.protobuf:protobuf-javalite:3.21.12")
+
+        // 충돌하는 의존성 제외
+        exclude(group = "com.google.protobuf", module = "protobuf-java")
+    }
+}
 android {
     namespace = "com.teammeditalk.medicalconnect"
     compileSdk = 35
@@ -53,6 +62,11 @@ kapt {
     correctErrorTypes = true
 }
 dependencies {
+    implementation("com.google.protobuf:protobuf-javalite:3.21.12")
+
+    // firestore
+    implementation(libs.firebase.firestore)
+
     implementation("com.github.skydoves:balloon:1.4.6")
 
     implementation("com.google.android.material:material:1.12.0")
@@ -126,7 +140,7 @@ dependencies {
     implementation("com.google.mlkit:translate:17.0.3")
 
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
     implementation("com.google.firebase:firebase-analytics")
 
     // Timber
