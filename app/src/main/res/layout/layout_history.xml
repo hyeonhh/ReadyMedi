@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/button_edit_user_health_info"
+        android:id="@+id/user_health_info"
         layout="@layout/button_edit_user_health_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,13 +24,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <include
+        android:id="@+id/user_symptom_history"
         layout="@layout/button_show_user_symptom_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_edit_user_health_info" />
+        app:layout_constraintTop_toBottomOf="@+id/user_health_info" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

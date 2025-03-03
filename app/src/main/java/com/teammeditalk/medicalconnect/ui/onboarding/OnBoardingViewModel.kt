@@ -111,4 +111,55 @@ class OnBoardingViewModel
                 }
             }
         }
+
+        fun saveUserDrugDuration(duration: String) {
+            viewModelScope.launch {
+                try {
+                    context.userHealthPreferencesStore.updateData {
+                        it
+                            .toBuilder()
+                            .clearDuration()
+                            .setDuration(duration)
+                            .build()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Timber.e("failed to save drug duration :${e.message}")
+                }
+            }
+        }
+
+        fun saveUserDrugCount(count: String) {
+            viewModelScope.launch {
+                try {
+                    context.userHealthPreferencesStore.updateData {
+                        it
+                            .toBuilder()
+                            .clearCount()
+                            .setCount(count.toInt())
+                            .build()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Timber.e("failed to save drug count :${e.message}")
+                }
+            }
+        }
+
+        fun saveUserDrugStartDate(startDate: String) {
+            viewModelScope.launch {
+                try {
+                    context.userHealthPreferencesStore.updateData {
+                        it
+                            .toBuilder()
+                            .clearStartDate()
+                            .setStartDate(startDate)
+                            .build()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Timber.e("failed to save drug start :${e.message}")
+                }
+            }
+        }
     }

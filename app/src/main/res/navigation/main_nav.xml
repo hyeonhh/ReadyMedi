@@ -18,5 +18,34 @@
         <action
             android:id="@+id/action_homeFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myHealthInfoFragment"
+            app:destination="@id/myHealthInfoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mySymptomHistoryFragment"
+            app:destination="@id/mySymptomHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
+    <fragment
+        tools:layout="@layout/fragment_my_health_info"
+        android:id="@+id/myHealthInfoFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.my.health.MyHealthInfoFragment"
+        android:label="MyHealthInfoFragment" />
+    <fragment
+        tools:layout="@layout/fragment_my_symptom_history"
+        android:id="@+id/mySymptomHistoryFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.my.symptom.MySymptomHistoryFragment"
+        android:label="MySymptomHistoryFragment" >
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_question_nav"
+            app:destination="@id/question_nav" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        tools:layout="@layout/fragment_user"
+        android:name="com.teammeditalk.medicalconnect.ui.user.UserFragment"
+        android:label="UserFragment" />
+    <include app:graph="@navigation/question_nav" />
 </navigation>

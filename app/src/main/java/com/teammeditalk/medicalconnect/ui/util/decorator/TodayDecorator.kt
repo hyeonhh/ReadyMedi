@@ -1,4 +1,4 @@
-package com.teammeditalk.medicalconnect.ui.question.common.start.decorator
+package com.teammeditalk.medicalconnect.ui.util.decorator
 
 import android.content.Context
 import android.text.style.ForegroundColorSpan

@@ -80,8 +80,8 @@ class QuestionViewModel
                             familyDiseaseList = it.familyDiseaseList,
                             allergyList = it.allergyInfoList,
                             drugList = it.drugInfoList,
-                            drugTakingDuration = "",
-                            drugTakingCount = 0,
+                            drugTakingDuration = it.duration,
+                            drugTakingCount = it.count,
                         )
                 }
             }

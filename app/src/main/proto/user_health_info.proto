@@ -15,7 +15,13 @@ message UserHealthInfo {
   repeated string familyDisease = 2;
   // 유저가 복용중인 약물
   repeated string drugInfo = 3;
+  // 복용 중인 약물 기간
+  string duration = 4;
+  // 복용 중인 약물 횟수
+  int32 count = 5;
+  // 복용 시작 날짜
+  string startDate = 6;
   // 유저의 알레르기 여부
-  repeated string allergyInfo = 4;
+  repeated string allergyInfo = 7;
 
 }
