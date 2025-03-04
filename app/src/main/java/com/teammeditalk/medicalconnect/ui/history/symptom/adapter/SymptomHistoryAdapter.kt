@@ -7,13 +7,26 @@ import com.teammeditalk.medicalconnect.data.model.history.SymptomHistory
 import com.teammeditalk.medicalconnect.databinding.ItemSymptomHistoryBinding
 import timber.log.Timber
 
+interface ClickListener {
+    fun onClick(
+        timeStamp: String,
+        hospitalType: String,
+    )
+}
+
 class SymptomHistoryAdapter : RecyclerView.Adapter<SymptomHistoryAdapter.SymptomHistoryViewHolder>() {
     private val list: MutableList<SymptomHistory> = mutableListOf()
+
+    private var listener: ClickListener? = null
 
     fun setList(newList: List<SymptomHistory>) {
         list.addAll(newList)
         Timber.d("list :$list")
         notifyDataSetChanged()
+    }
+
+    fun setOnItemClickListener(listener: ClickListener) {
+        this.listener = listener
     }
 
     inner class SymptomHistoryViewHolder(
@@ -24,6 +37,9 @@ class SymptomHistoryAdapter : RecyclerView.Adapter<SymptomHistoryAdapter.Symptom
             binding.tvSymptomTitle.text = data.symptomTitle
             binding.tvSymptomContent.text = data.symptomContent
             binding.tvDate.text = data.timeStamp
+            binding.layout.setOnClickListener {
+                listener?.onClick(data.timeStamp, hospitalType = data.hospitalType)
+            }
         }
     }
 

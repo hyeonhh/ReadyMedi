@@ -62,6 +62,7 @@ class MySymptomHistoryViewModel
                             if (result != null) {
                                 list.add(
                                     SymptomHistory(
+                                        hospitalType = "치과",
                                         symptomContent = result.symptomContent,
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
@@ -74,6 +75,7 @@ class MySymptomHistoryViewModel
                             if (result != null) {
                                 list.add(
                                     SymptomHistory(
+                                        hospitalType = "일반",
                                         symptomContent = result.symptomContent,
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
@@ -86,6 +88,7 @@ class MySymptomHistoryViewModel
                             if (result != null) {
                                 list.add(
                                     SymptomHistory(
+                                        hospitalType = "정형",
                                         symptomContent = result.symptomContent,
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
@@ -98,6 +101,7 @@ class MySymptomHistoryViewModel
                             if (result != null) {
                                 list.add(
                                     SymptomHistory(
+                                        hospitalType = "산부",
                                         symptomContent = result.symptomContent,
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
@@ -110,6 +114,7 @@ class MySymptomHistoryViewModel
                             if (result != null) {
                                 list.add(
                                     SymptomHistory(
+                                        hospitalType = "일반",
                                         symptomContent = result.symptomContent,
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,

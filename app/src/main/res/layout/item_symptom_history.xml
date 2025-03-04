@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_marginVertical="10dp"
     android:padding="18dp"
+    android:id="@+id/layout"
     android:background="@drawable/rectangle_16dp"
     android:layout_height="wrap_content">
 

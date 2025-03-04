@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentMySymptomHistoryBinding
+import com.teammeditalk.medicalconnect.ui.history.symptom.adapter.ClickListener
 import com.teammeditalk.medicalconnect.ui.history.symptom.adapter.SymptomHistoryAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -25,6 +26,57 @@ class MySymptomHistoryFragment :
         super.onBindLayout()
         binding.recyclerView.adapter = adapter
 
+        adapter.setOnItemClickListener(
+            object : ClickListener {
+                override fun onClick(
+                    timeStamp: String,
+                    hospitalType: String,
+                ) {
+                    when (hospitalType) {
+                        "치과" -> {
+                            val action =
+                                MySymptomHistoryFragmentDirections.actionMySymptomHistoryFragmentToDentalSymptomFragment(
+                                    timeStamp,
+                                    viewModel.userId.value,
+                                )
+                            navController.navigate(action)
+                        }
+                        "내과" -> {
+                            val action =
+                                MySymptomHistoryFragmentDirections.actionMySymptomHistoryFragmentToInnerSymptomFragment(
+                                    timeStamp,
+                                    viewModel.userId.value,
+                                )
+                            navController.navigate(action)
+                        }
+                        "일반" -> {
+                            val action =
+                                MySymptomHistoryFragmentDirections.actionMySymptomHistoryFragmentToGeneralSymptomFragment(
+                                    timeStamp,
+                                    viewModel.userId.value,
+                                )
+                            navController.navigate(action)
+                        }
+                        "정형" -> {
+                            val action =
+                                MySymptomHistoryFragmentDirections.actionMySymptomHistoryFragmentToJointSymptomFragment(
+                                    timeStamp,
+                                    viewModel.userId.value,
+                                )
+                            navController.navigate(action)
+                        }
+                        "산부" -> {
+                            val action =
+                                MySymptomHistoryFragmentDirections.actionMySymptomHistoryFragmentToJointSymptomFragment(
+                                    timeStamp,
+                                    viewModel.userId.value,
+                                )
+                            navController.navigate(action)
+                        }
+                    }
+                }
+            },
+        )
         lifecycleScope.launch {
             viewModel.history.collectLatest {
                 if (it.isNotEmpty()) {

@@ -41,6 +41,24 @@
         <action
             android:id="@+id/action_mySymptomHistoryFragment_to_question_nav"
             app:destination="@id/question_nav" />
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_fragmentJointSymptomResult2"
+            app:destination="@id/fragmentJointSymptomResult" />
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_jointSymptomFragment"
+            app:destination="@id/jointSymptomFragment" />
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_womenSymptomFragment"
+            app:destination="@id/womenSymptomFragment" />
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_innerSymptomFragment"
+            app:destination="@id/innerSymptomFragment" />
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_generalSymptomFragment"
+            app:destination="@id/generalSymptomFragment" />
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_dentalSymptomFragment"
+            app:destination="@id/dentalSymptomFragment" />
     </fragment>
     <fragment
         android:id="@+id/userFragment"
@@ -48,4 +66,64 @@
         android:name="com.teammeditalk.medicalconnect.ui.user.UserFragment"
         android:label="UserFragment" />
     <include app:graph="@navigation/question_nav" />
+    <fragment
+        android:id="@+id/fragmentJointSymptomResult"
+        android:name="com.teammeditalk.medicalconnect.ui.question.joint.result.FragmentJointSymptomResult"
+        android:label="FragmentJointSymptomResult" />
+    <fragment
+        tools:layout="@layout/fragment_dental_symtom_result"
+        android:id="@+id/dentalSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.history.symptom.result.dental.DentalSymptomFragment"
+        android:label="DentalSymptomFragment" >
+        <argument
+            android:name="timeStamp"
+            app:argType="string"/>
+        <argument
+            android:name="uid"
+            app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/generalSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.history.symptom.result.genral.GeneralSymptomFragment"
+        android:label="GeneralSymptomFragment" >
+        <argument
+            android:name="timeStamp"
+            app:argType="string"/>
+        <argument
+            android:name="uid"
+            app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/innerSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.history.symptom.result.inner.InnerSymptomFragment"
+        android:label="InnerSymptomFragment" >
+        <argument
+            android:name="timeStamp"
+            app:argType="string"/>
+        <argument
+            android:name="uid"
+            app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/womenSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.history.symptom.result.women.WomenSymptomFragment"
+        android:label="WomenSymptomFragment" >
+        <argument
+            android:name="timeStamp"
+            app:argType="string"/>
+        <argument
+            android:name="uid"
+            app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/jointSymptomFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.history.symptom.result.joint.JointSymptomFragment"
+        android:label="JointSymptomFragment" >
+        <argument
+            android:name="timeStamp"
+            app:argType="string"/>
+        <argument
+            android:name="uid"
+            app:argType="string"/>
+    </fragment>
 </navigation>

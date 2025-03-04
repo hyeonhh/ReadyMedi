@@ -170,7 +170,7 @@ class QuestionViewModel
             if (_userId.value != "") {
                 db
                     .collection("symptom_result_${_userId.value}")
-                    .document(timeStamp.toString())
+                    .document(toDate.toString())
                     .set(_dentalResult.value)
                     .addOnSuccessListener {
                         Timber.d("success to save dental response")
@@ -206,7 +206,7 @@ class QuestionViewModel
             if (_userId.value != "") {
                 db
                     .collection("symptom_result_${_userId.value}")
-                    .document(timeStamp.toString())
+                    .document(toDate.toString())
                     .set(_jointResult.value)
                     .addOnSuccessListener {
                         Timber.d("success to save dental response")
@@ -241,7 +241,7 @@ class QuestionViewModel
             if (_userId.value != "") {
                 db
                     .collection("symptom_result_${_userId.value}")
-                    .document(timeStamp.toString())
+                    .document(toDate.toString())
                     .set(_generalResult.value)
                     .addOnSuccessListener {
                         Timber.d("success to save dental response")
@@ -277,7 +277,7 @@ class QuestionViewModel
             if (_userId.value != "") {
                 db
                     .collection("symptom_result_${_userId.value}")
-                    .document(timeStamp.toString())
+                    .document(toDate.toString())
                     .set(_womenResult.value)
                     .addOnSuccessListener {
                         Timber.d("success to save dental response")
@@ -312,7 +312,7 @@ class QuestionViewModel
             if (_userId.value != "") {
                 db
                     .collection("symptom_result_${_userId.value}")
-                    .document(timeStamp.toString())
+                    .document(toDate.toString())
                     .set(_innerResult.value)
                     .addOnSuccessListener {
                         Timber.d("success to save dental response")
