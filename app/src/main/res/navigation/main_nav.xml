@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_homeFragment_to_userFragment"
             app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allFragment2"
+            app:destination="@id/allFragment2" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_my_health_info"
@@ -126,4 +129,16 @@
             android:name="uid"
             app:argType="string"/>
     </fragment>
+    <fragment
+        android:id="@+id/allFragment2"
+        android:name="com.teammeditalk.medicalconnect.ui.all.AllFragment"
+        android:label="AllFragment" >
+        <action
+            android:id="@+id/action_allFragment2_to_freeHospitalFragment2"
+            app:destination="@id/freeHospitalFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/freeHospitalFragment2"
+        android:name="com.teammeditalk.medicalconnect.ui.all.FreeHospitalFragment"
+        android:label="FreeHospitalFragment" />
 </navigation>
