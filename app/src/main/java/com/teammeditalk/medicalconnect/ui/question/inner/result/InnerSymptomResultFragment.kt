@@ -3,12 +3,17 @@ package com.teammeditalk.medicalconnect.ui.question.inner.result
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentInnerSymptomResultBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class InnerSymptomResultFragment :
@@ -21,7 +26,22 @@ class InnerSymptomResultFragment :
     private fun showSymptomResult() {
         lifecycleScope.launch {
             viewModel.additionalInput.collectLatest {
-                binding.layoutAdditionalInput.tvInput.text = it
+                val options =
+                    TranslatorOptions
+                        .Builder()
+                        .setSourceLanguage(TranslateLanguage.KOREAN)
+                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .build()
+                val koreanEnglishTranslator = Translation.getClient(options)
+
+                koreanEnglishTranslator
+                    .translate(it)
+                    .addOnSuccessListener {
+                        binding.layoutAdditionalInput.tvInput.text = it
+                    }.addOnFailureListener { exception ->
+                        exception.printStackTrace()
+                        Timber.d("Failed to translate :${exception.message}")
+                    }
             }
         }
         lifecycleScope.launch {
@@ -74,6 +94,13 @@ class InnerSymptomResultFragment :
     override fun onBindLayout() {
         super.onBindLayout()
 
+        with(binding) {
+            btnBack.setOnClickListener { navController.popBackStack() }
+            btnClose.setOnClickListener { navController.navigate(R.id.homeFragment) }
+            hospitalType.btnGoToMap?.setOnClickListener {
+                navController.navigate(R.id.mapFragment)
+            }
+        }
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
                 with(binding) {

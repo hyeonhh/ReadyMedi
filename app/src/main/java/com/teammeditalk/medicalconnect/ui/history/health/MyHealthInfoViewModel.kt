@@ -1,4 +1,4 @@
-package com.teammeditalk.medicalconnect.ui.my.health
+package com.teammeditalk.medicalconnect.ui.history.health
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

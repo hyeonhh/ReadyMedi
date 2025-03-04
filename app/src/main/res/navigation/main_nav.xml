@@ -31,12 +31,12 @@
     <fragment
         tools:layout="@layout/fragment_my_health_info"
         android:id="@+id/myHealthInfoFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.my.health.MyHealthInfoFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.history.health.MyHealthInfoFragment"
         android:label="MyHealthInfoFragment" />
     <fragment
         tools:layout="@layout/fragment_my_symptom_history"
         android:id="@+id/mySymptomHistoryFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.my.symptom.MySymptomHistoryFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.history.symptom.MySymptomHistoryFragment"
         android:label="MySymptomHistoryFragment" >
         <action
             android:id="@+id/action_mySymptomHistoryFragment_to_question_nav"

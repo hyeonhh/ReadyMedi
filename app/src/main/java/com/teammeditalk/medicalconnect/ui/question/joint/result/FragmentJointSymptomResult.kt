@@ -2,12 +2,18 @@ package com.teammeditalk.medicalconnect.ui.question.joint.result
 
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentJointSymptomResultBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class FragmentJointSymptomResult :
@@ -19,7 +25,22 @@ class FragmentJointSymptomResult :
     private fun showSymptomResult() {
         lifecycleScope.launch {
             viewModel.additionalInput.collectLatest {
-                binding.layoutAdditionalInput.tvInput.text = it
+                val options =
+                    TranslatorOptions
+                        .Builder()
+                        .setSourceLanguage(TranslateLanguage.KOREAN)
+                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .build()
+                val koreanEnglishTranslator = Translation.getClient(options)
+
+                koreanEnglishTranslator
+                    .translate(it)
+                    .addOnSuccessListener {
+                        binding.layoutAdditionalInput.tvInput.text = it
+                    }.addOnFailureListener { exception ->
+                        exception.printStackTrace()
+                        Timber.d("Failed to translate :${exception.message}")
+                    }
             }
         }
         lifecycleScope.launch {
@@ -70,14 +91,31 @@ class FragmentJointSymptomResult :
 
         lifecycleScope.launch {
             viewModel.injuryHistory.collectLatest {
-                binding.layoutInjury.tvContent.text = it
+                val options =
+                    TranslatorOptions
+                        .Builder()
+                        .setSourceLanguage(TranslateLanguage.KOREAN)
+                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .build()
+                val koreanEnglishTranslator = Translation.getClient(options)
+
+                koreanEnglishTranslator
+                    .translate(it)
+                    .addOnSuccessListener {
+                        binding.layoutInjury.tvContent.text = it
+                    }.addOnFailureListener { exception ->
+                        exception.printStackTrace()
+                        Timber.d("Failed to translate :${exception.message}")
+                    }
             }
         }
     }
 
     override fun onBindLayout() {
         super.onBindLayout()
-
+        binding.hospitalType.btnGoToMap.setOnClickListener { findNavController().navigate(R.id.mapFragment) }
+        binding.btnBack.setOnClickListener { findNavController().navigate(R.id.jointAdditionalInputFragment) }
+        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
         showSymptomResult()
         viewModel.saveJointResponse()
     }

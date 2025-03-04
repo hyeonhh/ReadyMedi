@@ -27,17 +27,20 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:visibility="gone"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_symptom_history"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="40dp"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView55" />
+        app:layout_constraintTop_toBottomOf="@+id/textView55"
+        tools:listitem="@layout/item_symptom_history" />
 
     <include
+        android:visibility="gone"
         android:id="@+id/empty_view"
         layout="@layout/view_empty_symptom_history"
         android:layout_width="match_parent"

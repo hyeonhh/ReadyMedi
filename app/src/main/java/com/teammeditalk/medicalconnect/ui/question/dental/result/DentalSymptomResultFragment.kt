@@ -2,6 +2,10 @@ package com.teammeditalk.medicalconnect.ui.question.dental.fragment.result
 
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import com.skydoves.balloon.BalloonSizeSpec
 import com.skydoves.balloon.createBalloon
 import com.teammeditalk.medicalconnect.R
@@ -11,6 +15,7 @@ import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DentalSymptomResultFragment :
@@ -39,8 +44,25 @@ class DentalSymptomResultFragment :
 
     private fun showSymptomResult() {
         lifecycleScope.launch {
-            viewModel.additionalInput.collectLatest {
-                binding.layoutAdditionalInput.tvInput.text = it
+            lifecycleScope.launch {
+                viewModel.additionalInput.collectLatest {
+                    val options =
+                        TranslatorOptions
+                            .Builder()
+                            .setSourceLanguage(TranslateLanguage.KOREAN)
+                            .setTargetLanguage(TranslateLanguage.ENGLISH)
+                            .build()
+                    val koreanEnglishTranslator = Translation.getClient(options)
+
+                    koreanEnglishTranslator
+                        .translate(it)
+                        .addOnSuccessListener {
+                            binding.layoutAdditionalInput.tvInput.text = it
+                        }.addOnFailureListener { exception ->
+                            exception.printStackTrace()
+                            Timber.d("Failed to translate :${exception.message}")
+                        }
+                }
             }
             viewModel.selectedSymptom.collectLatest {
                 binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
@@ -105,5 +127,11 @@ class DentalSymptomResultFragment :
         lifecycleScope.launch {
             viewModel.saveDentalResponse()
         }
+        binding.hospitalType.btnGoToMap.setOnClickListener {
+            findNavController().navigate(R.id.mapFragment)
+        }
+
+        binding.btnBack.setOnClickListener { findNavController().navigate(R.id.dentalAdditionalInputFragment) }
+        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
     }
 }

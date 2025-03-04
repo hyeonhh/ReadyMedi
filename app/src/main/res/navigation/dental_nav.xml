@@ -107,7 +107,17 @@
         tools:layout="@layout/fragment_dental_symtom_result"
         android:id="@+id/dentalSymptomResultFragment"
         android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.result.DentalSymptomResultFragment"
-        android:label="DentalSymptomResultFragment" />
+        android:label="DentalSymptomResultFragment" >
+        <action
+            android:id="@+id/action_dentalSymptomResultFragment_to_mapFragment2"
+            app:destination="@id/mapFragment2" />
+        <action
+            android:id="@+id/action_dentalSymptomResultFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+        <action
+            android:id="@+id/action_dentalSymptomResultFragment_to_dentalAdditionalInputFragment"
+            app:destination="@id/dentalAdditionalInputFragment" />
+    </fragment>
 
     <fragment
         tools:layout="@layout/fragment_loading"
@@ -149,4 +159,12 @@
             android:id="@+id/action_dentalSelectOtherSymptomFragment_to_dentalSelectAnesthesiaHistoryFragment"
             app:destination="@id/selectAnesthesiaHistoryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment2"
+        android:name="com.teammeditalk.medicalconnect.ui.map.MapFragment"
+        android:label="MapFragment" />
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
+        android:label="HomeFragment" />
 </navigation>

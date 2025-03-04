@@ -62,6 +62,8 @@ kapt {
     correctErrorTypes = true
 }
 dependencies {
+    // lottie
+    implementation("com.airbnb.android:lottie:6.5.2")
     implementation("com.google.protobuf:protobuf-javalite:3.21.12")
 
     // firestore

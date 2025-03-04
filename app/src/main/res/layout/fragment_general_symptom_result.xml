@@ -13,7 +13,7 @@
 
         <ImageButton
             android:layout_margin="20dp"
-            android:id="@+id/imageButton4"
+            android:id="@+id/btn_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
@@ -22,6 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
+            android:id="@+id/btn_close"
             android:layout_margin="20dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -38,7 +39,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
         <TextView
             android:id="@+id/textView9"
@@ -74,8 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_switch" />
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <include
                 android:id="@+id/layout_current_symptom"
@@ -98,11 +98,11 @@
                 app:layout_constraintTop_toBottomOf="@id/layout_current_symptom" />
 
             <include
+                android:id="@+id/hospital_type"
                 layout="@layout/layout_general_hospital_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_additional_input"
                 />

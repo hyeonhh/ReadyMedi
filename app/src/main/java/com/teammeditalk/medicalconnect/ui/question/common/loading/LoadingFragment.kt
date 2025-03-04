@@ -12,6 +12,7 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentLoadingBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -45,21 +46,24 @@ class LoadingFragment :
                     .translate(content)
                     .addOnSuccessListener {
                         Timber.d("success to translate :$it")
-                        when (args.hospitalType) {
-                            "내과" -> {
-                                navController.navigate(R.id.innerSymptomResultFragment)
-                            }
-                            "치과" -> {
-                                navController.navigate(R.id.dentalSymptomResultFragment)
-                            }
-                            "일반" -> {
-                                navController.navigate(R.id.generalSymptomResultFragment)
-                            }
-                            "정형" -> {
-                                navController.navigate(R.id.fragmentJointSymptomResult)
-                            }
-                            "산부" -> {
-                                navController.navigate(R.id.womenSymptomResultFragment)
+                        lifecycleScope.launch {
+                            delay(3000)
+                            when (args.hospitalType) {
+                                "내과" -> {
+                                    navController.navigate(R.id.innerSymptomResultFragment)
+                                }
+                                "치과" -> {
+                                    navController.navigate(R.id.dentalSymptomResultFragment)
+                                }
+                                "일반" -> {
+                                    navController.navigate(R.id.generalSymptomResultFragment)
+                                }
+                                "정형" -> {
+                                    navController.navigate(R.id.fragmentJointSymptomResult)
+                                }
+                                "산부" -> {
+                                    navController.navigate(R.id.womenSymptomResultFragment)
+                                }
                             }
                         }
                     }.addOnFailureListener {
