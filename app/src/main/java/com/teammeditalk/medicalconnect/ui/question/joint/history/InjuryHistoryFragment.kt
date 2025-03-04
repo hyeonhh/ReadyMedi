@@ -18,6 +18,7 @@ class InjuryHistoryFragment : BaseFragment<FragmentInjuryHistoryBinding>(Fragmen
 
         binding.btnBack.setOnClickListener { navController.popBackStack() }
         binding.btnNext.setOnClickListener {
+            viewModel.setJointInjuryHistory(binding.textInput.getContent())
             navController.navigate(R.id.selectJointWorseListFragment)
         }
     }

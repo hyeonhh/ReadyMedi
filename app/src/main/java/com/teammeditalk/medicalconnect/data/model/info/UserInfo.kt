@@ -5,6 +5,6 @@ data class HealthInfo(
     val allergyList: List<String> = emptyList(),
     val familyDiseaseList: List<String> = emptyList(),
     val drugList: List<String> = emptyList(),
-    val drugTakingDuration: String = "",
+    val drugTakingDuration: String? = "",
     val drugTakingCount: Int = 0,
 )

@@ -2,6 +2,7 @@ package com.teammeditalk.medicalconnect.ui.onboarding.allergy
 
 import android.content.Intent
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentAllergySelectBinding
@@ -19,6 +20,8 @@ class AllergySelectFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        binding.btnBack.setOnClickListener { findNavController().popBackStack() }
 
         binding.btnNext.setOnClickListener {
             with(binding.layoutFoodAllergy.chipGroup) {

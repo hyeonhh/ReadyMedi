@@ -122,6 +122,7 @@ class OnBoardingViewModel
                             .setDuration(duration)
                             .build()
                     }
+                    Timber.d("success to save drug duration :$duration")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.e("failed to save drug duration :${e.message}")
@@ -139,6 +140,7 @@ class OnBoardingViewModel
                             .setCount(count.toInt())
                             .build()
                     }
+                    Timber.d("success to save drug count :$count")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.e("failed to save drug count :${e.message}")
@@ -156,6 +158,7 @@ class OnBoardingViewModel
                             .setStartDate(startDate)
                             .build()
                     }
+                    Timber.d("success to save drug start :$startDate")
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Timber.e("failed to save drug start :${e.message}")

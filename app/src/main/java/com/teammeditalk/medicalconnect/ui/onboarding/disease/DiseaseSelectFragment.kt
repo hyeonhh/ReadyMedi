@@ -35,6 +35,7 @@ class DiseaseSelectFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
+        binding.btnBack.setOnClickListener { navController.popBackStack() }
         binding.btnNext.setOnClickListener {
             with(binding.layoutCancer.chipGroup) {
                 val checkedChipList = checkedChipIds

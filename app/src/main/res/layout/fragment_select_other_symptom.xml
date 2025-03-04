@@ -60,4 +60,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_symptom_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="증상"
+        android:textAppearance="@style/Body1_Normal"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView43"
+        app:layout_constraintTop_toBottomOf="@+id/select_box_no" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:visibility="gone"
+        android:id="@+id/chip_group"
+        android:layout_marginTop="19dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_symptom_title"
+        tools:layout_editor_absoluteX="20dp">
+
+        <com.google.android.material.chip.Chip
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="부종"/>
+
+        <com.google.android.material.chip.Chip
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="경련"/>
+
+        <com.google.android.material.chip.Chip
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="화끈거리는 느낌"/>
+
+        <com.google.android.material.chip.Chip
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="관절이 뻣뻣한 느낌"/>
+
+        <com.google.android.material.chip.Chip
+            style="@style/CustomChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="빨갛게 부어오름"/>
+    </com.google.android.material.chip.ChipGroup>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

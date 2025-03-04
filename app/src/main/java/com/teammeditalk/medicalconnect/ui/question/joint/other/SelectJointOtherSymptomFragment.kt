@@ -1,8 +1,10 @@
 package com.teammeditalk.medicalconnect.ui.question.common.other
 
+import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSelectOtherSymptomBinding
@@ -26,6 +28,8 @@ class SelectJointOtherSymptomFragment :
             selectBoxYes.setOnClickListener {
                 (it as SelectBox).updateSelected(true)
                 selectBoxNo.updateSelected(false)
+                tvSymptomTitle.visibility = View.VISIBLE
+                chipGroup.visibility = View.VISIBLE
             }
 
             selectBoxNo.setOnClickListener {
@@ -38,6 +42,14 @@ class SelectJointOtherSymptomFragment :
             }
 
             btnNext.setOnClickListener {
+                with(chipGroup) {
+                    for (id in this.checkedChipIds) {
+                        val chip = findViewById<Chip>(id)
+                        selectedOtherSymptomList.add(chip.text.toString())
+                    }
+                }
+
+                viewModel.setOtherSymptomList(selectedOtherSymptomList)
                 // todo : 동반 증상 저장하기
                 val bundle = bundleOf("hospital_type" to "정형")
                 navController.navigate(R.id.jointAdditionalInputFragment, bundle)

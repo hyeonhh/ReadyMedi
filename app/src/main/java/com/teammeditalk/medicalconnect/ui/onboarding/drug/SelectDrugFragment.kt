@@ -23,13 +23,12 @@ class SelectDrugFragment :
     private val viewModel: OnBoardingViewModel by activityViewModels()
     private var selectedDate: String? = null
     private var chipIds: List<Int> = emptyList()
+    private val navController by lazy { findNavController() }
 
     override fun onBindLayout() {
         super.onBindLayout()
 
-        if (chipIds.isNotEmpty()) {
-            binding.layoutDrugDuration.layout.visibility = View.VISIBLE
-        }
+        binding.btnBack.setOnClickListener { navController.popBackStack() }
 
         binding.layoutDrugStart.drugExposedDropDownMenu.setOnClickListener {
             val calendarBottomSheet = CalendarBottomSheetFragment.newInstance()
@@ -44,18 +43,37 @@ class SelectDrugFragment :
                     val chip = findViewById<Chip>(it)
                     drugList.add(chip.text.toString())
                 }
-                if (selectedDate != null) viewModel.saveUserDrugStartDate(selectedDate!!)
-                viewModel.saveUserDrugDuration(
-                    binding.layoutDrugDuration.layoutDrugDuration.editText.text
-                        .toString(),
-                )
-                viewModel.saveUserDrugCount(
-                    binding.layoutDrugDuration.layoutDrugInputCount.editText.text
-                        .toString(),
-                )
             }
+            if (chipIds.isEmpty()) {
+                binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.GONE
+                saveDrugInfo()
+                navController.navigate(R.id.allergySelectFragment)
+            } else if (
+                binding.layoutDrugDuration.layoutDrugDuration.editText.text
+                    .isEmpty() or
+                binding.layoutDrugDuration.layoutDrugInputCount.editText.text
+                    .isEmpty() or
+                binding.layoutDrugStart.drugExposedDropDownMenu
+                    .getTvTitle()
+                    .isEmpty()
+            ) {
+                binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.VISIBLE
+            } else {
+                binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.GONE
+                saveDrugInfo()
+                navController.navigate(R.id.allergySelectFragment)
+            }
+        }
+    }
+
+    private fun saveDrugInfo() {
+        val duration = binding.layoutDrugDuration.layoutDrugDuration.editText.text
+        val count = binding.layoutDrugDuration.layoutDrugInputCount.editText.text
+        viewModel.saveUserDrugDuration(duration.toString())
+        viewModel.saveUserDrugCount(count.toString())
+        if (selectedDate != null) {
+            viewModel.saveUserDrugStartDate(selectedDate!!)
             viewModel.saveUserDrug(drugList)
-            findNavController().navigate(R.id.allergySelectFragment)
         }
     }
 

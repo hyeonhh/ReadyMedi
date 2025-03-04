@@ -26,7 +26,15 @@ class MyHealthInfoFragment :
             lifecycleScope.launch {
                 viewModel.userHealthInfo.collectLatest {
                     layoutUserDisease.tvDisease.text =
-                        if (it.diseaseList.isEmpty()) "해당 없음" else "${it.diseaseList[0]}외 1"
+                        if (it.diseaseList.isEmpty()) {
+                            "해당 없음"
+                        } else if (it.diseaseList.size >
+                            1
+                        ) {
+                            "${it.diseaseList[0]}외 1"
+                        } else {
+                            it.diseaseList[0]
+                        }
 
                     layoutFamilyDisease.tvFamilyDisease.text =
                         if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(",", "", "")

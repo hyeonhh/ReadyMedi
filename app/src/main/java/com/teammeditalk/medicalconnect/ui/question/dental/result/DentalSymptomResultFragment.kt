@@ -39,7 +39,51 @@ class DentalSymptomResultFragment :
 
     private fun showSymptomResult() {
         lifecycleScope.launch {
+            viewModel.additionalInput.collectLatest {
+                binding.layoutAdditionalInput.tvInput.text = it
+            }
             viewModel.selectedSymptom.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
+                binding.layoutCurrentSymptom.tvSymptomContent.text = it.second
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.selectedDate.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomStartDate.text = it
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.selectedDegree.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomDegree.text = it.toString()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.selectedType.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomType.text = it.toString()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.selectedWorseList.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomWorseList.text = it.toString()
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.selectedOtherList.collectLatest {
+                binding.layoutCurrentSymptom.tvOtherSymptom.text = it.toString()
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.anesthesiaHistory.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomAnesHistory.text = it.toString()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.sideEffect.collectLatest {
+                binding.layoutDentalSideEffectInput.tvSideEffect.text = it
             }
         }
         lifecycleScope.launch {
@@ -58,5 +102,8 @@ class DentalSymptomResultFragment :
         super.onBindLayout()
         showToolTip()
         showSymptomResult()
+        lifecycleScope.launch {
+            viewModel.saveDentalResponse()
+        }
     }
 }

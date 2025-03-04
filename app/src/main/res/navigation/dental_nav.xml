@@ -2,24 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/selectSymptomRegionFragment"
-    android:id="@+id/dental_nav">
+    android:id="@+id/dental_nav"
+    app:startDestination="@id/selectDentalSymptomStartFragment">
 
 
-    <fragment
-        tools:layout="@layout/fragment_select_symptom_region"
-        android:id="@+id/selectSymptomRegionFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
-        android:label="SelectDentalSymptomRegionFragment" >
-        <argument
-            android:name="hospital_type"
-            app:argType="string"
-            android:defaultValue="치과"/>
-
-        <action
-            android:id="@+id/navigateToStartFromRegion"
-            app:destination="@id/selectDentalSymptomStartFragment" />
-    </fragment>
     <fragment
         tools:layout="@layout/fragment_select_symptom_start"
         android:id="@+id/selectDentalSymptomStartFragment"

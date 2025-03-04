@@ -20,6 +20,8 @@ class ExposedDropdownMenu(
         initAttrs()
     }
 
+    fun getTvTitle(): String = menuTitle.text.toString()
+
     fun setTvTitle(title: String) {
         menuTitle.text = title
         menuTitle.setTextColor(R.color.black)

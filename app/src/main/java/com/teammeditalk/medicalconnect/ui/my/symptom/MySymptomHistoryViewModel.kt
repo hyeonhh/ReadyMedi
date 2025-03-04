@@ -7,4 +7,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MySymptomHistoryViewModel
     @Inject
-    constructor() : ViewModel()
+    constructor() : ViewModel() {
+        // todo : 파이어베이스 연결하기
+    }

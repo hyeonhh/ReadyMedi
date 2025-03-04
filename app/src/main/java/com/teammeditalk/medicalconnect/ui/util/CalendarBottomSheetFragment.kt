@@ -39,7 +39,11 @@ class CalendarBottomSheetFragment : BottomSheetDialogFragment() {
         val decorator = TodayDecorator(requireContext())
         binding.calendarView.addDecorator(decorator)
 
+        binding.btnDelete.setOnClickListener {
+            dismiss()
+        }
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
+            if (selectedDate != date) binding.calendarView.removeDecorators()
             selectedDate = date
             val clickedDecorator = ClickDateDecorator(context = requireContext(), clickedDate = date)
             binding.calendarView.addDecorator(clickedDecorator)

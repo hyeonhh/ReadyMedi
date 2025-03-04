@@ -29,7 +29,7 @@
 
     <!-- 임신 관련 -->
     <string name="pregnancy_possibility_question">임신 가능성이 있거나\n현재 임신 중인가요?</string>
-    <string name="menstruation_date_question">가장 마지막 생리는 언제인가요?</string>
+    <string name="menstruation_date_question">가장 최근 마지막 생리가 시작된\n첫 날은 언제인가요?</string>
     <string name="menstruation_regularity_question">월경 주기가 규칙적인 편인가요?</string>
     <string name="cancer">암질환</string>
     <string name="stomach_cancer">위암</string>

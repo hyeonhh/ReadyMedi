@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:id="@+id/selectBox7"
+        android:id="@+id/select_box_yes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -37,13 +37,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:id="@+id/select_box_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:boxContent="아니요"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBox7" />
+        app:layout_constraintTop_toBottomOf="@+id/select_box_yes" />
 
     <Button
         android:id="@+id/btn_next"

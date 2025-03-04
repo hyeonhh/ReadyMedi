@@ -6,10 +6,12 @@
     android:layout_height="wrap_content">
 
     <ImageButton
-        android:background="@android:color/transparent"
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_x"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +22,7 @@
         app:mcv_selectionColor = "@color/blue50"
         app:layout_constraintTop_toBottomOf="@id/btn_delete"
         app:mcv_tileSize="53dp"
-        app:mcv_showOtherDates="all"
+        app:mcv_showOtherDates="out_of_range"
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="370dp"

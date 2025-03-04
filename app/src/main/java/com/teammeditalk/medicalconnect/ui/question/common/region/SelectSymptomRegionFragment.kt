@@ -26,10 +26,6 @@ class SelectSymptomRegionFragment :
         }
         binding.btnNext.setOnClickListener {
             when (args.hospitalType) {
-                "치과" -> {
-                    val bundle = bundleOf("hospital_type" to "치과")
-                    navController.navigate(R.id.selectDentalSymptomStartFragment, bundle)
-                }
                 "내과" -> {
                     val bundle = bundleOf("hospital_type" to "내과")
                     navController.navigate(R.id.selectInnerStartFragment, bundle)

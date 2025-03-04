@@ -23,7 +23,6 @@ class DentalSelectPainTypeFragment :
 
         with(binding.layoutConstraint) {
             for (child in this.children) {
-                // todo : 중복 선택을 허용해야할까??
                 child.setOnClickListener {
                     it.isSelected = !it.isSelected
                     (child as SelectBox).updateSelected(it.isSelected)

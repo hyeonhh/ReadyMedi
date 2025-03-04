@@ -1,0 +1,9 @@
+syntax ="proto3";
+
+option java_package = "com.teammeditalk.medicalconnect";
+option java_multiple_files = true;
+
+message UserAuthInfo{
+  string uid = 1;
+  string profile = 2;
+}

@@ -2,6 +2,7 @@ package com.teammeditalk.medicalconnect.ui.auth
 
 import android.content.Intent
 import android.credentials.GetCredentialResponse
+import androidx.activity.viewModels
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
@@ -29,11 +30,18 @@ class AuthActivity :
     ) {
     private lateinit var auth: FirebaseAuth
     private lateinit var credentialManager: CredentialManager
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onBindLayout() {
         super.onBindLayout()
 
         auth = Firebase.auth
+        val currentUser = auth.currentUser
+        // todo : 이건 언제까지 유지되나?
+//        if (currentUser != null) {
+//            val intent = Intent(this, OnBoardingActivity::class.java)
+//            startActivity(intent)
+//        }
 
         val googleIdOption: GetGoogleIdOption =
             GetGoogleIdOption
@@ -69,8 +77,7 @@ class AuthActivity :
     }
 
     private fun handleSignIn(result: androidx.credentials.GetCredentialResponse) {
-        val credential = result.credential
-        when (credential) {
+        when (val credential = result.credential) {
             is CustomCredential -> {
                 if (credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
                     try {
@@ -79,9 +86,18 @@ class AuthActivity :
                                 .createFrom(credential.data)
 
                         firebaseAuthWithGoogle(googleIdTokenCredential.idToken)
-                        val user = auth.currentUser
-
-                        Timber.d("user :$user")
+                        val uid = auth.uid
+                        val currentUser = auth.currentUser
+                        lifecycleScope.launch {
+                            if (uid != null) {
+                                viewModel.saveUid(uid)
+                            }
+                            if (currentUser != null) {
+                                val photoUrl = auth.currentUser!!.photoUrl
+                                viewModel.saveProfileUrl(photoUrl.toString())
+                            }
+                        }
+                        Timber.d("uid :$uid")
                     } catch (e: GoogleIdTokenParsingException) {
                         e.printStackTrace()
                         Timber.d("Received an invalid google id token response :${e.message}")

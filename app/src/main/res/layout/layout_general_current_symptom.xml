@@ -38,7 +38,7 @@
 
     <TextView
         android:textAlignment="textEnd"
-        android:id="@+id/tv_symptom_category"
+        android:id="@+id/tv_symptom_title"
         android:layout_marginStart="10dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

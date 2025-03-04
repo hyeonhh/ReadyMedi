@@ -33,12 +33,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
+    <TextView
+        android:id="@+id/tv_sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="여러 증상이 있다면\n대표 증상 1개만 선택해주세요"
+        app:layout_constraintStart_toStartOf="@+id/tv_symptom"
+        app:layout_constraintTop_toBottomOf="@+id/tv_symptom" />
+
 <!--    감기/ 호흡기 증상 -->
     <include
         android:layout_marginTop="40dp"
         android:id="@+id/layout_respiratory"
         app:layout_constraintStart_toStartOf="@id/tv_symptom"
-        app:layout_constraintTop_toBottomOf="@id/tv_symptom"
+        app:layout_constraintTop_toBottomOf="@id/tv_sub_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/layout_respiratory"/>

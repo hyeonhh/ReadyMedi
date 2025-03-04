@@ -19,6 +19,7 @@ class DentalSelectSideEffectFragment :
         super.onBindLayout()
 
         binding.btnNext.setOnClickListener {
+            viewModel.setDentalSideEffect(binding.textInput.getContent())
             val action = DentalSelectSideEffectFragmentDirections.actionDentalSelectSideEffectFragmentToAdditionalInputFragment("치과")
             navController.navigate(action)
         }

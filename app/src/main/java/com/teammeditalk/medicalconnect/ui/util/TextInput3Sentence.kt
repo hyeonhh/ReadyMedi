@@ -18,8 +18,6 @@ class TextInput3Sentence(
 
     fun getContent(): String = binding.editText.text.toString()
 
-    // todo : 텍스트 수 전달하기
-
     private fun initView() {
         val layoutInflater = LayoutInflater.from(context)
         binding = TextInput3sentenceBinding.inflate(layoutInflater, this, false)

@@ -15,13 +15,25 @@ class CycleRegularityFragment :
     ) {
     private val viewModel: QuestionViewModel by activityViewModels()
     private val navController by lazy { findNavController() }
+    private var isSelected: String = ""
 
     override fun onBindLayout() {
         super.onBindLayout()
 
         with(binding) {
+            selectBoxNo.setOnClickListener {
+                isSelected = selectBoxNo.getContent()
+                selectBoxNo.updateSelected(true)
+                selectBoxYes.updateSelected(false)
+            }
+            selectBoxYes.setOnClickListener {
+                isSelected = selectBoxYes.getContent()
+                selectBoxNo.updateSelected(false)
+                selectBoxYes.updateSelected(true)
+            }
             btnBack.setOnClickListener { navController.popBackStack() }
             btnNext.setOnClickListener {
+                viewModel.setRegularity(isSelected)
                 navController.navigate(R.id.womenOtherSymptomFragment)
             }
         }

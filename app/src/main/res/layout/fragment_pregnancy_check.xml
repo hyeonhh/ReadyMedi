@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:id="@+id/selectBox7"
+        android:id="@+id/selectBox_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -37,16 +37,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
-        android:id="@+id/selectBox8"
+        android:id="@+id/selectBox_yes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:boxContent="임신 가능성 있음"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBox7" />
+        app:layout_constraintTop_toBottomOf="@+id/selectBox_no" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:id="@+id/selectBox_current"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -54,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBox8" />
+        app:layout_constraintTop_toBottomOf="@+id/selectBox_yes" />
 
     <Button
         android:id="@+id/btn_next"

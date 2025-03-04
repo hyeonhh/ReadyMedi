@@ -17,11 +17,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textAlignment="textStart"
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="@string/menstruation_date_question"
         android:textSize="24sp"
         android:textStyle="bold"
