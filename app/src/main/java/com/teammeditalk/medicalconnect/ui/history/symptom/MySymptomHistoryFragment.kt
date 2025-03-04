@@ -1,5 +1,6 @@
 package com.teammeditalk.medicalconnect.ui.history.symptom
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -27,6 +28,8 @@ class MySymptomHistoryFragment :
         lifecycleScope.launch {
             viewModel.history.collectLatest {
                 if (it.isNotEmpty()) {
+                    binding.lottie.visibility = View.GONE
+                    binding.recyclerView.visibility = View.VISIBLE
                     adapter.setList(it)
                 }
             }
