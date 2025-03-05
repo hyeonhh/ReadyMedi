@@ -1,5 +1,6 @@
 package com.teammeditalk.medicalconnect.ui.question.woman.result
 
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -43,29 +44,6 @@ class WomenSymptomResultFragment :
                     }
             }
         }
-        lifecycleScope.launch {
-            viewModel.selectedSymptom.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
-                binding.layoutCurrentSymptom.tvSymptomContent.text = it.second
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedDate.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomStartDate.text = it
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedDegree.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomDegree.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedType.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomType.text = it.toString()
-            }
-        }
 
         lifecycleScope.launch {
             viewModel.selectedWorseList.collectLatest {
@@ -73,9 +51,9 @@ class WomenSymptomResultFragment :
             }
         }
         lifecycleScope.launch {
-//            viewModel.selectedOtherList.collectLatest {
-//                binding.layoutCurrentSymptom.tvOtherSymptom.text = it.toString()
-//            }
+            viewModel.selectedOtherList.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomOtherList.text = it.toString()
+            }
         }
 
         lifecycleScope.launch {
@@ -88,26 +66,28 @@ class WomenSymptomResultFragment :
                 }
             }
         }
-
-        lifecycleScope.launch {
-            viewModel.selectedWomenLastDate.collectLatest {
-                binding.layoutCurrentSymptom.tvLastPeriod.text = it
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedIsAvailablePregnancy.collectLatest {
-                binding.layoutCurrentSymptom.tvPregnancy.text = it
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedRegularity.collectLatest {
-                binding.layoutCurrentSymptom.tvReguarlity.text = it
-            }
-        }
     }
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        binding.layoutCurrentSymptom.viewModel = viewModel
+        binding.layoutCurrentSymptom.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.btnSwitch.setOnCheckedChangeListener { view, isChecked ->
+            if (isChecked) {
+                binding.layout.visibility = View.GONE
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+            } else {
+                binding.layout.visibility = View.VISIBLE
+                binding.layoutHospitalVersion.visibility = View.GONE
+            }
+        }
+        binding.layoutWomenHospitalType.btnGoToMap.setOnClickListener {
+            findNavController().navigate(R.id.action_womenSymptomResultFragment_to_mapFragment6)
+        }
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.womenAdditionalInputFragment) }
         binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
         showSymptomResult()

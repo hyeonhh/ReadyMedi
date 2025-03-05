@@ -45,6 +45,12 @@ class InnerSymptomResultFragment :
             }
         }
         lifecycleScope.launch {
+            viewModel.selectedRegion.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomRegion.text = it
+            }
+        }
+
+        lifecycleScope.launch {
             viewModel.selectedSymptom.collectLatest {
                 binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
                 binding.layoutCurrentSymptom.tvSymptomContent.text = it.second
@@ -98,7 +104,7 @@ class InnerSymptomResultFragment :
             btnBack.setOnClickListener { navController.popBackStack() }
             btnClose.setOnClickListener { navController.navigate(R.id.homeFragment) }
             hospitalType.btnGoToMap?.setOnClickListener {
-                navController.navigate(R.id.mapFragment)
+                navController.navigate(R.id.action_innerSymptomResultFragment_to_mapFragment4)
             }
         }
         lifecycleScope.launch {

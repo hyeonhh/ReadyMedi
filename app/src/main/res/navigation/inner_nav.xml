@@ -43,7 +43,17 @@
         tools:layout="@layout/fragment_inner_symptom_result"
         android:id="@+id/innerSymptomResultFragment"
         android:name="com.teammeditalk.medicalconnect.ui.question.inner.result.InnerSymptomResultFragment"
-        android:label="InnerSymptomResultFragment" />
+        android:label="InnerSymptomResultFragment" >
+        <action
+            android:id="@+id/action_innerSymptomResultFragment_to_mapFragment4"
+            app:destination="@id/mapFragment4" />
+        <action
+            android:id="@+id/action_innerSymptomResultFragment_to_innerAdditionalInputFragment"
+            app:destination="@id/innerAdditionalInputFragment" />
+        <action
+            android:id="@+id/action_innerSymptomResultFragment_to_homeFragment4"
+            app:destination="@id/homeFragment4" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_select_duration"
         android:id="@+id/selectInnerDurationFragment"
@@ -124,6 +134,14 @@
             android:id="@+id/action_innerAdditionalInputFragment_to_innerLoadingFragment"
             app:destination="@id/innerLoadingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment4"
+        android:name="com.teammeditalk.medicalconnect.ui.map.MapFragment"
+        android:label="MapFragment" />
+    <fragment
+        android:id="@+id/homeFragment4"
+        android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
+        android:label="HomeFragment" />
 
 
 </navigation>

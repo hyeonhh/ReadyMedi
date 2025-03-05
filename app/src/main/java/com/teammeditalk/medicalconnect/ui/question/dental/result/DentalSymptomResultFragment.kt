@@ -69,6 +69,7 @@ class DentalSymptomResultFragment :
                 binding.layoutCurrentSymptom.tvSymptomContent.text = it.second
             }
         }
+
         lifecycleScope.launch {
             viewModel.selectedDate.collectLatest {
                 binding.layoutCurrentSymptom.tvSymptomStartDate.text = it
@@ -128,7 +129,7 @@ class DentalSymptomResultFragment :
             viewModel.saveDentalResponse()
         }
         binding.hospitalType.btnGoToMap.setOnClickListener {
-            findNavController().navigate(R.id.mapFragment)
+            findNavController().navigate(R.id.action_dentalSymptomResultFragment_to_mapFragment2)
         }
 
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.dentalAdditionalInputFragment) }

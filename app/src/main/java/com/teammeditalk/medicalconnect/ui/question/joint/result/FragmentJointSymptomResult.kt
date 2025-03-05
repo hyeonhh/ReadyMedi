@@ -44,6 +44,12 @@ class FragmentJointSymptomResult :
             }
         }
         lifecycleScope.launch {
+            viewModel.selectedRegion.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomRegion.text = it
+            }
+        }
+
+        lifecycleScope.launch {
             viewModel.selectedSymptom.collectLatest {
                 binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
                 binding.layoutCurrentSymptom.tvSymptomContent.text = it.second
@@ -113,7 +119,11 @@ class FragmentJointSymptomResult :
 
     override fun onBindLayout() {
         super.onBindLayout()
-        binding.hospitalType.btnGoToMap.setOnClickListener { findNavController().navigate(R.id.mapFragment) }
+        binding.hospitalType.btnGoToMap.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_fragmentJointSymptomResult_to_mapFragment5,
+            )
+        }
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.jointAdditionalInputFragment) }
         binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
         showSymptomResult()

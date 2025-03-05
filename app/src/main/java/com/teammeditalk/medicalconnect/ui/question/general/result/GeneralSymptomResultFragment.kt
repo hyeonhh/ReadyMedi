@@ -43,6 +43,13 @@ class GeneralSymptomResultFragment :
                     }
             }
         }
+
+        lifecycleScope.launch {
+            viewModel.selectedRegion.collectLatest {
+                binding.layoutCurrentSymptom.tvSymptomRegion.text = it
+            }
+        }
+
         lifecycleScope.launch {
             viewModel.selectedSymptom.collectLatest {
                 binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
@@ -96,7 +103,7 @@ class GeneralSymptomResultFragment :
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.generalAdditionalInputFragment) }
         binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
         binding.hospitalType.btnGoToMap.setOnClickListener {
-            findNavController().navigate(R.id.mapFragment)
+            findNavController().navigate(R.id.action_generalSymptomResultFragment_to_mapFragment3)
         }
 
         viewModel.saveGeneralResponse()

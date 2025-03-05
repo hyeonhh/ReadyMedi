@@ -100,7 +100,17 @@
         tools:layout="@layout/fragment_women_symptom_result"
         android:id="@+id/womenSymptomResultFragment"
         android:name="com.teammeditalk.medicalconnect.ui.question.woman.result.WomenSymptomResultFragment"
-        android:label="WomenSymptomResultFragment" />
+        android:label="WomenSymptomResultFragment" >
+        <action
+            android:id="@+id/action_womenSymptomResultFragment_to_mapFragment6"
+            app:destination="@id/mapFragment6" />
+        <action
+            android:id="@+id/action_womenSymptomResultFragment_to_homeFragment6"
+            app:destination="@id/homeFragment6" />
+        <action
+            android:id="@+id/action_womenSymptomResultFragment_to_womenAdditionalInputFragment"
+            app:destination="@id/womenAdditionalInputFragment" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_women_other_symptom"
         android:id="@+id/womenOtherSymptomFragment"
@@ -116,7 +126,23 @@
         android:name="com.teammeditalk.medicalconnect.ui.question.common.duration.SelectDurationFragment"
         android:label="SelectDurationFragment" >
         <action
-            android:id="@+id/action_selectDurationFragment_to_pregnancyCheckFragment"
+            android:id="@+id/action_selectWomenDurationFragment_to_womenSymptomWorseListFragment"
+            app:destination="@id/womenSymptomWorseListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment6"
+        android:name="com.teammeditalk.medicalconnect.ui.map.MapFragment"
+        android:label="MapFragment" />
+    <fragment
+        android:id="@+id/homeFragment6"
+        android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/womenSymptomWorseListFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.inner.worse.WomenSymptomWorseListFragment"
+        android:label="WomenSymptomWorseListFragment" >
+        <action
+            android:id="@+id/action_womenSymptomWorseListFragment_to_pregnancyCheckFragment"
             app:destination="@id/pregnancyCheckFragment" />
     </fragment>
 </navigation>

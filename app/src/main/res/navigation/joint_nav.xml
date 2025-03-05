@@ -110,7 +110,17 @@
         tools:layout="@layout/fragment_joint_symptom_result"
         android:id="@+id/fragmentJointSymptomResult"
         android:name="com.teammeditalk.medicalconnect.ui.question.joint.result.FragmentJointSymptomResult"
-        android:label="FragmentJointSymptomResult" />
+        android:label="FragmentJointSymptomResult" >
+        <action
+            android:id="@+id/action_fragmentJointSymptomResult_to_mapFragment5"
+            app:destination="@id/mapFragment5" />
+        <action
+            android:id="@+id/action_fragmentJointSymptomResult_to_jointAdditionalInputFragment"
+            app:destination="@id/jointAdditionalInputFragment" />
+        <action
+            android:id="@+id/action_fragmentJointSymptomResult_to_homeFragment5"
+            app:destination="@id/homeFragment5" />
+    </fragment>
     <argument
         android:name="hospital_type"
         app:argType="string"
@@ -124,4 +134,12 @@
             android:id="@+id/action_selectDurationFragment_to_injuryHistoryFragment"
             app:destination="@id/injuryHistoryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment5"
+        android:name="com.teammeditalk.medicalconnect.ui.map.MapFragment"
+        android:label="MapFragment" />
+    <fragment
+        android:id="@+id/homeFragment5"
+        android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
+        android:label="HomeFragment" />
 </navigation>
