@@ -6,4 +6,5 @@ option java_multiple_files = true;
 message UserAuthInfo{
   string uid = 1;
   string profile = 2;
+  string nickName = 3;
 }

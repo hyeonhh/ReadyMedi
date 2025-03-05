@@ -22,11 +22,15 @@ class AuthViewModel
             }
         }
 
-        suspend fun saveProfileUrl(url: String) {
+        suspend fun saveProfileUrl(
+            url: String,
+            nickName: String,
+        ) {
             context.userAuthPreferencesStore.updateData {
                 it
                     .toBuilder()
                     .setProfile(url)
+                    .setNickName(nickName)
                     .build()
             }
         }

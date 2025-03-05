@@ -62,6 +62,11 @@ kapt {
     correctErrorTypes = true
 }
 dependencies {
+
+    implementation("com.caverock:androidsvg:1.4")
+
+    // coil
+
     // lottie
     implementation("com.airbnb.android:lottie:6.5.2")
     implementation("com.google.protobuf:protobuf-javalite:3.21.12")

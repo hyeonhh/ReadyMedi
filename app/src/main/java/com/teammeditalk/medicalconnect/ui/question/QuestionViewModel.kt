@@ -216,6 +216,10 @@ class QuestionViewModel
             }
         }
 
+        fun setRegion(content: String) {
+            _selectedRegion.value = content
+        }
+
         // todo : 파베에 일반외과 데이터 저장
         fun saveGeneralResponse() {
             val timeStamp = System.currentTimeMillis()

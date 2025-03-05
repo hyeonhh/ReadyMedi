@@ -36,12 +36,7 @@ class AuthActivity :
         super.onBindLayout()
 
         auth = Firebase.auth
-        val currentUser = auth.currentUser
-        // todo : 이건 언제까지 유지되나?
-//        if (currentUser != null) {
-//            val intent = Intent(this, OnBoardingActivity::class.java)
-//            startActivity(intent)
-//        }
+        credentialManager = CredentialManager.create(this)
 
         val googleIdOption: GetGoogleIdOption =
             GetGoogleIdOption
@@ -94,7 +89,8 @@ class AuthActivity :
                             }
                             if (currentUser != null) {
                                 val photoUrl = auth.currentUser!!.photoUrl
-                                viewModel.saveProfileUrl(photoUrl.toString())
+                                val nickName = auth.currentUser!!.displayName
+                                viewModel.saveProfileUrl(photoUrl.toString(), nickName.toString())
                             }
                         }
                         Timber.d("uid :$uid")
