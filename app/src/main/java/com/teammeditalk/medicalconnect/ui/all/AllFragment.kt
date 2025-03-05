@@ -19,5 +19,9 @@ class AllFragment :
         binding.tvFreeHospital.setOnClickListener {
             navController.navigate(R.id.freeHospitalFragment2)
         }
+
+        binding.tvFreeCash.setOnClickListener {
+            navController.navigate(R.id.freeHospitalPolicyFragment)
+        }
     }
 }

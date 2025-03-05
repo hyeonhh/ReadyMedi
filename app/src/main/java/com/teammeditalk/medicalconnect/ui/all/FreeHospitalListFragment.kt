@@ -5,7 +5,7 @@ import com.teammeditalk.medicalconnect.databinding.FragmentFreeHospitalBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FreeHospitalFragment :
+class FreeHospitalListFragment :
     BaseFragment<FragmentFreeHospitalBinding>(
         FragmentFreeHospitalBinding::inflate,
     ) {

@@ -135,15 +135,25 @@
             app:argType="string"/>
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_all"
         android:id="@+id/allFragment2"
         android:name="com.teammeditalk.medicalconnect.ui.all.AllFragment"
         android:label="AllFragment" >
         <action
             android:id="@+id/action_allFragment2_to_freeHospitalFragment2"
             app:destination="@id/freeHospitalFragment2" />
+        <action
+            android:id="@+id/action_allFragment2_to_freeHospitalPolicyFragment"
+            app:destination="@id/freeHospitalPolicyFragment" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_free_hospital"
         android:id="@+id/freeHospitalFragment2"
-        android:name="com.teammeditalk.medicalconnect.ui.all.FreeHospitalFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.all.FreeHospitalListFragment"
         android:label="FreeHospitalFragment" />
+    <fragment
+        tools:layout="@layout/fragment_free_hospital_policy"
+        android:id="@+id/freeHospitalPolicyFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.all.FreeHospitalPolicyFragment"
+        android:label="FreeHospitalPolicyFragment" />
 </navigation>
