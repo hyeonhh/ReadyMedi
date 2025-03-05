@@ -6,7 +6,7 @@
     <item android:id="@+id/joint"
         android:title="정형외과"/>
 
-    <item android:id="@+id/general3"
+    <item android:id="@+id/general"
         android:title="일반외과"/>
 
     <item android:id="@+id/tooth"

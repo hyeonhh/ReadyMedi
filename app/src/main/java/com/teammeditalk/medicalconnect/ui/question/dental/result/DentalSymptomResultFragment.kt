@@ -129,7 +129,8 @@ class DentalSymptomResultFragment :
             viewModel.saveDentalResponse()
         }
         binding.hospitalType.btnGoToMap.setOnClickListener {
-            findNavController().navigate(R.id.action_dentalSymptomResultFragment_to_mapFragment2)
+            val action = DentalSymptomResultFragmentDirections.actionDentalSymptomResultFragmentToMapFragment2("치과")
+            findNavController().navigate(action)
         }
 
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.dentalAdditionalInputFragment) }

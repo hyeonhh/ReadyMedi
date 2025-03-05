@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.kakao.vectormap.KakaoMap
@@ -52,6 +53,8 @@ class MapFragment :
     private var hospitalLabelList: MutableList<Label> = mutableListOf()
     private var pharLabelList: MutableList<Label> = mutableListOf()
     private var layer: LabelLayer? = null
+
+    private val args by navArgs<MapFragmentArgs>()
 
     // 요청할 위치 권한 목록입니다.
     private val locationPermissions =
@@ -111,6 +114,37 @@ class MapFragment :
         val menuRes = R.menu.hospital_type_menu
         popup.menuInflater.inflate(menuRes, popup.menu)
         popup.show()
+
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.inner -> {
+                    binding.hospitalTypeDropDownMenu.setText("내과")
+                    getFilteredHospitalNearByMe("내과")
+                    true
+                }
+                R.id.tooth -> {
+                    binding.hospitalTypeDropDownMenu.setText("치과")
+                    getFilteredHospitalNearByMe("치과")
+                    true
+                }
+                R.id.joint -> {
+                    binding.hospitalTypeDropDownMenu.setText("정형외과")
+                    getFilteredHospitalNearByMe("정형")
+                    true
+                }
+                R.id.general -> {
+                    binding.hospitalTypeDropDownMenu.setText("일반외과")
+                    getFilteredHospitalNearByMe("일반")
+                    true
+                }
+                R.id.women -> {
+                    binding.hospitalTypeDropDownMenu.setText("산부인과")
+                    getFilteredHospitalNearByMe("산부인과 ")
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onViewCreated(
@@ -118,6 +152,29 @@ class MapFragment :
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
+
+        when (args.category) {
+            "치과" -> {
+                binding.hospitalTypeDropDownMenu.setText("치과")
+                getFilteredHospitalNearByMe("치과")
+            }
+            "산부인과" -> {
+                binding.hospitalTypeDropDownMenu.setText("산부인과")
+                getFilteredHospitalNearByMe("산부인과")
+            }
+            "내과" -> {
+                binding.hospitalTypeDropDownMenu.setText("내과")
+                getFilteredHospitalNearByMe("내과")
+            }
+            "일반외과" -> {
+                binding.hospitalTypeDropDownMenu.setText("일반외과")
+                getFilteredHospitalNearByMe("일반")
+            }
+            "정형외과" -> {
+                binding.hospitalTypeDropDownMenu.setText("정형외과")
+                getFilteredHospitalNearByMe("정형")
+            }
+        }
 
         // 여기를 바인딩으로 안바꿔줘서 라이브러리가 적용 안된 거였다!!
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
@@ -236,6 +293,7 @@ class MapFragment :
                         latitude = it.latitude
                         longitude = it.longitude
                         viewModel.getLocation(currentLatLng.latitude, currentLatLng.longitude)
+                        viewModel.searchHospitalByKeyword(latitude.toString(), longitude.toString(), 1)
                         lifecycleScope.launch {
                             viewModel.langPharmacyList.collect {
                                 if (it.isNotEmpty()) {
@@ -369,6 +427,25 @@ class MapFragment :
                         15,
                     ),
                 )
+            }
+        }
+    }
+
+    private fun getFilteredHospitalNearByMe(hospitalCategory: String) {
+        lifecycleScope.launch {
+            viewModel.hospitalList.collectLatest {
+                val list = mutableListOf<SearchLocationItem>()
+                it.forEach {
+                    if (it.categoryName.contains(hospitalCategory) or
+                        (it.categoryName.contains("일반의원")) or
+                        (it.categoryName.contains("가정의학과")) or
+                        (it.categoryName.contains("종합병원"))
+                    ) {
+                        list.add(it)
+                    }
+                }
+                val bitmap = vectorToBitmap(R.drawable.hospital_pin)
+                putLabelOnLocation(bitmap, list)
             }
         }
     }

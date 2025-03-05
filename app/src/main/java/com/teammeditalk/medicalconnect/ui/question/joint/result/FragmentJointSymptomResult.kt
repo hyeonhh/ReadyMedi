@@ -120,8 +120,9 @@ class FragmentJointSymptomResult :
     override fun onBindLayout() {
         super.onBindLayout()
         binding.hospitalType.btnGoToMap.setOnClickListener {
+            val action = FragmentJointSymptomResultDirections.actionFragmentJointSymptomResultToMapFragment5("정형외과")
             findNavController().navigate(
-                R.id.action_fragmentJointSymptomResult_to_mapFragment5,
+                action,
             )
         }
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.jointAdditionalInputFragment) }

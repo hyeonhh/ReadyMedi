@@ -59,7 +59,7 @@ class SelectDurationFragment :
                     navController.navigate(R.id.injuryHistoryFragment)
                 }
                 "산부" -> {
-                    navController.navigate(R.id.pregnancyCheckFragment)
+                    navController.navigate(R.id.action_selectWomenDurationFragment_to_womenSymptomWorseListFragment)
                 }
             }
             viewModel.selectSymptomDuration(selectedDuration)

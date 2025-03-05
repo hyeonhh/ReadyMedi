@@ -104,7 +104,8 @@ class InnerSymptomResultFragment :
             btnBack.setOnClickListener { navController.popBackStack() }
             btnClose.setOnClickListener { navController.navigate(R.id.homeFragment) }
             hospitalType.btnGoToMap?.setOnClickListener {
-                navController.navigate(R.id.action_innerSymptomResultFragment_to_mapFragment4)
+                val action = InnerSymptomResultFragmentDirections.actionInnerSymptomResultFragmentToMapFragment4("내과")
+                navController.navigate(action)
             }
         }
         lifecycleScope.launch {

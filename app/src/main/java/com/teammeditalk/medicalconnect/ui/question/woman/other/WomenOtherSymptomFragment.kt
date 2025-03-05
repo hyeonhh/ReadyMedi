@@ -45,6 +45,7 @@ class WomenOtherSymptomFragment :
                         selectedOtherSymptomList.add(chip.text.toString())
                     }
                 }
+                viewModel.setOtherSymptomList(selectedOtherSymptomList)
                 val bundle = bundleOf("hospital_type" to "산부")
                 navController.navigate(R.id.womenAdditionalInputFragment, bundle)
             }

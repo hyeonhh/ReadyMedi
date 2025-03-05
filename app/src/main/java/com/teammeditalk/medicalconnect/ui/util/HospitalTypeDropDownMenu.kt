@@ -16,6 +16,10 @@ class HospitalTypeDropDownMenu(
         initView()
     }
 
+    fun setText(text: String) {
+        binding.tvTitle.text = text
+    }
+
     private fun initView() {
         val inflater = LayoutInflater.from(context)
         binding = ExposedDropdownMenuHospitalTypeBinding.inflate(inflater, this, false)

@@ -88,7 +88,10 @@ class WomenSymptomResultFragment :
         binding.layoutWomenHospitalType.btnGoToMap.setOnClickListener {
             findNavController().navigate(R.id.action_womenSymptomResultFragment_to_mapFragment6)
         }
-        binding.btnBack.setOnClickListener { findNavController().navigate(R.id.womenAdditionalInputFragment) }
+        binding.btnBack.setOnClickListener {
+            val action = WomenSymptomResultFragmentDirections.actionWomenSymptomResultFragmentToMapFragment6("산부인과")
+            findNavController().navigate(action)
+        }
         binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
         showSymptomResult()
         viewModel.saveWomenResponse()

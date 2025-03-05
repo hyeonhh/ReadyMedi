@@ -162,7 +162,11 @@
     <fragment
         android:id="@+id/mapFragment2"
         android:name="com.teammeditalk.medicalconnect.ui.map.MapFragment"
-        android:label="MapFragment" />
+        android:label="MapFragment" >
+        <argument
+            android:name="category"
+            app:argType="string"/>
+    </fragment>
     <fragment
         android:id="@+id/homeFragment2"
         android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
