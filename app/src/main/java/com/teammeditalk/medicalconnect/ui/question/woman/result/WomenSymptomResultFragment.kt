@@ -46,17 +46,6 @@ class WomenSymptomResultFragment :
         }
 
         lifecycleScope.launch {
-            viewModel.selectedWorseList.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomWorseList.text = it.toString()
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedOtherList.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomOtherList.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
                 with(binding) {
                     layoutUserHealthInfo.tvDrug.text = it.drugList.toString()
@@ -92,7 +81,7 @@ class WomenSymptomResultFragment :
             val action = WomenSymptomResultFragmentDirections.actionWomenSymptomResultFragmentToMapFragment6("산부인과")
             findNavController().navigate(action)
         }
-        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
+        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment6) }
         showSymptomResult()
         viewModel.saveWomenResponse()
     }

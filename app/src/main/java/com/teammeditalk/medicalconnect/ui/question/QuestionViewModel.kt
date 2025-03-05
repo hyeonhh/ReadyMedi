@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.data.model.info.HealthInfo
 import com.teammeditalk.medicalconnect.data.model.question.DentalQuestionResponse
 import com.teammeditalk.medicalconnect.data.model.question.GeneralQuestionResponse
@@ -52,6 +55,9 @@ class QuestionViewModel
         private val _injuryHistory = MutableStateFlow("")
         val injuryHistory = _injuryHistory.asStateFlow()
 
+        private val _injuryHistoryTranslated = MutableStateFlow("")
+        val injuryHistoryTranslated = _injuryHistoryTranslated.asStateFlow()
+
         // 치과 결과
         private val _dentalResult = MutableStateFlow(DentalQuestionResponse())
         val dentalResult = _dentalResult.asStateFlow()
@@ -97,6 +103,9 @@ class QuestionViewModel
         private val _additionalInput = MutableStateFlow("")
         val additionalInput = _additionalInput.asStateFlow()
 
+        private val _additionalInputTranslated = MutableStateFlow("")
+        val additionalInputTranslated = _additionalInputTranslated.asStateFlow()
+
         private val _selectedReleaseList = MutableStateFlow(emptyList<String>())
         val selectedReleaseList = _selectedReleaseList.asStateFlow()
 
@@ -138,10 +147,53 @@ class QuestionViewModel
 
         fun setJointInjuryHistory(content: String) {
             _injuryHistory.value = content
+            translateJointInjury()
         }
 
         fun setDentalSideEffect(content: String) {
             _sideEffect.value = content
+        }
+
+        private fun translateAdditionalInput() {
+            viewModelScope.launch {
+                val options =
+                    TranslatorOptions
+                        .Builder()
+                        .setSourceLanguage(TranslateLanguage.KOREAN)
+                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .build()
+                val koreanEnglishTranslator = Translation.getClient(options)
+
+                koreanEnglishTranslator
+                    .translate(_additionalInput.value)
+                    .addOnSuccessListener {
+                        _additionalInputTranslated.value = it
+                    }.addOnFailureListener { exception ->
+                        exception.printStackTrace()
+                        Timber.d("Failed to translate :${exception.message}")
+                    }
+            }
+        }
+
+        private fun translateJointInjury() {
+            viewModelScope.launch {
+                val options =
+                    TranslatorOptions
+                        .Builder()
+                        .setSourceLanguage(TranslateLanguage.KOREAN)
+                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .build()
+                val koreanEnglishTranslator = Translation.getClient(options)
+
+                koreanEnglishTranslator
+                    .translate(_injuryHistory.value)
+                    .addOnSuccessListener {
+                        _injuryHistoryTranslated.value = it
+                    }.addOnFailureListener { exception ->
+                        exception.printStackTrace()
+                        Timber.d("Failed to translate :${exception.message}")
+                    }
+            }
         }
 
         // todo : 파베에 치과 데이터 저장하기
@@ -370,7 +422,7 @@ class QuestionViewModel
         // 추가 전달
         fun setAdditionalInput(input: String) {
             _additionalInput.value = input
-            Timber.d("입력 :${_additionalInput.value}")
+            translateAdditionalInput()
         }
 
         // 증상 완화 요인

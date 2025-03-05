@@ -102,7 +102,7 @@ class InnerSymptomResultFragment :
 
         with(binding) {
             btnBack.setOnClickListener { navController.popBackStack() }
-            btnClose.setOnClickListener { navController.navigate(R.id.homeFragment) }
+            btnClose.setOnClickListener { navController.navigate(R.id.homeFragment4) }
             hospitalType.btnGoToMap?.setOnClickListener {
                 val action = InnerSymptomResultFragmentDirections.actionInnerSymptomResultFragmentToMapFragment4("내과")
                 navController.navigate(action)

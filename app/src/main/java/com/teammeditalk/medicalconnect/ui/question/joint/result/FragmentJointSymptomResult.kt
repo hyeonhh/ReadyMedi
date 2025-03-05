@@ -1,19 +1,13 @@
 package com.teammeditalk.medicalconnect.ui.question.joint.result
 
+import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.mlkit.nl.translate.TranslateLanguage
-import com.google.mlkit.nl.translate.Translation
-import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentJointSymptomResultBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class FragmentJointSymptomResult :
@@ -22,103 +16,37 @@ class FragmentJointSymptomResult :
     ) {
     private val viewModel: QuestionViewModel by activityViewModels()
 
-    private fun showSymptomResult() {
-        lifecycleScope.launch {
-            viewModel.additionalInput.collectLatest {
-                val options =
-                    TranslatorOptions
-                        .Builder()
-                        .setSourceLanguage(TranslateLanguage.KOREAN)
-                        .setTargetLanguage(TranslateLanguage.ENGLISH)
-                        .build()
-                val koreanEnglishTranslator = Translation.getClient(options)
-
-                koreanEnglishTranslator
-                    .translate(it)
-                    .addOnSuccessListener {
-                        binding.layoutAdditionalInput.tvInput.text = it
-                    }.addOnFailureListener { exception ->
-                        exception.printStackTrace()
-                        Timber.d("Failed to translate :${exception.message}")
-                    }
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedRegion.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomRegion.text = it
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedSymptom.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
-                binding.layoutCurrentSymptom.tvSymptomContent.text = it.second
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedDate.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomStartDate.text = it
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedDegree.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomDegree.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedType.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomType.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedWorseList.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomWorseList.text = it.toString()
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedOtherList.collectLatest {
-                binding.layoutCurrentSymptom.tvOtherSymptom.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
-                with(binding) {
-                    layoutUserHealthInfo.tvDrug.text = it.drugList.toString()
-                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.toString()
-                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.toString()
-                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.toString()
-                }
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.injuryHistory.collectLatest {
-                val options =
-                    TranslatorOptions
-                        .Builder()
-                        .setSourceLanguage(TranslateLanguage.KOREAN)
-                        .setTargetLanguage(TranslateLanguage.ENGLISH)
-                        .build()
-                val koreanEnglishTranslator = Translation.getClient(options)
-
-                koreanEnglishTranslator
-                    .translate(it)
-                    .addOnSuccessListener {
-                        binding.layoutInjury.tvContent.text = it
-                    }.addOnFailureListener { exception ->
-                        exception.printStackTrace()
-                        Timber.d("Failed to translate :${exception.message}")
-                    }
-            }
-        }
-    }
-
     override fun onBindLayout() {
         super.onBindLayout()
+
+        binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                binding.layout.visibility = View.VISIBLE
+                binding.layoutHospitalVersion.visibility = View.GONE
+            } else {
+                binding.layout.visibility = View.GONE
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+            }
+        }
+
+        binding.layoutUserHealthInfo.viewModel = viewModel
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
+
+        binding.layoutCurrentSymptom.viewModel = viewModel
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
+
+        binding.hospitalVersion.symptom.viewModel = viewModel
+        binding.hospitalVersion.familyDiseaseAndDrug.viewModel = viewModel
+        binding.hospitalVersion.currentSymptom.viewModel = viewModel
+        binding.hospitalVersion.injury.viewModel = viewModel
+        binding.hospitalVersion.additionalInput.viewModel = viewModel
+
+        binding.hospitalVersion.symptom.lifecycleOwner = viewLifecycleOwner
+        binding.hospitalVersion.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
+        binding.hospitalVersion.currentSymptom.lifecycleOwner = viewLifecycleOwner
+        binding.hospitalVersion.injury.lifecycleOwner = viewLifecycleOwner
+        binding.hospitalVersion.additionalInput.lifecycleOwner = viewLifecycleOwner
+
         binding.hospitalType.btnGoToMap.setOnClickListener {
             val action = FragmentJointSymptomResultDirections.actionFragmentJointSymptomResultToMapFragment5("정형외과")
             findNavController().navigate(
@@ -126,8 +54,7 @@ class FragmentJointSymptomResult :
             )
         }
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.jointAdditionalInputFragment) }
-        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
-        showSymptomResult()
+        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment5) }
         viewModel.saveJointResponse()
     }
 }

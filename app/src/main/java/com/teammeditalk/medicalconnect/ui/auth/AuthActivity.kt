@@ -18,6 +18,7 @@ import com.google.firebase.auth.auth
 import com.teammeditalk.medicalconnect.BuildConfig
 import com.teammeditalk.medicalconnect.base.BaseActivity
 import com.teammeditalk.medicalconnect.databinding.ActivityAuthBinding
+import com.teammeditalk.medicalconnect.ui.main.MainActivity
 import com.teammeditalk.medicalconnect.ui.onboarding.OnBoardingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -36,6 +37,12 @@ class AuthActivity :
         super.onBindLayout()
 
         auth = Firebase.auth
+        val user = auth.currentUser
+        if (user != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         credentialManager = CredentialManager.create(this)
 
         val googleIdOption: GetGoogleIdOption =

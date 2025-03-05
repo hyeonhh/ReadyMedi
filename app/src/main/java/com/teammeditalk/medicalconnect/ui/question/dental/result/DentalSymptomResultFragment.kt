@@ -134,6 +134,6 @@ class DentalSymptomResultFragment :
         }
 
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.dentalAdditionalInputFragment) }
-        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
+        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment2) }
     }
 }

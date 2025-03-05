@@ -24,11 +24,12 @@ class AdditionalInputFragment :
 
         binding.btnBack.setOnClickListener { navController.popBackStack() }
         binding.btnComplete.setOnClickListener {
-            viewModel.setAdditionalInput(binding.editText.getContent())
+            val content = binding.editText.getContent()
+            viewModel.setAdditionalInput(content)
             when (args.hospitalType) {
                 "내과" -> {
                     val bundle = bundleOf("hospital_type" to "내과")
-                    navController.navigate(R.id.innerLoadingFragment)
+                    navController.navigate(R.id.innerLoadingFragment, bundle)
                 }
                 "치과" -> {
                     val bundle = bundleOf("hospital_type" to "치과")

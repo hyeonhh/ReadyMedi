@@ -101,7 +101,7 @@ class GeneralSymptomResultFragment :
         super.onBindLayout()
         showSymptomResult()
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.generalAdditionalInputFragment) }
-        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment) }
+        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment3) }
         binding.hospitalType.btnGoToMap.setOnClickListener {
             findNavController().navigate(R.id.action_generalSymptomResultFragment_to_mapFragment3)
         }
