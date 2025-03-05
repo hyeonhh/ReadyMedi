@@ -14,7 +14,7 @@
 
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@android:color/transparent"
@@ -27,10 +27,10 @@
         android:layout_height="wrap_content"
         android:text="의료 진료 지원비 혜택"
         android:textAppearance="@style/SubTitle2"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
     <TextView
         android:id="@+id/textView68"
@@ -40,7 +40,7 @@
         android:text="외국인 근로자를 위한\n의료 진료비 혜택을 알려줄게요"
         android:textAppearance="@style/Title2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <TextView
         style="@style/CustomAllTextTitleStyle"

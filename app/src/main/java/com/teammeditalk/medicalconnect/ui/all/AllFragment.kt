@@ -16,6 +16,9 @@ class AllFragment :
     override fun onBindLayout() {
         super.onBindLayout()
 
+        binding.tvSymptomHospital.setOnClickListener {
+            navController.navigate(R.id.symptomHospitalFragment)
+        }
         binding.tvFreeHospital.setOnClickListener {
             navController.navigate(R.id.freeHospitalFragment2)
         }

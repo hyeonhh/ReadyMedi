@@ -145,6 +145,9 @@
         <action
             android:id="@+id/action_allFragment2_to_freeHospitalPolicyFragment"
             app:destination="@id/freeHospitalPolicyFragment" />
+        <action
+            android:id="@+id/action_allFragment2_to_symptomHospitalFragment"
+            app:destination="@id/symptomHospitalFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_free_hospital"
@@ -156,4 +159,9 @@
         android:id="@+id/freeHospitalPolicyFragment"
         android:name="com.teammeditalk.medicalconnect.ui.all.FreeHospitalPolicyFragment"
         android:label="FreeHospitalPolicyFragment" />
+    <fragment
+        android:id="@+id/symptomHospitalFragment"
+        tools:layout="@layout/fragment_symptom_hospital"
+        android:name="com.teammeditalk.medicalconnect.ui.all.SymptomHospitalFragment"
+        android:label="SymptomHospitalFragment" />
 </navigation>
