@@ -50,12 +50,16 @@
             layout="@layout/layout_women_current_symptom"/>
 
         <include
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="20dp"
+            layout="@layout/layout_additional_input_hos_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/current_symptom"
-            layout="@layout/layout_additional_input"/>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_symptom" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

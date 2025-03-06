@@ -70,7 +70,7 @@
 
             <include
                 android:id="@+id/layout_user_health_info"
-                layout="@layout/layout_user_health_info"
+                layout="@layout/layout_general_user_health_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

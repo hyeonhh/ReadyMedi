@@ -50,6 +50,7 @@
         layout="@layout/layout_inner_current_symptom"/>
 
         <include
+            android:id="@+id/additional_input"
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="20dp"
             android:layout_width="match_parent"

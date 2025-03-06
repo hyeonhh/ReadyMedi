@@ -60,6 +60,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_user"
+            app:layout_constraintTop_toBottomOf="@id/btn_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
         <include
             android:id="@+id/layout_user_health_info"
             layout="@layout/layout_user_health_info"
@@ -68,7 +75,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_switch" />
+            />
 
         <include
             android:id="@+id/layout_current_symptom"
@@ -109,7 +116,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_additional_input"
             />
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_hospital_version"
@@ -141,6 +148,7 @@
             </com.google.android.material.tabs.TabLayout>
 
             <include
+                android:id="@+id/layout_hos_version_dental"
                 android:layout_marginTop="25dp"
                 app:layout_constraintTop_toBottomOf="@id/tab"
                 android:layout_width="match_parent"

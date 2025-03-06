@@ -1,5 +1,6 @@
 package com.teammeditalk.medicalconnect.ui.question.inner.result
 
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -99,6 +100,32 @@ class InnerSymptomResultFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+                binding.layout.visibility = View.GONE
+            } else {
+                binding.layoutHospitalVersion.visibility = View.GONE
+                binding.layout.visibility = View.VISIBLE
+            }
+        }
+
+        binding.layoutCurrentSymptom.viewModel = viewModel
+        binding.layoutCurrentSymptom.lifecycleOwner = viewLifecycleOwner
+
+        binding.layoutUserHealthInfo.viewModel = viewModel
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
+
+        binding.layoutAdditionalInput.viewModel = viewModel
+        binding.layoutAdditionalInput.lifecycleOwner = viewLifecycleOwner
+
+        binding.hospitalVersion.symptom.viewModel = viewModel
+        binding.hospitalVersion.familyDiseaseAndDrug.viewModel = viewModel
+        binding.hospitalVersion.currentSymptom.viewModel = viewModel
+
+        binding.hospitalVersion.additionalInput.viewModel = viewModel
+        binding.hospitalVersion.additionalInput.lifecycleOwner = viewLifecycleOwner
 
         with(binding) {
             btnBack.setOnClickListener { navController.popBackStack() }

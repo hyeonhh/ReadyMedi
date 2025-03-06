@@ -33,7 +33,6 @@ class SymptomHistoryAdapter : RecyclerView.Adapter<SymptomHistoryAdapter.Symptom
         val binding: ItemSymptomHistoryBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: SymptomHistory) {
-            Timber.d("bind :$data")
             binding.tvSymptomTitle.text = data.symptomTitle
             binding.tvSymptomContent.text = data.symptomContent
             binding.tvDate.text = data.timeStamp

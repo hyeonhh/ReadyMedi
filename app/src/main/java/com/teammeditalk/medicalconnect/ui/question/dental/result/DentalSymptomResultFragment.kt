@@ -125,6 +125,27 @@ class DentalSymptomResultFragment :
         super.onBindLayout()
         showToolTip()
         showSymptomResult()
+
+        binding.layoutCurrentSymptom.viewModel = viewModel
+        binding.layoutUserHealthInfo.viewModel = viewModel
+        binding.layoutAdditionalInput.viewModel = viewModel
+
+        binding.layoutHosVersionDental.currentSymptom.viewModel = viewModel
+        binding.layoutHosVersionDental.familyDiseaseAndDrug.viewModel = viewModel
+        binding.layoutHosVersionDental.additionalInput.viewModel = viewModel
+
+        binding.layoutHosVersionDental.sideEffect.viewModel = viewModel
+
+        binding.layoutCurrentSymptom.lifecycleOwner = viewLifecycleOwner
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
+        binding.layoutAdditionalInput.lifecycleOwner = viewLifecycleOwner
+
+        binding.layoutHosVersionDental.currentSymptom.lifecycleOwner = viewLifecycleOwner
+        binding.layoutHosVersionDental.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
+        binding.layoutHosVersionDental.additionalInput.lifecycleOwner = viewLifecycleOwner
+
+        binding.layoutHosVersionDental.sideEffect.lifecycleOwner = viewLifecycleOwner
+
         lifecycleScope.launch {
             viewModel.saveDentalResponse()
         }

@@ -40,7 +40,11 @@
         tools:layout="@layout/fragment_my_health_info"
         android:id="@+id/myHealthInfoFragment"
         android:name="com.teammeditalk.medicalconnect.ui.history.health.MyHealthInfoFragment"
-        android:label="MyHealthInfoFragment" />
+        android:label="MyHealthInfoFragment" >
+        <action
+            android:id="@+id/action_myHealthInfoFragment_to_editDiseaseFragment"
+            app:destination="@id/editDiseaseFragment" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_my_symptom_history"
         android:id="@+id/mySymptomHistoryFragment"
@@ -164,4 +168,14 @@
         tools:layout="@layout/fragment_symptom_hospital"
         android:name="com.teammeditalk.medicalconnect.ui.all.SymptomHospitalFragment"
         android:label="SymptomHospitalFragment" />
+    <fragment
+        android:id="@+id/editDiseaseFragment"
+        tools:layout="@layout/fragment_edit_disease"
+        android:name="com.teammeditalk.medicalconnect.ui.onboarding.disease.EditDiseaseFragment"
+        android:label="EditDiseaseFragment" >
+        <action
+            android:id="@+id/action_editDiseaseFragment_to_myHealthInfoFragment"
+            app:popUpTo="@id/myHealthInfoFragment"
+            app:destination="@id/myHealthInfoFragment" />
+    </fragment>
 </navigation>

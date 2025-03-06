@@ -3,6 +3,7 @@ package com.teammeditalk.medicalconnect.ui.history.health
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentMyHealthInfoBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,10 @@ class MyHealthInfoFragment :
 
         with(binding) {
             btnBack.setOnClickListener { navController.popBackStack() }
+
+            layoutUserDisease.layout.setOnClickListener {
+                navController.navigate(R.id.editDiseaseFragment)
+            }
 
             lifecycleScope.launch {
                 viewModel.userHealthInfo.collectLatest {

@@ -5,22 +5,27 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.base.BaseFragment
-import com.teammeditalk.medicalconnect.databinding.FragmentInnerSymptomResultBinding
-import com.teammeditalk.medicalconnect.ui.history.symptom.result.dental.InnerSymptomViewModel
+import com.teammeditalk.medicalconnect.databinding.FragmentHistoryInnerBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class InnerSymptomFragment :
-    BaseFragment<FragmentInnerSymptomResultBinding>(
-        FragmentInnerSymptomResultBinding::inflate,
+    BaseFragment<FragmentHistoryInnerBinding>(
+        FragmentHistoryInnerBinding::inflate,
     ) {
     private val viewModel: InnerSymptomViewModel by viewModels()
     private val navController by lazy { findNavController() }
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        binding.layoutCurrentSymptom.viewModel = viewModel
+        binding.layoutCurrentSymptom.lifecycleOwner = viewLifecycleOwner
+
+        binding.layoutUserHealthInfo.viewModel = viewModel
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
 
         binding.btnBack.visibility = View.GONE
         binding.btnClose.setOnClickListener { navController.popBackStack() }
