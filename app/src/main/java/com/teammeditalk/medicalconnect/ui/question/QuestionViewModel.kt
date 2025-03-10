@@ -20,8 +20,11 @@ import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSeri
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.text.SimpleDateFormat
@@ -110,13 +113,37 @@ class QuestionViewModel
         val selectedReleaseList = _selectedReleaseList.asStateFlow()
 
         private val _selectedWorseList = MutableStateFlow(emptyList<String>())
-        val selectedWorseList = _selectedWorseList.asStateFlow()
+        val selectedWorseList =
+            _selectedWorseList
+                .map {
+                    if (it.isEmpty()) "해당 없음" else it.joinToString(",")
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Eagerly,
+                    initialValue = "해당 없음",
+                )
 
         private val _selectedOtherList = MutableStateFlow(emptyList<String>())
-        val selectedOtherList = _selectedOtherList.asStateFlow()
+        val selectedOtherList =
+            _selectedOtherList
+                .map {
+                    if (it.isEmpty()) "해당 없음" else it.joinToString(",")
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Eagerly,
+                    initialValue = "해당 없음",
+                )
 
         private val _selectedType = MutableStateFlow(emptyList<String>())
-        val selectedType = _selectedType.asStateFlow()
+        val selectedType =
+            _selectedType
+                .map {
+                    if (it.isEmpty()) "해당 없음" else it.joinToString(",")
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Eagerly,
+                    initialValue = "해당 없음",
+                )
 
         private val _selectedDegree = MutableStateFlow(0.0f)
         val selectedDegree = _selectedDegree.asStateFlow()

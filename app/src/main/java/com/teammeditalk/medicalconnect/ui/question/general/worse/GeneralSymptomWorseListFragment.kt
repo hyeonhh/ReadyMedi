@@ -22,16 +22,10 @@ class GeneralSymptomWorseListFragment :
     override fun onBindLayout() {
         super.onBindLayout()
 
-        binding.btnBack.setOnClickListener {
-            navController.popBackStack()
-        }
-        binding.btnNext.setOnClickListener {
-            viewModel.selectWorseList(selectedWorseList)
-            navController.navigate(R.id.generalOtherSymptomFragment)
-        }
         binding.layoutConstraint.apply {
             for (child in this.children) {
                 child.setOnClickListener {
+                    it.isSelected = !it.isSelected
                     if (it.isSelected) {
                         (it as SelectBox).updateSelected(true)
                         selectedWorseList.add(it.getContent())
@@ -41,6 +35,14 @@ class GeneralSymptomWorseListFragment :
                     }
                 }
             }
+        }
+
+        binding.btnBack.setOnClickListener {
+            navController.popBackStack()
+        }
+        binding.btnNext.setOnClickListener {
+            viewModel.selectWorseList(selectedWorseList)
+            navController.navigate(R.id.generalOtherSymptomFragment)
         }
     }
 }

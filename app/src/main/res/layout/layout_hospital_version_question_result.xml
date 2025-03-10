@@ -22,7 +22,6 @@
 
         <include
             android:id="@+id/symptom"
-            android:layout_marginHorizontal="20dp"
             layout="@layout/item_hos_version_symptom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +32,6 @@
 
         <include
             android:id="@+id/family_disease_and_drug"
-            android:layout_marginHorizontal="20dp"
             app:layout_constraintTop_toBottomOf="@id/symptom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +57,6 @@
             layout="@layout/layout_additional_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

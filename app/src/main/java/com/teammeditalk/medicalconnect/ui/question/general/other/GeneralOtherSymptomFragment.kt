@@ -4,10 +4,10 @@ import android.view.View
 import androidx.core.view.children
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentGeneralOtherSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
-import com.teammeditalk.medicalconnect.ui.util.SelectBox
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +21,7 @@ class GeneralOtherSymptomFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
+
         with(binding) {
             selectBoxYes.setOnClickListener {
                 selectBoxYes.updateSelected(true)
@@ -39,9 +40,9 @@ class GeneralOtherSymptomFragment :
             for (child in children) {
                 child.setOnClickListener {
                     if (it.isSelected) {
-                        otherSymptomList.add((it as SelectBox).getContent())
+                        otherSymptomList.add((it as Chip).text.toString())
                     } else {
-                        otherSymptomList.remove((it as SelectBox).getContent())
+                        otherSymptomList.remove((it as Chip).text.toString())
                     }
                 }
             }

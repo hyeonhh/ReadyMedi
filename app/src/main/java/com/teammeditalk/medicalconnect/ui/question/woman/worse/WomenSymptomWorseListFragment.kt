@@ -26,10 +26,11 @@ class WomenSymptomWorseListFragment :
             for (child in this.children) {
                 child.setOnClickListener {
                     it.isSelected = !it.isSelected
-                    (it as SelectBox).updateSelected(it.isSelected)
                     if (it.isSelected) {
+                        (it as SelectBox).updateSelected(true)
                         selectedWorseList.add(it.getContent())
                     } else {
+                        (it as SelectBox).updateSelected(false)
                         selectedWorseList.remove(it.getContent())
                     }
                 }

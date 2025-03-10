@@ -22,19 +22,21 @@ class InnerSymptomWorseListFragment :
     override fun onBindLayout() {
         super.onBindLayout()
 
-        with(binding.layoutConstraint) {
+        binding.layoutConstraint.apply {
             for (child in this.children) {
                 child.setOnClickListener {
                     it.isSelected = !it.isSelected
-                    (child as SelectBox).updateSelected(it.isSelected)
                     if (it.isSelected) {
-                        selectedWorseList.add((it as SelectBox).getContent())
+                        (it as SelectBox).updateSelected(true)
+                        selectedWorseList.add(it.getContent())
                     } else {
-                        selectedWorseList.remove((it as SelectBox).getContent())
+                        (it as SelectBox).updateSelected(false)
+                        selectedWorseList.remove(it.getContent())
                     }
                 }
             }
         }
+
         binding.btnBack.setOnClickListener {
             navController.popBackStack()
         }
