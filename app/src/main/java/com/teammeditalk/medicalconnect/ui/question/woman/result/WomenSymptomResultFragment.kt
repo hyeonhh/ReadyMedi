@@ -17,7 +17,6 @@ import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionWomenBin
 import com.teammeditalk.medicalconnect.databinding.LayoutInnerCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutWomenCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
-import com.teammeditalk.medicalconnect.ui.question.inner.result.InnerSymptomResultFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -82,7 +81,7 @@ class WomenSymptomResultFragment :
         goToMapBinding.btnGoToMap.text = getString(R.string.find_nearby_obgyn)
 
         goToMapBinding.btnGoToMap.setOnClickListener {
-            val action = InnerSymptomResultFragmentDirections.actionInnerSymptomResultFragmentToMapFragment4("일반")
+            val action = WomenSymptomResultFragmentDirections.actionWomenSymptomResultFragmentToMapFragment6("일반")
             findNavController().navigate(action)
         }
         contentContainer3.addView(goToMapBinding.root)

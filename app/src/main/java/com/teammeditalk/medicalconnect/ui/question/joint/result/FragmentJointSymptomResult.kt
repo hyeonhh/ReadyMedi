@@ -13,7 +13,6 @@ import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestion
 import com.teammeditalk.medicalconnect.databinding.LayoutInnerCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutJointCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
-import com.teammeditalk.medicalconnect.ui.question.inner.result.InnerSymptomResultFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,7 +74,7 @@ class FragmentJointSymptomResult :
         goToMapBinding.btnGoToMap.text = getString(R.string.find_nearby_orthopedic)
 
         goToMapBinding.btnGoToMap.setOnClickListener {
-            val action = InnerSymptomResultFragmentDirections.actionInnerSymptomResultFragmentToMapFragment4("일반")
+            val action = FragmentJointSymptomResultDirections.actionFragmentJointSymptomResultToMapFragment5("일반")
             findNavController().navigate(action)
         }
         contentContainer3.addView(goToMapBinding.root)
