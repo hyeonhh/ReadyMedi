@@ -24,12 +24,12 @@
         android:text="@string/hospital_guidance_prefix"
         android:textAlignment="textEnd"
         android:textAppearance="@style/Body1_Normal"
-        app:layout_constraintEnd_toStartOf="@+id/textView35"
+        app:layout_constraintEnd_toStartOf="@+id/tv_hospital_type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/tv_hospital_type"
         android:layout_width="wrap_content"
         android:textStyle="bold"
         android:layout_height="wrap_content"
@@ -49,10 +49,10 @@
         android:layout_height="wrap_content"
         android:text="@string/hospital_guidance_suffix"
         android:textAppearance="@style/Body1_Normal"
-        app:layout_constraintBottom_toBottomOf="@+id/textView35"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_hospital_type"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView35" />
+        app:layout_constraintStart_toEndOf="@+id/tv_hospital_type"
+        app:layout_constraintTop_toTopOf="@+id/tv_hospital_type" />
 
     <TextView
         android:id="@+id/textView37"

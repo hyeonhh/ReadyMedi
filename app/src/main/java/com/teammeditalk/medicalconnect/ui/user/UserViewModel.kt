@@ -27,6 +27,17 @@ class UserViewModel
         private val _nickName = MutableStateFlow("")
         val nickName = _nickName.asStateFlow()
 
+        fun deleteUserData() {
+            viewModelScope.launch {
+                context.userAuthPreferencesStore.updateData {
+                    it
+                        .toBuilder()
+                        .clear()
+                        .build()
+                }
+            }
+        }
+
         init {
             viewModelScope.launch {
                 context.userAuthPreferencesStore.data.collectLatest {

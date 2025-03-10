@@ -43,14 +43,12 @@ class UserFragment :
         }
 
         binding.btnLogin.setOnClickListener {
-            if (currentUser != null) {
-                auth.signOut()
-                val intent = Intent(context, AuthActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(context, AuthActivity::class.java)
-                startActivity(intent)
-            }
+            // 로그아웃
+            auth.signOut()
+            viewModel.deleteUserData()
+
+            val intent = Intent(context, AuthActivity::class.java)
+            startActivity(intent)
         }
         binding.btnBack.setOnClickListener { navController.popBackStack() }
     }

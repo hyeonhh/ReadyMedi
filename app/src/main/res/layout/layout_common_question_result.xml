@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/blue20"
     android:fillViewport="true"
+    android:id="@+id/scroll_view"
     android:padding="20dp"
     android:layout_height="match_parent">
 
@@ -33,12 +34,21 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:background="@drawable/baseline_circle_24"
             android:id="@+id/shapeableImageView2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_report"
+            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView2"
+            app:layout_constraintEnd_toEndOf="@+id/shapeableImageView2"
+            app:layout_constraintStart_toStartOf="@+id/shapeableImageView2"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView2" />
 
         <TextView
             android:id="@+id/textView9"
@@ -51,11 +61,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shapeableImageView2" />
 
+        <ImageView
+            android:id="@+id/iv_tooltip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_tooltip"
+            app:layout_constraintBottom_toTopOf="@+id/btn_switch"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/btn_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="47dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -66,56 +85,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <include
+                android:id="@+id/layout_user_health_info"
+                layout="@layout/layout_user_health_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
 
-        <include
-            android:id="@+id/layout_user_health_info"
-            layout="@layout/layout_user_health_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-
-        <include
-            android:id="@+id/layout_current_symptom"
-            layout="@layout/layout_dental_current_symptom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_user_health_info" />
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
 
-        <include
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/layout_current_symptom"
-            layout="@layout/layout_dental_side_effect_input"
-            android:id="@+id/layout_dental_side_effect_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+              <FrameLayout
+                  android:id="@+id/layout_frame"
+                  android:layout_marginTop="12dp"
+                  app:layout_constraintTop_toBottomOf="@id/layout_user_health_info"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
 
-        <include
-            android:id="@+id/layout_additional_input"
-            layout="@layout/layout_additional_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_dental_side_effect_input" />
+                <FrameLayout
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/layout_frame"
+                    android:id="@+id/layout_frame2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <include
-            android:id="@+id/hospital_type"
-            layout="@layout/layout_dental_hospital_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_additional_input"
-            />
+            <include
+                android:id="@+id/layout_additional_input"
+                layout="@layout/layout_additional_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_frame2" />
+
+            <FrameLayout
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/layout_additional_input"
+                android:id="@+id/layout_go_to_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -133,7 +146,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_switch">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -147,13 +160,12 @@
 
             </com.google.android.material.tabs.TabLayout>
 
-            <include
-                android:id="@+id/layout_hos_version_dental"
-                android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@id/tab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/layout_hospital_version_dental"/>
+           <FrameLayout
+               android:layout_marginTop="10dp"
+               app:layout_constraintTop_toBottomOf="@id/tab"
+               android:id="@+id/frame_hospital_version_report"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

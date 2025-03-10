@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav"
+    app:startDestination="@id/firstOnboardingFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_onboarding1"
+        android:id="@+id/firstOnboardingFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.auth.onboarging.FirstOnboardingFragment"
+        android:label="FirstOnboardingFragment" >
+        <action
+            android:id="@+id/action_firstOnboardingFragment_to_secondOnboardingFragment"
+            app:destination="@id/secondOnboardingFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_onboarding2"
+        android:id="@+id/secondOnboardingFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.auth.onboarging.SecondOnboardingFragment"
+        android:label="SecondOnboardingFragment" >
+        <action
+            android:id="@+id/action_secondOnboardingFragment_to_thirdOnBoardingFragment"
+            app:destination="@id/thirdOnBoardingFragment" />
+        <action
+            android:id="@+id/action_secondOnboardingFragment_to_firstOnboardingFragment2"
+            app:destination="@id/firstOnboardingFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_onboadring3"
+        android:id="@+id/thirdOnBoardingFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.auth.onboarging.ThirdOnBoardingFragment"
+        android:label="ThirdOnBoardingFragment" >
+        <action
+            android:id="@+id/action_thirdOnBoardingFragment_to_secondOnboardingFragment2"
+            app:destination="@id/secondOnboardingFragment" />
+    </fragment>
+</navigation>

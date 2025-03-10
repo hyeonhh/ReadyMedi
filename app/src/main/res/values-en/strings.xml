@@ -341,8 +341,8 @@
     <string name="hospital_department_internal">Internal Medicine</string>
     <string name="hospital_department_orthopedic">Orthopedics</string>
     <string name="hospital_department_general">General Surgery</string>
-    <string name="hospital_department_dental">Dentistry</string>
-    <string name="hospital_department_obgyn">Obstetrics·Gynecology</string>
+    <string name="hospital_department_dental">Dental</string>
+    <string name="hospital_department_obgyn">OB/GYN</string>
 
     <!--  진료과별 버튼  -->
     <string name="find_nearby_internal">Find nearby\nInternal Medicine clinics and pharmacies</string>

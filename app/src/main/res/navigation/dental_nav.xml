@@ -63,7 +63,7 @@
     <fragment
         tools:layout="@layout/fragment_anesthesia_history"
         android:id="@+id/selectAnesthesiaHistoryFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.history.DentalSelectAnesthesiaHistoryFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.history.DentalSelectAnesthesiaHistoryFragment"
         android:label="DentalSelectAnesthesiaHistoryFragment" >
         <argument
             android:name="hospital_type"
@@ -106,7 +106,7 @@
     <fragment
         tools:layout="@layout/fragment_dental_symtom_result"
         android:id="@+id/dentalSymptomResultFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.result.DentalSymptomResultFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.dental.result.DentalSymptomResultFragment"
         android:label="DentalSymptomResultFragment" >
         <action
             android:id="@+id/action_dentalSymptomResultFragment_to_mapFragment2"

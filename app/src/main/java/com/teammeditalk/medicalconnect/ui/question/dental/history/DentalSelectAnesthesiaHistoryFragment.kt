@@ -1,4 +1,4 @@
-package com.teammeditalk.medicalconnect.ui.question.dental.fragment.history
+package com.teammeditalk.medicalconnect.ui.question.dental.history
 
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController

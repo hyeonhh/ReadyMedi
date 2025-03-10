@@ -1,16 +1,20 @@
-package com.teammeditalk.medicalconnect.ui.question.dental.fragment.result
+package com.teammeditalk.medicalconnect.ui.question.dental.result
 
+import android.view.LayoutInflater
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
-import com.skydoves.balloon.BalloonSizeSpec
-import com.skydoves.balloon.createBalloon
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
-import com.teammeditalk.medicalconnect.databinding.FragmentDentalSymtomResultBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutDentalCurrentSymptomBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutDentalSideEffectInputBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -19,28 +23,11 @@ import timber.log.Timber
 
 @AndroidEntryPoint
 class DentalSymptomResultFragment :
-    BaseFragment<FragmentDentalSymtomResultBinding>(
-        FragmentDentalSymtomResultBinding::inflate,
+    BaseFragment<LayoutCommonQuestionResultBinding>(
+        LayoutCommonQuestionResultBinding::inflate,
     ) {
+    private lateinit var inflater: LayoutInflater
     private val viewModel: QuestionViewModel by activityViewModels()
-
-    private fun showToolTip() {
-        val balloon =
-            context?.let {
-                createBalloon(it) {
-                    setText("의료진에게 보여줄 땐 여길 눌러주세요")
-                    setMarginRight(20)
-                    setPadding(10)
-                    setHeight(BalloonSizeSpec.WRAP)
-                    setWidth(BalloonSizeSpec.WRAP)
-                    setTextColorResource(R.color.white)
-                    setCornerRadius(30f)
-                    setBackgroundColorResource(R.color.orange50)
-                    build()
-                }
-            }
-        balloon?.showAlignTop(binding.btnSwitch)
-    }
 
     private fun showSymptomResult() {
         lifecycleScope.launch {
@@ -64,51 +51,8 @@ class DentalSymptomResultFragment :
                         }
                 }
             }
-            viewModel.selectedSymptom.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomTitle.text = it.first
-                binding.layoutCurrentSymptom.tvSymptomContent.text = it.second
-            }
         }
 
-        lifecycleScope.launch {
-            viewModel.selectedDate.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomStartDate.text = it
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedDegree.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomDegree.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedType.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomType.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.selectedWorseList.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomWorseList.text = it.toString()
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.selectedOtherList.collectLatest {
-                binding.layoutCurrentSymptom.tvOtherSymptom.text = it.toString()
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.anesthesiaHistory.collectLatest {
-                binding.layoutCurrentSymptom.tvSymptomAnesHistory.text = it.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.sideEffect.collectLatest {
-                binding.layoutDentalSideEffectInput.tvSideEffect.text = it
-            }
-        }
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
                 with(binding) {
@@ -121,37 +65,104 @@ class DentalSymptomResultFragment :
         }
     }
 
+    private fun setCurrentSymptomBinding() {
+        // 사용자용 현재 증상 레이아웃 연결하기
+        val currentSymptomFrame = binding.layoutFrame
+        val dentalCurrentSymptomBinding = LayoutDentalCurrentSymptomBinding.inflate(inflater, currentSymptomFrame, false)
+        currentSymptomFrame.addView(dentalCurrentSymptomBinding.root)
+
+        dentalCurrentSymptomBinding.viewModel = viewModel
+        dentalCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+    }
+
+    private fun setSideEffectBinding() {
+        val sideEffectFrame = binding.layoutFrame2
+        val sideEffectBindingToUser = LayoutDentalSideEffectInputBinding.inflate(inflater, sideEffectFrame, false)
+        sideEffectFrame.addView(sideEffectBindingToUser.root)
+
+        sideEffectBindingToUser.viewModel = viewModel
+        sideEffectBindingToUser.lifecycleOwner = viewLifecycleOwner
+    }
+
+    private fun setHospitalVersionReport() {
+        val hospitalContentContainer = binding.layoutHospitalVersion
+        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
+        hospitalContentContainer.addView(hospitalReportBinding.root)
+    }
+
+    private fun setCurrentSymptomToHospital() {
+        // 의료진용 보고서
+        val hospitalContentContainer = binding.layoutHospitalVersion
+        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
+
+        val currentSymptomContainer = hospitalReportBinding.layoutFrame
+        val sideEffectContainer = hospitalReportBinding.layoutFrame2
+
+        val currentSymptomBinding = LayoutDentalCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val sideEffectBinding = LayoutDentalSideEffectInputBinding.inflate(inflater, sideEffectContainer, false)
+
+        currentSymptomBinding.viewModel = viewModel
+        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+        currentSymptomContainer.addView(currentSymptomBinding.root)
+        sideEffectContainer.addView(sideEffectBinding.root)
+
+        hospitalReportBinding.symptom.viewModel = viewModel
+        hospitalReportBinding.familyDiseaseAndDrug.viewModel = viewModel
+
+        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
+        hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
+        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
+
+        hospitalReportBinding.additionalInput.viewModel = viewModel
+        hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
+
+        hospitalContentContainer.addView(hospitalReportBinding.root)
+    }
+
+    private fun setMapDataBinding() {
+        // 지도로 이동 버튼 레이아웃 적용
+        val contentContainer3 = binding.layoutGoToMap
+        val goToMapBinding = LayoutHospitalTypeBinding.inflate(inflater, contentContainer3, false)
+
+        goToMapBinding.tvHospitalType.text = getString(R.string.hospital_department_dental)
+        goToMapBinding.btnGoToMap.text = getString(R.string.find_nearby_dental)
+
+        goToMapBinding.btnGoToMap.setOnClickListener {
+            val action = DentalSymptomResultFragmentDirections.actionDentalSymptomResultFragmentToMapFragment2("치과")
+            findNavController().navigate(action)
+        }
+        contentContainer3.addView(goToMapBinding.root)
+    }
+
     override fun onBindLayout() {
         super.onBindLayout()
-        showToolTip()
         showSymptomResult()
 
-        binding.layoutCurrentSymptom.viewModel = viewModel
+        inflater = LayoutInflater.from(requireContext())
+
+        setCurrentSymptomBinding()
+        setSideEffectBinding()
+
+        setHospitalVersionReport()
+        setCurrentSymptomToHospital()
+        setMapDataBinding()
+
         binding.layoutUserHealthInfo.viewModel = viewModel
         binding.layoutAdditionalInput.viewModel = viewModel
 
-        binding.layoutHosVersionDental.currentSymptom.viewModel = viewModel
-        binding.layoutHosVersionDental.familyDiseaseAndDrug.viewModel = viewModel
-        binding.layoutHosVersionDental.additionalInput.viewModel = viewModel
-
-        binding.layoutHosVersionDental.sideEffect.viewModel = viewModel
-
-        binding.layoutCurrentSymptom.lifecycleOwner = viewLifecycleOwner
-        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
-        binding.layoutAdditionalInput.lifecycleOwner = viewLifecycleOwner
-
-        binding.layoutHosVersionDental.currentSymptom.lifecycleOwner = viewLifecycleOwner
-        binding.layoutHosVersionDental.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        binding.layoutHosVersionDental.additionalInput.lifecycleOwner = viewLifecycleOwner
-
-        binding.layoutHosVersionDental.sideEffect.lifecycleOwner = viewLifecycleOwner
+        binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            binding.ivTooltip.visibility = View.INVISIBLE
+            if (isChecked) {
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+                binding.layoutUser.visibility = View.GONE
+            } else {
+                binding.layoutHospitalVersion.visibility = View.GONE
+                binding.layoutUser.visibility = View.VISIBLE
+            }
+        }
 
         lifecycleScope.launch {
             viewModel.saveDentalResponse()
-        }
-        binding.hospitalType.btnGoToMap.setOnClickListener {
-            val action = DentalSymptomResultFragmentDirections.actionDentalSymptomResultFragmentToMapFragment2("치과")
-            findNavController().navigate(action)
         }
 
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.dentalAdditionalInputFragment) }
