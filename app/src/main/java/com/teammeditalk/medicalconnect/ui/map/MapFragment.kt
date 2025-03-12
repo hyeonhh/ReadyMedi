@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -110,7 +111,8 @@ class MapFragment :
     }
 
     private fun showHospitalMenu() {
-        val popup = PopupMenu(requireContext(), binding.hospitalTypeDropDownMenu)
+        val popup = PopupMenu(requireContext(), binding.hospitalTypeDropDownMenu, Gravity.START, 0, R.style.PopUpStyle)
+
         val menuRes = R.menu.hospital_type_menu
         popup.menuInflater.inflate(menuRes, popup.menu)
         popup.show()
@@ -180,7 +182,8 @@ class MapFragment :
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         with(binding) {
             binding.hospitalTypeDropDownMenu.setOnClickListener {
-                Timber.d("click")
+                it.isSelected = !it.isSelected
+                binding.hospitalTypeDropDownMenu.setIsSelected(it.isSelected)
                 showHospitalMenu()
             }
             btnIsOpen.setOnClickListener {
@@ -263,7 +266,6 @@ class MapFragment :
         kakaoMap?.setOnLabelClickListener { kakaoMap, labelLayer, label ->
             val bottomSheet = MapInfoBottomSheet(label.tag as SearchLocationItem)
             bottomSheet.show(parentFragmentManager, "dialog")
-            Timber.d("클릭 :${label.tag}")
             true
         }
     }

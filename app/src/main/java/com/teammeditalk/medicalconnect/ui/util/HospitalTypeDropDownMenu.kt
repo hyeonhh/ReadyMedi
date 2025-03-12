@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.databinding.ExposedDropdownMenuHospitalTypeBinding
 
 class HospitalTypeDropDownMenu(
@@ -14,6 +15,16 @@ class HospitalTypeDropDownMenu(
 
     init {
         initView()
+    }
+
+    fun setIsSelected(selected: Boolean) {
+        if (selected) {
+            binding.tvTitle.setTextColor(resources.getColor(R.color.white))
+            binding.icCheck.setImageResource(R.drawable.ic_down_white)
+        } else {
+            binding.tvTitle.setTextColor(resources.getColor(R.color.gray70))
+            binding.icCheck.setImageResource(R.drawable.ic_down_16dp)
+        }
     }
 
     fun setText(text: String) {

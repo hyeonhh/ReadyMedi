@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <solid
-        android:color="@color/white"/>
-    <corners
-        android:radius="100dp"/>
-</shape>
+    <item android:drawable="@drawable/shape_hospital_drop_down_menu_selected" android:state_selected="true"/>
+    <item android:drawable="@drawable/shape_hospital_drop_down_menu_unselected"/>
+</selector>
