@@ -19,6 +19,7 @@ import com.teammeditalk.medicalconnect.data.serializer.UserAuthPreferencesSerial
 import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -36,6 +37,9 @@ class QuestionViewModel
     constructor(
         @ApplicationContext private val context: Context,
     ) : ViewModel() {
+        val scope: CoroutineScope
+            get() = viewModelScope
+
         init {
             getUserAuthInfo()
             getUserHealthInfo()
@@ -89,7 +93,19 @@ class QuestionViewModel
         val sideEffect = _sideEffect.asStateFlow()
 
         private val _anesthesiaHistory = MutableStateFlow(false)
-        val anesthesiaHistory = _anesthesiaHistory.asStateFlow()
+        val anesthesiaHistory =
+            _anesthesiaHistory
+                .map {
+                    if (it) {
+                        "예"
+                    } else {
+                        "아니요"
+                    }
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Eagerly,
+                    initialValue = "아니요",
+                )
 
         //   유저 건강 정보
         private val _userHealthInfo = MutableStateFlow(HealthInfo())
@@ -242,7 +258,7 @@ class QuestionViewModel
                     worseList = _selectedWorseList.value,
                     otherSymptom = _selectedOtherList.value,
                     additionalInput = _additionalInput.value,
-                    anesHistory = _anesthesiaHistory.value,
+                    anesHistory = if (_anesthesiaHistory.value) "예" else "아니요",
                     sideEffect = _sideEffect.value,
                 )
 

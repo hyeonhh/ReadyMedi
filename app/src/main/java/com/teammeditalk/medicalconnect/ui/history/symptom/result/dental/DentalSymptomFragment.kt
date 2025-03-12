@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutDentalCurrentSymptomBinding
@@ -20,9 +21,23 @@ class DentalSymptomFragment :
     ) {
     private val viewModel: DentalSymptomViewModel by viewModels()
     private val navController by lazy { findNavController() }
+    private val args by navArgs<DentalSymptomFragmentArgs>()
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        viewModel.getSymptom(timeStamp = args.timeStamp, uid = args.uid)
+
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                with(binding.layoutUserHealthInfo) {
+                    tvDisease.text = if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(",")
+                    tvFamilyDisease.text = if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(",")
+                    tvDrug.text = if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(",")
+                    tvAllergy.text = if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(",")
+                }
+            }
+        }
 
         binding.btnBack.visibility = View.GONE
         binding.btnClose.setOnClickListener { navController.popBackStack() }
@@ -35,22 +50,11 @@ class DentalSymptomFragment :
         val currentSymptomBinding = LayoutDentalCurrentSymptomBinding.inflate(inflater, contentContainer, false)
         val sideEffectBindingToUser = LayoutDentalSideEffectInputBinding.inflate(inflater, contentContainer2, false)
 
+        currentSymptomBinding.dentalVM = viewModel
+        currentSymptomBinding.useDentalVM = true
+        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+
         contentContainer.addView(currentSymptomBinding.root)
         contentContainer2.addView(sideEffectBindingToUser.root)
-
-        lifecycleScope.launch {
-            viewModel.dentalResponse.collectLatest {
-                currentSymptomBinding.tvSymptomTitle.text = it.symptomTitle
-                currentSymptomBinding.tvSymptomContent.text = it.symptomContent
-                currentSymptomBinding.tvSymptomDegree.text = it.degree
-                currentSymptomBinding.tvSymptomStartDate.text = it.startDate
-                currentSymptomBinding.tvOtherSymptom.text = it.otherSymptom.toString()
-                currentSymptomBinding.tvSymptomWorseList.text = it.worseList.toString()
-                currentSymptomBinding.tvSymptomType.text = it.type
-                currentSymptomBinding.tvSymptomAnesHistory.text = it.anesHistory.toString()
-                sideEffectBindingToUser.tvSideEffect.text = it.sideEffect
-                binding.layoutAdditionalInput.tvInput.text = it.additionalInput
-            }
-        }
     }
 }

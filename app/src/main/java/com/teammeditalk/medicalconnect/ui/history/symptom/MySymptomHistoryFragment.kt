@@ -12,6 +12,7 @@ import com.teammeditalk.medicalconnect.ui.history.symptom.adapter.SymptomHistory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MySymptomHistoryFragment :
@@ -32,6 +33,7 @@ class MySymptomHistoryFragment :
                     timeStamp: String,
                     hospitalType: String,
                 ) {
+                    Timber.d("클릭 :$timeStamp")
                     when (hospitalType) {
                         "치과" -> {
                             val action =
@@ -79,7 +81,11 @@ class MySymptomHistoryFragment :
         )
         lifecycleScope.launch {
             viewModel.history.collectLatest {
-                if (it.isNotEmpty()) {
+                if (it.isEmpty()) {
+                    binding.lottie.visibility = View.GONE
+                    binding.emptyView.emptyLayout.visibility = View.VISIBLE
+                } else {
+                    binding.emptyView.emptyLayout.visibility = View.GONE
                     binding.lottie.visibility = View.GONE
                     binding.recyclerView.visibility = View.VISIBLE
                     adapter.setList(it)

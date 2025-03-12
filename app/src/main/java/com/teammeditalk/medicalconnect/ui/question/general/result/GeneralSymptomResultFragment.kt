@@ -35,7 +35,7 @@ class GeneralSymptomResultFragment :
         val generalCurrentSymptomBinding = LayoutGeneralCurrentSymptomBinding.inflate(inflater, currentSymptomFrame, false)
         currentSymptomFrame.addView(generalCurrentSymptomBinding.root)
 
-        generalCurrentSymptomBinding.viewModel = viewModel
+        // generalCurrentSymptomBinding.viewModel = viewModel
         generalCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
     }
 
@@ -54,7 +54,7 @@ class GeneralSymptomResultFragment :
 
         val currentSymptomBinding = LayoutGeneralCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
 
-        currentSymptomBinding.viewModel = viewModel
+        currentSymptomBinding.questionVM = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
         currentSymptomContainer.addView(currentSymptomBinding.root)
 

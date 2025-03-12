@@ -5,8 +5,15 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="questionVM"
             type="com.teammeditalk.medicalconnect.ui.question.QuestionViewModel" />
+
+        <variable
+            name="useGeneralVM"
+            type="Boolean" />
+        <variable
+            name="generalVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.genral.GeneralSymptomViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,7 +57,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedSymptom.first}"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.symptomTitle : questionVM.generalResult.symptomTitle}"
             app:layout_constraintBottom_toBottomOf="@+id/textView25"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView25"
@@ -69,10 +76,10 @@
         <TextView
             android:textAlignment="textEnd"
             android:id="@+id/tv_symptom_content"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.symptomContent : questionVM.generalResult.symptomContent}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{viewModel.selectedSymptom.second}"
             app:layout_constraintBottom_toBottomOf="@+id/textView26"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView26"
@@ -93,8 +100,8 @@
             android:textAlignment="textEnd"
             android:id="@+id/tv_symptom_region"
             android:layout_width="0dp"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.region : questionVM.generalResult.region}"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedRegion}"
             android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView27"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,8 +111,8 @@
         <TextView
             android:id="@+id/tv_symptom_start_date"
             android:layout_width="0dp"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.startDate : questionVM.generalResult.startDate}"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedDate}"
             android:layout_marginStart="10dp"
             android:textAlignment="textEnd"
             app:layout_constraintBottom_toBottomOf="@+id/textView28"
@@ -160,9 +167,9 @@
             android:id="@+id/tv_symptom_type"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedType.toString()}"
             android:textAlignment="textEnd"
             android:layout_marginStart="10dp"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.type : questionVM.generalResult.type}"
             app:layout_constraintBottom_toBottomOf="@+id/textView29"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView29"
@@ -182,8 +189,8 @@
         <TextView
             android:id="@+id/tv_symptom_degree"
             android:layout_width="0dp"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.degree : questionVM.generalResult.degree}"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedDegree.toString()}"
             android:textAlignment="textEnd"
             android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView30"
@@ -205,9 +212,9 @@
         <TextView
             android:id="@+id/tv_symptom_worse_list"
             android:layout_width="0dp"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.worseList.toString() : questionVM.generalResult.worseList}"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{viewModel.selectedWorseList}"
             android:textAlignment="textEnd"
 
             app:layout_constraintBottom_toBottomOf="@+id/textView40"
@@ -229,9 +236,9 @@
             android:textAlignment="textEnd"
             android:id="@+id/tv_other_symptom"
             android:layout_width="0dp"
+            android:text="@{useGeneralVM ? generalVM.generalResponse.otherSymptom.toString() : questionVM.generalResult.otherSymptom}"
             android:layout_marginStart="10dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedOtherList.toString()}"
             app:layout_constraintBottom_toBottomOf="@+id/textView32"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView32"

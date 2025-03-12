@@ -11,6 +11,7 @@ import com.teammeditalk.medicalconnect.data.model.question.GeneralQuestionRespon
 import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -25,6 +26,9 @@ class GeneralSymptomViewModel
         savedStateHandle: SavedStateHandle,
         @ApplicationContext val context: Context,
     ) : ViewModel() {
+        val scope: CoroutineScope
+            get() = viewModelScope
+
         private val _generalResponse = MutableStateFlow(GeneralQuestionResponse())
         val generalResponse = _generalResponse.asStateFlow()
 
@@ -43,7 +47,6 @@ class GeneralSymptomViewModel
 
         init {
             getUserHealthInfo()
-            getSymptom()
         }
 
         // 로컬에 저장된 내용 불러오기
@@ -66,7 +69,7 @@ class GeneralSymptomViewModel
             }
         }
 
-        private fun getSymptom() {
+        fun getSymptom() {
             val db = Firebase.firestore
             db
                 .collection("symptom_result_$uid")

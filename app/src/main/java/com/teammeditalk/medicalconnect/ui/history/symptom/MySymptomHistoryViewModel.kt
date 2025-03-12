@@ -17,8 +17,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import timber.log.Timber
@@ -30,8 +33,16 @@ class MySymptomHistoryViewModel
     constructor(
         @ApplicationContext val context: Context,
     ) : ViewModel() {
-        private val _history = MutableStateFlow(mutableListOf<SymptomHistory>())
-        val history = _history.asStateFlow()
+        private val _history = MutableStateFlow(listOf<SymptomHistory>())
+        val history =
+            _history
+                .map {
+                    it.sortedBy { it.timeStamp }
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Eagerly,
+                    initialValue = emptyList(),
+                )
 
         private val _userId = MutableStateFlow("")
         val userId = _userId.asStateFlow()
@@ -55,6 +66,7 @@ class MySymptomHistoryViewModel
             viewModelScope
                 .async {
                     for (document in documents) {
+                        Timber.d("document :${document.data} \n")
                         // todo : 진료과별로 분류해야함
                         if (document.data.toString().contains("치과")) {
                             val result =
@@ -114,7 +126,7 @@ class MySymptomHistoryViewModel
                             if (result != null) {
                                 list.add(
                                     SymptomHistory(
-                                        hospitalType = "일반",
+                                        hospitalType = "내과",
                                         symptomContent = result.symptomContent,
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,

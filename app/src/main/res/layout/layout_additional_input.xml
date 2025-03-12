@@ -8,7 +8,46 @@
         <variable
             name="viewModel"
             type="com.teammeditalk.medicalconnect.ui.question.QuestionViewModel" />
+
+        <variable
+            name="useGeneralVM"
+            type="Boolean" />
+
+        <variable
+            name="useInnerVM"
+            type="Boolean" />
+
+        <variable
+            name="useJointVM"
+            type="Boolean" />
+        <variable
+            name="useWomenVM"
+            type="Boolean" />
+        <variable
+            name="useDentalVM"
+            type="Boolean" />
+
+        <variable
+            name="generalVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.genral.GeneralSymptomViewModel" />
+
+        <variable
+            name="innerVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.inner.InnerSymptomViewModel" />
+
+        <variable
+            name="jointVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.joint.JointSymptomViewModel" />
+
+        <variable
+            name="womenVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.women.WomenSymptomViewModel" />
+
+        <variable
+            name="dentalVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.dental.DentalSymptomViewModel" />
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

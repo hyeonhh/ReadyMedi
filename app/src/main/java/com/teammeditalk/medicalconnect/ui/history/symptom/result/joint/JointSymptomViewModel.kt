@@ -1,4 +1,4 @@
-package com.teammeditalk.medicalconnect.ui.history.symptom.result.dental
+package com.teammeditalk.medicalconnect.ui.history.symptom.result.joint
 
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
@@ -36,7 +36,7 @@ class JointSymptomViewModel
             getSymptom()
         }
 
-        private fun getSymptom() {
+        fun getSymptom() {
             val db = Firebase.firestore
             db
                 .collection("symptom_result_$uid")

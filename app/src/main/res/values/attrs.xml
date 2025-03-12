@@ -18,4 +18,23 @@
         <attr name="menuTitle" format="string"/>
     </declare-styleable>
 
+
+    <!-- 증상 관련 커스텀 속성 정의 -->
+    <declare-styleable name="SymptomViews">
+        <attr name="symptomTitle" format="string" />
+        <attr name="useGeneralVM" format="boolean"/>
+        <attr name="generalVM" format="reference"/>
+        <attr name="questionVM" format="reference"/>
+
+        <attr name="symptomContent" format="string" />
+        <attr name="symptomRegion" format="string" />
+        <attr name="symptomDate" format="string" />
+        <attr name="symptomType" format="string" />
+        <attr name="symptomDegree" format="string" />
+        <attr name="symptomWorseList" format="string" />
+        <attr name="symptomOtherSymptom" format="string" />
+        <attr name="fieldType" format="string" />
+        <attr name="symptomField" format="string" />
+    </declare-styleable>
+
 </resources>

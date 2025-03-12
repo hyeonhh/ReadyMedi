@@ -81,9 +81,17 @@
     <fragment
         android:id="@+id/fragmentJointSymptomResult"
         android:name="com.teammeditalk.medicalconnect.ui.question.joint.result.FragmentJointSymptomResult"
-        android:label="FragmentJointSymptomResult" />
+        android:label="FragmentJointSymptomResult" >
+        <argument
+            android:name="timeStamp"
+            app:argType="string"/>
+        <argument
+            android:name="uid"
+            app:argType="string"/>
+
+    </fragment>
     <fragment
-        tools:layout="@layout/fragment_dental_symtom_result"
+        tools:layout="@layout/layout_common_question_result"
         android:id="@+id/dentalSymptomFragment"
         android:name="com.teammeditalk.medicalconnect.ui.history.symptom.result.dental.DentalSymptomFragment"
         android:label="DentalSymptomFragment" >
@@ -115,6 +123,9 @@
         <argument
             android:name="uid"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_innerSymptomFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/womenSymptomFragment"
@@ -126,6 +137,9 @@
         <argument
             android:name="uid"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_womenSymptomFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/jointSymptomFragment"
@@ -137,6 +151,9 @@
         <argument
             android:name="uid"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_jointSymptomFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_all"

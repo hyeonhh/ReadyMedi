@@ -7,6 +7,46 @@
             <variable
                 name="viewModel"
                 type="com.teammeditalk.medicalconnect.ui.question.QuestionViewModel" />
+
+            <variable
+                name="useGeneralVM"
+                type="Boolean" />
+
+            <variable
+                name="useInnerVM"
+                type="Boolean" />
+
+            <variable
+                name="useJointVM"
+                type="Boolean" />
+            <variable
+                name="useDentalVM"
+                type="Boolean" />
+
+        <variable
+            name="useWomenVM"
+            type="Boolean" />
+
+
+            <variable
+                name="generalVM"
+                type="com.teammeditalk.medicalconnect.ui.history.symptom.result.genral.GeneralSymptomViewModel" />
+
+            <variable
+                name="innerVM"
+                type="com.teammeditalk.medicalconnect.ui.history.symptom.result.inner.InnerSymptomViewModel" />
+
+            <variable
+                name="jointVM"
+                type="com.teammeditalk.medicalconnect.ui.history.symptom.result.joint.JointSymptomViewModel" />
+
+            <variable
+                name="womenVM"
+                type="com.teammeditalk.medicalconnect.ui.history.symptom.result.women.WomenSymptomViewModel" />
+
+            <variable
+                name="dentalVM"
+                type="com.teammeditalk.medicalconnect.ui.history.symptom.result.dental.DentalSymptomViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +73,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_bottom_border_8dp"
             android:padding="20dp"
-            android:text="@{viewModel.selectedSymptom.second}"
+            android:text="@{useGeneralVM ?  generalVM.generalResponse.symptomContent: viewModel.selectedSymptom.second}"
             android:textAlignment="center"
             android:textAppearance="@style/SubTitle2"
             app:layout_constraintEnd_toEndOf="parent"

@@ -13,6 +13,6 @@ data class DentalQuestionResponse(
     val worseList: List<String> = emptyList(),
     val otherSymptom: List<String> = emptyList(),
     val additionalInput: String = "",
-    val anesHistory: Boolean = false,
+    val anesHistory: String = "",
     val sideEffect: String = "",
 )

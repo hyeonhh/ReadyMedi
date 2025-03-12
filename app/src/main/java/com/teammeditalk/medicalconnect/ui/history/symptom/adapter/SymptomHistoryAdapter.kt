@@ -21,7 +21,6 @@ class SymptomHistoryAdapter : RecyclerView.Adapter<SymptomHistoryAdapter.Symptom
 
     fun setList(newList: List<SymptomHistory>) {
         list.addAll(newList)
-        Timber.d("list :$list")
         notifyDataSetChanged()
     }
 
@@ -37,6 +36,7 @@ class SymptomHistoryAdapter : RecyclerView.Adapter<SymptomHistoryAdapter.Symptom
             binding.tvSymptomContent.text = data.symptomContent
             binding.tvDate.text = data.timeStamp
             binding.layout.setOnClickListener {
+                Timber.d("timestamp :${data.timeStamp}, hospital : ${data.hospitalType}}")
                 listener?.onClick(data.timeStamp, hospitalType = data.hospitalType)
             }
         }

@@ -43,7 +43,6 @@ class InnerSymptomViewModel
 
         init {
             getUserHealthInfo()
-            getSymptom()
         }
 
         // 로컬에 저장된 내용 불러오기
@@ -66,7 +65,7 @@ class InnerSymptomViewModel
             }
         }
 
-        private fun getSymptom() {
+        fun getSymptom() {
             val db = Firebase.firestore
             db
                 .collection("symptom_result_$uid")

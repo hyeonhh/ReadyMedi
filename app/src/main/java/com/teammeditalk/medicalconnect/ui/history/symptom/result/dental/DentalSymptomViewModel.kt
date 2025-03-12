@@ -3,13 +3,18 @@ package com.teammeditalk.medicalconnect.ui.history.symptom.result.dental
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.teammeditalk.medicalconnect.data.model.info.HealthInfo
 import com.teammeditalk.medicalconnect.data.model.question.DentalQuestionResponse
+import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -17,28 +22,44 @@ import javax.inject.Inject
 class DentalSymptomViewModel
     @Inject
     constructor(
-        savedStateHandle: SavedStateHandle,
+        private val savedStateHandle: SavedStateHandle,
         @ApplicationContext val context: Context,
     ) : ViewModel() {
+        init {
+            getUserHealthInfo()
+        }
+
+        //   유저 건강 정보
+        private val _userHealthInfo = MutableStateFlow(HealthInfo())
+        val userHealthInfo = _userHealthInfo.asStateFlow()
+
         private val _dentalResponse = MutableStateFlow(DentalQuestionResponse())
         val dentalResponse = _dentalResponse.asStateFlow()
 
-        // Safe Args로 전달된 ID를 바로 가져옵니다
-        private val timeStamp: String =
-            savedStateHandle.get<String>("timeStamp")
-                ?: throw IllegalArgumentException("time stamp가 필요합니다!")
-
-        private val uid: String =
-            savedStateHandle.get<String>("uid")
-                ?: throw IllegalArgumentException("uid가 요합니다!")
-
-        init {
-            getSymptom()
+        // 로컬에 저장된 내용 불러오기
+        private fun getUserHealthInfo() {
+            viewModelScope.launch {
+                context.userHealthPreferencesStore.data.collectLatest {
+                    _userHealthInfo.value =
+                        _userHealthInfo.value.copy(
+                            diseaseList = it.diseaseInfoList,
+                            familyDiseaseList = it.familyDiseaseList,
+                            allergyList = it.allergyInfoList,
+                            drugList = it.drugInfoList,
+                            drugTakingDuration = it.duration,
+                            drugTakingCount = it.count,
+                        )
+                }
+            }
         }
 
-        fun getSymptom() {
-            Timber.d("timestamp:$timeStamp")
+        fun getSymptom(
+            uid: String,
+            timeStamp: String,
+        ) {
             val db = Firebase.firestore
+            Timber.d("uid :$uid")
+            Timber.d("timeStamp :$timeStamp")
             db
                 .collection("symptom_result_$uid")
                 .document(timeStamp)
@@ -49,6 +70,10 @@ class DentalSymptomViewModel
                     Timber.d("데이터 리셜드 :$result")
                     if (result != null) {
                         _dentalResponse.value = result
+                        _dentalResponse.value =
+                            _dentalResponse.value.copy(
+                                anesHistory = result.anesHistory,
+                            )
                         Timber.d("데이터 :${_dentalResponse.value}")
                     }
                     Timber.d("success to get dental data :$it")

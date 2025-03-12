@@ -21,6 +21,7 @@ class MainActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
