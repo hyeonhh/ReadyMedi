@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="30dp"
-        android:text="이 증상을 토대로 진찰 및 처방부탁드립니다"
+        android:text="이 증상을 토대로 처방 부탁드립니다"
         android:textAppearance="@style/SubTitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -26,5 +26,14 @@ class AllFragment :
         binding.tvFreeCash.setOnClickListener {
             navController.navigate(R.id.freeHospitalPolicyFragment)
         }
+        binding.tvCondition.setOnClickListener {
+            navController.navigate(R.id.insuranceConditionFragment)
+        }
+        binding.tvProcedure.setOnClickListener {
+            navController.navigate(R.id.insuranceProcedureFragment)
+        }
+        binding.tvUse.setOnClickListener {
+            navController.navigate(R.id.useInsuranceFragment)
+        }
     }
 }

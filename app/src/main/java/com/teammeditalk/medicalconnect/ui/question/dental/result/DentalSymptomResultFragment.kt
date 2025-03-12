@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.tabs.TabLayout
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
@@ -28,6 +29,27 @@ class DentalSymptomResultFragment :
     ) {
     private lateinit var inflater: LayoutInflater
     private val viewModel: QuestionViewModel by activityViewModels()
+
+    private fun onTabClick() {
+        binding.tab.addOnTabSelectedListener(
+            object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    when (tab?.position) {
+                        0 -> {
+                        }
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                    TODO("Not yet implemented")
+                }
+            },
+        )
+    }
 
     private fun showSymptomResult() {
         lifecycleScope.launch {

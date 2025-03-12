@@ -169,6 +169,15 @@
         <action
             android:id="@+id/action_allFragment2_to_symptomHospitalFragment"
             app:destination="@id/symptomHospitalFragment" />
+        <action
+            android:id="@+id/action_allFragment2_to_insuranceConditionFragment"
+            app:destination="@id/insuranceConditionFragment" />
+        <action
+            android:id="@+id/action_allFragment2_to_insuranceProcedureFragment"
+            app:destination="@id/insuranceProcedureFragment" />
+        <action
+            android:id="@+id/action_allFragment2_to_useInsuranceFragment"
+            app:destination="@id/useInsuranceFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_free_hospital"
@@ -195,4 +204,16 @@
             app:popUpTo="@id/myHealthInfoFragment"
             app:destination="@id/myHealthInfoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/insuranceConditionFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.all.InsuranceConditionFragment"
+        android:label="InsuranceConditionFragment" />
+    <fragment
+        android:id="@+id/insuranceProcedureFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.all.InsuranceProcedureFragment"
+        android:label="InsuranceProcedureFragment" />
+    <fragment
+        android:id="@+id/useInsuranceFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.all.UseInsuranceFragment"
+        android:label="UseInsuranceFragment" />
 </navigation>
