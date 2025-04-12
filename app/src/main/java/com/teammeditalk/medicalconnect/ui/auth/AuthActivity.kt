@@ -1,6 +1,5 @@
 package com.teammeditalk.medicalconnect.ui.auth
 
-import android.view.GestureDetector
 import com.teammeditalk.medicalconnect.base.BaseActivity
 import com.teammeditalk.medicalconnect.databinding.ActivityAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,17 +11,15 @@ class AuthActivity :
     ) {
     private var fragmentNum = 0
 
-    private lateinit var gestureDetector: GestureDetector
-
     override fun onBindLayout() {
         super.onBindLayout()
 
         // gestureDetector = GestureDetector(this, this)
 
-        binding.authLayout.setOnTouchListener { _, event ->
-            gestureDetector.onTouchEvent(event)
-            true
-        }
+//        binding.authLayout.setOnTouchListener { _, event ->
+//            gestureDetector.onTouchEvent(event)
+//            true
+//        }
 
 //        lifecycleScope.launch {
 //            viewModel.uid.collectLatest {

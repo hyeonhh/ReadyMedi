@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MediReady</string>
-    <string name="disease_title">現在お持ちの持病をすべて選択してください</string>
-    <string name="drug_title">服用中のお薬はありますか？</string>
-    <string name="family_disease_title">ご家族の中で病歴のある方はいらっしゃいますか？</string>
-    <string name="allergy_title">アレルギーはありますか？</string>
+    <string name="disease_title">現在患っている持病を\nすべて選択してください</string>
+    <string name="family_disease_title">家族歴がある場合は選択してください</string>
+    <string name="drug_title">服用している薬がある場合は選択してください</string>
+    <string name="drug_subtitle">過去の避妊薬の使用歴も含めて選択してください</string>
+    <string name="allergy_title">アレルギーがある場合は選択してください</string>
     <string name="menu_home">ホーム</string>
-    <string name="menu_location">マップ</string>
-    <string name="menu_all">すべて</string>
+    <string name="menu_location">地図</string>
+    <string name="menu_all">全体</string>
     <string name="next">次へ</string>
 
-    <string name="symptom_region_question">痛みのある部位はどこですか？</string>
-    <string name="symptom_start_question">症状はいつから始まりましたか？</string>
-    <string name="symptom_degree_question">痛みの強さは1～10のどのくらいですか？</string>
-    <string name="symptom_duration_question">痛みはどのくらい続いていますか？</string>
-    <string name="symptom_effect_question">痛みを和らげる、または悪化させる要因は何ですか？</string>
+    <string name="symptom_region_question">痛みのある部位はどこですか？ *</string>
+    <string name="symptom_start_question">症状はいつから発生しましたか？</string>
+    <string name="symptom_degree_question">痛みの強さはどの程度ですか？</string>
+    <string name="symptom_duration_question">痛みの持続時間はどれくらいですか？</string>
+    <string name="symptom_effect_question">どうすると症状が悪化しますか？</string>
     <string name="other_symptom_question">他に伴う症状はありますか？</string>
-    <string name="additonal_comment_question">その他に伝えたいことはありますか？（自由記入）</string>
+    <string name="additonal_comment_question">追加で伝えたい\n内容はありますか？</string>
 
-    <string name="anesthesia_history_question">麻酔が効きにくかったことはありますか？</string>
-    <string name="medication_side_effect_question">お薬や注射による副作用を経験されたことはありますか？</string>
-    <string name="previous_injury_treatment_question">過去に怪我で治療を受けた部位はありますか？</string>
+    <!-- 麻酔関連 -->
+    <string name="anesthesia_history_question">麻酔が効きにくかったことがありますか？</string>
 
-    <string name="pregnancy_possibility_question">妊娠の可能性はありますか？／現在妊娠中ですか？</string>
-    <string name="menstruation_date_question">最近の生理の開始日と終了日を教えてください</string>
-    <string name="menstruation_regularity_question">生理は規則的ですか？</string>
+    <!-- 副作用関連 -->
+    <string name="medication_side_effect_question">薬の服用や\n注射による副作用がありましたか？</string>
 
-    <!-- 암질환 -->
+    <!-- 過去の治療歴 -->
+    <string name="previous_injury_treatment_question">過去にケガをして\n治療を受けた部位はありますか？</string>
+
+    <!-- 妊娠関連 -->
+    <string name="pregnancy_possibility_question">妊娠の可能性があるか\n現在妊娠中ですか？</string>
+    <string name="menstruation_date_question">最近の最後の生理が始まった\n初日はいつですか？</string>
+    <string name="menstruation_regularity_question">月経周期は規則的ですか？</string>
     <string name="cancer">がん疾患</string>
     <string name="stomach_cancer">胃がん</string>
     <string name="liver_cancer">肝臓がん</string>
@@ -39,41 +44,35 @@
     <string name="skin_cancer">皮膚がん</string>
     <string name="cervical_cancer">子宮頸がん</string>
 
-    <!-- 기타질환 관련 일문 문자열 -->
-    <string name="other_diseases">その他の疾患</string>
+    <!-- その他疾患関連の文字列 -->
+    <string name="other_diseases">その他疾患</string>
     <string name="diabetes">糖尿病</string>
     <string name="hypertension">高血圧</string>
     <string name="reflux_esophagitis">逆流性食道炎</string>
     <string name="urinary_stone">尿路結石</string>
     <string name="colon_polyp">大腸ポリープ</string>
-    <string name="chronic_viral_infection">慢性ウイルス感染症</string>
+    <string name="chronic_viral_infection">慢性ウイルス感染</string>
     <string name="intestinal_disease">腸疾患</string>
     <string name="gallstone">胆石症</string>
     <string name="liver_cirrhosis">肝硬変</string>
     <string name="thyroid_disease">甲状腺疾患</string>
-
-    <!-- 수술력 관련 일문 문자열 -->
     <string name="surgical_history">手術歴</string>
     <string name="spine_surgery">脊椎手術歴</string>
     <string name="abdominal_surgery">腹部手術歴</string>
     <string name="esophageal_surgery">食道手術歴</string>
-    <string name="tonsillectomy">扁桃腺摘出術歴</string>
+    <string name="tonsillectomy">扁桃腺切除手術歴</string>
     <string name="endoscopic_surgery">内視鏡手術歴</string>
     <string name="colon_resection">大腸切除術</string>
     <string name="cholecystectomy">胆嚢摘出術</string>
     <string name="gastrectomy">胃切除術</string>
 
-    <!-- 가족력 -->
     <string name="stroke">脳卒中</string>
     <string name="heart_disease">心臓病</string>
     <string name="ovarian_cancer">卵巢がん</string>
-
-    <!-- 복용 약 관련 -->
-
     <string name="blood_pressure_medication">血圧薬</string>
     <string name="heart_medication">心臓薬</string>
     <string name="diabetes_medication">糖尿病薬</string>
-    <string name="antibiotics">抗生物質</string>
+    <string name="antibiotics">抗生剤</string>
     <string name="anticancer_drugs">抗がん剤</string>
     <string name="herbal_medicine">漢方薬</string>
     <string name="contraceptive">避妊薬</string>
@@ -81,278 +80,268 @@
     <string name="oral_steroid">経口ステロイド</string>
     <string name="menopause_hormone">閉経関連女性ホルモン剤</string>
 
-    <!-- 약물 복용 빈도 관련 문자열 -->
-    <string name="medication_frequency_question">どのくらいの頻度で服用していますか?</string>
+    <!-- 薬物服用頻度関連の文字列 -->
+    <string name="medication_frequency_question">どのくらいの頻度で服用していますか？</string>
     <string name="days_unit">日に</string>
     <string name="times_unit">回</string>
 
-    <!-- 약물 복용 시작 시점 관련 문자열 -->
-    <string name="medication_start_time_question">いつから服用されていますか?</string>
+    <!-- 薬物服用開始時点関連の文字列 -->
+    <string name="medication_start_time_question">いつから服用していますか？</string>
     <string name="dropdown_default_text">選択</string>
 
-    <!-- 식품 알레르기 관련 문자열 -->
-    <string name="food_allergy_title">食物アレルギー</string>
+    <!-- 食品アレルギー関連の文字列 -->
+    <string name="food_allergy_title">食品アレルギー</string>
     <string name="egg">卵</string>
     <string name="milk">牛乳</string>
     <string name="soybean">大豆</string>
     <string name="wheat">小麦</string>
     <string name="seafood">海産物</string>
-    <string name="rice">お米</string>
+    <string name="rice">米</string>
     <string name="nuts">ナッツ類</string>
 
-    <!-- 약물 알레르기 관련 문자열 -->
+    <!-- 薬物アレルギー関連の文字列 -->
     <string name="drug_allergy_title">薬物アレルギー</string>
     <string name="pain_killer">鎮痛剤</string>
     <string name="aspirin">アスピリン</string>
-    <string name="anticonvulsant">抗けいれん薬</string>
+    <string name="anticonvulsant">抗けいれん剤</string>
     <string name="contrast_media">造影剤</string>
 
-    <!-- 기타 알레르기 관련 문자열 -->
-    <string name="other_allergy_title">その他のアレルギー</string>
+    <!-- その他アレルギー関連の文字列 -->
+    <string name="other_allergy_title">その他アレルギー</string>
     <string name="pollen">花粉</string>
     <string name="air">大気</string>
     <string name="mold">カビ</string>
     <string name="animal">動物</string>
 
-    <!-- 앱 시작 관련 문자열 -->
-    <string name="start_readymedi">ReadyMedi を始める</string>
-
-    <!-- 증상 입력 위젯 관련 문자열 -->
-    <string name="symptom_guidance_text">症状を入力して\nそのまま医療スタッフにお見せください</string>
-    <string name="enter_symptoms">症状を入力</string>
-
-    <!-- 호흡기 증상 카테고리 관련 문자열 -->
-    <string name="respiratory_symptoms">風邪/呼吸器系の症状</string>
-
-    <!-- 세부 카테고리 제목 -->
+    <!-- アプリ開始関連の文字列 -->
+    <string name="start_readymedi">ReadyMediを始める</string>
+    <string name="symptom_guidance_text">体調が悪いときどうすればいいかわからない場合は？</string>
+    <string name="enter_symptoms">症状を入力する</string>
+    <string name="symptom_question">どんな症状がありますか？</string>
+    <string name="respiratory_symptoms">風邪/呼吸器症状</string>
     <string name="symptom_cough">咳</string>
     <string name="symptom_runny_nose">鼻水</string>
     <string name="symptom_fever">発熱</string>
-    <string name="symptom_sore_throat">喉の痛み</string>
+    <string name="symptom_sore_throat">咽頭痛</string>
     <string name="symptom_dyspnea">呼吸困難</string>
-
-    <!-- 세부 카테고리 설명 -->
     <string name="symptom_cough_desc">咳と痰があります</string>
     <string name="symptom_runny_nose_desc">鼻水が出て鼻が詰まっています</string>
     <string name="symptom_fever_desc">熱があり体が痛いです</string>
-    <string name="symptom_sore_throat_desc">喉が痛く、腫れており、かすれています</string>
-    <string name="symptom_dyspnea_desc">息をするのが困難です</string>
+    <string name="symptom_sore_throat_desc">喉が痛く、腫れて、声がかすれています</string>
+    <string name="symptom_dyspnea_desc">息をするのが難しいです</string>
 
-    <!-- 소화기/순환기 증상 카테고리 관련 문자열 -->
-    <string name="digestive_circulatory_symptoms">消化器/循環器系の症状</string>
+    <!-- 消化器/循環器症状カテゴリー関連の文字列 -->
+    <string name="digestive_circulatory_symptoms">消化器/循環器症状</string>
 
-    <!-- 세부 카테고리 제목 -->
+    <!-- サブカテゴリータイトル -->
     <string name="symptom_abdominal_pain">腹痛</string>
-    <string name="symptom_heartburn">胸焼け</string>
+    <string name="symptom_heartburn">胸やけ</string>
     <string name="symptom_nausea">吐き気</string>
     <string name="symptom_bowel_issue">下痢/便秘</string>
     <string name="symptom_indigestion">消化不良</string>
     <string name="symptom_chest_pain">胸痛</string>
-    <string name="symptom_heart_palpitation">動悸</string>
+    <string name="symptom_heart_palpitation">心拍異常</string>
 
-    <!-- 세부 카테고리 설명 -->
+    <!-- サブカテゴリー説明 -->
     <string name="symptom_abdominal_pain_desc">お腹が痛くて膨満感があります</string>
-    <string name="symptom_heartburn_desc">胃がヒリヒリして酸っぱいものが上がってきます</string>
-    <string name="symptom_nausea_desc">吐き気がして嘔吐します</string>
+    <string name="symptom_heartburn_desc">胸やけと酸の逆流があります</string>
+    <string name="symptom_nausea_desc">吐き気があり嘔吐します</string>
     <string name="symptom_bowel_issue_desc">下痢または便秘が続いています</string>
-    <string name="symptom_indigestion_desc">消化がうまくいきません</string>
-    <string name="symptom_chest_pain_desc">胸が痛く、圧迫感があります</string>
-    <string name="symptom_heart_palpitation_desc">心臓が速く鼓動したり不規則になったりします</string>
+    <string name="symptom_indigestion_desc">消化が良くありません</string>
+    <string name="symptom_chest_pain_desc">胸が痛く圧迫感があります</string>
+    <string name="symptom_heart_palpitation_desc">心臓が速く打ったり不規則になったりします</string>
 
-    <!-- 피로/무기력 증상 카테고리 관련 문자열 -->
-    <string name="fatigue_symptoms">疲労/倦怠感の症状</string>
+    <!-- 疲労/無気力症状カテゴリー関連の文字列 -->
+    <string name="fatigue_symptoms">疲労/無気力症状</string>
 
-    <!-- 세부 카테고리 제목 -->
+    <!-- サブカテゴリータイトル -->
     <string name="symptom_fatigue">疲労感</string>
     <string name="symptom_headache_dizziness">頭痛/めまい</string>
     <string name="symptom_muscle_pain">筋肉痛</string>
     <string name="symptom_insomnia">不眠症</string>
     <string name="symptom_weight_change">急激な体重変化</string>
 
-    <!-- 세부 카테고리 설명 -->
-    <string name="symptom_fatigue_desc">常に疲れていて力が出ません</string>
+    <!-- サブカテゴリー説明 -->
+    <string name="symptom_fatigue_desc">常に疲れを感じ力が出ません</string>
     <string name="symptom_headache_dizziness_desc">めまいがして頭が痛いです</string>
-    <string name="symptom_muscle_pain_desc">体が全体的に痛くてうずきます</string>
-    <string name="symptom_insomnia_desc">眠りにくいです</string>
-    <string name="symptom_weight_change_desc">体重が急に変わりました</string>
+    <string name="symptom_muscle_pain_desc">体全体がうずいて痛いです</string>
+    <string name="symptom_insomnia_desc">眠りにつくことができません</string>
+    <string name="symptom_weight_change_desc">体重が急に変化しました</string>
 
-    <!-- 알레르기/면역 증상 카테고리 관련 문자열 -->
-    <string name="allergy_immune_symptoms">アレルギー/免疫の症状</string>
+    <!-- アレルギー/免疫症状カテゴリー関連の文字列 -->
+    <string name="allergy_immune_symptoms">アレルギー/免疫症状</string>
 
-    <!-- 세부 카테고리 제목 -->
+    <!-- サブカテゴリータイトル -->
     <string name="symptom_skin_allergy">皮膚アレルギー</string>
     <string name="symptom_respiratory_allergy">呼吸器アレルギー</string>
     <string name="symptom_food_allergy">食物アレルギー</string>
     <string name="symptom_swelling">浮腫</string>
 
-    <!-- 세부 카테고리 설명 -->
-    <string name="symptom_skin_allergy_desc">皮膚がかゆくて蕁麻疹が出ています</string>
+    <!-- サブカテゴリー説明 -->
+    <string name="symptom_skin_allergy_desc">皮膚がかゆくじんましんが出ます</string>
     <string name="symptom_respiratory_allergy_desc">くしゃみが出て目がかゆいです</string>
     <string name="symptom_food_allergy_desc">食べ物を食べるとアレルギーが出ます</string>
     <string name="symptom_swelling_desc">体に浮腫ができました</string>
 
-    <!-- 당뇨/고혈압 관련 문자열 -->
+    <!-- 糖尿病/高血圧関連の文字列 -->
     <string name="diabetes_hypertension">糖尿病/高血圧</string>
 
-    <!-- 세부 카테고리 제목 -->
+    <!-- サブカテゴリータイトル -->
     <string name="symptom_diabetes">糖尿病</string>
     <string name="symptom_thyroid">甲状腺</string>
     <string name="symptom_cholesterol_bp">コレステロール/血圧</string>
 
-    <!-- 세부 카테고리 설명 -->
-    <string name="symptom_diabetes_desc">糖尿病の検査/管理を受けたいです</string>
-    <string name="symptom_thyroid_desc">甲状腺の検査/管理を受けたいです</string>
+    <!-- サブカテゴリー説明 -->
+    <string name="symptom_diabetes_desc">糖尿病検査/管理を受けたいです</string>
+    <string name="symptom_thyroid_desc">甲状腺検査/管理を受けたいです</string>
     <string name="symptom_cholesterol_bp_desc">コレステロール/血圧が高いです</string>
 
-    <!-- 관절/뼈 관련 문자열 -->
+    <!-- 関節/骨関連の文字列 -->
     <string name="joint_bone">関節/骨</string>
 
-    <!-- 세부 카테고리 제목 -->
+    <!-- サブカテゴリータイトル -->
     <string name="symptom_knee_pain">膝の痛み</string>
     <string name="symptom_shoulder_pain">肩の痛み</string>
-    <string name="symptom_back_pain">腰の痛み</string>
+    <string name="symptom_back_pain">腰痛</string>
     <string name="symptom_neck_pain">首の痛み</string>
     <string name="symptom_wrist_ankle_pain">手首/足首の痛み</string>
 
-    <!-- 세부 카테고리 설명 -->
-    <string name="symptom_knee_pain_desc">膝が痛く、歩くのが困難です</string>
-    <string name="symptom_shoulder_pain_desc">肩が痛く、腕を上げるのが困難です</string>
-    <string name="symptom_back_pain_desc">腰が痛く、曲げるのが困難です</string>
-    <string name="symptom_neck_pain_desc">首が痛く、動かすのが困難です</string>
-    <string name="symptom_wrist_ankle_pain_desc">手首/足首が痛く、腫れがあります</string>
+    <!-- サブカテゴリー説明 -->
+    <string name="symptom_knee_pain_desc">膝が痛くて歩くのが難しいです</string>
+    <string name="symptom_shoulder_pain_desc">肩が痛くて腕を上げるのが難しいです</string>
+    <string name="symptom_back_pain_desc">腰が痛くて曲げるのが難しいです</string>
+    <string name="symptom_neck_pain_desc">首が痛くて動かすのが難しいです</string>
+    <string name="symptom_wrist_ankle_pain_desc">手首/足首が痛くて腫れがあります</string>
 
-    <!-- 외부/부상 관련 문자열 -->
-    <string name="external_injury">外傷/怪我</string>
+    <!-- 外部/怪我関連の文字列 -->
+    <string name="external_injury">外部/怪我</string>
 
-    <!-- 세부 카테고리 제목 -->
+    <!-- サブカテゴリータイトル -->
     <string name="symptom_accident">事故/怪我</string>
-    <string name="symptom_sports_injury">スポーツ障害</string>
+    <string name="symptom_sports_injury">スポーツ怪我</string>
     <string name="symptom_fracture">骨折の疑い</string>
 
-    <!-- 세부 카테고리 설명 -->
+    <!-- サブカテゴリー説明 -->
     <string name="symptom_accident_desc">事故/怪我をしました</string>
     <string name="symptom_sports_injury_desc">運動中に怪我をしました</string>
-    <string name="symptom_fracture_desc">骨が折れたようです</string>
+    <string name="symptom_fracture_desc">骨が折れたかもしれません</string>
 
-    <!-- 치아/잇몸/턱 관련 문자열 -->
+    <!-- 歯/歯茎/顎関連の文字列 -->
     <string name="dental_jaw">歯/歯茎/顎</string>
 
-    <!-- 세부 카테고리 제목 -->
-    <string name="symptom_tooth">歯の痛み</string>
+    <!-- サブカテゴリータイトル -->
+    <string name="symptom_tooth">歯</string>
     <string name="symptom_cavity">虫歯</string>
     <string name="symptom_tooth_fracture">歯の破折</string>
-    <string name="symptom_gum">歯茎の問題</string>
+    <string name="symptom_gum">歯茎</string>
     <string name="symptom_jaw_joint">顎関節</string>
 
-    <!-- 세부 카테고리 설명 -->
+    <!-- サブカテゴリー説明 -->
     <string name="symptom_tooth_desc">歯がしみて痛いです</string>
     <string name="symptom_cavity_desc">虫歯があります</string>
-    <string name="symptom_tooth_fracture_desc">歯が欠けた/グラグラします</string>
+    <string name="symptom_tooth_fracture_desc">歯が割れた/ぐらついています</string>
     <string name="symptom_gum_desc">歯茎に問題があります</string>
     <string name="symptom_jaw_joint_desc">顎関節が痛いです</string>
 
-    <!-- 유방질환 관련 문자열 -->
+    <!-- 乳房疾患関連の文字列 -->
     <string name="breast_disease">乳房疾患</string>
 
-    <!-- 세부 카테고리 제목 -->
-    <string name="symptom_breast_mass">乳房のしこり</string>
+    <!-- サブカテゴリータイトル -->
+    <string name="symptom_breast_mass">乳房腫瘤</string>
     <string name="symptom_breast_pain">乳房痛</string>
     <string name="symptom_nipple_discharge">乳頭分泌物</string>
 
-    <!-- 세부 카테고리 설명 -->
+    <!-- サブカテゴリー説明 -->
     <string name="symptom_breast_mass_desc">胸にしこりが触れます</string>
     <string name="symptom_breast_pain_desc">胸が痛くて不快です</string>
     <string name="symptom_nipple_discharge_desc">分泌物が出ています</string>
 
-    <!-- 여성질환 관련 문자열 -->
-    <string name="womens_health">婦人科疾患</string>
+    <!-- 女性疾患関連の文字列 -->
+    <string name="womens_health">女性疾患</string>
 
-    <!-- 세부 카테고리 제목 -->
+    <!-- サブカテゴリータイトル -->
     <string name="symptom_menstrual_cycle">月経周期</string>
     <string name="symptom_pelvic_pain">骨盤痛</string>
-    <string name="symptom_menstrual_pain">月経</string>
+    <string name="symptom_menstrual_pain">月経痛</string>
     <string name="symptom_vaginal_itching">膣のかゆみ</string>
     <string name="symptom_discharge">分泌物</string>
 
-    <!-- 세부 카테고리 설명 -->
+    <!-- サブカテゴリー説明 -->
     <string name="symptom_menstrual_cycle_desc">月経周期が不規則です</string>
     <string name="symptom_pelvic_pain_desc">骨盤痛と腹痛があります</string>
     <string name="symptom_menstrual_pain_desc">月経痛があります</string>
     <string name="symptom_vaginal_itching_desc">膣のかゆみ/痛みがあります</string>
-    <string name="symptom_discharge_desc">分泌物の色や臭いに異常があります</string>
+    <string name="symptom_discharge_desc">分泌物の色、臭いがあります</string>
 
-    <!-- 통증 유형 선택 옵션 -->
-    <string name="pain_type_stabbing">刺すような痛み</string>
-    <string name="pain_type_throbbing">ズキズキする痛み</string>
-    <string name="pain_type_sharp">鋭い切られるような痛み</string>
-    <string name="pain_type_tingling">しびれるような痛み</string>
+    <!-- 痛みタイプ選択オプション -->
+    <string name="pain_type_stabbing">チクチク刺すような痛み</string>
+    <string name="pain_type_throbbing">ズキズキ痛む痛み</string>
+    <string name="pain_type_sharp">鋭い切れるような痛み</string>
+    <string name="pain_type_tingling">痺れるような痛み</string>
+    <string name="pain_scale_instruction">1～10までの中から選択してください</string>
 
-    <string name="pain_scale_instruction">1から10までの数字を選んでください</string>
+    <!-- 持続性タイプ -->
+    <string name="duration_intermittent">間欠的に現れる</string>
+    <string name="duration_continuous">持続的に現れる</string>
+    <string name="duration_unknown">よくわからない</string>
 
-    <!-- 지속성 유형 -->
-    <string name="duration_intermittent">断続的に現れる</string>
-    <string name="duration_continuous">継続的に現れる</string>
-    <string name="duration_unknown">わかりません</string>
+    <!-- 影響要因オプション -->
 
-    <!-- 영향 요인 옵션 -->
-    <string name="effect_posture">姿勢</string>
-    <string name="effect_cough">咳</string>
-    <string name="effect_movement">動き</string>
-    <string name="effect_urination">排尿</string>
-    <string name="effect_unknown">わかりません</string>
-
-    <!-- 완화 요인 -->
-    <string name="pain_relief_title">いつ痛みが和らぎますか？</string>
-    <string name="pain_relief_option_1">鎮痛剤の服用</string>
+    <!-- 痛み緩和画面 -->
+    <string name="pain_relief_title">痛みはいつ緩和されますか？</string>
+    <string name="pain_relief_option_1">鎮痛剤の摂取</string>
     <string name="pain_relief_option_2">冷温湿布</string>
-    <string name="pain_relief_option_3">姿勢の変更</string>
+    <string name="pain_relief_option_3">姿勢変更</string>
     <string name="pain_relief_option_4">マッサージ、指圧</string>
-    <string name="pain_relief_option_5">わからない</string>
+    <string name="pain_relief_option_5">よくわからない</string>
 
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
-    <string name="content_input_hint">内容を入力</string>
 
+    <string name="content_input_hint">内容入力</string>
 
+    <!-- 症状情報画面 -->
     <string name="current_symptoms">現在の症状</string>
     <string name="symptom">症状</string>
-    <string name="detailed_symptom">詳細な症状</string>
+    <string name="detailed_symptom">詳細症状</string>
     <string name="painful_area">痛みのある部位</string>
-    <string name="symptom_start_date">症状の発症日</string>
+    <string name="symptom_start_date">症状発生日</string>
     <string name="pain_character">痛みの性質</string>
     <string name="pain_intensity">痛みの強さ</string>
     <string name="pain_duration">痛みの持続時間</string>
     <string name="past_treatment">過去の治療経験</string>
-    <string name="anesthesia_experience">麻酔経験</string>
+    <string name="anesthesia_experience">麻酔が効かなかった経験の有無</string>
 
+    <string name="symptoms_label">症状</string>
+
+    <!-- 個人健康情報画面 -->
     <string name="personal_health_info">個人健康情報</string>
     <string name="chronic_disease">持病</string>
     <string name="family_history">家族歴</string>
     <string name="allergies">アレルギー</string>
     <string name="medications">服用薬</string>
 
+    <!-- 診療科 -->
     <string name="hospital_department_internal">内科</string>
     <string name="hospital_department_orthopedic">整形外科</string>
     <string name="hospital_department_general">一般外科</string>
     <string name="hospital_department_dental">歯科</string>
     <string name="hospital_department_obgyn">産婦人科</string>
 
+    <!-- 病院案内画面 -->
+    <string name="hospital_guidance_prefix">この症状がある場合は</string>
+    <string name="hospital_guidance_suffix">に行く必要があります</string>
+    <string name="pharmacy_guidance">軽度の症状であれば薬局でも買えます</string>
+    <string name="find_nearby_button">近くの内科・薬局を見る</string>
 
-    <!-- Hospital Guidance Screen -->
-        <string name="hospital_guidance_prefix">この症状がある場合は</string>
-        <string name="hospital_guidance_suffix">を受診してください</string>
-        <string name="pharmacy_guidance">軽度の症状であれば薬局でも薬を購入できます</string>
-        <string name="find_nearby_button">近くの内科・薬局を探す</string>
-
-    <string name="find_nearby_internal">近くの内科・薬局を探す</string>
-    <string name="find_nearby_orthopedic">近くの整形外科・薬局を探す</string>
-    <string name="find_nearby_general">近くの一般外科・薬局を探す</string>
-    <string name="find_nearby_dental">近くの歯科・薬局を探す</string>
-    <string name="find_nearby_obgyn">近くの産婦人科・薬局を探す</string>
+    <!-- 診療科別ボタン -->
+    <string name="find_nearby_internal">近くの内科・薬局を見る</string>
+    <string name="find_nearby_orthopedic">近くの整形外科・薬局を見る</string>
+    <string name="find_nearby_general">近くの一般外科・薬局を見る</string>
+    <string name="find_nearby_dental">近くの歯科・薬局を見る</string>
+    <string name="find_nearby_obgyn">近くの産婦人科・薬局を見る</string>
 
     <string name="view_report_text">レポートを見る</string>
-
-    <string name="symptom_question">どんな症状がありますか？</string>
     <string name="additional_content">追加内容</string>
 
     <string name="chip_toothache">歯痛</string>
@@ -362,31 +351,227 @@
     <string name="chip_jaw_pain">顎関節の痛み</string>
 
     <string name="symptom_type_question">痛みはどのような感じですか？</string>
-    <string name="pain_type_pressing">重く押さえつけるような痛み</string>
+    <string name="pain_type_pressing">強く押されるような痛み</string>
     <string name="pain_type_piercing">鋭く刺すような痛み</string>
     <string name="pain_type_pulsating">ドキドキと脈打つような痛み</string>
-    <string name="pain_type_cramping">締め付けるような痛み</string>
+    <string name="pain_type_cramping">絞られるような痛み</string>
     <string name="pain_type_burning">焼けるような熱い痛み</string>
-    <string name="pain_type_dull">重くて鈍い痛み</string>
+    <string name="pain_type_dull">重々しく鈍い痛み</string>
     <string name="pain_type_unknown">よくわかりません</string>
+
+    <!-- Pain Types -->
     <string name="pain_type_itching">かゆみ</string>
 
 
-
-    <string name="symptom_factor_posture_change">姿勢を変えるとき</string>
-    <string name="symptom_factor_before_meal">食事前</string>
-    <string name="symptom_factor_after_meal">食事後</string>
-    <string name="symptom_factor_after_waking">起床直後</string>
-    <string name="symptom_factor_night_time">夜間</string>
-
+    <!-- 症状リスト -->
     <string name="symptom_diarrhea">下痢</string>
     <string name="symptom_constipation">便秘</string>
     <string name="symptom_arrhythmia">不整脈</string>
-    <string name="symptom_cholesterol">コレステロールの問題</string>
-    <string name="symptom_blood_pressure">血圧の問題</string>
+    <string name="symptom_cholesterol">コレステロール異常</string>
+    <string name="symptom_blood_pressure">血圧異常</string>
+    <string name="personal_health_history">個人健康記録</string>
+    <string name="symptom_history">症状履歴</string>
+    <string name="period">期間</string>
+    <string name="medical_specialty">診療科</string>
+    <string name="select">選択</string>
+    <string name="confirm">確認</string>
+    <string name="modify_complete">修正完了</string>
+    <string name="my_history">MY履歴</string>
+    <string name="headache">頭痛</string>
+    <string name="count">回数</string>
+    <string name="my_history_title">MY履歴</string>
+    <string name="no_history">症状履歴がありません</string>
+    <string name="write_symptom">症状を入力する</string>
+    <string name="home_sub_title">言語の心配なく\nReadyMediと一緒に症状を正確に伝えましょう</string>
+    <string name="worse">悪化因子</string>
+    <string name="other">伴う症状</string>
+    <string name="pregnancy">妊娠の有無</string>
+    <string name="last_mendatory_start">最後の生理開始日</string>
+    <string name="mendatory_period">月経周期</string>
+    <string name="disease">持病</string>
+    <string name="family_disease">家族歴</string>
+    <string name="drug">服用薬</string>
+    <string name="allergy">アレルギー</string>
+    <string name="select_warn">必須項目を選択してください</string>
+    <string name="injury_history">過去にケガをして治療を受けた経験</string>
+    <string name="durality">持続性</string>
+    <string name="dental_side_effect">注射または薬の服用後に経験した副作用</string>
+    <string name="hospital">病院</string>
+    <string name="phar">薬局</string>
+    <string name="report">症状レポート</string>
+    <string name="logout">ログアウト</string>
+    <string name="right">右</string>
+    <string name="left">左</string>
+    <string name="front">前</string>
+    <string name="back">後ろ</string>
 
-    <string name="symptoms_label">症状</string>
+    <string name="effect_posture">姿勢</string>
+    <string name="effect_cough">咳</string>
+    <string name="effect_movement">動き</string>
+    <string name="effect_urination">排尿</string>
+    <string name="effect_unknown">よくわからない</string>
+    <string name="symptom_factor_posture_change">姿勢を変えるとき</string>
+    <string name="symptom_factor_before_meal">食事の前</string>
+    <string name="symptom_factor_after_meal">食事の後</string>
+    <string name="symptom_factor_after_waking">起床直後</string>
+    <string name="symptom_factor_night_time">夜間</string>
+
+    <!-- 症状因子 -->
+    <string name="symptom_factor_exercise">運動後</string>
+    <string name="symptom_factor_walking">歩行や走行時</string>
+    <string name="symptom_factor_activity">過度な身体活動</string>
+    <string name="symptom_factor_pressure">部位を押した</string>
+
+    <!-- 症状因子 -->
+    <string name="symptom_factor_stairs">階段の上り下りをするとき</string>
+    <string name="symptom_factor_cold_water">冷たい水を飲むとき</string>
+    <string name="symptom_factor_hot_water">熱い水を飲むとき</string>
+    <string name="symptom_factor_biting">歯を噛みしめるとき</string>
+    <string name="symptom_factor_touch_face">顔や口に手を当てるとき</string>
+    <string name="symptom_factor_head_down">頭を下に向けるとき</string>
+    <string name="symptom_factor_heel_walk">かかとでドンドン歩くとき</string>
+
+    <!-- Pain Types -->
+    <string name="pain_type_cold">しみるような痛み</string>
+    <string name="pain_type_sharp_stab">鋭く刺すような痛み</string>
+    <string name="pain_type_electric">電気が走るような痛み</string>
+    <string name="pain_type_throbbing_ache">ズキズキする痛み</string>
+    <string name="pain_type_heavy_pressure">重い圧迫感</string>
+    <string name="pain_type_pulsating_pain">ドキドキと脈打つような痛み</string>
+
+    <!-- Pregnancy Screen -->
+    <string name="pregnancy_no">妊娠の可能性なし</string>
+    <string name="pregnancy_possible">妊娠の可能性あり</string>
+    <string name="pregnancy_current">現在妊娠中</string>
+
+    <!-- Onboarding Screen -->
+    <string name="onboarding_symptom_title">事前に症状を入力しておけば\n病院や薬局での診察も安心です</string>
+    <string name="next_button">次へ</string>
+
+    <!-- Symptom Screen -->
+    <string name="symptom_list_title">症状別病院案内</string>
+    <string name="symptom_guide_title">症状別に受診すべき診療科を\nまとめました</string>
+    <string name="symptom_guide_subtitle">症状が重篤でない場合は家庭医学科や一般診療所でも\n総合的な診察を受けられます</string>
+
+    <!-- Insurance Application Process -->
+    <string name="signup_process_title">加入手続き</string>
+    <string name="foreign_insurance_process">外国人保険\n加入手続きをご案内します</string>
+    <string name="signup_process">加入手続き</string>
+    <string name="signup_step1">1. 韓国に6ヶ月以上滞在した場合、公団で自動加入処理されます</string>
+    <string name="signup_step2">2. 国内滞在地（居所地）に健康保険証と保険料納付書が送付されます</string>
+    <string name="signup_exception">ただし、以下の場合は必ず最寄りの支社（外国人相談センター）に訪問して申告してください</string>
+    <string name="signup_exception_details">- 自動加入されていない場合（健康保険証等未受領時）\n\n- 家族（配偶者および未成年の子）同伴入国で、保険料を世帯単位で納付希望の場合\n\n- 国内で留学中の在外国民または在外同胞（F-4）として、保険料の軽減を受けたい場合</string>
+
+    <!-- Insurance Screen -->
+    <string name="insurance_apply_title">加入後の適用方法</string>
+    <string name="foreign_insurance_guide">外国人保険\n適用方法をご案内します</string>
+    <string name="application_method">適用方法</string>
+    <string name="insurance_step1">1. 外国人保険に加入</string>
+    <string name="insurance_step2">2. 加入後保険料納付</string>
+    <string name="insurance_step3">3. 身分証を持参して病院訪問</string>
+    <string name="onboarding_main_title">慣れない韓国の病院や薬局、\nあなたの医療ガイド Ready Medi</string>
+    <string name="onborading3_title">外国語対応医療機関から\n外国人保険情報まで充実</string>
+    <string name="my_health_history">MY健康記録</string>
+    <string name="my_health_history_subtitle">詳しく入力するほど正確に診察が可能です</string>
+
+    <!-- Insurance Requirements -->
+    <string name="signup_conditions_title">加入条件</string>
+    <string name="foreign_insurance_conditions">外国人保険\n加入条件をご案内します</string>
+    <string name="signup_conditions">加入条件</string>
+    <string name="stay_requirement">韓国に6ヶ月以上滞在した外国人および在外国民</string>
+    <string name="stay_details">- 6ヶ月間の出国期間の合計が30日以下の場合は継続して国内に滞在しているとみなされます\n\n- 1回30日を超えて出国する場合は再入国日から6ヶ月以上滞在してから加入可能です</string>
+    <string name="exception">例外</string>
+    <string name="immediate_signup">国内入国後即時加入対象</string>
+    <string name="immediate_signup_details">留学または結婚移民（F-6）の滞在資格で入国した外国人（ただし、外国人登録後に加入可能）</string>
+
+    <!-- Map Screen -->
+    <string name="is_open">営業中</string>
+    <string name="foreign_language_available">外国語対応可能</string>
+
+    <!-- Loading Screen -->
+    <string name="creating_report">症状レポートを作成しています</string>
+    <string name="please_wait">少々お待ちください</string>
+
+    <!-- Symptom Factors -->
+    <string name="menstrual_factor">月経前後</string>
+    <string name="hormone_medication_factor">ホルモン関連薬物摂取</string>
+    <string name="intense_activity_factor">激しい身体活動</string>
+
+    <!-- Symptom Chips -->
+    <string name="lump">しこり</string>
+    <string name="swelling">腫れ</string>
+    <string name="skin_change">皮膚の変化</string>
+    <string name="itching">かゆみ</string>
+    <string name="nipple_discharge">乳頭分泌物</string>
+
+    <!-- Medical Info Screens -->
+    <string name="medical_info_title">Ready Mediがお届けする\nスマートな外国人診療情報</string>
+    <string name="benefit_title">外国人診療特典</string>
+    <string name="free_hospital">無料診療病院（ソウル）</string>
+    <string name="medical_support">医療診療支援金特典</string>
+    <string name="symptom_hospital_guide">症状別診療科</string>
+    <string name="symptom_hospital_list">症状別病院案内</string>
+    <string name="foreign_insurance">外国人保険</string>
+    <string name="signup_condition">加入条件</string>
+    <string name="signup_procedure">加入手続き</string>
+    <string name="application_after_signup">加入後適用方法</string>
+
+    <!-- Medical Benefits -->
+    <string name="medical_benefits_title">医療診療支援金特典</string>
+    <string name="worker_benefits_info">外国人労働者のための\n医療診療費特典をご案内します</string>
+    <string name="purpose">事業目的</string>
+    <string name="purpose_description">医療特典を受けられない人々に医療サービスを提供することで、人間として最低限享受すべき健康的な生活の質を維持できるようにすることです。</string>
+    <string name="eligible_target">支援対象</string>
+    <string name="eligible_target_description">- 外国人労働者およびその子供と配偶者（外国人）\n- 国籍取得前の結婚移民者およびその子供\n- 難民等およびその子供\n- 各種医療保障制度により医療特典を受けられない方</string>
+    <string name="detailed_inquiry">※ 詳細基準は事業実施医療機関を通じてお問い合わせください。</string>
+    <string name="support_content">支援内容</string>
+    <string name="visit_count">回数</string>
+    <string name="visit_count_desc">年間回数制限なし</string>
+    <string name="support_scope">支援範囲</string>
+    <string name="support_scope_desc">入院および手術等の診療費</string>
+    <string name="support_limit">支援限度</string>
+    <string name="support_limit_desc">一人当たり500万ウォン範囲内で支援</string>
+    <string name="outpatient_exclusion_note">※ 外来診療費は除外（ただし、入院および手術診療と連携する外来診療費は認定）</string>
+    <string name="excess_cost_note">※ 一人当たりの総診療費が500万ウォンを超える場合、医療機関の内部審議（医師2名で構成）を経て超過理由書を提出</string>
+
+    <string name="hospital_inquiry_info">本事業による支援を希望される方は、下記医療機関に訪問または電話でお問い合わせください。（病院別支援基準等が異なる場合があります）</string>
+    <string name="hospital_list">- 서울의료원 (☎ 02-2276-7000)
+\n- 서울적십자병원 (☎ 02-2002-8853)
+\n- 국립중앙의료원 (☎ 02-2260-7472)
+\n- 서울특별시 보라매병원 (☎ 02-870-2005)
+\n- 서울특별시 동부병원 (☎ 02-920-9338)
+\n- 서울특별시 서북병원 (☎ 02-356-3286)
+\n- 서울특별시 서남병원 (☎ 02-6300-7551)
+\n- 서울특별시 북부병원 (☎ 02-2036-0358)
+\n- 인제대학교 상계백병원 (☎ 02-950-1408)
+\n- 성애병원 (☎ 02-840-7342)
+\n- 에이치플러스 양지병원 (☎ 02-4665-9401)
+\n- 녹색병원 (☎ 02-490-2121)
+\n- 사랑플러스병원 (☎ 02-2140-4506)</string>
+
+    <!-- Hospital Info Bottom Sheet -->
+    <string name="hospital_category">診療科: </string>
+    <string name="address">住所: </string>
+    <string name="phone_number">電話番号: </string>
+    <string name="available_languages">対応可能な外国語: </string>
 
 
+    <string name="faq">よくある質問</string>
+    <string name="faq_q1">Q. 外国人労働者の無料診療費の支援対象と金額は？</string>
+    <string name="faq_a1">外国人労働者として国が提供するいかなる医療保障制度からも医療給付を受けられない方に対し、入院および手術診療費（当日外来診療費を除く、ただし入院および手術診療と連携する外来診療費は認定）について、一人当たり500万ウォンの限度内で支援します。500万ウォンを超える場合は、医療機関での内部審議（医師2名以上）を経て超過理由書を作成・提出いただければ、予算範囲内で診療費超過分を支援します。\n\n
+入院から退院までに発生した総診療費の90%（10%は自己負担）のみ支援可能です。</string>
+    <string name="faq_q2">Q. 医療支援事業実施医療機関は？</string>
+    <string name="free_hospital_list">本事業による支援を希望される方は、下記医療機関に訪問または電話でお問い合わせください。（病院別支援基準等が異なる場合があります）\n\n- 서울의료원 (☎ 02-2276-7000) \n- 서울적십자병원 (☎ 02-2002-8853) \n- 국립중앙의료원 (☎ 02-2260-7472) \n- 서울특별시 보라매병원 (☎ 02-870-2005) \n- 서울특별시 동부병원 (☎ 02-920-9338) \n- 서울특별시 서북병원 (☎ 02-356-3286) \n- 서울특별시 서남병원 (☎ 02-6300-7551) \n- 서울특별시 북부병원 (☎ 02-2036-0358) \n- 인제대학교 상계백병원 (☎ 02-950-1408) \n- 성애병원 (☎ 02-840-7342) \n- 에이치플러스 양지병원 (☎ 02-4665-9401) \n- 녹색병원 (☎ 02-490-2121) \n- 사랑플러스병원 (☎ 02-2140-4506)</string>
 
+    <!-- 追加症状 -->
+    <string name="additional_symptom_swelling">むくみ</string>
+    <string name="additional_symptom_spasm">痙攣</string>
+    <string name="additional_symptom_burning">灼熱感</string>
+    <string name="additional_symptom_stiffness">関節のこわばり</string>
+    <string name="additional_symptom_redness">赤く腫れる</string>
+    <string name="additional_symptom_tingling">ピリピリする感覚</string>
+    <string name="additional_symptom_stiffness_simple">こわばり</string>
+    <string name="additional_symptom_redness_simple">赤み</string>
+    <string name="additional_symptom_fatigue">睡眠不足/疲労</string>
+    <string name="additional_symptom_joints">指の関節の肥大</string>
 </resources>

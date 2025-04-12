@@ -9,6 +9,7 @@ import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSelectOtherDentalSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DentalSelectOtherSymptomFragment :
@@ -19,6 +20,7 @@ class DentalSelectOtherSymptomFragment :
     private val navController by lazy { findNavController() }
     private var selected: Boolean = false
     private var selectedList: MutableList<String> = mutableListOf()
+    private var selectedChipIdList: MutableList<Int> = mutableListOf()
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -33,8 +35,10 @@ class DentalSelectOtherSymptomFragment :
                         val checkedChipList = checkedChipIds
                         checkedChipList.forEach {
                             val chip = findViewById<Chip>(it)
+                            selectedChipIdList.add(chip.id)
                             selectedList.add(chip.text.toString())
                         }
+                        Timber.d("선택된 치과 동반 증상 id :$selected")
                     }
 
                     viewModel.setOtherSymptomList(selectedList)

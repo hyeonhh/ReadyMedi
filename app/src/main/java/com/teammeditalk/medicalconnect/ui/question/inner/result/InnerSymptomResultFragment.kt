@@ -10,6 +10,7 @@ import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomInnerBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
@@ -53,7 +54,7 @@ class InnerSymptomResultFragment :
 
         val currentSymptomContainer = hospitalReportBinding.layoutFrame
 
-        val currentSymptomBinding = LayoutInnerCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val currentSymptomBinding = HosCurrentSymptomInnerBinding.inflate(inflater, currentSymptomContainer, false)
 
         currentSymptomBinding.viewModel = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner

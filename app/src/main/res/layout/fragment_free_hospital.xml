@@ -20,7 +20,7 @@
         android:textAppearance="@style/SubTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="무료 진료 병원(서울)"
+        android:text="@string/free_hospital"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -19,7 +19,6 @@ import com.teammeditalk.medicalconnect.data.serializer.UserAuthPreferencesSerial
 import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,9 +36,6 @@ class QuestionViewModel
     constructor(
         @ApplicationContext private val context: Context,
     ) : ViewModel() {
-        val scope: CoroutineScope
-            get() = viewModelScope
-
         init {
             getUserAuthInfo()
             getUserHealthInfo()

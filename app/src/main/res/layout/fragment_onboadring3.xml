@@ -7,10 +7,11 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="외국어 가능 의료기관부터\n외국인 보험 정보까지 쏙쏙"
+        android:textAlignment="center"
+        android:text="@string/onborading3_title"
         android:textAppearance="@style/Title2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -36,7 +36,7 @@ class MyHealthInfoFragment :
                         } else if (it.diseaseList.size >
                             1
                         ) {
-                            "${it.diseaseList[0]}외 1"
+                            "${it.diseaseList[0]}외 ${it.diseaseList.size - 1}"
                         } else {
                             it.diseaseList[0]
                         }

@@ -42,7 +42,7 @@
             android:id="@+id/selectBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxContent="찬물을 마실 때"
+            app:boxContent="@string/symptom_factor_cold_water"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:boxContent="뜨거운 물을 마실 때"
+            app:boxContent="@string/symptom_factor_hot_water"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox3" />
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:boxContent="치아를 깨물 때"
+            app:boxContent="@string/symptom_factor_biting"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox4" />
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:boxContent="얼굴이나 입에 손을 댈 때"
+            app:boxContent="@string/symptom_factor_touch_face"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox5" />
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:boxContent="머리를 아래로 숙일 때"
+            app:boxContent="@string/symptom_factor_head_down"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox6" />
@@ -93,7 +93,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxContent="발꿈치로 쿵쿵거리며 걸을 때 "
+            app:boxContent="@string/symptom_factor_heel_walk"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox9" />

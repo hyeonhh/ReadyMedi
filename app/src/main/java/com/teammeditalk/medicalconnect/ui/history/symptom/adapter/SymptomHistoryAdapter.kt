@@ -20,6 +20,7 @@ class SymptomHistoryAdapter : RecyclerView.Adapter<SymptomHistoryAdapter.Symptom
     private var listener: ClickListener? = null
 
     fun setList(newList: List<SymptomHistory>) {
+        list.clear()
         list.addAll(newList)
         notifyDataSetChanged()
     }

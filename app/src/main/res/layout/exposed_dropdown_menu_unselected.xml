@@ -12,7 +12,7 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="선택"
+        android:text="@string/select"
         android:textAppearance="@style/Body1_Normal"
         android:textColor="@color/gray30"
         app:layout_constraintStart_toStartOf="parent"

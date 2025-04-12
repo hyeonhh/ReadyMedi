@@ -146,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="지속성"
+            android:text="@string/durality"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="@+id/textView30"
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
@@ -203,7 +203,7 @@
             android:id="@+id/textView40"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="악화 요인"
+            android:text="@string/worse"
             android:layout_marginTop="10dp"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="@+id/textView47"
@@ -227,7 +227,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="동반 증상"
+            android:text="@string/other"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="@+id/textView40"
             app:layout_constraintTop_toBottomOf="@+id/textView40" />

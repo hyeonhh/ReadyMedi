@@ -112,6 +112,9 @@
         <argument
             android:name="uid"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_generalSymptomFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/innerSymptomFragment"
@@ -197,7 +200,7 @@
     <fragment
         android:id="@+id/editDiseaseFragment"
         tools:layout="@layout/fragment_edit_disease"
-        android:name="com.teammeditalk.medicalconnect.ui.onboarding.disease.EditDiseaseFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.edit.disease.EditDiseaseFragment"
         android:label="EditDiseaseFragment" >
         <action
             android:id="@+id/action_editDiseaseFragment_to_myHealthInfoFragment"

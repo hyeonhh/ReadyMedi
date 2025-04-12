@@ -1,4 +1,4 @@
-package com.teammeditalk.medicalconnect.ui.edit
+package com.teammeditalk.medicalconnect.ui.edit.disease
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

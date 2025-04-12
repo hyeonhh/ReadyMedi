@@ -83,31 +83,31 @@
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="몽우리"
+            android:text="@string/lump"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="붓기"
+            android:text="@string/swelling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="피부 변화"
+            android:text="@string/skin_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="가려움"
+            android:text="@string/itching"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="유두 분비물"
+            android:text="@string/nipple_discharge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

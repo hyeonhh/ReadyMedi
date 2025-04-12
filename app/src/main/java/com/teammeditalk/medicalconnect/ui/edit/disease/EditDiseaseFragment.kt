@@ -1,7 +1,6 @@
-package com.teammeditalk.medicalconnect.ui.onboarding.disease
+package com.teammeditalk.medicalconnect.ui.edit.disease
 
 import androidx.core.view.children
-import androidx.core.view.forEach
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -11,7 +10,6 @@ import com.google.android.material.chip.Chip
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentEditDiseaseBinding
-import com.teammeditalk.medicalconnect.ui.edit.EditDiseaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

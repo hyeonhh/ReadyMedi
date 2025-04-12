@@ -91,7 +91,7 @@
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="두통"
+            android:text="@통string/headache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

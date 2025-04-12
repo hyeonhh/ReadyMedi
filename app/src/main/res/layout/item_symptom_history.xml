@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="21dp"
-        android:text="증상 히스토리"
+        android:text="@string/symptom_history"
         android:textAppearance="@style/Body2_Normal"
         app:layout_constraintEnd_toStartOf="@+id/tv_date"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +60,12 @@
             android:id="@+id/tv_symptom_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
             android:text="뼈가 부러진 것 같아요"
             android:textAppearance="@style/Label1_Normal"
             android:textColor="@color/gray60"
             app:layout_constraintBottom_toBottomOf="@+id/tv_symptom_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_symptom_title"
             app:layout_constraintTop_toTopOf="@+id/tv_symptom_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

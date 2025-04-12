@@ -1,16 +1,19 @@
 package com.teammeditalk.medicalconnect.ui.question.dental.result
 
+import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.tabs.TabLayout
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomDentalBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutDentalCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutDentalSideEffectInputBinding
@@ -21,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.util.Locale
 
 @AndroidEntryPoint
 class DentalSymptomResultFragment :
@@ -29,27 +33,6 @@ class DentalSymptomResultFragment :
     ) {
     private lateinit var inflater: LayoutInflater
     private val viewModel: QuestionViewModel by activityViewModels()
-
-    private fun onTabClick() {
-        binding.tab.addOnTabSelectedListener(
-            object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    when (tab?.position) {
-                        0 -> {
-                        }
-                    }
-                }
-
-                override fun onTabUnselected(tab: TabLayout.Tab?) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onTabReselected(tab: TabLayout.Tab?) {
-                    TODO("Not yet implemented")
-                }
-            },
-        )
-    }
 
     private fun showSymptomResult() {
         lifecycleScope.launch {
@@ -120,7 +103,7 @@ class DentalSymptomResultFragment :
         val currentSymptomContainer = hospitalReportBinding.layoutFrame
         val sideEffectContainer = hospitalReportBinding.layoutFrame2
 
-        val currentSymptomBinding = LayoutDentalCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val currentSymptomBinding = HosCurrentSymptomDentalBinding.inflate(inflater, currentSymptomContainer, false)
         val sideEffectBinding = LayoutDentalSideEffectInputBinding.inflate(inflater, sideEffectContainer, false)
 
         currentSymptomBinding.viewModel = viewModel
@@ -175,6 +158,9 @@ class DentalSymptomResultFragment :
         binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             binding.ivTooltip.visibility = View.INVISIBLE
             if (isChecked) {
+                // todo : 한국어 제공하기
+                val symptom = requireContext().getKoreanString(R.string.symptom_tooth)
+                Timber.d("symptom :$symptom")
                 binding.layoutHospitalVersion.visibility = View.VISIBLE
                 binding.layoutUser.visibility = View.GONE
             } else {
@@ -189,5 +175,12 @@ class DentalSymptomResultFragment :
 
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.dentalAdditionalInputFragment) }
         binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment2) }
+    }
+
+    private fun Context.getKoreanString(
+        @StringRes resId: Int,
+    ) {
+        val configuration = Configuration(resources.configuration)
+        configuration.setLocale(Locale("ko"))
     }
 }

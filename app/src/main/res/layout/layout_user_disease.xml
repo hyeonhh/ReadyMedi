@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:text="지병"
+        android:text="@string/disease"
         android:textAppearance="@style/Body2_Normal"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView13"

@@ -1,4 +1,4 @@
-package com.teammeditalk.medicalconnect.ui.question.inner.result
+package com.teammeditalk.medicalconnect.ui.question.general.result
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomGeneralBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutGeneralCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
@@ -35,7 +36,7 @@ class GeneralSymptomResultFragment :
         val generalCurrentSymptomBinding = LayoutGeneralCurrentSymptomBinding.inflate(inflater, currentSymptomFrame, false)
         currentSymptomFrame.addView(generalCurrentSymptomBinding.root)
 
-        // generalCurrentSymptomBinding.viewModel = viewModel
+        generalCurrentSymptomBinding.questionVM = viewModel
         generalCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
     }
 
@@ -52,7 +53,7 @@ class GeneralSymptomResultFragment :
 
         val currentSymptomContainer = hospitalReportBinding.layoutFrame
 
-        val currentSymptomBinding = LayoutGeneralCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val currentSymptomBinding = HosCurrentSymptomGeneralBinding.inflate(inflater, currentSymptomContainer, false)
 
         currentSymptomBinding.questionVM = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner

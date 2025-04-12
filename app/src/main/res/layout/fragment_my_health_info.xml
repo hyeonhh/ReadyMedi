@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
-        android:text="MY 건강기록"
+        android:text="@string/my_health_history"
         android:textAppearance="@style/Title2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:text="자세하게 입력할수록 정확하게 진찰 가능해요"
+        android:text="@string/my_health_history_subtitle"
         android:textAppearance="@style/Body2_Normal"
         app:layout_constraintStart_toStartOf="@+id/textView52"
         app:layout_constraintTop_toBottomOf="@+id/textView52" />

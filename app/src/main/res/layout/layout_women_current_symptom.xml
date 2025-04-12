@@ -162,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="악화 요인"
+            android:text="@string/worse"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="@+id/textView30"
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
@@ -172,7 +172,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="동반 증상"
+            android:text="@string/other"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView40" />
@@ -205,7 +205,7 @@
             android:id="@+id/textView33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="임신 여부"
+            android:text="@string/pregnancy"
             android:layout_marginTop="10dp"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="@+id/textView26"
@@ -228,7 +228,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="마지막 생리 시작일"
+            android:text="@string/last_mendatory_start"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="@+id/textView33"
             app:layout_constraintTop_toBottomOf="@+id/textView33" />
@@ -250,7 +250,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="월경 주기"
+            android:text="@string/mendatory_period"
             android:textAppearance="@style/Body2_Normal"
             app:layout_constraintStart_toStartOf="@+id/textView49"
             app:layout_constraintTop_toBottomOf="@+id/textView49" />

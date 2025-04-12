@@ -7,12 +7,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomGeneralBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutGeneralCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
-import com.teammeditalk.medicalconnect.ui.question.inner.result.GeneralSymptomResultFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -51,7 +51,7 @@ class GeneralSymptomFragment :
 
         val currentSymptomContainer = hospitalReportBinding.layoutFrame
 
-        val currentSymptomBinding = LayoutGeneralCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val currentSymptomBinding = HosCurrentSymptomGeneralBinding.inflate(inflater, currentSymptomContainer, false)
 
         currentSymptomBinding.generalVM = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
@@ -79,7 +79,7 @@ class GeneralSymptomFragment :
         goToMapBinding.btnGoToMap.text = getString(R.string.find_nearby_general)
 
         goToMapBinding.btnGoToMap.setOnClickListener {
-            val action = GeneralSymptomResultFragmentDirections.actionGeneralSymptomResultFragmentToMapFragment3("일반")
+            val action = GeneralSymptomFragmentDirections.actionGeneralSymptomFragmentToMapFragment("일반")
             findNavController().navigate(action)
         }
         contentContainer3.addView(goToMapBinding.root)

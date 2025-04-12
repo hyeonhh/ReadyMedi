@@ -107,7 +107,7 @@
     <fragment
         tools:layout="@layout/fragment_general_symptom_result"
         android:id="@+id/generalSymptomResultFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.inner.result.GeneralSymptomResultFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.general.result.GeneralSymptomResultFragment"
         android:label="GeneralSymptomResultFragment" >
         <action
             android:id="@+id/action_generalSymptomResultFragment_to_mapFragment3"

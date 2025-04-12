@@ -39,6 +39,8 @@ class LanguageSelectFragment :
                 selectBoxEnglish.updateSelected(true)
                 selectBoxChinese.updateSelected(false)
                 selectBoxJapanese.updateSelected(false)
+                selectBoxKorean.updateSelected(false)
+
                 selectedLanguage = "en"
                 binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.GONE
             }
@@ -47,6 +49,8 @@ class LanguageSelectFragment :
                 selectBoxJapanese.updateSelected(true)
                 selectBoxEnglish.updateSelected(false)
                 selectBoxChinese.updateSelected(false)
+                selectBoxKorean.updateSelected(false)
+
                 selectedLanguage = "ja"
                 binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.GONE
             }
@@ -55,7 +59,9 @@ class LanguageSelectFragment :
                 selectBoxChinese.updateSelected(true)
                 selectBoxEnglish.updateSelected(false)
                 selectBoxJapanese.updateSelected(false)
+                selectBoxKorean.updateSelected(false)
                 selectedLanguage = "zh"
+
                 binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.GONE
             }
             selectBoxKorean.setOnClickListener {

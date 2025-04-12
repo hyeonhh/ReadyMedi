@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:text="알레르기"
+        android:text="@string/allergy"
         android:textAppearance="@style/Body2_Normal"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView13"

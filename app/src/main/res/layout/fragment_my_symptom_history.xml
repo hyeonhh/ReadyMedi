@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
-        android:text="MY 히스토리"
+        android:text="@string/my_history"
         android:textAppearance="@style/Title2"
         app:layout_constraintStart_toStartOf="@+id/btn_back"
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />

@@ -41,7 +41,7 @@
             android:id="@+id/selectBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxContent="월경 전후"
+            app:boxContent="@string/menstrual_factor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:boxContent="호르몬 관련 약물 섭취 "
+            app:boxContent="@string/hormone_medication_factor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox3" />
@@ -61,21 +61,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:boxContent="격렬한 신체 활동"
+            app:boxContent="@string/symptom_factor_activity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox4" />
 
-
-        <com.teammeditalk.medicalconnect.ui.util.SelectBox
-            android:id="@+id/selectBox6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:boxContent="불편한 속옷 착용"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selectBox4" />
 
         <com.teammeditalk.medicalconnect.ui.util.SelectBox
             android:id="@+id/selectBox_unknown"

@@ -3,11 +3,13 @@ package com.teammeditalk.medicalconnect.ui.question.common.duration
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.protobuf.duration
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSelectDurationBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 // 5. 통증의 지속 시간
 @AndroidEntryPoint
@@ -28,6 +30,7 @@ class SelectDurationFragment :
                 selectBox.updateSelected(true)
                 selectBox2.updateSelected(false)
                 selectBox3.updateSelected(false)
+                Timber.d("duration id :${it.id}")
                 selectedDuration = selectBox.getContent()
             }
             selectBox2.setOnClickListener {

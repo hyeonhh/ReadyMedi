@@ -12,8 +12,6 @@ import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutInnerCurrentSymptomBinding
-import com.teammeditalk.medicalconnect.ui.question.inner.other.InnerOtherSymptomFragmentDirections
-import com.teammeditalk.medicalconnect.ui.question.inner.result.GeneralSymptomResultFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

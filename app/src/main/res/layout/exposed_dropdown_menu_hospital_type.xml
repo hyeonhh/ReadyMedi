@@ -12,7 +12,7 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="진료과"
+        android:text="@string/medical_specialty"
         android:textAppearance="@style/Body3_Normal"
         android:textColor="@color/gray60"
         app:layout_constraintStart_toStartOf="parent"

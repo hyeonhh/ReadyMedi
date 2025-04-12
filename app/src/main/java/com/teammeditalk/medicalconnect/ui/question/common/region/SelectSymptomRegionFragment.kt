@@ -1,5 +1,6 @@
 package com.teammeditalk.medicalconnect.ui.question.dental.fragment.region
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.view.MotionEvent
 import androidx.appcompat.content.res.AppCompatResources
@@ -73,89 +74,8 @@ class SelectSymptomRegionFragment :
                 }
             }
         }
+
         setupBodyPartRegions()
-    }
-
-    /**
-     * 신체 부위 영역을 정의하고 터치 감지 설정
-     * SVG 파일 기반으로 각 부위의 대략적인 위치를 매핑합니다.
-     */
-    private fun setupBodyPartRegions() {
-        // SVG 분석 결과를 바탕으로 한 신체 부위 영역 정의
-        // 각 영역은 (x1, y1, x2, y2) 좌표와 부위 이름으로 구성됩니다.
-        // 좌표는 0~1 범위로 정규화되어 있습니다 (화면 크기에 상관없이 동작)
-        val frontBodyPartRegions =
-            listOf(
-                // 머리 부분
-                BodyPartRegion(0.4f, 0.0f, 0.6f, 0.12f, "face"), // 얼굴
-                BodyPartRegion(0.2f, 0.0f, 0.4f, 0.12f, "left_head"), // 머리 왼쪽
-                BodyPartRegion(0.6f, 0.0f, 0.8f, 0.12f, "right_head"), // 머리 오른쪽
-                // 목
-                BodyPartRegion(0.4f, 0.12f, 0.6f, 0.18f, "neck"), // 목
-                // 상체
-                BodyPartRegion(0.25f, 0.18f, 0.45f, 0.3f, "breast_left"), // 가슴 왼쪽
-                BodyPartRegion(0.55f, 0.18f, 0.75f, 0.3f, "breast_right"), // 가슴 오른쪽
-                BodyPartRegion(0.25f, 0.3f, 0.45f, 0.38f, "stomach_left_top"), // 상복부 왼쪽
-                BodyPartRegion(0.55f, 0.3f, 0.75f, 0.38f, "stomach_right_top"), // 상복부 오른쪽
-                BodyPartRegion(0.25f, 0.38f, 0.45f, 0.5f, "stomach_left_bottom"), // 하복부 왼쪽
-                BodyPartRegion(0.55f, 0.38f, 0.75f, 0.5f, "stomach_right_bottom"), // 하복부 오른쪽
-                // 어깨
-                BodyPartRegion(0.1f, 0.18f, 0.25f, 0.3f, "left_shoulder"), // 어깨 왼쪽
-                BodyPartRegion(0.75f, 0.18f, 0.9f, 0.3f, "shoulder_right"), // 어깨 오른쪽
-                // 팔 - 개선된 영역 정의
-                // 왼쪽 팔 (SVG 기반으로 조정)
-                // 수정된 정의
-                BodyPartRegion(0.01f, 0.22f, 0.15f, 0.33f, "left_arm_top"), // 팔 왼쪽 상부 (어깨~팔꿈치)
-                BodyPartRegion(0.01f, 0.33f, 0.15f, 0.48f, "left_arm_bottom"), // 팔 왼쪽 하부 (팔꿈치~손목)
-                // 오른쪽 팔 (SVG 기반으로 조정)
-                BodyPartRegion(0.85f, 0.22f, 0.99f, 0.33f, "arm_right_top"), // 팔 오른쪽 상부 (어깨~팔꿈치)
-                BodyPartRegion(0.85f, 0.33f, 0.99f, 0.48f, "arm_right_bottom"), // 팔 오른쪽 하부 (팔꿈치~손목)
-                // 손
-                BodyPartRegion(0.01f, 0.48f, 0.15f, 0.65f, "left_hand"),
-                BodyPartRegion(0.85f, 0.48f, 0.99f, 0.65f, "hand_right"),
-                // 다리
-                BodyPartRegion(0.25f, 0.5f, 0.45f, 0.95f, "left_leg"), // 다리 왼쪽
-                BodyPartRegion(0.55f, 0.5f, 0.75f, 0.95f, "leg_right"), // 다리 오른쪽
-            )
-
-//        // 뒷면 신체 부위 영역 (필요시 추가)
-//        val backBodyPartRegions = listOf(
-//            // 여기에 뒷면 신체 부위 영역 정의
-//            // ...
-//        )
-
-        // 터치 리스너 설정
-        binding.ivImage.setOnTouchListener { view, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                // 터치 좌표를 0~1 범위로 정규화
-                val normalizedX = event.x / view.width
-                val normalizedY = event.y / view.height
-
-                // 현재 보이는 이미지에 따라 적절한 영역 목록 선택
-                val regions = if (binding.tvFront.isSelected) frontBodyPartRegions else frontBodyPartRegions
-
-                // 어떤 영역이 터치되었는지 확인
-                val touchedRegion =
-                    regions.find { region ->
-                        normalizedX >= region.x1 &&
-                            normalizedX <= region.x2 &&
-                            normalizedY >= region.y1 &&
-                            normalizedY <= region.y2
-                    }
-
-                if (touchedRegion != null) {
-                    // 선택된 신체 부위 처리
-                    selectedBodyPart = touchedRegion.name
-                    handleBodyPartSelection(touchedRegion.name)
-                    Timber.d("터치 x=${touchedRegion.x1}, ${touchedRegion.x2} y=${touchedRegion.y1} ${touchedRegion.y2}")
-                    return@setOnTouchListener true
-                } else {
-                    // 디버깅용 로깅 - 감지되지 않은 터치 좌표
-                    Timber.d("감지되지 않은 터치: x=$normalizedX, y=$normalizedY")
-                }
-            }
-            false
-        }
     }
 
     /**
@@ -169,8 +89,17 @@ class SelectSymptomRegionFragment :
         val name: String, // SVG에 정의된 부위 이름
     )
 
+    private fun handleBackBodyPartSelection(bodyPart: String) {
+        val koreanName = getKoreanBodyPartName(bodyPart)
+        Timber.d("Selected back body part: $bodyPart ($koreanName)")
+
+        // Update the drawable based on the selected back body part
+        when (bodyPart) {
+        }
+    }
+
     /**
-     * 선택된 신체 부위 처리 함수
+     * 신체 부위 처리 함수
      */
     private fun handleBodyPartSelection(bodyPart: String) {
         // 선택된 부위 이름을 한글로 변환
@@ -265,7 +194,7 @@ class SelectSymptomRegionFragment :
                 binding.ivImage.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireActivity(),
-                        R.drawable.ic_front,
+                        R.drawable.ic_front_shoulder_left,
                     ),
                 )
             }
@@ -273,7 +202,7 @@ class SelectSymptomRegionFragment :
                 binding.ivImage.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireActivity(),
-                        R.drawable.ic_front_face,
+                        R.drawable.ic_front_shoulder_right,
                     ),
                 )
             }
@@ -325,20 +254,202 @@ class SelectSymptomRegionFragment :
                     ),
                 )
             }
-            "left_leg" -> {
+            // 다리
+            "leg_top_left" -> {
                 binding.ivImage.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireActivity(),
-                        R.drawable.ic_front,
+                        R.drawable.ic_front_leg_top_left,
                     ),
                 )
             }
-            "leg_right" -> {
+            "leg_top_right" -> {
                 binding.ivImage.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireActivity(),
-                        R.drawable.ic_front,
+                        R.drawable.ic_front_leg_top_right,
                     ),
+                )
+            }
+            "leg_middle_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_leg_middle_right,
+                    ),
+                )
+            }
+            "leg_middle_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_leg_middle_left,
+                    ),
+                )
+            }
+
+            "leg_bottom_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_leg_bottom_right,
+                    ),
+                )
+            }
+
+            "leg_bottom_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_leg_bottom_left,
+                    ),
+                )
+            }
+
+            "ankle_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_ankle_right,
+                    ),
+                )
+            }
+            "ankle_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_ankle_left,
+                    ),
+                )
+            }
+            "foot_front_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_foot_front_right,
+                    ),
+                )
+            }
+
+            "foot_front_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_foot_front_left,
+                    ),
+                )
+            }
+            "foot_back_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_foot_back_right,
+                    ),
+                )
+            }
+            "foot_back_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireActivity(),
+                        R.drawable.ic_front_foot_back_left,
+                    ),
+                )
+            }
+            // 뒤
+
+            "back_head" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_head),
+                )
+            }
+            "back_neck" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_neck),
+                )
+            }
+            "back" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_body),
+                )
+            }
+            "hip_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_hip_left),
+                )
+            }
+            "hip_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_hip_right),
+                )
+            }
+            "back_top_arm_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_top_arm_left),
+                )
+            }
+            "back_top_arm_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_top_arm_right),
+                )
+            }
+            "back_middle_arm_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_middle_arm_left),
+                )
+            }
+            "back_bottom_arm_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_bottom_arm_left),
+                )
+            }
+            "back_bottom_arm_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_bottom_arm_right),
+                )
+            }
+            "back_middle_arm_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_middle_arm_right),
+                )
+            }
+            "back_hand_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_hand_left),
+                )
+            }
+            "back_hand_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_hand_right),
+                )
+            }
+            "back_top_leg_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_top_back_leg_left),
+                )
+            }
+            "back_top_leg_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_top_back_leg_right),
+                )
+            }
+            "back_bottom_leg_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_bottom_leg_left),
+                )
+            }
+            "back_bottom_leg_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_bottom_leg_right),
+                )
+            }
+            "back_foot_left" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_foot_left),
+                )
+            }
+            "back_foot_right" -> {
+                binding.ivImage.setImageDrawable(
+                    AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_back_foot_right),
                 )
             }
         }
@@ -367,8 +478,22 @@ class SelectSymptomRegionFragment :
             "arm_right_bottom" -> "팔 아랫부분 오른쪽"
             "left_hand" -> "손 왼쪽"
             "hand_right" -> "손 오른쪽"
-            "left_leg" -> "다리 왼쪽"
-            "leg_right" -> "다리 오른쪽"
+
+            // 다리 부분 추가
+            "leg_top_left" -> "왼쪽 다리 상부"
+            "leg_middle_left" -> "왼쪽 다리 중부"
+            "leg_bottom_left" -> "왼쪽 다리 하부"
+            "ankle_left" -> "왼쪽 발목"
+            "foot_front_left" -> "왼쪽 발 앞"
+            "foot_front_right" -> "오른쪽 발 앞"
+            "foot_back_right" -> "오른쪽 발 뒤"
+            "foot_back_left" -> "왼쪽 발 뒤"
+
+            "leg_top_right" -> "오른쪽 다리 상부"
+            "leg_middle_right" -> "오른쪽 다리 중부"
+            "leg_bottom_right" -> "오른쪽 다리 하부"
+            "ankle_right" -> "오른쪽 발목"
+
             else -> pathName.replace("_", " ")
         }
 
@@ -399,6 +524,128 @@ class SelectSymptomRegionFragment :
             binding.ivImage.invalidate()
         } catch (e: Exception) {
             Timber.e(e, "색상 변경 중 오류 발생")
+        }
+    }
+
+    /**
+     * 신체 부위 영역을 정의하고 터치 감지 설정
+     * SVG 파일 기반으로 각 부위의 대략적인 위치를 매핑합니다.
+     */
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupBodyPartRegions() {
+        // 앞면 신체 부위 영역 정의 (기존 코드 유지)
+        val frontBodyPartRegions =
+            listOf(
+                // 머리 부분
+                BodyPartRegion(0.4f, 0.0f, 0.6f, 0.12f, "face"), // 얼굴
+                BodyPartRegion(0.2f, 0.0f, 0.4f, 0.12f, "left_head"), // 머리 왼쪽
+                BodyPartRegion(0.6f, 0.0f, 0.8f, 0.12f, "right_head"), // 머리 오른쪽
+                // 목
+                BodyPartRegion(0.4f, 0.12f, 0.6f, 0.18f, "neck"), // 목
+                // 상체
+                BodyPartRegion(0.25f, 0.18f, 0.45f, 0.3f, "breast_left"), // 가슴 왼쪽
+                BodyPartRegion(0.55f, 0.18f, 0.75f, 0.3f, "breast_right"), // 가슴 오른쪽
+                BodyPartRegion(0.25f, 0.3f, 0.45f, 0.38f, "stomach_left_top"), // 상복부 왼쪽
+                BodyPartRegion(0.55f, 0.3f, 0.75f, 0.38f, "stomach_right_top"), // 상복부 오른쪽
+                BodyPartRegion(0.25f, 0.38f, 0.43f, 0.41f, "stomach_left_bottom"), // 하복부 왼쪽
+                BodyPartRegion(0.55f, 0.38f, 0.75f, 0.5f, "stomach_right_bottom"), // 하복부 오른쪽
+                // 어깨
+                BodyPartRegion(0.1f, 0.18f, 0.25f, 0.3f, "left_shoulder"), // 어깨 왼쪽
+                BodyPartRegion(0.75f, 0.18f, 0.9f, 0.3f, "shoulder_right"), // 어깨 오른쪽
+                // 팔 - 개선된 영역 정의
+                BodyPartRegion(0.01f, 0.22f, 0.15f, 0.33f, "left_arm_top"), // 팔 왼쪽 상부 (어깨~팔꿈치)
+                BodyPartRegion(0.01f, 0.33f, 0.15f, 0.48f, "left_arm_bottom"), // 팔 왼쪽 하부 (팔꿈치~손목)
+                BodyPartRegion(0.85f, 0.22f, 0.99f, 0.33f, "arm_right_top"), // 팔 오른쪽 상부 (어깨~팔꿈치)
+                BodyPartRegion(0.85f, 0.33f, 0.99f, 0.48f, "arm_right_bottom"), // 팔 오른쪽 하부 (팔꿈치~손목)
+                // 손
+                BodyPartRegion(0.01f, 0.48f, 0.15f, 0.65f, "left_hand"),
+                BodyPartRegion(0.85f, 0.48f, 0.99f, 0.65f, "hand_right"),
+                // 왼쪽 다리 부분
+                BodyPartRegion(0.29f, 0.42f, 0.45f, 0.55f, "leg_top_left"), // 왼쪽 다리 상부
+                BodyPartRegion(0.29f, 0.55f, 0.45f, 0.75f, "leg_middle_left"), // 왼쪽 다리 중간
+                BodyPartRegion(0.29f, 0.75f, 0.45f, 0.89f, "leg_bottom_left"), // 왼쪽 다리 하부
+                BodyPartRegion(0.29f, 0.89f, 0.45f, 0.93f, "ankle_left"), // 왼쪽 발목
+                // 오른쪽 다리 부분
+                BodyPartRegion(0.55f, 0.42f, 0.71f, 0.55f, "leg_top_right"), // 오른쪽 다리 상부
+                BodyPartRegion(0.55f, 0.55f, 0.71f, 0.75f, "leg_middle_right"), // 오른쪽 다리 중간
+                BodyPartRegion(0.55f, 0.75f, 0.71f, 0.89f, "leg_bottom_right"), // 오른쪽 다리 하부
+                BodyPartRegion(0.55f, 0.89f, 0.71f, 0.93f, "ankle_right"), // 오른쪽 발목
+                // 발
+                BodyPartRegion(0.18f, 0.94f, 0.25f, 0.99f, "foot_front_left"), // 왼쪽 발 앞부분
+                BodyPartRegion(0.19f, 0.94f, 0.33f, 0.99f, "foot_back_left"), // 왼쪽 발 뒷부분
+                BodyPartRegion(0.63f, 0.94f, 0.70f, 0.99f, "foot_front_right"), // 오른쪽 발 앞부분
+                BodyPartRegion(0.71f, 0.94f, 0.79f, 0.99f, "foot_back_right"), // 오른쪽 발 뒷부분
+            )
+
+        // 뒷면 신체 부위 영역 정의 (SVG 파일에서 분석한 위치)
+        val backBodyPartRegions =
+            listOf(
+                // 머리 부분
+                BodyPartRegion(0.4f, 0.0f, 0.6f, 0.12f, "back_head"), // 뒷머리
+                // 목
+                BodyPartRegion(0.4f, 0.12f, 0.6f, 0.18f, "back_neck"), // 뒷목
+                // 상체
+                BodyPartRegion(0.3f, 0.18f, 0.7f, 0.42f, "back"),
+                // 엉덩이
+                BodyPartRegion(0.29f, 0.42f, 0.45f, 0.53f, "hip_left"), // 엉덩이 왼쪽
+                BodyPartRegion(0.55f, 0.42f, 0.71f, 0.53f, "hip_right"), // 엉덩이 오른쪽
+//                // 어깨
+//                BodyPartRegion(0.1f, 0.18f, 0.25f, 0.3f, "back_shoulder_left"), // 어깨 왼쪽 뒤
+//                BodyPartRegion(0.75f, 0.18f, 0.9f, 0.22f, "back_shoulder_right"), // 어깨 오른쪽 뒤
+                // 팔 - 이름을 요청한 형식으로 수정
+                BodyPartRegion(0.15f, 0.18f, 0.32f, 0.28f, "back_top_arm_left"), // 왼쪽 팔 상부
+                BodyPartRegion(0.68f, 0.18f, 0.85f, 0.28f, "back_top_arm_right"), // 오른쪽 팔 상부
+                BodyPartRegion(0.08f, 0.28f, 0.25f, 0.38f, "back_middle_arm_left"), // 왼쪽 팔 중간
+                BodyPartRegion(0.75f, 0.28f, 0.92f, 0.38f, "back_middle_arm_right"), // 오른쪽 팔 중간
+                BodyPartRegion(0.06f, 0.38f, 0.20f, 0.52f, "back_bottom_arm_left"), // 왼쪽 팔 하부
+                BodyPartRegion(0.80f, 0.38f, 0.94f, 0.52f, "back_bottom_arm_right"), // 오른쪽 팔 하부
+                // 손
+                BodyPartRegion(0.02f, 0.52f, 0.18f, 0.62f, "back_hand_left"), // 왼쪽 손
+                BodyPartRegion(0.82f, 0.52f, 0.98f, 0.62f, "back_hand_right"), // 오른쪽 손
+                // Legs - adjusted to match the SVG path names
+                BodyPartRegion(0.3f, 0.53f, 0.48f, 0.7f, "back_top_leg_left"),
+                BodyPartRegion(0.52f, 0.53f, 0.7f, 0.7f, "back_top_leg_right"),
+                BodyPartRegion(0.3f, 0.7f, 0.48f, 0.85f, "back_bottom_leg_left"),
+                BodyPartRegion(0.52f, 0.7f, 0.7f, 0.85f, "back_bottom_leg_right"),
+                // feet
+                BodyPartRegion(0.25f, 0.93f, 0.45f, 1.0f, "back_foot_left"),
+                BodyPartRegion(0.55f, 0.93f, 0.75f, 1.0f, "back_foot_right"),
+            )
+
+        // 터치 리스너 설정
+        binding.ivImage.setOnTouchListener { view, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                // 터치 좌표를 0~1 범위로 정규화
+                val normalizedX = event.x / view.width
+                val normalizedY = event.y / view.height
+
+                Timber.d("normalized x , y :$normalizedX , $normalizedY")
+
+                // 현재 보이는 이미지에 따라 적절한 영역 목록 선택
+                val regions = if (binding.tvFront.isSelected) frontBodyPartRegions else backBodyPartRegions
+
+                // 어떤 영역이 터치되었는지 확인
+                val touchedRegion =
+                    regions.find { region ->
+                        normalizedX >= region.x1 &&
+                            normalizedX <= region.x2 &&
+                            normalizedY >= region.y1 &&
+                            normalizedY <= region.y2
+                    }
+
+                if (touchedRegion != null) {
+                    // 선택된 신체 부위 처리
+                    selectedBodyPart = touchedRegion.name
+                    handleBodyPartSelection(touchedRegion.name)
+                    Timber.d("터치 x=${touchedRegion.x1}, ${touchedRegion.x2} y=${touchedRegion.y1} ${touchedRegion.y2}")
+                    return@setOnTouchListener true
+                } else {
+                    // 디버깅용 로깅 - 감지되지 않은 터치 좌표
+                    Timber.d("감지되지 않은 터치: x=$normalizedX, y=$normalizedY")
+                }
+            }
+            false
         }
     }
 }

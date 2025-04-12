@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="주사 혹은 약 복용 후 겪은 부작용"
+            android:text="@string/dental_side_effect"
             android:textAppearance="@style/Body1_Normal"
             app:layout_constraintBottom_toBottomOf="@+id/imageView9"
             app:layout_constraintStart_toEndOf="@+id/imageView9"

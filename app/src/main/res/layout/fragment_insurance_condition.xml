@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="가입 조건"
+        android:text="@string/signup_conditions_title"
         android:textAppearance="@style/SubTitle2"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="외국인 보험\n가입 조건을 알려줄게요"
+        android:text="@string/foreign_insurance_conditions"
         android:textAppearance="@style/Title2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView92" />
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="가입조건"
+        android:text="@string/signup_process_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView108" />
 
@@ -53,7 +53,7 @@
         android:id="@+id/textView110"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="대한민국에 6개월 이상 체류한 외국인 및 재외국민"
+        android:text="@string/stay_requirement"
         android:textAppearance="@style/SubTitle2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView109" />
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:text="- 6개월동안 출국기간의 합이 30일 이하인 경우에는 계속 국내에 체류한 것으로 간주\n\n- 1회 30일을 초과하여 출국하는 경우에는 재입국일로부터 6개월 이상 체류해야 가입 가능"
+        android:text="@string/stay_details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView110" />
 
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="예외"
+        android:text="@string/exception"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView111" />
 
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="국내 입국 후 즉시 가입 대상"
+        android:text="@string/immediate_signup"
         android:textAppearance="@style/SubTitle2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView112" />
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:text="유학 또는 결혼이민(F-6)의 체류자격으로 입국한 외국인(다만, 외국인 등록 이후 가입 가능)"
+        android:text="@string/immediate_signup_details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView113" />
 

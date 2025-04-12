@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:text="복용하는 약"
+        android:text="@string/drug"
         android:textAppearance="@style/Body2_Normal"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView13"

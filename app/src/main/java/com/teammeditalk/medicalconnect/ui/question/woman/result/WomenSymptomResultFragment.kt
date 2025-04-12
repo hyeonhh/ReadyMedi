@@ -10,11 +10,11 @@ import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomWomenBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionWomenBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutInnerCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutWomenCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +53,7 @@ class WomenSymptomResultFragment :
 
         val currentSymptomContainer = hospitalReportBinding.layoutFrame
 
-        val currentSymptomBinding = LayoutInnerCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val currentSymptomBinding = HosCurrentSymptomWomenBinding.inflate(inflater, currentSymptomContainer, false)
 
         currentSymptomBinding.viewModel = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner

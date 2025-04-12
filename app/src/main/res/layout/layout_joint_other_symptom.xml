@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="증상"
+        android:text="@string/symptoms_label"
         android:textAppearance="@style/Body1_Normal"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView43"
@@ -82,36 +82,36 @@
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="부종"
+            android:text="@string/additional_symptom_swelling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="저릿저릿한 증상"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <com.google.android.material.chip.Chip
-            style="@style/CustomChipStyle"
-            android:text="뻣뻣함"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.chip.Chip
-            style="@style/CustomChipStyle"
-            android:text="붉어짐"
+            android:text="@string/additional_symptom_tingling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="수면 부족/피로"
+            android:text="@string/additional_symptom_stiffness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.chip.Chip
+            style="@style/CustomChipStyle"
+            android:text="@string/additional_symptom_redness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            style="@style/CustomChipStyle"
+            android:text="@string/additional_symptom_fatigue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
-            android:text="손가락 마디 굵어짐"
+            android:text="@string/additional_symptom_joints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

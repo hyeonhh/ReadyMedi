@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
-            android:text="증상 보고서"
+            android:text="@string/report"
             android:textAppearance="@style/Title2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,16 +149,14 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_hospital"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="병원" />
+                    android:text="@string/hospital" />
 
                 <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_phar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="약국" />
+                    android:text="@string/phar" />
 
             </com.google.android.material.tabs.TabLayout>
 

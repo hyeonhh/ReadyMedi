@@ -2,28 +2,35 @@
 <resources>
     <string name="app_name">MediReady</string>
     <string name="disease_title">请选择您目前所患有的所有慢性病</string>
-    <string name="drug_title">您正在服用药物吗？</string>
     <string name="family_disease_title">您的家人中有人有病史吗？</string>
+    <string name="drug_title">您正在服用药物吗？</string>
+    <string name="drug_subtitle">请包括过去服用避孕药的记录</string>
     <string name="allergy_title">您有过敏症吗？</string>
     <string name="menu_home">首页</string>
     <string name="menu_location">地图</string>
     <string name="menu_all">全部</string>
     <string name="next">下一步</string>
 
-    <string name="symptom_region_question">哪里疼痛？</string>
+    <string name="symptom_region_question">哪里疼痛？ *</string>
     <string name="symptom_start_question">症状是什么时候开始的？</string>
-    <string name="symptom_degree_question">疼痛程度是多少？请用1-10表示</string>
+    <string name="symptom_degree_question">疼痛程度是多少？</string>
     <string name="symptom_duration_question">疼痛持续了多长时间？</string>
     <string name="symptom_effect_question">有什么因素会减轻或加重疼痛？</string>
     <string name="other_symptom_question">有其他伴随症状吗？</string>
-    <string name="additonal_comment_question">还有其他想要告诉我们的吗？（选填）</string>
+    <string name="additonal_comment_question">还有其他想要告诉我们的吗？</string>
 
+    <!-- 마취 관련 -->
     <string name="anesthesia_history_question">您是否有麻醉效果不好的经历？</string>
+
+    <!-- 부작용 관련 -->
     <string name="medication_side_effect_question">您是否有过药物或注射的副作用？</string>
+
+    <!-- 과거 치료 이력 -->
     <string name="previous_injury_treatment_question">您过去是否有受伤需要治疗的部位？</string>
 
+    <!-- 임신 관련 -->
     <string name="pregnancy_possibility_question">您是否怀孕或有怀孕的可能？</string>
-    <string name="menstruation_date_question">最近一次月经的开始和结束时间是什么时候？</string>
+    <string name="menstruation_date_question">最近一次月经的开始日期是什么时候？</string>
     <string name="menstruation_regularity_question">您的月经周期规律吗？</string>
 
     <!-- 암 질환 관련 중문 문자열 -->
@@ -115,10 +122,9 @@
 
     <!-- 앱 시작 관련 문자열 -->
     <string name="start_readymedi">开始使用 ReadyMedi</string>
-
-    <!-- 증상 입력 위젯 관련 문자열 -->
-    <string name="symptom_guidance_text">输入您的症状\n并直接展示给医务人员</string>
+    <string name="symptom_guidance_text">不确定病情如何处理？</string>
     <string name="enter_symptoms">输入症状</string>
+    <string name="symptom_question">您有什么症状？</string>
 
     <!-- 호흡기 증상 카테고리 관련 문자열 -->
     <string name="respiratory_symptoms">感冒/呼吸系统症状</string>
@@ -269,7 +275,7 @@
     <!-- 세부 카테고리 제목 -->
     <string name="symptom_menstrual_cycle">月经周期</string>
     <string name="symptom_pelvic_pain">盆腔疼痛</string>
-    <string name="symptom_menstrual_pain">月经</string>
+    <string name="symptom_menstrual_pain">月经痛</string>
     <string name="symptom_vaginal_itching">阴道瘙痒</string>
     <string name="symptom_discharge">分泌物</string>
 
@@ -280,13 +286,11 @@
     <string name="symptom_vaginal_itching_desc">我有阴道瘙痒/疼痛</string>
     <string name="symptom_discharge_desc">我的分泌物有异常颜色或气味</string>
 
-
     <!-- 통증 유형 선택 옵션 -->
     <string name="pain_type_stabbing">刺痛</string>
     <string name="pain_type_throbbing">跳痛/搏动性疼痛</string>
     <string name="pain_type_sharp">锐痛/割痛</string>
     <string name="pain_type_tingling">刺痛/麻痛</string>
-
     <string name="pain_scale_instruction">请选择1到10之间的数字</string>
 
     <!-- 지속성 유형 -->
@@ -301,7 +305,7 @@
     <string name="effect_urination">排尿</string>
     <string name="effect_unknown">不确定</string>
 
-    <!-- 완화 요인 -->
+    <!-- 통증 완화 화면 -->
     <string name="pain_relief_title">什么时候疼痛会缓解？</string>
     <string name="pain_relief_option_1">服用止痛药</string>
     <string name="pain_relief_option_2">冷热敷</string>
@@ -311,8 +315,10 @@
 
     <string name="yes">是</string>
     <string name="no">否</string>
+
     <string name="content_input_hint">输入内容</string>
 
+    <!-- 증상 정보 화면 -->
     <string name="current_symptoms">当前症状</string>
     <string name="symptom">症状</string>
     <string name="detailed_symptom">详细症状</string>
@@ -324,16 +330,14 @@
     <string name="past_treatment">过去治疗经验</string>
     <string name="anesthesia_experience">麻醉经验</string>
 
+    <string name="symptoms_label">症状</string>
+
+    <!-- 개인 건강 정보 화면 -->
     <string name="personal_health_info">个人健康信息</string>
     <string name="chronic_disease">慢性病</string>
     <string name="family_history">家族病史</string>
     <string name="allergies">过敏症</string>
     <string name="medications">服用药物</string>
-
-    <string name="hospital_guidance_prefix">有这些症状时，应该去</string>
-    <string name="hospital_guidance_suffix">就诊</string>
-    <string name="pharmacy_guidance">如果症状轻微，也可以在药店购买药物</string>
-    <string name="find_nearby_button">查找附近的诊所和药店</string>
 
     <!-- 진료과 -->
     <string name="hospital_department_internal">内科</string>
@@ -342,20 +346,22 @@
     <string name="hospital_department_dental">牙科</string>
     <string name="hospital_department_obgyn">妇产科</string>
 
+    <!-- 병원 안내 화면 -->
+    <string name="hospital_guidance_prefix">有这些症状时，应该去</string>
+    <string name="hospital_guidance_suffix">就诊</string>
+    <string name="pharmacy_guidance">如果症状轻微，也可以在药店购买药物</string>
+    <string name="find_nearby_button">查找附近的诊所和药店</string>
 
-    <string name="find_nearby_internal">近くの内科・薬局を探す</string>
-    <string name="find_nearby_orthopedic">近くの整形外科・薬局を探す</string>
-    <string name="find_nearby_general">近くの一般外科・薬局を探す</string>
-    <string name="find_nearby_dental">近くの歯科・薬局を探す</string>
-    <string name="find_nearby_obgyn">近くの産婦人科・薬局を探す</string>
+    <!-- 진료과별 버튼 -->
+    <string name="find_nearby_internal">查找附近的内科和药店</string>
+    <string name="find_nearby_orthopedic">查找附近的骨科和药店</string>
+    <string name="find_nearby_general">查找附近的普通外科和药店</string>
+    <string name="find_nearby_dental">查找附近的牙科和药店</string>
+    <string name="find_nearby_obgyn">查找附近的妇产科和药店</string>
 
     <string name="view_report_text">查看报告</string>
-    <string name="symptom_question">你有什么症状？</string>
-
-
     <string name="additional_content">附加内容</string>
 
-    <!-- 치아 관련 -->
     <string name="chip_toothache">牙痛</string>
     <string name="chip_cavity">蛀牙</string>
     <string name="chip_tooth_fracture">牙齿断裂</string>
@@ -373,6 +379,12 @@
 
     <!-- Pain Types -->
     <string name="pain_type_itching">瘙痒</string>
+    <string name="pain_type_cold">冷痛</string>
+    <string name="pain_type_sharp_stab">锐利刺痛</string>
+    <string name="pain_type_electric">电击般疼痛</string>
+    <string name="pain_type_throbbing_ache">阵阵跳痛</string>
+    <string name="pain_type_heavy_pressure">沉重压迫感</string>
+    <string name="pain_type_pulsating_pain">搏动性疼痛</string>
 
     <string name="symptom_factor_posture_change">改变姿势时</string>
     <string name="symptom_factor_before_meal">餐前</string>
@@ -380,15 +392,189 @@
     <string name="symptom_factor_after_waking">刚起床时</string>
     <string name="symptom_factor_night_time">夜间</string>
 
+    <!-- Symptom Factors -->
+    <string name="symptom_factor_exercise">运动后</string>
+    <string name="symptom_factor_walking">行走或跑步时</string>
+    <string name="symptom_factor_activity">过度身体活动</string>
+    <string name="symptom_factor_pressure">按压部位时</string>
+    <string name="symptom_factor_stairs">上下楼梯时</string>
+    <string name="symptom_factor_cold_water">喝冷水时</string>
+    <string name="symptom_factor_hot_water">喝热水时</string>
+    <string name="symptom_factor_biting">咬合时</string>
+    <string name="symptom_factor_touch_face">触摸脸部或口腔时</string>
+    <string name="symptom_factor_head_down">低头时</string>
+    <string name="symptom_factor_heel_walk">用脚后跟行走时</string>
+    <string name="menstrual_factor">月经前后</string>
+    <string name="hormone_medication_factor">服用荷尔蒙相关药物</string>
+    <string name="intense_activity_factor">剧烈身体活动</string>
+
+    <!-- 증상 목록 -->
     <string name="symptom_diarrhea">腹泻</string>
     <string name="symptom_constipation">便秘</string>
     <string name="symptom_arrhythmia">心律不齐</string>
     <string name="symptom_cholesterol">胆固醇问题</string>
     <string name="symptom_blood_pressure">血压问题</string>
+    <string name="personal_health_history">个人健康记录</string>
+    <string name="symptom_history">症状历史</string>
+    <string name="period">时期</string>
+    <string name="medical_specialty">就诊科室</string>
+    <string name="select">选择</string>
+    <string name="confirm">确认</string>
+    <string name="modify_complete">修改完成</string>
+    <string name="my_history">我的历史</string>
+    <string name="headache">头痛</string>
+    <string name="count">次数</string>
+    <string name="my_history_title">我的历史</string>
+    <string name="no_history">暂无症状历史记录</string>
+    <string name="write_symptom">输入症状</string>
+    <string name="home_sub_title">无语言障碍\n与 ReadyMedi 一起精确传达症状</string>
+    <string name="worse">加重因素</string>
+    <string name="other">伴随症状</string>
+    <string name="pregnancy">怀孕状况</string>
+    <string name="last_mendatory_start">最近一次月经开始日期</string>
+    <string name="mendatory_period">月经周期</string>
+    <string name="disease">疾病</string>
+    <string name="family_disease">家族病史</string>
+    <string name="drug">服用药物</string>
+    <string name="allergy">过敏</string>
+    <string name="select_warn">请选择必填项目</string>
+    <string name="injury_history">过去受伤接受治疗的经历</string>
+    <string name="durality">持续性</string>
+    <string name="dental_side_effect">注射或服药后经历的副作用</string>
+    <string name="hospital">医院</string>
+    <string name="phar">药店</string>
+    <string name="report">症状报告</string>
+    <string name="logout">退出登录</string>
+    <string name="right">右侧</string>
+    <string name="left">左侧</string>
+    <string name="front">前面</string>
+    <string name="back">后面</string>
 
+    <!-- Pregnancy Screen -->
+    <string name="pregnancy_no">无怀孕可能</string>
+    <string name="pregnancy_possible">有怀孕可能</string>
+    <string name="pregnancy_current">目前怀孕中</string>
 
+    <!-- Onboarding Screen -->
+    <string name="onboarding_symptom_title">提前输入症状\n即使在陌生的医院和药店也不用担心</string>
+    <string name="next_button">下一步</string>
 
-    <string name="symptoms_label">症状</string>
+    <!-- Symptom Screen -->
+    <string name="symptom_list_title">按症状查找医院指南</string>
+    <string name="symptom_guide_title">我们整理了根据症状应该去的科室</string>
+    <string name="symptom_guide_subtitle">如果症状不严重，也可以在家庭医学科或普通门诊\n接受全面诊疗</string>
 
+    <!-- Insurance Application Process -->
+    <string name="signup_process_title">申请流程</string>
+    <string name="foreign_insurance_process">让我告诉您\n外国人保险申请流程</string>
+    <string name="signup_process">申请流程</string>
+    <string name="signup_step1">1. 在韩国居住超过6个月的情况下，保险公司将自动处理投保</string>
+    <string name="signup_step2">2. 健康保险卡和保费缴纳通知单将发送到您在韩国的居住地（住所）</string>
+    <string name="signup_exception">但是，在以下情况下，必须亲自前往最近的分支机构（外国人服务中心）申报</string>
+    <string name="signup_exception_details">- 未自动加入的情况（未收到健康保险卡等）\n\n- 家庭（配偶和未成年子女）共同入境，希望按家庭单位缴纳保险费的情况\n\n- 作为在韩国留学的海外国民或海外同胞(F-4)，希望获得保险费减免的情况</string>
 
+    <!-- Insurance Screen -->
+    <string name="insurance_apply_title">加入后使用方法</string>
+    <string name="foreign_insurance_guide">让我告诉您\n外国人保险使用方法</string>
+    <string name="application_method">使用方法</string>
+    <string name="insurance_step1">1. 加入外国人保险</string>
+    <string name="insurance_step2">2. 加入后缴纳保险费</string>
+    <string name="insurance_step3">3. 携带身份证明访问医院</string>
+    <string name="onboarding_main_title">陌生的韩国医院和药店，\n您的医疗指南 Ready Medi</string>
+    <string name="onborading3_title">从提供外语服务的医疗机构\n到外国人保险信息应有尽有</string>
+    <string name="my_health_history">我的健康记录</string>
+    <string name="my_health_history_subtitle">输入越详细，诊断越准确</string>
+
+    <!-- Insurance Requirements -->
+    <string name="signup_conditions_title">加入条件</string>
+    <string name="foreign_insurance_conditions">让我告诉您\n外国人保险加入条件</string>
+    <string name="signup_conditions">加入条件</string>
+    <string name="stay_requirement">在韩国居住6个月以上的外国人和海外国民</string>
+    <string name="stay_details">- 如果6个月内出境时间总和不超过30天，则视为连续在韩国居住\n\n- 如果一次出境超过30天，则需从再次入境之日起满6个月后才能加入</string>
+    <string name="exception">例外</string>
+    <string name="immediate_signup">入境韩国后可立即加入的对象</string>
+    <string name="immediate_signup_details">以留学或结婚移民(F-6)资格入境的外国人（但需在外国人登记后才能加入）</string>
+
+    <!-- Map Screen -->
+    <string name="is_open">营业中</string>
+    <string name="foreign_language_available">提供外语服务</string>
+
+    <!-- Loading Screen -->
+    <string name="creating_report">正在创建症状报告</string>
+    <string name="please_wait">请稍等</string>
+
+    <!-- Symptom Chips -->
+    <string name="lump">肿块</string>
+    <string name="swelling">肿胀</string>
+    <string name="skin_change">皮肤变化</string>
+    <string name="itching">瘙痒</string>
+    <string name="nipple_discharge">乳头分泌物</string>
+
+    <!-- Medical Info Screens -->
+    <string name="medical_info_title">Ready Medi提供的\n智能外国人医疗信息</string>
+    <string name="benefit_title">外国人医疗福利</string>
+    <string name="free_hospital">免费诊疗医院(首尔)</string>
+    <string name="medical_support">医疗补助福利</string>
+    <string name="symptom_hospital_guide">按症状查找科室</string>
+    <string name="symptom_hospital_list">按症状查找医院指南</string>
+    <string name="foreign_insurance">外国人保险</string>
+    <string name="signup_condition">加入条件</string>
+    <string name="signup_procedure">加入流程</string>
+    <string name="application_after_signup">加入后使用方法</string>
+
+    <!-- Medical Benefits -->
+    <string name="medical_benefits_title">医疗补助福利</string>
+    <string name="worker_benefits_info">让我告诉您\n针对外国工人的医疗补助福利</string>
+    <string name="purpose">项目目的</string>
+    <string name="purpose_description">通过向无法获得医疗福利的人提供医疗服务，使他们能够维持作为人应该享有的最低健康生活质量。</string>
+    <string name="eligible_target">支持对象</string>
+    <string name="eligible_target_description">- 外国工人及其子女和配偶(外国人)\n- 取得国籍前的结婚移民及其子女\n- 难民等及其子女\n- 无法通过各种医疗保障制度获得医疗福利的人士</string>
+    <string name="detailed_inquiry">※ 详细标准请咨询项目实施医疗机构。</string>
+    <string name="support_content">支持内容</string>
+    <string name="visit_count">次数</string>
+    <string name="visit_count_desc">全年无次数限制</string>
+    <string name="support_scope">支持范围</string>
+    <string name="support_scope_desc">住院和手术等医疗费用</string>
+    <string name="support_limit">支持限额</string>
+    <string name="support_limit_desc">每人支持500万韩元以内</string>
+    <string name="outpatient_exclusion_note">※ 不包括门诊费用(但与住院及手术相关的门诊费用可获认可)</string>
+    <string name="excess_cost_note">※ 若每人总医疗费超过500万韩元，医疗机构需经内部审核(由2名医生组成)后提交超额理由书</string>
+
+    <string name="hospital_inquiry_info">希望通过该项目获得支持的人士请访问或致电以下医疗机构。(各医院的支持标准可能有所不同)</string>
+    <string name="hospital_list">- 서울의료원 (☎ 02-2276-7000)
+\n- 서울적십자병원 (☎ 02-2002-8853)
+\n- 국립중앙의료원 (☎ 02-2260-7472)
+\n- 서울특별시 보라매병원 (☎ 02-870-2005)
+\n- 서울특별시 동부병원 (☎ 02-920-9338)
+\n- 서울특별시 서북병원 (☎ 02-356-3286)
+\n- 서울특별시 서남병원 (☎ 02-6300-7551)
+\n- 서울특별시 북부병원 (☎ 02-2036-0358)
+\n- 인제대학교 상계백병원 (☎ 02-950-1408)
+\n- 성애병원 (☎ 02-840-7342)
+\n- 에이치플러스 양지병원 (☎ 02-4665-9401)
+\n- 녹색병원 (☎ 02-490-2121)
+\n- 사랑플러스병원 (☎ 02-2140-4506)</string>
+    <!-- Hospital Info Bottom Sheet -->
+    <string name="hospital_category">科室: </string>
+    <string name="address">地址: </string>
+    <string name="phone_number">电话号码: </string>
+    <string name="available_languages">可用外语: </string>
+
+    <string name="faq">常见问题</string>
+    <string name="faq_q1">Q. 外国工人免费医疗费用支持对象及金额是什么?</string>
+    <string name="faq_a1">作为外国工人，无法通过国家提供的任何医疗保障制度获得医疗福利的人，对于住院和手术费用（不包括当日门诊费用，但与住院和手术相关的门诊费用可接受），每人最高支持500万韩元。如果超过500万韩元，医疗机构在内部审核（由2名以上医生组成）后提交超额原因说明，可在预算范围内支持超出的医疗费用。\n\n从入院到出院产生的总医疗费用的90%（10%为个人负担）可得到支持。</string>
+    <string name="faq_q2">Q. 实施医疗支援项目的医疗机构有哪些?</string>
+    <string name="free_hospital_list">希望通过该项目获得支持的人士请访问或致电以下医疗机构。(各医院的支持标准可能有所不同)\n\n- 서울의료원 (☎ 02-2276-7000) \n- 서울적십자병원 (☎ 02-2002-8853) \n- 국립중앙의료원 (☎ 02-2260-7472) \n- 서울특별시 보라매병원 (☎ 02-870-2005) \n- 서울특별시 동부병원 (☎ 02-920-9338) \n- 서울특별시 서북병원 (☎ 02-356-3286) \n- 서울특별시 서남병원 (☎ 02-6300-7551) \n- 서울특별시 북부병원 (☎ 02-2036-0358) \n- 인제대학교 상계백병원 (☎ 02-950-1408) \n- 성애병원 (☎ 02-840-7342) \n- 에이치플러스 양지병원 (☎ 02-4665-9401) \n- 녹색병원 (☎ 02-490-2121) \n- 사랑플러스병원 (☎ 02-2140-4506)</string>
+
+    <!-- 额外症状 -->
+    <string name="additional_symptom_swelling">肿胀</string>
+    <string name="additional_symptom_spasm">肌肉痉挛</string>
+    <string name="additional_symptom_burning">灼烧感</string>
+    <string name="additional_symptom_stiffness">关节僵硬</string>
+    <string name="additional_symptom_redness">发红肿胀</string>
+    <string name="additional_symptom_tingling">刺痛感</string>
+    <string name="additional_symptom_stiffness_simple">僵硬</string>
+    <string name="additional_symptom_redness_simple">发红</string>
+    <string name="additional_symptom_fatigue">睡眠不足/疲劳</string>
+    <string name="additional_symptom_joints">手指关节肿大</string>
 </resources>

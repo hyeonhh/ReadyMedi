@@ -6,11 +6,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomJointBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutInnerCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutJointCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +46,7 @@ class FragmentJointSymptomResult :
 
         val currentSymptomContainer = hospitalReportBinding.layoutFrame
 
-        val currentSymptomBinding = LayoutInnerCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val currentSymptomBinding = HosCurrentSymptomJointBinding.inflate(inflater, currentSymptomContainer, false)
 
         currentSymptomBinding.viewModel = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner

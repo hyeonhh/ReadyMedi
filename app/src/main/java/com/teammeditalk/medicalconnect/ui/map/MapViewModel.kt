@@ -33,6 +33,10 @@ class MapViewModel
         private val _pharmacyList = MutableStateFlow(listOf<SearchLocationItem>())
         val pharmacyList = _pharmacyList.asStateFlow()
 
+        init {
+            getGangNamForeignAvailableList()
+        }
+
         // 외국어 가능 약국 리스트
         fun loadForeignLanguageAvailablePharmacyList(excelHelper: ExcelHelper) {
             viewModelScope.launch {
@@ -187,6 +191,24 @@ class MapViewModel
                     )
                 if (result.isSuccessful) {
                     Timber.d("success :${result.body()?.data}")
+                } else {
+                    Timber.d("failed to get foreignLanguage response :${result.errorBody()}")
+                }
+            }
+        }
+
+        // 강남구 외국어 가능 의료 기관
+        private fun getGangNamForeignAvailableList() {
+            viewModelScope.launch {
+                val apiKey = BuildConfig.MedicalApiKey
+                val result =
+                    foreignLanguageService.getGangNamForeignAvailableResponse(
+                        serviceKey = apiKey,
+                        page = 1,
+                        perPage = 10,
+                    )
+                if (result.isSuccessful) {
+                    Timber.d("gang nam success :${result.body()?.data}")
                 } else {
                     Timber.d("failed to get foreignLanguage response :${result.errorBody()}")
                 }
