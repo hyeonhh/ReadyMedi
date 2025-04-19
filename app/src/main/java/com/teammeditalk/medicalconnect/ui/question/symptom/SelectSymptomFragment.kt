@@ -20,11 +20,17 @@ class SelectSymptomFragment :
     private var selectedLayout: Int = 0
     private var selectedSymptom: String = ""
     private var selectedCategory: String = ""
+    private var selectedSymptomByKorean: String = ""
+    private var selectedSymptomContentId = ""
 
     private val viewModel: QuestionViewModel by activityViewModels()
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        binding.btnBack.setOnClickListener {
+            requireActivity().finish()
+        }
 
         binding.btnNext.setOnClickListener {
             val name = resources.getResourceEntryName(selectedLayout)
@@ -40,6 +46,10 @@ class SelectSymptomFragment :
                     else -> "내과"
                 }
             viewModel.selectSymptom(selectedSymptom = selectedSymptom, selectedCategory = selectedCategory, hospitalCategory = category)
+
+            // todo : 한국어 버전도 저장!
+            viewModel.setSymptomByKorean(selectedSymptomByKorean)
+            viewModel.setSymptomContentId(selectedSymptomContentId)
 
             when (category) {
                 "치과" -> {
@@ -68,6 +78,8 @@ class SelectSymptomFragment :
                     selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = it.getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -84,6 +96,8 @@ class SelectSymptomFragment :
                     selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -101,6 +115,8 @@ class SelectSymptomFragment :
                     selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -117,6 +133,8 @@ class SelectSymptomFragment :
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -133,6 +151,8 @@ class SelectSymptomFragment :
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -149,6 +169,8 @@ class SelectSymptomFragment :
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -164,6 +186,8 @@ class SelectSymptomFragment :
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -180,6 +204,8 @@ class SelectSymptomFragment :
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -195,6 +221,8 @@ class SelectSymptomFragment :
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
@@ -209,7 +237,10 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
+
                     selectedCategory = (it as SelectCategory).getContent().first
+                    selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
+                    selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {

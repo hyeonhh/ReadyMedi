@@ -113,7 +113,7 @@
             app:destination="@id/mapFragment2" />
         <action
             android:id="@+id/action_dentalSymptomResultFragment_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_dentalSymptomResultFragment_to_dentalAdditionalInputFragment"
             app:destination="@id/dentalAdditionalInputFragment" />
@@ -168,7 +168,7 @@
             app:argType="string"/>
     </fragment>
     <fragment
-        android:id="@+id/homeFragment2"
+        android:id="@+id/homeFragment"
         android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
         android:label="HomeFragment" />
 </navigation>

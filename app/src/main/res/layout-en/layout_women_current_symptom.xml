@@ -45,10 +45,10 @@
         <TextView
             android:id="@+id/textView25"
             android:layout_width="wrap_content"
+            android:textAppearance="@style/Body2_Normal"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
             android:text="@string/symptom"
-            android:textAppearance="@style/Body2_Normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView8"
             app:layout_constraintTop_toBottomOf="@+id/imageView8" />
@@ -58,8 +58,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
+            android:textAlignment="center"
             android:text="@{useWomenVM ? womenVM.womenResponse.symptomTitle  : viewModel.selectedSymptom.first}"
-            android:textAlignment="textEnd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -81,7 +81,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="@{useWomenVM ? womenVM.womenResponse.symptomContent  : viewModel.selectedSymptom.second}"
+            android:textAlignment="center"
+            android:text="@{useWomenVM? womenVM.symptomContent: viewModel.selectedSymptom.second}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
             android:text="@{useWomenVM ? womenVM.womenResponse.startDate  : viewModel.selectedDate}"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView28" />
@@ -127,8 +129,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="@{useWomenVM ? womenVM.womenResponse.type  : viewModel.selectedType}"
-            android:textAlignment="textEnd"
+            android:text="@{useWomenVM?  womenVM.typeList : viewModel.selectedType}"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -149,7 +151,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="@{useWomenVM ? womenVM.womenResponse.degree  : viewModel.selectedDegree}"
+            android:textAlignment="center"
+            android:text="@{useWomenVM ? womenVM.womenResponse.degree  : viewModel.selectedDegree.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
@@ -170,6 +173,7 @@
             android:id="@+id/tv_50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:layout_marginTop="18dp"
             android:text="@string/other"
             android:textAppearance="@style/Body2_Normal"
@@ -182,8 +186,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="@{viewModel.selectedOtherList.toString()}"
-            android:textAlignment="textEnd"
+            android:text="@{useWomenVM? womenVM.otherList: viewModel.selectedOtherList}"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_50" />
@@ -194,9 +198,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="@{viewModel.selectedWorseList}"
+            android:text="@{useWomenVM? womenVM.worseList: viewModel.selectedWorseList}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView40" />
 
@@ -217,7 +221,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
             android:text="@{useWomenVM ? womenVM.womenResponse.isAvailablePregnancy(): viewModel.selectedIsAvailablePregnancy}"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView33" />
@@ -240,7 +244,7 @@
             android:layout_marginTop="11dp"
             android:text="@{useWomenVM ? womenVM.womenResponse.lastDate : viewModel.selectedWomenLastDate}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView49" />
 
@@ -262,6 +266,7 @@
             android:layout_marginTop="11dp"
             android:text="@{useWomenVM ? womenVM.womenResponse.regularity : viewModel.selectedRegularity}"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView50" />

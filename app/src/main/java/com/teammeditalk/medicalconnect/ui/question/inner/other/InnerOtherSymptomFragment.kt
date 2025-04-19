@@ -8,6 +8,7 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentInnerOtherSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +20,8 @@ class InnerOtherSymptomFragment :
     private val viewModel: QuestionViewModel by activityViewModels()
     private var isOtherSymptom: Boolean = false
     private val selectedOtherList = mutableListOf<String>()
+    private val otherListByKorean = mutableListOf<String>()
+    private val otherListId = mutableListOf<String>()
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -42,9 +45,13 @@ class InnerOtherSymptomFragment :
                 for (child in this.checkedChipIds) {
                     val chip = findViewById<Chip>(child)
                     selectedOtherList.add(chip.text.toString())
+                    otherListByKorean.add(ResourceUtil.getKoreanString(requireContext(), chip.tag.toString()))
+                    otherListId.add(chip.tag.toString())
                 }
 
+                viewModel.setOtherListByKorean(otherListByKorean)
                 viewModel.setOtherSymptomList(selectedOtherList)
+                viewModel.setOtherSymptomId(otherListId)
                 navController.navigate(R.id.innerAdditionalInputFragment)
             }
         }

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <ImageButton
         android:id="@+id/btn_back"
@@ -43,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxContent="@string/symptom_factor_cold_water"
+            android:tag="symptom_factor_cold_water"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_hot_water"
+            android:tag="symptom_factor_hot_water"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox3" />
@@ -63,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_biting"
+            android:tag="symptom_factor_biting"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox4" />
@@ -73,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_touch_face"
+            android:tag="symptom_factor_touch_face"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox5" />
@@ -83,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_head_down"
+            android:tag="symptom_factor_head_down"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox6" />
@@ -94,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxContent="@string/symptom_factor_heel_walk"
+            android:tag="symptom_factor_heel_walk"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox9" />
@@ -103,6 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/duration_unknown"
+            android:tag="duration_unknown"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -110,6 +123,14 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:visibility="invisible"
+        android:id="@+id/warn"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_language_warning"/>
 
 
     <com.google.android.material.button.MaterialButton
@@ -122,4 +143,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

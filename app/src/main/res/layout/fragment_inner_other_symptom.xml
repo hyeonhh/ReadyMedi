@@ -84,6 +84,7 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_symptom_cough"
             style="@style/CustomChipStyle"
+            android:tag="symptom_cough"
             android:text="@string/symptom_cough"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -92,6 +93,7 @@
             android:id="@+id/chip_symptom_cavity"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_cavity"
+            android:tag="symptom_cavity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -99,6 +101,7 @@
             android:id="@+id/chip_symptom_fever"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_fever"
+            android:tag="symptom_fever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -106,6 +109,7 @@
             android:id="@+id/chip_symptom_sore_throat"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_sore_throat"
+            android:tag="symptom_sore_throat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -113,6 +117,7 @@
             android:id="@+id/chip_symptom_dyspnea"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_dyspnea"
+            android:tag="symptom_dyspnea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -120,6 +125,7 @@
             android:id="@+id/chip_symptom_abdominal_pain"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_abdominal_pain"
+            android:tag="symptom_abdominal_pain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -127,6 +133,7 @@
             android:id="@+id/chip_symptom_heartburn"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_heartburn"
+            android:tag="symptom_heartburn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -134,6 +141,7 @@
             android:id="@+id/chip_symptom_nausea"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_nausea"
+            android:tag="symptom_nausea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -141,6 +149,7 @@
             android:id="@+id/chip_symptom_diarrhea"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_diarrhea"
+            android:tag="symptom_diarrhea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -148,6 +157,7 @@
             android:id="@+id/chip_symptom_constipation"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_constipation"
+            android:tag="symptom_constipation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -155,6 +165,7 @@
             android:id="@+id/chip_symptom_indigestion"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_indigestion"
+            android:tag="symptom_indigestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -162,6 +173,7 @@
             android:id="@+id/chip_symptom_chest_pain"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_chest_pain"
+            android:tag="symptom_chest_pain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -169,6 +181,7 @@
             android:id="@+id/chip_symptom_arrhythmia"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_arrhythmia"
+            android:tag="symptom_arrhythmia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -176,6 +189,7 @@
             android:id="@+id/chip_symptom_diabetes"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_diabetes"
+            android:tag="symptom_diabetes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -183,6 +197,7 @@
             android:id="@+id/chip_symptom_thyroid"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_thyroid"
+            android:tag="symptom_thyroid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -190,6 +205,7 @@
             android:id="@+id/chip_symptom_cholesterol"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_cholesterol"
+            android:tag="symptom_cholesterol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -197,6 +213,7 @@
             android:id="@+id/chip_symptom_blood_pressure"
             style="@style/CustomChipStyle"
             android:text="@string/symptom_blood_pressure"
+            android:tag="symptom_blood_pressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -18,6 +18,8 @@ class InnerSymptomWorseListFragment :
     private val navController by lazy { findNavController() }
     private val viewModel: QuestionViewModel by activityViewModels()
     private val selectedWorseList = mutableListOf<String>()
+    private val worstListByKorean = mutableListOf<String>()
+    private val worstIdList = mutableListOf<String>()
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -29,9 +31,14 @@ class InnerSymptomWorseListFragment :
                     if (it.isSelected) {
                         (it as SelectBox).updateSelected(true)
                         selectedWorseList.add(it.getContent())
+                        worstListByKorean.add(it.getKoreanString(it.tag.toString()))
+                        worstIdList.add(it.tag.toString())
+                        worstIdList
                     } else {
                         (it as SelectBox).updateSelected(false)
                         selectedWorseList.remove(it.getContent())
+                        worstListByKorean.remove(it.getKoreanString(it.tag.toString()))
+                        worstIdList.remove(it.tag.toString())
                     }
                 }
             }
@@ -41,7 +48,9 @@ class InnerSymptomWorseListFragment :
             navController.popBackStack()
         }
         binding.btnNext.setOnClickListener {
+            viewModel.setInnerWorstListByKorean(worstListByKorean)
             viewModel.selectWorseList(selectedWorseList)
+            viewModel.setWorseListId(worstIdList)
             navController.navigate(R.id.innerOtherSymptomFragment)
         }
     }

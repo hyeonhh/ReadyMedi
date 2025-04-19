@@ -6,12 +6,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
-import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomJointBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionJointBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutJointCurrentSymptomBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutJointHistoryBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,41 +25,33 @@ class FragmentJointSymptomResult :
     private fun setCurrentSymptomBinding() {
         // 사용자용 현재 증상 레이아웃 연결하기
         val currentSymptomFrame = binding.layoutFrame
+
         val jointCurrentSymptomBinding = LayoutJointCurrentSymptomBinding.inflate(inflater, currentSymptomFrame, false)
-        currentSymptomFrame.addView(jointCurrentSymptomBinding.root)
+
+        val history = LayoutJointHistoryBinding.inflate(inflater, binding.layoutFrame2, false)
 
         jointCurrentSymptomBinding.viewModel = viewModel
         jointCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+
+        currentSymptomFrame.addView(jointCurrentSymptomBinding.root)
+        binding.layoutFrame2.addView(history.root)
     }
 
     private fun setHospitalVersionReport() {
         val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
-        hospitalContentContainer.addView(hospitalReportBinding.root)
-    }
+        val hospitalReportBinding = LayoutHospitalVersionJointBinding.inflate(inflater, hospitalContentContainer, false)
 
-    private fun setCurrentSymptomToHospital() {
-        // 의료진용 보고서
-        val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
-
-        val currentSymptomContainer = hospitalReportBinding.layoutFrame
-
-        val currentSymptomBinding = HosCurrentSymptomJointBinding.inflate(inflater, currentSymptomContainer, false)
-
-        currentSymptomBinding.viewModel = viewModel
-        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
-        currentSymptomContainer.addView(currentSymptomBinding.root)
-
-        hospitalReportBinding.symptom.viewModel = viewModel
         hospitalReportBinding.familyDiseaseAndDrug.viewModel = viewModel
-
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
         hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
+
+        hospitalReportBinding.currentSymptom.viewModel = viewModel
+        hospitalReportBinding.currentSymptom.lifecycleOwner = viewLifecycleOwner
 
         hospitalReportBinding.additionalInput.viewModel = viewModel
         hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
+
+        hospitalReportBinding.symptom.viewModel = viewModel
+        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
 
         hospitalContentContainer.addView(hospitalReportBinding.root)
     }
@@ -85,8 +76,8 @@ class FragmentJointSymptomResult :
 
         inflater = LayoutInflater.from(requireContext())
         setCurrentSymptomBinding()
+
         setHospitalVersionReport()
-        setCurrentSymptomToHospital()
         setMapDataBinding()
 
         binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -101,7 +92,9 @@ class FragmentJointSymptomResult :
         }
 
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.jointAdditionalInputFragment) }
-        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment5) }
+        binding.btnClose.setOnClickListener {
+            requireActivity().finish()
+        }
         viewModel.saveJointResponse()
     }
 }

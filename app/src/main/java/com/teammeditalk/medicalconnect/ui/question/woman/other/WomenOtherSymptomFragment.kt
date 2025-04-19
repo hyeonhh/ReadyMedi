@@ -9,6 +9,7 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentWomenOtherSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import com.teammeditalk.medicalconnect.ui.util.SelectBox
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,9 @@ class WomenOtherSymptomFragment :
     private val viewModel: QuestionViewModel by activityViewModels()
     private val navController by lazy { findNavController() }
     private val selectedOtherSymptomList = mutableListOf<String>()
+    private val otherListByKorean = mutableListOf<String>()
+    private var isSelected = false
+    private val otherIdList = mutableListOf<String>()
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -30,24 +34,50 @@ class WomenOtherSymptomFragment :
                 selectBoxNo.updateSelected(false)
                 tvSymptomTitle.visibility = View.VISIBLE
                 chipGroup.visibility = View.VISIBLE
+                isSelected = true
             }
 
             selectBoxNo.setOnClickListener {
                 (it as SelectBox).updateSelected(true)
                 selectBoxYes.updateSelected(false)
+                isSelected = false
             }
 
             btnBack.setOnClickListener { navController.popBackStack() }
             btnNext.setOnClickListener {
+                // 선택된 칩 추가
                 with(chipGroup) {
                     for (id in this.checkedChipIds) {
                         val chip = findViewById<Chip>(id)
                         selectedOtherSymptomList.add(chip.text.toString())
+                        otherListByKorean.add(ResourceUtil.getKoreanString(requireContext(), chip.tag.toString()))
+                        otherIdList.add(chip.tag.toString())
                     }
                 }
-                viewModel.setOtherSymptomList(selectedOtherSymptomList)
-                val bundle = bundleOf("hospital_type" to "산부")
-                navController.navigate(R.id.womenAdditionalInputFragment, bundle)
+
+                if (!isSelected) {
+                    binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+
+                    viewModel.setOtherSymptomList(emptyList())
+                    viewModel.setOtherListByKorean(emptyList())
+                    viewModel.setOtherSymptomId(emptyList())
+
+                    val bundle = bundleOf("hospital_type" to "산부")
+                    navController.navigate(R.id.womenAdditionalInputFragment, bundle)
+                } else {
+                    if (selectedOtherSymptomList.isEmpty()) {
+                        binding.warn.layoutLanguageWarn.visibility = View.VISIBLE
+                    } else {
+                        binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+
+                        viewModel.setOtherSymptomList(selectedOtherSymptomList)
+                        viewModel.setOtherListByKorean(otherListByKorean)
+                        viewModel.setOtherSymptomId(otherIdList)
+
+                        val bundle = bundleOf("hospital_type" to "산부")
+                        navController.navigate(R.id.womenAdditionalInputFragment, bundle)
+                    }
+                }
             }
         }
     }

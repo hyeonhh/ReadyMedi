@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/inner_nav"
-    app:startDestination="@id/selectInnerRegionFragment">
+    app:startDestination="@id/selectRegionFragment">
 
     <fragment
         tools:layout="@layout/fragment_inner_symptom_type"
@@ -40,7 +40,7 @@
             app:destination="@id/innerAdditionalInputFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_inner_symptom_result"
+        tools:layout="@layout/layout_common_question_result"
         android:id="@+id/innerSymptomResultFragment"
         android:name="com.teammeditalk.medicalconnect.ui.question.inner.result.InnerSymptomResultFragment"
         android:label="InnerSymptomResultFragment" >
@@ -50,9 +50,6 @@
         <action
             android:id="@+id/action_innerSymptomResultFragment_to_innerAdditionalInputFragment"
             app:destination="@id/innerAdditionalInputFragment" />
-        <action
-            android:id="@+id/action_innerSymptomResultFragment_to_homeFragment4"
-            app:destination="@id/homeFragment4" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_select_duration"
@@ -68,9 +65,9 @@
             app:destination="@id/innerSymptomWorseListFragment" />
     </fragment>
     <fragment
-        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.region.SelectSymptomRegionFragment"
         tools:layout="@layout/fragment_select_symptom_region"
-        android:id="@+id/selectInnerRegionFragment"
+        android:id="@+id/selectRegionFragment"
         android:label="SelectInnerRegionFragment" >
         <argument
             android:name="hospital_type"
@@ -136,16 +133,12 @@
     </fragment>
     <fragment
         android:id="@+id/mapFragment4"
+        tools:layout="@layout/fragment_map"
         android:name="com.teammeditalk.medicalconnect.ui.map.MapFragment"
         android:label="MapFragment" >
         <argument
             android:name="category"
             app:argType="string"/>
     </fragment>
-    <fragment
-        android:id="@+id/homeFragment4"
-        android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
-        android:label="HomeFragment" />
-
 
 </navigation>

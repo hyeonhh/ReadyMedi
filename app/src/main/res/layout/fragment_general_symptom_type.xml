@@ -53,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxContent="@string/pain_type_piercing"
+                android:tag="pain_type_piercing"
                 app:isSelected="false"
                 app:layout_constraintEnd_toEndOf="@+id/layout_constraint"
                 app:layout_constraintStart_toStartOf="@+id/layout_constraint"
@@ -67,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:boxContent="@string/pain_type_throbbing"
+                android:tag="pain_type_throbbing"
                 app:isSelected="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:boxContent="@string/pain_type_dull"
+                android:tag="pain_type_dull"
                 app:isSelected="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:boxContent="@string/pain_type_burning"
+                android:tag="pain_type_burning"
                 app:isSelected="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:boxContent="@string/pain_type_itching"
+                android:tag="pain_type_itching"
                 app:isSelected="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,6 +129,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 app:boxContent="@string/pain_type_unknown"
+                android:tag="pain_type_unknown"
                 app:isSelected="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -132,6 +138,14 @@
                 app:textColor="@color/gray30" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/warn"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/layout_language_warning"/>
 
         <!-- 다음 버튼 -->
         <com.google.android.material.button.MaterialButton

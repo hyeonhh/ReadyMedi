@@ -60,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textAlignment="center"
             android:text="@{useInnerVM ? innerVM.innerResponse.symptomTitle: viewModel.selectedSymptom.first}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +83,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{useInnerVM ? innerVM.innerResponse.symptomContent : viewModel.selectedSymptom.second}"
+            android:textAlignment="center"
+
+            android:text="@{useInnerVM? innerVM.symptomContent: viewModel.selectedSymptom.second}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -104,6 +107,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textAlignment="center"
+
             android:text="@{useInnerVM ? innerVM.innerResponse.region : viewModel.selectedRegion}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +131,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textAlignment="center"
+
             android:text="@{useInnerVM ? innerVM.innerResponse.startDate : viewModel.selectedDate}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +155,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{useInnerVM ? innerVM.innerResponse.type : viewModel.selectedType}"
+            android:textAlignment="center"
+
+            android:text="@{useInnerVM ? innerVM.typeList : viewModel.selectedType}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -170,6 +179,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textAlignment="center"
+
             android:text="@{useInnerVM ? innerVM.innerResponse.degree : viewModel.selectedRegion}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -192,7 +203,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{useInnerVM ? innerVM.innerResponse.worseList.toString() : viewModel.selectedWorseList}"
+            android:textAlignment="center"
+
+            android:text="@{useInnerVM ? innerVM.worseList : viewModel.selectedWorseList}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView40" />
@@ -214,7 +227,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{useInnerVM ? innerVM.innerResponse.otherSymptom.toString() :viewModel.selectedOtherList}"
+            android:textAlignment="center"
+
+            android:text="@{useInnerVM ? innerVM.otherList :viewModel.selectedOtherList}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

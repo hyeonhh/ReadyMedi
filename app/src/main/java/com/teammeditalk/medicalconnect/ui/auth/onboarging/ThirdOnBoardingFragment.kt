@@ -45,9 +45,13 @@ class ThirdOnBoardingFragment :
                         firebaseAuthWithGoogle(googleIdTokenCredential.idToken)
                         val uid = auth.uid
                         val currentUser = auth.currentUser
+                        Timber.d("uid :$uid")
                         lifecycleScope.launch {
                             if (uid != null) {
+                                Timber.d("uid :$uid")
                                 viewModel.saveUid(uid)
+                            } else {
+                                Timber.d("uid 없음 :$uid")
                             }
                             if (currentUser != null) {
                                 val photoUrl = auth.currentUser!!.photoUrl
@@ -55,7 +59,6 @@ class ThirdOnBoardingFragment :
                                 viewModel.saveProfileUrl(photoUrl.toString(), nickName.toString())
                             }
                         }
-                        Timber.d("uid :$uid")
                     } catch (e: GoogleIdTokenParsingException) {
                         e.printStackTrace()
                         Timber.d("Received an invalid google id token response :${e.message}")

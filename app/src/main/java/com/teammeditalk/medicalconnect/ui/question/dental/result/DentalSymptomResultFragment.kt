@@ -1,10 +1,7 @@
 package com.teammeditalk.medicalconnect.ui.question.dental.result
 
-import android.content.Context
-import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
-import androidx.annotation.StringRes
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -20,11 +17,11 @@ import com.teammeditalk.medicalconnect.databinding.LayoutDentalSideEffectInputBi
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.util.Locale
 
 @AndroidEntryPoint
 class DentalSymptomResultFragment :
@@ -36,25 +33,23 @@ class DentalSymptomResultFragment :
 
     private fun showSymptomResult() {
         lifecycleScope.launch {
-            lifecycleScope.launch {
-                viewModel.additionalInput.collectLatest {
-                    val options =
-                        TranslatorOptions
-                            .Builder()
-                            .setSourceLanguage(TranslateLanguage.KOREAN)
-                            .setTargetLanguage(TranslateLanguage.ENGLISH)
-                            .build()
-                    val koreanEnglishTranslator = Translation.getClient(options)
+            viewModel.additionalInput.collectLatest {
+                val options =
+                    TranslatorOptions
+                        .Builder()
+                        .setSourceLanguage(TranslateLanguage.KOREAN)
+                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .build()
+                val koreanEnglishTranslator = Translation.getClient(options)
 
-                    koreanEnglishTranslator
-                        .translate(it)
-                        .addOnSuccessListener {
-                            binding.layoutAdditionalInput.tvInput.text = it
-                        }.addOnFailureListener { exception ->
-                            exception.printStackTrace()
-                            Timber.d("Failed to translate :${exception.message}")
-                        }
-                }
+                koreanEnglishTranslator
+                    .translate(it)
+                    .addOnSuccessListener {
+                        binding.layoutAdditionalInput.tvInput.text = it
+                    }.addOnFailureListener { exception ->
+                        exception.printStackTrace()
+                        Timber.d("Failed to translate :${exception.message}")
+                    }
             }
         }
 
@@ -145,6 +140,15 @@ class DentalSymptomResultFragment :
 
         inflater = LayoutInflater.from(requireContext())
 
+        lifecycleScope.launch {
+            viewModel.otherSymptomIdList.collectLatest {
+                it.forEach { id ->
+                    val string = ResourceUtil.getForeignString(requireContext(), viewModel.userLanguage.value, id)
+                    Timber.d("id ->  string :$string")
+                }
+            }
+        }
+
         setCurrentSymptomBinding()
         setSideEffectBinding()
 
@@ -158,9 +162,6 @@ class DentalSymptomResultFragment :
         binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             binding.ivTooltip.visibility = View.INVISIBLE
             if (isChecked) {
-                // todo : 한국어 제공하기
-                val symptom = requireContext().getKoreanString(R.string.symptom_tooth)
-                Timber.d("symptom :$symptom")
                 binding.layoutHospitalVersion.visibility = View.VISIBLE
                 binding.layoutUser.visibility = View.GONE
             } else {
@@ -174,13 +175,8 @@ class DentalSymptomResultFragment :
         }
 
         binding.btnBack.setOnClickListener { findNavController().navigate(R.id.dentalAdditionalInputFragment) }
-        binding.btnClose.setOnClickListener { findNavController().navigate(R.id.homeFragment2) }
-    }
-
-    private fun Context.getKoreanString(
-        @StringRes resId: Int,
-    ) {
-        val configuration = Configuration(resources.configuration)
-        configuration.setLocale(Locale("ko"))
+        binding.btnClose.setOnClickListener {
+            requireActivity().finish()
+        }
     }
 }

@@ -1,8 +1,9 @@
-package com.teammeditalk.medicalconnect.ui.question.dental.fragment.region
+package com.teammeditalk.medicalconnect.ui.question.common.region
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.view.MotionEvent
+import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
@@ -26,6 +27,7 @@ class SelectSymptomRegionFragment :
     private val args by navArgs<SelectSymptomRegionFragmentArgs>()
 
     private lateinit var selectedBodyPart: String
+    private var regionByKorean = ""
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -58,19 +60,25 @@ class SelectSymptomRegionFragment :
             navController.popBackStack()
         }
         binding.btnNext.setOnClickListener {
-            viewModel.setRegion(selectedBodyPart)
-            when (args.hospitalType) {
-                "내과" -> {
-                    val bundle = bundleOf("hospital_type" to "내과")
-                    navController.navigate(R.id.selectInnerStartFragment, bundle)
-                }
-                "일반" -> {
-                    val bundle = bundleOf("hospital_type" to "일반")
-                    navController.navigate(R.id.selectGeneralSymptomStartFragment, bundle)
-                }
-                "정형" -> {
-                    val bundle = bundleOf("hospital_type" to "정형")
-                    navController.navigate(R.id.selectJointSymptomStartFragment, bundle)
+            if (selectedBodyPart == "") {
+                binding.warn.layoutLanguageWarn.visibility = View.VISIBLE
+            } else {
+                binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+                viewModel.setRegion(selectedBodyPart)
+                viewModel.setSymptomRegionByKorean(regionByKorean)
+                when (args.hospitalType) {
+                    "내과" -> {
+                        val bundle = bundleOf("hospital_type" to "내과")
+                        navController.navigate(R.id.selectInnerStartFragment, bundle)
+                    }
+                    "일반" -> {
+                        val bundle = bundleOf("hospital_type" to "일반")
+                        navController.navigate(R.id.selectGeneralSymptomStartFragment, bundle)
+                    }
+                    "정형" -> {
+                        val bundle = bundleOf("hospital_type" to "정형")
+                        navController.navigate(R.id.selectJointSymptomStartFragment, bundle)
+                    }
                 }
             }
         }
@@ -89,24 +97,13 @@ class SelectSymptomRegionFragment :
         val name: String, // SVG에 정의된 부위 이름
     )
 
-    private fun handleBackBodyPartSelection(bodyPart: String) {
-        val koreanName = getKoreanBodyPartName(bodyPart)
-        Timber.d("Selected back body part: $bodyPart ($koreanName)")
-
-        // Update the drawable based on the selected back body part
-        when (bodyPart) {
-        }
-    }
-
     /**
      * 신체 부위 처리 함수
      */
     private fun handleBodyPartSelection(bodyPart: String) {
         // 선택된 부위 이름을 한글로 변환
-        val koreanName = getKoreanBodyPartName(bodyPart)
+        regionByKorean = getKoreanBodyPartName(bodyPart)
 
-        // 로그 출력
-        Timber.d("선택된 신체 부위: $bodyPart ($koreanName)")
         updatePathColorWithReflection(bodyPart)
 
         when (bodyPart) {
@@ -460,6 +457,7 @@ class SelectSymptomRegionFragment :
      */
     private fun getKoreanBodyPartName(pathName: String): String =
         when (pathName) {
+            // 앞면 신체 부위
             "face" -> "얼굴"
             "left_head" -> "머리 왼쪽"
             "right_head" -> "머리 오른쪽"
@@ -493,6 +491,27 @@ class SelectSymptomRegionFragment :
             "leg_middle_right" -> "오른쪽 다리 중부"
             "leg_bottom_right" -> "오른쪽 다리 하부"
             "ankle_right" -> "오른쪽 발목"
+
+            // 뒷면 신체 부위 (추가)
+            "back_head" -> "뒷머리"
+            "back_neck" -> "뒷목"
+            "back" -> "등"
+            "hip_left" -> "왼쪽 엉덩이"
+            "hip_right" -> "오른쪽 엉덩이"
+            "back_top_arm_left" -> "왼쪽 팔 상부(뒤)"
+            "back_top_arm_right" -> "오른쪽 팔 상부(뒤)"
+            "back_middle_arm_left" -> "왼쪽 팔 중부(뒤)"
+            "back_middle_arm_right" -> "오른쪽 팔 중부(뒤)"
+            "back_bottom_arm_left" -> "왼쪽 팔 하부(뒤)"
+            "back_bottom_arm_right" -> "오른쪽 팔 하부(뒤)"
+            "back_hand_left" -> "왼쪽 손(뒤)"
+            "back_hand_right" -> "오른쪽 손(뒤)"
+            "back_top_leg_left" -> "왼쪽 다리 상부(뒤)"
+            "back_top_leg_right" -> "오른쪽 다리 상부(뒤)"
+            "back_bottom_leg_left" -> "왼쪽 다리 하부(뒤)"
+            "back_bottom_leg_right" -> "오른쪽 다리 하부(뒤)"
+            "back_foot_left" -> "왼쪽 발(뒤)"
+            "back_foot_right" -> "오른쪽 발(뒤)"
 
             else -> pathName.replace("_", " ")
         }
@@ -590,9 +609,6 @@ class SelectSymptomRegionFragment :
                 // 엉덩이
                 BodyPartRegion(0.29f, 0.42f, 0.45f, 0.53f, "hip_left"), // 엉덩이 왼쪽
                 BodyPartRegion(0.55f, 0.42f, 0.71f, 0.53f, "hip_right"), // 엉덩이 오른쪽
-//                // 어깨
-//                BodyPartRegion(0.1f, 0.18f, 0.25f, 0.3f, "back_shoulder_left"), // 어깨 왼쪽 뒤
-//                BodyPartRegion(0.75f, 0.18f, 0.9f, 0.22f, "back_shoulder_right"), // 어깨 오른쪽 뒤
                 // 팔 - 이름을 요청한 형식으로 수정
                 BodyPartRegion(0.15f, 0.18f, 0.32f, 0.28f, "back_top_arm_left"), // 왼쪽 팔 상부
                 BodyPartRegion(0.68f, 0.18f, 0.85f, 0.28f, "back_top_arm_right"), // 오른쪽 팔 상부
@@ -615,6 +631,8 @@ class SelectSymptomRegionFragment :
 
         // 터치 리스너 설정
         binding.ivImage.setOnTouchListener { view, event ->
+            binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+
             if (event.action == MotionEvent.ACTION_DOWN) {
                 // 터치 좌표를 0~1 범위로 정규화
                 val normalizedX = event.x / view.width

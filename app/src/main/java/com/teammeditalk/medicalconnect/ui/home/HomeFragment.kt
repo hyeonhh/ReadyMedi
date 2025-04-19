@@ -33,6 +33,7 @@ class HomeFragment :
         binding.layoutHomeSymptom.materialButton.setOnClickListener {
             val intent = Intent(context, QuestionActivity::class.java)
             startActivity(intent)
+//            navController.navigate(R.id.question_nav)
         }
     }
 }

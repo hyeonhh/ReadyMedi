@@ -1,5 +1,6 @@
 package com.teammeditalk.medicalconnect.ui.question.woman
 
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -26,6 +27,7 @@ class LastPeriodFragment :
         binding.exposedDropDownMenu.setTvTitle(selectedDate!!)
         binding.btnNext.setBackgroundColor(requireContext().getColor(R.color.blue50))
         binding.btnNext.setTextColor(requireContext().getColor(R.color.white))
+        binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
     }
 
     override fun onBindLayout() {
@@ -39,8 +41,14 @@ class LastPeriodFragment :
             }
             btnBack.setOnClickListener { navController.popBackStack() }
             btnNext.setOnClickListener {
-                viewModel.setLastPeriod(selectedDate)
-                navController.navigate(R.id.cycleRegularityFragment)
+                if (selectedDate == "") {
+                    binding.warn.layoutLanguageWarn.visibility = View.VISIBLE
+                } else {
+                    binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+
+                    viewModel.setLastPeriod(selectedDate)
+                    navController.navigate(R.id.cycleRegularityFragment)
+                }
             }
         }
     }

@@ -13,8 +13,7 @@ import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomInnerBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionInnerBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutInnerCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +28,7 @@ class InnerSymptomResultFragment :
     ) {
     private val viewModel: QuestionViewModel by activityViewModels()
     private val navController by lazy { findNavController() }
+    private lateinit var currentSymptomBinding: HosCurrentSymptomInnerBinding
     private lateinit var inflater: LayoutInflater
 
     private fun setCurrentSymptomBinding() {
@@ -43,29 +43,17 @@ class InnerSymptomResultFragment :
 
     private fun setHospitalVersionReport() {
         val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
-        hospitalContentContainer.addView(hospitalReportBinding.root)
-    }
+        val hospitalReportBinding = LayoutHospitalVersionInnerBinding.inflate(inflater, hospitalContentContainer, false)
 
-    private fun setCurrentSymptomToHospital() {
-        // 의료진용 보고서
-        val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
-
-        val currentSymptomContainer = hospitalReportBinding.layoutFrame
-
-        val currentSymptomBinding = HosCurrentSymptomInnerBinding.inflate(inflater, currentSymptomContainer, false)
-
-        currentSymptomBinding.viewModel = viewModel
-        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
-        currentSymptomContainer.addView(currentSymptomBinding.root)
+        hospitalReportBinding.currentSymptom.viewModel = viewModel
+        hospitalReportBinding.currentSymptom.lifecycleOwner = viewLifecycleOwner
 
         hospitalReportBinding.symptom.viewModel = viewModel
+        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
+
         hospitalReportBinding.familyDiseaseAndDrug.viewModel = viewModel
 
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
         hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
 
         hospitalReportBinding.additionalInput.viewModel = viewModel
         hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
@@ -129,12 +117,12 @@ class InnerSymptomResultFragment :
         inflater = LayoutInflater.from(requireContext())
         setCurrentSymptomBinding()
         setHospitalVersionReport()
-        setCurrentSymptomToHospital()
         setMapDataBinding()
 
-        binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
             binding.ivTooltip.visibility = View.INVISIBLE
             if (isChecked) {
+                // todo : 한국어로 내용 저장하기
                 binding.layoutHospitalVersion.visibility = View.VISIBLE
                 binding.layoutUser.visibility = View.GONE
                 showSymptomResult()
@@ -146,7 +134,12 @@ class InnerSymptomResultFragment :
 
         with(binding) {
             btnBack.setOnClickListener { navController.popBackStack() }
-            btnClose.setOnClickListener { navController.navigate(R.id.homeFragment4) }
+            btnClose.setOnClickListener {
+                // todo : quetsionActivity 내부에서 fragment자리에 homefragment를 보여준다.
+                // navController.navigate(R.id.homeFragment)
+                // todo 액티비티 종료
+                requireActivity().finish()
+            }
         }
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {

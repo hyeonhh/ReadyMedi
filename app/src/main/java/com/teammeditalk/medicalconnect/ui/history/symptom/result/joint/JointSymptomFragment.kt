@@ -3,6 +3,7 @@ package com.teammeditalk.medicalconnect.ui.history.symptom.result.joint
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
@@ -12,6 +13,8 @@ import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralB
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutJointCurrentSymptomBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class JointSymptomFragment :
@@ -61,8 +64,15 @@ class JointSymptomFragment :
         hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
         hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
 
-        hospitalReportBinding.additionalInput.jointVM = viewModel
-        hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
+        // todo : 뷰모델 연결하기
+
+        lifecycleScope.launch {
+            viewModel.jointResponse.collectLatest {
+                hospitalReportBinding.additionalInput.tvInput.text = it.additionalInput
+            }
+        }
+//        hospitalReportBinding.additionalInput.jointVM = viewModel
+//        hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
 
         hospitalContentContainer.addView(hospitalReportBinding.root)
     }
@@ -82,6 +92,19 @@ class JointSymptomFragment :
         contentContainer3.addView(goToMapBinding.root)
     }
 
+    private fun onSwitchClick() {
+        binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
+            binding.ivTooltip.visibility = View.INVISIBLE
+            if (isChecked) {
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+                binding.layoutUser.visibility = View.GONE
+            } else {
+                binding.layoutHospitalVersion.visibility = View.GONE
+                binding.layoutUser.visibility = View.VISIBLE
+            }
+        }
+    }
+
     override fun onBindLayout() {
         super.onBindLayout()
 
@@ -91,6 +114,7 @@ class JointSymptomFragment :
         setHospitalVersionReport()
         setCurrentSymptomToHospital()
         setMapDataBinding()
+        onSwitchClick()
 
         binding.btnBack.visibility = View.GONE
         binding.btnClose.setOnClickListener { navController.popBackStack() }

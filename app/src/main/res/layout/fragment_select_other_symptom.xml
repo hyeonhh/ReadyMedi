@@ -50,6 +50,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_box_yes" />
 
+    <include
+        android:id="@+id/warn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_language_warning"/>
+
     <com.google.android.material.button.MaterialButton
         style="@style/CustomButtonStyle2"
         android:id="@+id/btn_next"
@@ -85,30 +93,35 @@
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="additional_symptom_swelling"
             android:text="@string/additional_symptom_swelling"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="additional_symptom_spasm"
             android:text="@string/additional_symptom_spasm"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="additional_symptom_burning"
             android:text="@string/additional_symptom_burning"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="additional_symptom_stiffness"
             android:text="@string/additional_symptom_stiffness"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="additional_symptom_redness"
             android:text="@string/additional_symptom_redness"/>
     </com.google.android.material.chip.ChipGroup>
 

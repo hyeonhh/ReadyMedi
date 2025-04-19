@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,7 +19,7 @@ class AuthViewModel
     constructor(
         @ApplicationContext private val context: Context,
     ) : ViewModel() {
-        private val _uid = MutableStateFlow("")
+        private val _uid = MutableStateFlow<String?>(null)
         val uid = _uid.asStateFlow()
 
         init {
@@ -30,10 +31,11 @@ class AuthViewModel
                 try {
                     context.userAuthPreferencesStore.data.collectLatest {
                         _uid.value = it.uid
+                        Timber.d("얻은 uid :${it.uid}")
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    _uid.value = ""
+                    _uid.value = "-1"
                 }
             }
         }
@@ -45,6 +47,7 @@ class AuthViewModel
                     .setUid(uid)
                     .build()
             }
+            getUid()
         }
 
         suspend fun saveProfileUrl(

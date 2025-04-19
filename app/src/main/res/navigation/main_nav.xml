@@ -35,7 +35,12 @@
         <action
             android:id="@+id/action_homeFragment_to_allFragment2"
             app:destination="@id/allFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_inner_nav"
+            app:destination="@id/inner_nav" />
+
     </fragment>
+
     <fragment
         tools:layout="@layout/fragment_my_health_info"
         android:id="@+id/myHealthInfoFragment"
@@ -44,6 +49,9 @@
         <action
             android:id="@+id/action_myHealthInfoFragment_to_editDiseaseFragment"
             app:destination="@id/editDiseaseFragment" />
+        <action
+            android:id="@+id/action_myHealthInfoFragment_to_mySymptomHistoryFragment"
+            app:destination="@id/mySymptomHistoryFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_my_symptom_history"
@@ -71,6 +79,9 @@
         <action
             android:id="@+id/action_mySymptomHistoryFragment_to_dentalSymptomFragment"
             app:destination="@id/dentalSymptomFragment" />
+        <action
+            android:id="@+id/action_mySymptomHistoryFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/userFragment"

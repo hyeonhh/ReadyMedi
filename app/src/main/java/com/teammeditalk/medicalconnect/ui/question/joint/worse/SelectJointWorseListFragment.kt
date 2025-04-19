@@ -1,5 +1,6 @@
 package com.teammeditalk.medicalconnect.ui.question.dental.fragment.worse
 
+import android.view.View
 import androidx.core.view.children
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -7,6 +8,7 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSelectJointWorseListBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import com.teammeditalk.medicalconnect.ui.util.SelectBox
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,6 +20,8 @@ class SelectJointWorseListFragment :
     private val navController by lazy { findNavController() }
     private val viewModel: QuestionViewModel by activityViewModels()
     private val selectedWorseList = mutableListOf<String>()
+    private val worseListByKorean = mutableListOf<String>()
+    private val worseIdList = mutableListOf<String>()
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -29,17 +33,29 @@ class SelectJointWorseListFragment :
                     if (it.isSelected) {
                         (it as SelectBox).updateSelected(true)
                         selectedWorseList.add(it.getContent())
+                        worseListByKorean.add(ResourceUtil.getKoreanString(requireContext(), it.tag.toString()))
+                        worseIdList.add(it.tag.toString())
                     } else {
                         (it as SelectBox).updateSelected(false)
                         selectedWorseList.remove(it.getContent())
+                        worseListByKorean.remove(ResourceUtil.getKoreanString(requireContext(), it.tag.toString()))
+                        worseIdList.remove(it.tag.toString())
                     }
                 }
             }
         }
 
         binding.btnNext.setOnClickListener {
-            viewModel.selectWorseList(selectedWorseList)
-            navController.navigate(R.id.selectJointOtherSymptomFragment)
+            if (selectedWorseList.isEmpty()) {
+                binding.warn.layoutLanguageWarn.visibility = View.VISIBLE
+            } else {
+                binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+
+                viewModel.selectWorseList(selectedWorseList)
+                viewModel.setInnerWorstListByKorean(worseListByKorean)
+                viewModel.setWorseListId(worseIdList)
+                navController.navigate(R.id.selectJointOtherSymptomFragment)
+            }
         }
     }
 }

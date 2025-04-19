@@ -69,7 +69,7 @@ class MySymptomHistoryFragment :
                         }
                         "산부" -> {
                             val action =
-                                MySymptomHistoryFragmentDirections.actionMySymptomHistoryFragmentToJointSymptomFragment(
+                                MySymptomHistoryFragmentDirections.actionMySymptomHistoryFragmentToWomenSymptomFragment(
                                     timeStamp,
                                     viewModel.userId.value,
                                 )

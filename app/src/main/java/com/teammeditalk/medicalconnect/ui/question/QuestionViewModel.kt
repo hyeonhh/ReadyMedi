@@ -1,10 +1,12 @@
 package com.teammeditalk.medicalconnect.ui.question
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
@@ -17,6 +19,8 @@ import com.teammeditalk.medicalconnect.data.model.question.WomenQuestionResponse
 import com.teammeditalk.medicalconnect.data.model.symptom.SymptomResponse
 import com.teammeditalk.medicalconnect.data.serializer.UserAuthPreferencesSerializer.userAuthPreferencesStore
 import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
+import com.teammeditalk.medicalconnect.data.serializer.UserPreferencesSerializer.userPreferencesStore
+import com.teammeditalk.medicalconnect.ui.event.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,6 +43,111 @@ class QuestionViewModel
         init {
             getUserAuthInfo()
             getUserHealthInfo()
+            getUserLanguageInfo()
+        }
+
+        fun setSymptomContentId(contentId: String) {
+            _symptomContentId.value = contentId
+        }
+
+        private val _regionId = MutableStateFlow("")
+        val regionId = _regionId.asStateFlow()
+
+        private val _sideEffectId = MutableStateFlow("")
+        val sideEffectId = _sideEffectId.asStateFlow()
+
+        private val _symptomTitleId = MutableStateFlow("")
+        val symptomTitleId = _symptomTitleId.asStateFlow()
+
+        private val _otherSymptomIdList = MutableStateFlow(emptyList<String>())
+        val otherSymptomIdList = _otherSymptomIdList.asStateFlow()
+
+        private val _worseIdList = MutableStateFlow(emptyList<String>())
+        val worseIdList = _worseIdList.asStateFlow()
+
+        private val _symptomContentId = MutableStateFlow("")
+        val symptomContentId = _symptomContentId.asStateFlow()
+
+        private val _typeId = MutableStateFlow(emptyList<String>())
+        val typeId = _typeId.asStateFlow()
+
+        private val _userLanguage = MutableStateFlow("")
+        val userLanguage = _userLanguage.asStateFlow()
+
+        fun setOtherSymptomId(list: List<String>) {
+            _otherSymptomIdList.value = list
+            Timber.d("othersymptom id :${_otherSymptomIdList.value}")
+        }
+
+        fun setWorseListId(list: List<String>) {
+            _worseIdList.value = list
+            Timber.d("worse idlist :${_worseIdList.value}")
+        }
+
+        fun setTypeId(type: List<String>) {
+            Timber.d("type idlist :${_worseIdList.value}")
+            _typeId.value = type
+        }
+
+        //  번역 이벤트
+        private val _translateEvent = SingleLiveEvent<Any>()
+        val translateEvent: LiveData<Any> get() = _translateEvent
+
+        private val _translateFailure = SingleLiveEvent<Any>()
+        val translateFailure: LiveData<Any> get() = _translateFailure
+
+        private fun processTranslateFail() {
+            _translateFailure.call()
+        }
+
+        private fun navigateScreen() {
+            _translateEvent.call()
+        }
+
+        var womenRegularity = ""
+        var pregnancyAvailableByKorean = ""
+        var innerWorstListByKorean = ""
+        var innerPainTypeByKorean = ""
+
+        // todo : 한국어 버전 저장하기
+
+        var otherListByKorean = ""
+
+        var koreanSymptom = ""
+
+        var regionByKorean = ""
+
+        fun setWomenMenstruationRegularity(content: String) {
+            womenRegularity = content
+        }
+
+        fun setPregnancyByKorean(pregnancyAvailable: String) {
+            pregnancyAvailableByKorean = pregnancyAvailable
+        }
+
+        fun setOtherListByKorean(list: List<String>) {
+            otherListByKorean = if (list.isEmpty()) "해당 없음" else list.joinToString(", ")
+        }
+
+        fun setInnerWorstListByKorean(list: List<String>) {
+            innerWorstListByKorean = if (list.isEmpty()) "해당 없음" else list.joinToString(", ")
+        }
+
+        fun setPainTypeByKorean(type: List<String>) {
+            innerPainTypeByKorean =
+                if (type.isEmpty()) {
+                    "해당 없음"
+                } else {
+                    type.joinToString(", ")
+                }
+        }
+
+        fun setSymptomRegionByKorean(region: String) {
+            regionByKorean = region
+        }
+
+        fun setSymptomByKorean(symptom: String) {
+            koreanSymptom = symptom
         }
 
         private val db = Firebase.firestore
@@ -193,23 +302,43 @@ class QuestionViewModel
             _sideEffect.value = content
         }
 
-        private fun translateAdditionalInput() {
+        private fun translateEnglishToKorean(lang: String) {
             viewModelScope.launch {
                 val options =
                     TranslatorOptions
                         .Builder()
-                        .setSourceLanguage(TranslateLanguage.KOREAN)
-                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .setSourceLanguage(
+                            when (lang) {
+                                "en" -> TranslateLanguage.ENGLISH
+                                "ja" -> TranslateLanguage.JAPANESE
+                                "zh" -> TranslateLanguage.CHINESE
+                                else -> TranslateLanguage.ENGLISH
+                            },
+                        ).setTargetLanguage(TranslateLanguage.KOREAN)
                         .build()
-                val koreanEnglishTranslator = Translation.getClient(options)
+                val translator = Translation.getClient(options)
 
-                koreanEnglishTranslator
-                    .translate(_additionalInput.value)
+                val conditions =
+                    DownloadConditions
+                        .Builder()
+                        .requireWifi()
+                        .build()
+                translator
+                    .downloadModelIfNeeded(conditions)
                     .addOnSuccessListener {
-                        _additionalInputTranslated.value = it
+                        translator
+                            .translate(_additionalInput.value)
+                            .addOnSuccessListener {
+                                _additionalInputTranslated.value = it
+                                navigateScreen()
+                            }.addOnFailureListener {
+                                Timber.d("Failed to translate :${it.message}")
+                                processTranslateFail()
+                            }
                     }.addOnFailureListener { exception ->
                         exception.printStackTrace()
-                        Timber.d("Failed to translate :${exception.message}")
+                        Timber.d("Failed to download :${exception.message}")
+                        processTranslateFail()
                     }
             }
         }
@@ -246,14 +375,15 @@ class QuestionViewModel
                     timeStamp = toDate,
                     hospitalType = _category.value,
                     symptomTitle = _selectedSymptom.value.first,
-                    symptomContent = _selectedSymptom.value.second,
+                    symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
-                    type = _selectedType.value.toString(),
-                    degree = _selectedDegree.value.toInt().toString(),
+                    type = _typeId.value,
+                    degree = _selectedDegree.value.toString(),
                     duration = _selectedDuration.value,
-                    worseList = _selectedWorseList.value,
-                    otherSymptom = _selectedOtherList.value,
+                    worseList = _worseIdList.value,
+                    otherSymptom = otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
+                    additionalInputByKorean = _additionalInputTranslated.value,
                     anesHistory = if (_anesthesiaHistory.value) "예" else "아니요",
                     sideEffect = _sideEffect.value,
                 )
@@ -283,13 +413,13 @@ class QuestionViewModel
                     region = _selectedRegion.value,
                     hospitalType = _category.value,
                     symptomTitle = _selectedSymptom.value.first,
-                    symptomContent = _selectedSymptom.value.second,
+                    symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
-                    type = _selectedType.value.toString(),
-                    degree = _selectedDegree.value.toInt().toString(),
+                    type = _typeId.value,
+                    degree = _selectedDegree.value.toString(),
                     duration = _selectedDuration.value,
-                    worseList = _selectedWorseList.value,
-                    otherSymptom = _selectedOtherList.value,
+                    worseList = _worseIdList.value,
+                    otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
                     injuryHistory = _injuryHistory.value,
                 )
@@ -323,13 +453,13 @@ class QuestionViewModel
                     region = _selectedRegion.value,
                     hospitalType = _category.value,
                     symptomTitle = _selectedSymptom.value.first,
-                    symptomContent = _selectedSymptom.value.second,
+                    symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
-                    type = _selectedType.value.toString(),
-                    degree = _selectedDegree.value.toInt().toString(),
+                    type = _typeId.value,
+                    degree = _selectedDegree.value.toString(),
                     duration = _selectedDuration.value,
-                    worseList = _selectedWorseList.value,
-                    otherSymptom = _selectedOtherList.value,
+                    worseList = _worseIdList.value,
+                    otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
                 )
 
@@ -357,12 +487,12 @@ class QuestionViewModel
                     timeStamp = toDate,
                     hospitalType = _category.value,
                     symptomTitle = _selectedSymptom.value.first,
-                    symptomContent = _selectedSymptom.value.second,
+                    symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
-                    type = _selectedType.value.toString(),
-                    degree = _selectedDegree.value.toInt().toString(),
+                    type = _typeId.value,
+                    degree = _selectedDegree.value.toString(),
                     duration = _selectedDuration.value,
-                    otherSymptom = _selectedOtherList.value,
+                    otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
                     lastDate = _selectedWomenLastDate.value,
                     isAvailablePregnancy = _selectedIsAvailablePregnancy.value,
@@ -394,13 +524,13 @@ class QuestionViewModel
                     region = _selectedRegion.value,
                     hospitalType = _category.value,
                     symptomTitle = _selectedSymptom.value.first,
-                    symptomContent = _selectedSymptom.value.second,
+                    symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
-                    type = _selectedType.value.toString(),
-                    degree = _selectedDegree.value.toInt().toString(),
+                    type = _typeId.value,
+                    degree = _selectedDegree.value.toString(),
                     duration = _selectedDuration.value,
-                    worseList = _selectedWorseList.value,
-                    otherSymptom = _selectedOtherList.value,
+                    worseList = _worseIdList.value,
+                    otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
                 )
 
@@ -434,6 +564,16 @@ class QuestionViewModel
             }
         }
 
+        // 사용자 언어 불러오기
+        private fun getUserLanguageInfo() {
+            viewModelScope.launch {
+                context.userPreferencesStore.data.collectLatest {
+                    Timber.d("언어 :$it")
+                    _userLanguage.value = it.language
+                }
+            }
+        }
+
         private fun getUserAuthInfo() {
             viewModelScope.launch {
                 context.userAuthPreferencesStore.data.collectLatest {
@@ -461,7 +601,7 @@ class QuestionViewModel
         // 추가 전달
         fun setAdditionalInput(input: String) {
             _additionalInput.value = input
-            translateAdditionalInput()
+            translateEnglishToKorean(_userLanguage.value)
         }
 
         // 증상 완화 요인
@@ -479,7 +619,6 @@ class QuestionViewModel
         // 통증 정도 저장
         fun selectDegree(degree: Float) {
             _selectedDegree.value = degree
-            Timber.d("통증 정도 :${_selectedDegree.value}")
         }
 
         // 증상 지속 시간 저장하기

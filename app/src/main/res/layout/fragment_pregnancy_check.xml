@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         app:boxContent="@string/pregnancy_no"
+        android:tag="임신 가능성 없음"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:boxContent="@string/pregnancy_possible"
+        android:tag="임신 가능성 있음"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectBox_no" />
@@ -52,11 +54,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:boxContent="@string/pregnancy_current"
+        android:tag="임신중"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectBox_yes" />
 
+    <include
+        android:id="@+id/warn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_language_warning"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        android:visibility="invisible"/>
     <Button
         android:id="@+id/btn_next"
         android:text="@string/next"

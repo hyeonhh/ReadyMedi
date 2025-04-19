@@ -3,15 +3,18 @@ package com.teammeditalk.medicalconnect.ui.history.symptom.result.women
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionWomenBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutWomenCurrentSymptomBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class WomenSymptomFragment :
@@ -25,45 +28,73 @@ class WomenSymptomFragment :
     private fun setCurrentSymptomBinding() {
         // 사용자용 현재 증상 레이아웃 연결하기
         val currentSymptomFrame = binding.layoutFrame
-
         val womenCurrentSymptomBinding = LayoutWomenCurrentSymptomBinding.inflate(inflater, currentSymptomFrame, false)
-        currentSymptomFrame.addView(womenCurrentSymptomBinding.root)
 
         womenCurrentSymptomBinding.useWomenVM = true
         womenCurrentSymptomBinding.womenVM = viewModel
         womenCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                binding.layoutUserHealthInfo.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvDisease.text = if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvDrug.text = if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvAllergy.text = if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(", ")
+            }
+        }
+
+        currentSymptomFrame.addView(womenCurrentSymptomBinding.root)
     }
 
-    private fun setHospitalVersionReport() {
-        val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
-        hospitalContentContainer.addView(hospitalReportBinding.root)
+    private fun onSwitchClick() {
+        binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
+            binding.ivTooltip.visibility = View.INVISIBLE
+            if (isChecked) {
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+                binding.layoutUser.visibility = View.GONE
+            } else {
+                binding.layoutHospitalVersion.visibility = View.GONE
+                binding.layoutUser.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun setCurrentSymptomToHospital() {
         // 의료진용 보고서
         val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
-
-        val currentSymptomContainer = hospitalReportBinding.layoutFrame
-
-        val currentSymptomBinding = LayoutWomenCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val hospitalReportBinding = LayoutHospitalVersionWomenBinding.inflate(inflater, hospitalContentContainer, false)
 
         // todo : additional_input & 공툥 요소 데이터 바인딩 처리하기
-        currentSymptomBinding.womenVM = viewModel
-        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
-        currentSymptomContainer.addView(currentSymptomBinding.root)
+        hospitalReportBinding.currentSymptom.useWomenVM = true
+        hospitalReportBinding.currentSymptom.womenVM = viewModel
+        hospitalReportBinding.currentSymptom.lifecycleOwner = viewLifecycleOwner
 
-        hospitalReportBinding.symptom.womenVM = viewModel
-        hospitalReportBinding.familyDiseaseAndDrug.womenVM = viewModel
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =
+                    if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text =
+                    if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text =
+                    if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(", ")
+            }
+        }
 
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
-
-        hospitalReportBinding.additionalInput.womenVM = viewModel
-        hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
-
+        // todo : 뷰모델 연결하기
+        lifecycleScope.launch {
+            viewModel.symptomContentByKorean.collectLatest {
+                hospitalReportBinding.symptom.txtSymptom.text = it
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.womenResponse.collectLatest {
+                Timber.d("데이터 :$it")
+                hospitalReportBinding.additionalInput.tvInput.text = it.additionalInput
+            }
+        }
         hospitalContentContainer.addView(hospitalReportBinding.root)
     }
 
@@ -88,9 +119,9 @@ class WomenSymptomFragment :
         viewModel.getSymptom()
         inflater = LayoutInflater.from(requireContext())
         setCurrentSymptomBinding()
-        setHospitalVersionReport()
         setCurrentSymptomToHospital()
         setMapDataBinding()
+        onSwitchClick()
 
         binding.btnBack.visibility = View.GONE
         binding.btnClose.setOnClickListener { navController.popBackStack() }

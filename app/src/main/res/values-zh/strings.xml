@@ -577,4 +577,6 @@
     <string name="additional_symptom_redness_simple">发红</string>
     <string name="additional_symptom_fatigue">睡眠不足/疲劳</string>
     <string name="additional_symptom_joints">手指关节肿大</string>
+    <string name="symptom_menorrhagia">月经过多</string>
+    <string name="symptom_anal_pain">肛门疼痛</string>
 </resources>

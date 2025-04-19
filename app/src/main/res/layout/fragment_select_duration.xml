@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:tag="@string/duration_intermittent"
         android:id="@+id/selectBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:tag="@string/duration_continuous"
         android:id="@+id/selectBox2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/selectBox" />
 
     <com.teammeditalk.medicalconnect.ui.util.SelectBox
+        android:tag="@string/duration_unknown"
         android:id="@+id/selectBox3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -49,23 +49,27 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_skin_allergy"
+            android:tag="symptom_skin_allergy_desc"
             app:categoryContent="@string/symptom_skin_allergy_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_respiratory_allergy"
+            android:tag="symptom_respiratory_allergy_desc"
             app:categoryContent="@string/symptom_respiratory_allergy_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_food_allergy"
+            android:tag="symptom_food_allergy_desc"
             app:categoryContent="@string/symptom_food_allergy_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            android:tag="symptom_swelling_desc"
             app:categoryTitle="@string/symptom_swelling"
             app:categoryContent="@string/symptom_swelling_desc"
             android:layout_width="match_parent"

@@ -21,6 +21,11 @@ configurations.all {
     }
 }
 android {
+
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     namespace = "com.teammeditalk.medicalconnect"
     compileSdk = 35
     defaultConfig {

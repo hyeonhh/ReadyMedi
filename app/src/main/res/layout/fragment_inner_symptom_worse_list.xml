@@ -41,6 +41,7 @@
             android:id="@+id/selectBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:tag="symptom_factor_posture_change"
             app:boxContent="@string/symptom_factor_posture_change"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:tag="symptom_factor_before_meal"
             app:boxContent="@string/symptom_factor_before_meal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:tag="symptom_factor_after_meal"
             app:boxContent="@string/symptom_factor_after_meal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:tag="symptom_factor_after_waking"
             app:boxContent="@string/symptom_factor_after_waking"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_night_time"
+            android:tag="symptom_factor_night_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox6" />
@@ -92,11 +97,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/duration_unknown"
+            android:tag="duration_unknown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:visibility="invisible"
+        android:id="@+id/warn"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_language_warning"/>
 
     <com.google.android.material.button.MaterialButton
         style="@style/CustomButtonStyle2"

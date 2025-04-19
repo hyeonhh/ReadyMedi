@@ -7,12 +7,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
-import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomGeneralBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutGeneralCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -25,6 +23,7 @@ class GeneralSymptomFragment :
     private val viewModel: GeneralSymptomViewModel by viewModels()
     private val navController by lazy { findNavController() }
     private lateinit var inflater: LayoutInflater
+    private lateinit var hospitalReportBinding: LayoutHospitalVersionGeneralBinding
 
     private fun setCurrentSymptomBinding() {
         // 사용자용 현재 증상 레이아웃 연결하기
@@ -40,32 +39,43 @@ class GeneralSymptomFragment :
 
     private fun setHospitalVersionReport() {
         val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
-        hospitalContentContainer.addView(hospitalReportBinding.root)
-    }
+        hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
 
-    private fun setCurrentSymptomToHospital() {
-        // 의료진용 보고서
-        val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
-
-        val currentSymptomContainer = hospitalReportBinding.layoutFrame
-
-        val currentSymptomBinding = HosCurrentSymptomGeneralBinding.inflate(inflater, currentSymptomContainer, false)
-
-        currentSymptomBinding.generalVM = viewModel
-        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
-        currentSymptomContainer.addView(currentSymptomBinding.root)
+        hospitalReportBinding.symptom.useGeneralVM = true
+        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
 
         hospitalReportBinding.symptom.generalVM = viewModel
         hospitalReportBinding.familyDiseaseAndDrug.generalVM = viewModel
 
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
         hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
 
-        hospitalReportBinding.additionalInput.generalVM = viewModel
-        hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
+        hospitalReportBinding.currentSymptom.useGeneralVM = true
+        hospitalReportBinding.currentSymptom.generalVM = viewModel
+        hospitalReportBinding.currentSymptom.lifecycleOwner = viewLifecycleOwner
+
+        // todo : additional input 뷰모델 연결하기 !
+        lifecycleScope.launch {
+            viewModel.generalResponse.collectLatest {
+                hospitalReportBinding.additionalInput.tvInput.text = it.additionalInputByKorean
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.symptomByKorean.collectLatest {
+                hospitalReportBinding.symptom.txtSymptom.text = it
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                with(binding) {
+                    hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text = it.drugList.joinToString(", ")
+                    hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text = it.diseaseList.joinToString(", ")
+                    hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text = it.familyDiseaseList.joinToString(", ")
+                    hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text = it.allergyList.joinToString(", ")
+                }
+            }
+        }
 
         hospitalContentContainer.addView(hospitalReportBinding.root)
     }
@@ -87,21 +97,34 @@ class GeneralSymptomFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
+        // val ddun = "i_love_you_ddun"
+
+        binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            binding.ivTooltip.visibility = View.INVISIBLE
+            if (isChecked) {
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+                binding.layoutUser.visibility = View.GONE
+            } else {
+                binding.layoutHospitalVersion.visibility = View.GONE
+                binding.layoutUser.visibility = View.VISIBLE
+            }
+        }
+
         viewModel.getSymptom()
         inflater = LayoutInflater.from(requireContext())
         setCurrentSymptomBinding()
         setHospitalVersionReport()
-        setCurrentSymptomToHospital()
+        // setCurrentSymptomToHospital()
         setMapDataBinding()
 
         // 사용자 개인 정보
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
                 with(binding) {
-                    layoutUserHealthInfo.tvDrug.text = it.drugList.toString()
-                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.toString()
-                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.toString()
-                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.toString()
+                    layoutUserHealthInfo.tvDrug.text = it.drugList.joinToString(", ")
+                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.joinToString(", ")
+                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.joinToString(", ")
+                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.joinToString(", ")
                 }
             }
         }

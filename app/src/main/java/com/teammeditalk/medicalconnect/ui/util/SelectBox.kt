@@ -1,6 +1,7 @@
 package com.teammeditalk.medicalconnect.ui.util
 
 import android.content.Context
+import android.content.res.Configuration
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.databinding.CustomSelectBoxUnselectedBinding
+import java.util.Locale
 
 class SelectBox(
     private val context: Context,
@@ -20,6 +22,24 @@ class SelectBox(
     init {
         initView()
         initAttrs()
+    }
+
+    private fun getResourceIdByName(resourceName: String): Int =
+        context.resources.getIdentifier(
+            resourceName, // "symptom_cough_desc"
+            "string", // 리소스 타입
+            context.packageName,
+        )
+
+    fun getKoreanString(resourceName: String): String {
+        val configuration = Configuration(context.resources.configuration)
+        configuration.setLocale(Locale.KOREAN)
+
+        // 한국어 설정이 적용된 새 Context 생성
+        val koreanContext = context.createConfigurationContext(configuration)
+
+        // 이 Context로 한국어 문자열 가져오기
+        return koreanContext.getString(getResourceIdByName(resourceName))
     }
 
     fun updateSelected(selected: Boolean) {

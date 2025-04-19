@@ -49,17 +49,20 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_accident"
+            android:tag="symptom_accident_desc"
             app:categoryContent="@string/symptom_accident_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_sports_injury"
+            android:tag="symptom_sports_injury_desc"
             app:categoryContent="@string/symptom_sports_injury_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_fracture"
+            android:tag="symptom_fracture_desc"
             app:categoryContent="@string/symptom_fracture_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

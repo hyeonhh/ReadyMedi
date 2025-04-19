@@ -42,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxContent="@string/symptom_factor_exercise"
+            android:tag="symptom_factor_exercise"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:tag="symptom_factor_walking"
             app:boxContent="@string/symptom_factor_walking"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_activity"
+            android:tag="symptom_factor_activity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox4" />
@@ -73,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_pressure"
+            android:tag="symptom_factor_pressure"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox4" />
@@ -83,6 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/symptom_factor_stairs"
+            android:tag="symptom_factor_stairs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectBox5" />
@@ -93,10 +98,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:boxContent="@string/pain_type_unknown"
+            android:tag="pain_type_unknown"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/selectBox_floor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/warn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_language_warning"/>
 
     <com.google.android.material.button.MaterialButton
         style="@style/CustomButtonStyle2"

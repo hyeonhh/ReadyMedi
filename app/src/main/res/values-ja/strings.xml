@@ -574,4 +574,6 @@
     <string name="additional_symptom_redness_simple">赤み</string>
     <string name="additional_symptom_fatigue">睡眠不足/疲労</string>
     <string name="additional_symptom_joints">指の関節の肥大</string>
+    <string name="symptom_menorrhagia">月経過多</string>
+    <string name="symptom_anal_pain">肛門痛</string>
 </resources>

@@ -3,13 +3,15 @@ package com.teammeditalk.medicalconnect.ui.history.symptom.result.inner
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
+import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomInnerBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutInnerCurrentSymptomBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,35 +39,56 @@ class InnerSymptomFragment :
         innerCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
     }
 
-    private fun setHospitalVersionReport() {
-        val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
-        hospitalContentContainer.addView(hospitalReportBinding.root)
-    }
-
     private fun setCurrentSymptomToHospital() {
         // 의료진용 보고서
         val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
+        val hospitalReportBinding =
+            LayoutHospitalVersionQuestionResultBinding.inflate(
+                inflater,
+                hospitalContentContainer,
+                false,
+            )
+
+        // 개인 건강 정보
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.userHealthInfo.collectLatest {
+                        hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text = it.diseaseList.joinToString(", ")
+                        hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text = it.drugList.joinToString(", ")
+                        hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text = it.allergyList.joinToString(", ")
+                        hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text = it.familyDiseaseList.joinToString(", ")
+                    }
+                }
+                launch {
+                    viewModel.symptomContentByKorean.collectLatest {
+                        hospitalReportBinding.symptom.txtSymptom.text = it
+                    }
+                }
+                launch {
+                    viewModel.innerResponse.collectLatest {
+                        hospitalReportBinding.additionalInput.tvInput.text = it.additionalInputByKorean
+                    }
+                }
+                launch {
+                    viewModel.symptomContentByKorean.collectLatest {
+                        hospitalReportBinding.symptom.txtSymptom.text = it
+                    }
+                }
+            }
+        }
 
         val currentSymptomContainer = hospitalReportBinding.layoutFrame
 
-        val currentSymptomBinding = LayoutInnerCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        val currentSymptomBinding =
+            HosCurrentSymptomInnerBinding.inflate(inflater, currentSymptomContainer, false)
 
         // todo : additional_input & 공툥 요소 데이터 바인딩 처리하기
+        currentSymptomBinding.useInnerVM = true
         currentSymptomBinding.innerVM = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+
         currentSymptomContainer.addView(currentSymptomBinding.root)
-
-        hospitalReportBinding.symptom.innerVM = viewModel
-        hospitalReportBinding.familyDiseaseAndDrug.innerVM = viewModel
-
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
-
-        hospitalReportBinding.additionalInput.innerVM = viewModel
-        hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
 
         hospitalContentContainer.addView(hospitalReportBinding.root)
     }
@@ -85,15 +108,29 @@ class InnerSymptomFragment :
         contentContainer3.addView(goToMapBinding.root)
     }
 
+    // todo : 스위치 연결하기
+    private fun onSwitchClick() {
+        binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
+            binding.ivTooltip.visibility = View.INVISIBLE
+            if (isChecked) {
+                binding.layoutHospitalVersion.visibility = View.VISIBLE
+                binding.layoutUser.visibility = View.GONE
+            } else {
+                binding.layoutHospitalVersion.visibility = View.GONE
+                binding.layoutUser.visibility = View.VISIBLE
+            }
+        }
+    }
+
     override fun onBindLayout() {
         super.onBindLayout()
 
         viewModel.getSymptom()
         inflater = LayoutInflater.from(requireContext())
         setCurrentSymptomBinding()
-        setHospitalVersionReport()
         setCurrentSymptomToHospital()
         setMapDataBinding()
+        onSwitchClick()
 
         // 사용자 개인 정보
         lifecycleScope.launch {
@@ -104,6 +141,11 @@ class InnerSymptomFragment :
                     layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.toString()
                     layoutUserHealthInfo.tvAllergy.text = it.allergyList.toString()
                 }
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.symptomContent.collectLatest {
+                binding.layoutAdditionalInput.tvInput.text = it
             }
         }
 

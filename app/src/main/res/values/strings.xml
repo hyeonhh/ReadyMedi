@@ -271,7 +271,7 @@
     <!-- 세부 카테고리 설명 -->
     <string name="symptom_menstrual_cycle_desc">월경 주기가 불규칙해요</string>
     <string name="symptom_pelvic_pain_desc">골반통과 복통이 있어요</string>
-    <string name="symptom_menstrual_pain_desc">월결통이 있어요</string>
+    <string name="symptom_menstrual_pain_desc">월경통이 있어요</string>
     <string name="symptom_vaginal_itching_desc">질 가려움증/통증이 있어요</string>
     <string name="symptom_discharge_desc">분비물 색깔, 냄새가 있어요</string>
 
@@ -584,5 +584,7 @@
     <string name="additional_symptom_redness_simple">붉어짐</string>
     <string name="additional_symptom_fatigue">수면 부족/피로</string>
     <string name="additional_symptom_joints">손가락 마디 굵어짐</string>
+    <string name="symptom_menorrhagia">월경 과다</string>
+    <string name="symptom_anal_pain">항문 통증</string>
 
 </resources>

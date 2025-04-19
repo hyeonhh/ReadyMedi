@@ -7,10 +7,11 @@ data class InnerQuestionResponse(
     val symptomContent: String = "",
     val region: String = "",
     val startDate: String = "",
-    val type: String = "",
+    val type: List<String> = emptyList(),
     val degree: String = "",
     val duration: String = "",
     val worseList: List<String> = emptyList(),
     val otherSymptom: List<String> = emptyList(),
     val additionalInput: String = "",
+    val additionalInputByKorean: String = "",
 )

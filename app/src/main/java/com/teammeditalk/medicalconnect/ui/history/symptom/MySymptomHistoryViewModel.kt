@@ -13,6 +13,8 @@ import com.teammeditalk.medicalconnect.data.model.question.InnerQuestionResponse
 import com.teammeditalk.medicalconnect.data.model.question.JointQuestionResponse
 import com.teammeditalk.medicalconnect.data.model.question.WomenQuestionResponse
 import com.teammeditalk.medicalconnect.data.serializer.UserAuthPreferencesSerializer.userAuthPreferencesStore
+import com.teammeditalk.medicalconnect.data.serializer.UserPreferencesSerializer.userPreferencesStore
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.async
@@ -37,7 +39,7 @@ class MySymptomHistoryViewModel
         val history =
             _history
                 .map {
-                    it.sortedBy { it.timeStamp }
+                    it.sortedByDescending { it.timeStamp }
                 }.stateIn(
                     scope = viewModelScope,
                     started = SharingStarted.Eagerly,
@@ -47,26 +49,36 @@ class MySymptomHistoryViewModel
         private val _userId = MutableStateFlow("")
         val userId = _userId.asStateFlow()
 
+        private val _userLanguage = MutableStateFlow("")
+        val userLanguage = _userLanguage.asStateFlow()
+
         init {
             getUserAuthInfo()
+            getUserLanguageInfo()
+        }
+
+        private fun getUserLanguageInfo() {
+            viewModelScope.launch {
+                context.userPreferencesStore.data.collectLatest {
+                    _userLanguage.value = it.language
+                }
+            }
         }
 
         private fun getUserAuthInfo() {
             viewModelScope.launch {
                 context.userAuthPreferencesStore.data.collectLatest {
                     _userId.value = it.uid
-                    Timber.d("_userId :${_userId.value}")
                     if (_userId.value != "") getHistoryList()
                 }
             }
         }
 
-        suspend fun processData(documents: List<DocumentSnapshot>) {
+        private suspend fun processData(documents: List<DocumentSnapshot>) {
             val list = mutableListOf<SymptomHistory>()
             viewModelScope
                 .async {
                     for (document in documents) {
-                        Timber.d("document :${document.data} \n")
                         // todo : 진료과별로 분류해야함
                         if (document.data.toString().contains("치과")) {
                             val result =
@@ -75,7 +87,7 @@ class MySymptomHistoryViewModel
                                 list.add(
                                     SymptomHistory(
                                         hospitalType = "치과",
-                                        symptomContent = result.symptomContent,
+                                        symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
                                     ),
@@ -88,7 +100,7 @@ class MySymptomHistoryViewModel
                                 list.add(
                                     SymptomHistory(
                                         hospitalType = "일반",
-                                        symptomContent = result.symptomContent,
+                                        symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
                                     ),
@@ -101,7 +113,7 @@ class MySymptomHistoryViewModel
                                 list.add(
                                     SymptomHistory(
                                         hospitalType = "정형",
-                                        symptomContent = result.symptomContent,
+                                        symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
                                     ),
@@ -114,7 +126,7 @@ class MySymptomHistoryViewModel
                                 list.add(
                                     SymptomHistory(
                                         hospitalType = "산부",
-                                        symptomContent = result.symptomContent,
+                                        symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
                                     ),
@@ -127,7 +139,7 @@ class MySymptomHistoryViewModel
                                 list.add(
                                     SymptomHistory(
                                         hospitalType = "내과",
-                                        symptomContent = result.symptomContent,
+                                        symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
                                         symptomTitle = result.symptomTitle,
                                         timeStamp = result.timeStamp,
                                     ),
@@ -137,10 +149,9 @@ class MySymptomHistoryViewModel
                     }
                 }.await()
             _history.value = list
-            Timber.d("history :${_history.value}")
         }
 
-        fun getHistoryList() {
+        private fun getHistoryList() {
             if (_userId.value != "") {
                 val db = Firebase.firestore
                 val collection = db.collection("symptom_result_${_userId.value}")

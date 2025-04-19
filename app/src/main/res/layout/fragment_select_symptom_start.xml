@@ -35,7 +35,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:menuTitle="선택" />
+        app:menuTitle="@string/select" />
 
     <include
         android:visibility="gone"

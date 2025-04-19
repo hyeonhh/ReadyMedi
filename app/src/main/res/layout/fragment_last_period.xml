@@ -35,14 +35,14 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:menuTitle="선택" />
+        app:menuTitle="@string/select" />
 
     <include
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layout_select_box"
+        android:id="@+id/warn"
         layout="@layout/layout_language_warning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

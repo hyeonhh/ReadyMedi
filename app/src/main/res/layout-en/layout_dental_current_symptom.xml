@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="11dp"
-            android:text="@{useDentalVM ? dentalVM.dentalResponse.symptomContent : viewModel.dentalResult.symptomContent}"
+            android:text="@{viewModel.selectedSymptom.second}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -133,7 +133,7 @@
             android:layout_marginStart="10dp"
             android:textAlignment="center"
             android:layout_marginTop="11dp"
-            android:text="@{useDentalVM ? dentalVM.dentalResponse.type : viewModel.dentalResult.type}"
+            android:text="@{viewModel.selectedType}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -180,7 +180,7 @@
             android:layout_marginStart="10dp"
             android:textAlignment="center"
             android:layout_marginTop="11dp"
-            android:text="@{useDentalVM ? dentalVM.dentalResponse.worseList.toString() : viewModel.selectedWorseList}"
+            android:text="@{viewModel.selectedWorseList}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView40" />
@@ -203,7 +203,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="11dp"
-            android:text="@{useDentalVM ?  dentalVM.dentalResponse.otherSymptom.toString(): viewModel.selectedOtherList}"
+            android:text="@{viewModel.selectedOtherList}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             android:textAlignment="center"

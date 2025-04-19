@@ -9,9 +9,10 @@ import com.google.firebase.firestore.firestore
 import com.teammeditalk.medicalconnect.data.model.info.HealthInfo
 import com.teammeditalk.medicalconnect.data.model.question.GeneralQuestionResponse
 import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
+import com.teammeditalk.medicalconnect.data.serializer.UserPreferencesSerializer.userPreferencesStore
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -26,8 +27,29 @@ class GeneralSymptomViewModel
         savedStateHandle: SavedStateHandle,
         @ApplicationContext val context: Context,
     ) : ViewModel() {
-        val scope: CoroutineScope
-            get() = viewModelScope
+        private val _symptomContentByKorean = MutableStateFlow("")
+        val symptomContentByKorean = _symptomContentByKorean.asStateFlow()
+
+        private val _typeList = MutableStateFlow("")
+        val typeList = _typeList.asStateFlow()
+
+        private val _otherList = MutableStateFlow("")
+        val otherList = _otherList.asStateFlow()
+
+        private val _worseList = MutableStateFlow("")
+        val worseList = _worseList.asStateFlow()
+
+        private val _otherListByKorean = MutableStateFlow("")
+        val otherListByKorean = _otherListByKorean.asStateFlow()
+
+        private val _worseListByKorean = MutableStateFlow("")
+        val worseListByKorean = _worseListByKorean.asStateFlow()
+
+        private val _symptomByKorean = MutableStateFlow("")
+        val symptomByKorean = _symptomByKorean.asStateFlow()
+
+        private val _typeListByKorean = MutableStateFlow("")
+        val typeListByKorean = _typeListByKorean.asStateFlow()
 
         private val _generalResponse = MutableStateFlow(GeneralQuestionResponse())
         val generalResponse = _generalResponse.asStateFlow()
@@ -35,6 +57,9 @@ class GeneralSymptomViewModel
         //   유저 건강 정보
         private val _userHealthInfo = MutableStateFlow(HealthInfo())
         val userHealthInfo = _userHealthInfo.asStateFlow()
+
+        private val _userLanguage = MutableStateFlow("")
+        val userLanguage = _userLanguage.asStateFlow()
 
         // Safe Args로 전달된 ID를 바로 가져옵니다
         private val timeStamp: String =
@@ -47,6 +72,15 @@ class GeneralSymptomViewModel
 
         init {
             getUserHealthInfo()
+            getUserLanguage()
+        }
+
+        private fun getUserLanguage() {
+            viewModelScope.launch {
+                context.userPreferencesStore.data.collectLatest {
+                    _userLanguage.value = it.language
+                }
+            }
         }
 
         // 로컬에 저장된 내용 불러오기
@@ -80,6 +114,35 @@ class GeneralSymptomViewModel
                         it.toObject(GeneralQuestionResponse::class.java)
                     if (result != null) {
                         _generalResponse.value = result
+                        _symptomContentByKorean.value = ResourceUtil.getKoreanString(context, _generalResponse.value.symptomContent)
+                        val typeList = mutableListOf<String>()
+                        val otherList = mutableListOf<String>()
+                        val worseList = mutableListOf<String>()
+
+                        val typeListByKorean = mutableListOf<String>()
+                        val otherListByKorean = mutableListOf<String>()
+                        val worseListByKorean = mutableListOf<String>()
+
+                        _symptomByKorean.value = ResourceUtil.getKoreanString(context, _generalResponse.value.symptomContent)
+                        _generalResponse.value.type.forEach {
+                            typeList.add(ResourceUtil.getForeignString(context, _userLanguage.value, it))
+                            typeListByKorean.add(ResourceUtil.getKoreanString(context, it))
+                        }
+                        _generalResponse.value.worseList.forEach {
+                            worseList.add(ResourceUtil.getForeignString(context, _userLanguage.value, it))
+                            worseListByKorean.add(ResourceUtil.getKoreanString(context, it))
+                        }
+                        _generalResponse.value.otherSymptom.forEach {
+                            otherList.add(ResourceUtil.getForeignString(context, _userLanguage.value, it))
+                            otherListByKorean.add(ResourceUtil.getKoreanString(context, it))
+                        }
+                        _typeList.value = typeList.joinToString(", ")
+                        _worseList.value = worseList.joinToString(", ")
+                        _otherList.value = otherList.joinToString(", ")
+
+                        _typeListByKorean.value = typeListByKorean.joinToString(", ")
+                        _otherListByKorean.value = otherListByKorean.joinToString(", ")
+                        _worseListByKorean.value = worseListByKorean.joinToString(", ")
                     }
                 }.addOnFailureListener {
                     it.printStackTrace()

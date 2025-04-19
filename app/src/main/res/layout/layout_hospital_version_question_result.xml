@@ -54,7 +54,7 @@
 
         <include
             android:id="@+id/additional_input"
-            layout="@layout/layout_additional_input"
+            layout="@layout/layout_additional_input_hos_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

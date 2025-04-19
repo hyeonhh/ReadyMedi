@@ -84,16 +84,19 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/chip_toothache"
+            android:tag="chip_toothache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
+            android:tag="chip_cavity"
             android:text="@string/chip_cavity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
+            android:tag="chip_tooth_fracture"
             style="@style/CustomChipStyle"
             android:text="@string/chip_tooth_fracture"
             android:layout_width="wrap_content"
@@ -102,12 +105,14 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/chip_gum_pain"
+            android:tag="chip_gum_pain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/chip_jaw_pain"
+            android:tag="chip_jaw_pain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </com.google.android.material.chip.ChipGroup>

@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/fragment_select_symptom_region"
         android:id="@+id/selectJointSymptomRegionFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.region.SelectSymptomRegionFragment"
         android:label="SelectSymptomRegionFragment" >
         <argument
             android:name="hospital_type"
@@ -119,7 +119,7 @@
             app:destination="@id/jointAdditionalInputFragment" />
         <action
             android:id="@+id/action_fragmentJointSymptomResult_to_homeFragment5"
-            app:destination="@id/homeFragment5" />
+            app:destination="@id/homeFragment" />
     </fragment>
     <argument
         android:name="hospital_type"
@@ -143,7 +143,7 @@
             app:argType="string"/>
     </fragment>
     <fragment
-        android:id="@+id/homeFragment5"
+        android:id="@+id/homeFragment"
         android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
         android:label="HomeFragment" />
 </navigation>

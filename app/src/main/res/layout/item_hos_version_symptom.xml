@@ -13,20 +13,8 @@
                 type="Boolean" />
 
             <variable
-                name="useInnerVM"
-                type="Boolean" />
-
-            <variable
-                name="useJointVM"
-                type="Boolean" />
-            <variable
                 name="useDentalVM"
                 type="Boolean" />
-
-        <variable
-            name="useWomenVM"
-            type="Boolean" />
-
 
             <variable
                 name="generalVM"
@@ -68,12 +56,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView61"
+            android:id="@+id/txt_symptom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_bottom_border_8dp"
             android:padding="20dp"
-            android:text="@{useGeneralVM ?  generalVM.generalResponse.symptomContent: viewModel.selectedSymptom.second}"
+            android:text="@{viewModel.koreanSymptom}"
             android:textAlignment="center"
             android:textAppearance="@style/SubTitle2"
             app:layout_constraintEnd_toEndOf="parent"

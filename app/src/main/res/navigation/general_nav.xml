@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/general_nav"
-    app:startDestination="@id/selectGeneralSymptomRegionFragment">
+    app:startDestination="@id/selectRegionFragment">
 
     <fragment
         tools:layout="@layout/fragment_select_symptom_region"
-        android:id="@+id/selectGeneralSymptomRegionFragment"
-        android:name="com.teammeditalk.medicalconnect.ui.question.dental.fragment.region.SelectSymptomRegionFragment"
+        android:id="@+id/selectRegionFragment"
+        android:name="com.teammeditalk.medicalconnect.ui.question.common.region.SelectSymptomRegionFragment"
         android:label="SelectSymptomRegionFragment" >
         <argument
             android:defaultValue="일반"
@@ -117,7 +117,7 @@
             app:destination="@id/generalAdditionalInputFragment" />
         <action
             android:id="@+id/action_generalSymptomResultFragment_to_homeFragment3"
-            app:destination="@id/homeFragment3" />
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment3"
@@ -128,7 +128,7 @@
             app:argType="string"/>
     </fragment>
     <fragment
-        android:id="@+id/homeFragment3"
+        android:id="@+id/homeFragment"
         android:name="com.teammeditalk.medicalconnect.ui.home.HomeFragment"
         android:label="HomeFragment" />
 </navigation>

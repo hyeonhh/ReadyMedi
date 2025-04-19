@@ -8,8 +8,8 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentSelectOtherDentalSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class DentalSelectOtherSymptomFragment :
@@ -21,6 +21,9 @@ class DentalSelectOtherSymptomFragment :
     private var selected: Boolean = false
     private var selectedList: MutableList<String> = mutableListOf()
     private var selectedChipIdList: MutableList<Int> = mutableListOf()
+    private var otherListByKorean = mutableListOf<String>()
+
+    private val idList = mutableListOf<String>()
 
     override fun onBindLayout() {
         super.onBindLayout()
@@ -31,17 +34,22 @@ class DentalSelectOtherSymptomFragment :
                 if (!selected) {
                     binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.VISIBLE
                 } else {
+                    binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.INVISIBLE
                     with(binding.chipGroup) {
                         val checkedChipList = checkedChipIds
                         checkedChipList.forEach {
                             val chip = findViewById<Chip>(it)
                             selectedChipIdList.add(chip.id)
                             selectedList.add(chip.text.toString())
+                            otherListByKorean.add(ResourceUtil.getKoreanString(requireContext(), chip.tag.toString()))
+                            idList.add(chip.tag.toString())
                         }
-                        Timber.d("선택된 치과 동반 증상 id :$selected")
                     }
 
+                    // todo : 선택된 증상 id
                     viewModel.setOtherSymptomList(selectedList)
+                    viewModel.setOtherListByKorean(otherListByKorean)
+                    viewModel.setOtherSymptomId(idList)
                     navController.navigate(R.id.selectAnesthesiaHistoryFragment)
                 }
             }

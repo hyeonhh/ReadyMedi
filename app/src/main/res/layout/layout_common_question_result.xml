@@ -6,10 +6,10 @@
     android:background="@color/blue20"
     android:fillViewport="true"
     android:id="@+id/scroll_view"
-    android:padding="20dp"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -111,6 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
+
             <include
                 android:id="@+id/layout_additional_input"
                 layout="@layout/layout_additional_input"
@@ -169,6 +170,7 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.core.widget.NestedScrollView>
