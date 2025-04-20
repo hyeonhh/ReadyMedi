@@ -33,18 +33,20 @@
         android:id="@+id/iv_state_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:src="@drawable/ic_indicator1"
+        android:layout_marginBottom="120dp"
+        android:src="@drawable/ic_indicator2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_google_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_image" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-    <Button
-        android:id="@+id/btn_next"
-        style="@style/CustomButtonStyle"
+    <ImageButton
+        android:id="@+id/btn_google_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/btn_google_login"
         android:text="@string/next_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

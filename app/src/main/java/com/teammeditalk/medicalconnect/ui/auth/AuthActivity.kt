@@ -1,8 +1,16 @@
 package com.teammeditalk.medicalconnect.ui.auth
 
+import android.view.MotionEvent
+import android.view.View
+import android.view.View.OnTouchListener
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseActivity
 import com.teammeditalk.medicalconnect.databinding.ActivityAuthBinding
+import com.teammeditalk.medicalconnect.ui.auth.onboarging.FirstOnboardingFragment
+import com.teammeditalk.medicalconnect.ui.auth.onboarging.SecondOnboardingFragment
+import com.teammeditalk.medicalconnect.ui.auth.onboarging.ThirdOnBoardingFragment
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class AuthActivity :
@@ -10,110 +18,76 @@ class AuthActivity :
         ActivityAuthBinding::inflate,
     ) {
     private var fragmentNum = 0
+    private var touchPoint = 0f
 
     override fun onBindLayout() {
         super.onBindLayout()
 
-        // gestureDetector = GestureDetector(this, this)
+        binding.authLayout.setOnTouchListener(
+            object : OnTouchListener {
+                override fun onTouch(
+                    v: View?,
+                    event: MotionEvent?,
+                ): Boolean {
+                    if (event != null) {
+                        when (event.action) {
+                            MotionEvent.ACTION_DOWN -> {
+                                if (event != null) {
+                                    touchPoint = event.getX()
+                                }
+                            }
 
-//        binding.authLayout.setOnTouchListener { _, event ->
-//            gestureDetector.onTouchEvent(event)
-//            true
-//        }
-
-//        lifecycleScope.launch {
-//            viewModel.uid.collectLatest {
-//                if (it != "") {
-//                    val intent = Intent(this@AuthActivity, MainActivity::class.java)
-//                    startActivity(intent)
-//                }
-//            }
-//        }
+                            MotionEvent.ACTION_UP -> {
+                                if (event != null) {
+                                    touchPoint = touchPoint - event.getX()
+                                    if (Math.abs(touchPoint) < 100) return false
+                                    if (touchPoint > 0) {
+                                        // 손가락을 우에서 좌로 움직였을 때 오른쪽 화면 생성
+                                        Timber.d("손가락을 우에서 좌로 이동")
+                                        if (fragmentNum == 0) {
+                                            supportFragmentManager
+                                                .beginTransaction()
+                                                .replace(
+                                                    R.id.fragment_container_view,
+                                                    SecondOnboardingFragment(),
+                                                ).commit()
+                                            fragmentNum = 1
+                                        } else if (fragmentNum == 1) {
+                                            supportFragmentManager
+                                                .beginTransaction()
+                                                .replace(
+                                                    R.id.fragment_container_view,
+                                                    ThirdOnBoardingFragment(),
+                                                ).commit()
+                                            fragmentNum = 2
+                                        }
+                                    } else {
+                                        Timber.d("손가락을 좌에서 우로 이동")
+                                        if (fragmentNum == 2) {
+                                            supportFragmentManager
+                                                .beginTransaction()
+                                                .replace(
+                                                    R.id.fragment_container_view,
+                                                    SecondOnboardingFragment(),
+                                                ).commit()
+                                            fragmentNum = 1
+                                        } else if (fragmentNum == 1) {
+                                            supportFragmentManager
+                                                .beginTransaction()
+                                                .replace(
+                                                    R.id.fragment_container_view,
+                                                    FirstOnboardingFragment(),
+                                                ).commit()
+                                            fragmentNum = 0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return true
+                }
+            },
+        )
     }
-
-//
-//
-//    // 다른 필수 메서드들 구현 (간략화를 위해 생략)
-//    override fun onDown(e: MotionEvent): Boolean = true
-//
-//    override fun onShowPress(e: MotionEvent) {}
-//
-//    override fun onSingleTapUp(e: MotionEvent): Boolean = false
-//
-//    override fun onScroll(
-//        e1: MotionEvent?,
-//        e2: MotionEvent,
-//        distanceX: Float,
-//        distanceY: Float,
-//    ): Boolean = false
-//
-//    override fun onLongPress(e: MotionEvent) {}
-//
-//    // GestureDetector.OnGestureListener 구현
-//    override fun onFling(
-//        e1: MotionEvent?,
-//        e2: MotionEvent,
-//        velocityX: Float,
-//        velocityY: Float,
-//    ): Boolean {
-//        // e1: 시작 포인트, e2: 끝 포인트
-//        try {
-//            val diffX = e2.x - e1!!.x
-//            val diffY = e2.y - e1.y
-//
-//            Timber.d("x 차이 :$diffX")
-//            Timber.d("y 차이 :$diffY")
-//
-//            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50 && Math.abs(velocityX) > 100) {
-//                if (diffX < 0) {
-//                    when (fragmentNum) {
-//                        0 -> {
-//                            binding.tvTitle.text = "낯선 한국 병원과 약국\n당신의 의료 가이드 Ready Medi"
-//                            binding.ivImage.setImageDrawable(getDrawable(R.drawable.ic_onboarding_group1))
-//                            binding.ivStateBar.setImageDrawable(getDrawable(R.drawable.ic_indicator1))
-//                            fragmentNum = 1
-//                        }
-//                        1 -> {
-//                            binding.tvTitle.text = "증상을 미리 입력하면\n어려운 병원과 약국도 걱정없어요"
-//                            binding.ivImage.setImageDrawable(getDrawable(R.drawable.ic_onboarding_group2))
-//                            binding.ivStateBar.setImageDrawable(getDrawable(R.drawable.ic_indicator2))
-//                            fragmentNum = 2
-//                        }
-//                        2 -> {
-//                            binding.tvTitle.text = "외국어 가능 의료기관부터\n외국인 보험 정보까지 쏙쏙"
-//                            binding.ivImage.setImageDrawable(getDrawable(R.drawable.ic_onboarding3))
-//                            binding.ivStateBar.setImageDrawable(getDrawable(R.drawable.ic_indicator3))
-//                            fragmentNum = -1
-//                        }
-//                    }
-//                    // 오른쪽에서 왼쪽으로 스와이프
-//                    Timber.d("스와이프")
-//                }
-//            } else {
-//                when (fragmentNum) {
-//                    0 -> {
-//                        binding.tvTitle.text = "낯선 한국 병원과 약국\n당신의 의료 가이드 Ready Medi"
-//                        binding.ivImage.setImageDrawable(getDrawable(R.drawable.ic_onboarding_group1))
-//                        binding.ivStateBar.setImageDrawable(getDrawable(R.drawable.ic_indicator1))
-//                        fragmentNum = -1
-//                    }
-//                    1 -> {
-//                        binding.tvTitle.text = "증상을 미리 입력하면\n어려운 병원과 약국도 걱정없어요"
-//                        binding.ivImage.setImageDrawable(getDrawable(R.drawable.ic_onboarding_group2))
-//                        binding.ivStateBar.setImageDrawable(getDrawable(R.drawable.ic_indicator2))
-//                        fragmentNum = 0
-//                    }
-//                    2 -> {
-//                        binding.tvTitle.text = "외국어 가능 의료기관부터\n외국인 보험 정보까지 쏙쏙"
-//                        binding.ivImage.setImageDrawable(getDrawable(R.drawable.ic_onboarding3))
-//                        binding.ivStateBar.setImageDrawable(getDrawable(R.drawable.ic_indicator3))
-//                        fragmentNum = 1
-//                    }
-//                }
-//            }
-//        } catch (exception: Exception) {
-//            exception.printStackTrace()
-//        }
-//        return true
-//    }
 }
