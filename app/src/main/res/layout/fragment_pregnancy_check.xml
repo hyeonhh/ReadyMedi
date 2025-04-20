@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         app:boxContent="@string/pregnancy_no"
-        android:tag="임신 가능성 없음"
+        android:tag="pregnancy_no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:boxContent="@string/pregnancy_possible"
-        android:tag="임신 가능성 있음"
+        android:tag="pregnancy_possible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectBox_no" />
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:boxContent="@string/pregnancy_current"
-        android:tag="임신중"
+        android:tag="pregnancy_current"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

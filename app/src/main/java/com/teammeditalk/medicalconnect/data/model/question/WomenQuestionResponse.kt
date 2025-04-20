@@ -13,7 +13,7 @@ data class WomenQuestionResponse(
     val worstList: List<String> = emptyList(),
     val additionalInput: String = "",
     val lastDate: String = "",
-    val isAvailablePregnancy: String = "",
+    val availablePregnancy: String = "",
     val regularity: String = "",
     val additionalInputByKorean: String = "",
 )

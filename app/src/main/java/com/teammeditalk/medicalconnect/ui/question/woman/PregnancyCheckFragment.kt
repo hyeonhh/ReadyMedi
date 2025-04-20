@@ -28,8 +28,7 @@ class PregnancyCheckFragment :
                 selectBoxNo.updateSelected(true)
                 selectBoxYes.updateSelected(false)
                 selectBoxCurrent.updateSelected(false)
-                pregnancyAvailable = selectBoxCurrent.getContent()
-                availableByKorean = selectBoxCurrent.tag.toString()
+                pregnancyAvailable = selectBoxNo.tag.toString()
             }
 
             selectBoxYes.setOnClickListener {
@@ -38,8 +37,7 @@ class PregnancyCheckFragment :
                 selectBoxNo.updateSelected(false)
                 selectBoxYes.updateSelected(true)
                 selectBoxCurrent.updateSelected(false)
-                pregnancyAvailable = selectBoxCurrent.getContent()
-                availableByKorean = selectBoxCurrent.tag.toString()
+                pregnancyAvailable = selectBoxYes.tag.toString()
             }
 
             selectBoxCurrent.setOnClickListener {
@@ -48,8 +46,7 @@ class PregnancyCheckFragment :
                 selectBoxNo.updateSelected(false)
                 selectBoxYes.updateSelected(false)
                 selectBoxCurrent.updateSelected(true)
-                pregnancyAvailable = selectBoxCurrent.getContent()
-                availableByKorean = selectBoxCurrent.tag.toString()
+                pregnancyAvailable = selectBoxCurrent.tag.toString()
             }
         }
 
@@ -58,7 +55,6 @@ class PregnancyCheckFragment :
             if (pregnancyAvailable == "") {
                 binding.warn.layoutLanguageWarn.visibility = View.VISIBLE
             } else {
-                viewModel.setPregnancyByKorean(availableByKorean)
                 viewModel.setPregnancyAvailability(pregnancyAvailable)
                 navController.navigate(R.id.lastPeriodFragment)
             }

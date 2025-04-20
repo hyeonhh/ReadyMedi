@@ -220,7 +220,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="@{useWomenVM ? womenVM.womenResponse.isAvailablePregnancy(): viewModel.selectedIsAvailablePregnancy}"
+            android:text="@{useWomenVM ? womenVM.pregnancyCheck: viewModel.selectedIsAvailablePregnancy}"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

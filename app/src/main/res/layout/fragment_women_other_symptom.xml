@@ -130,7 +130,7 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/symptom_menorrhagia"
-
+            android:tag="symptom_menorrhagia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -138,24 +138,28 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/symptom_anal_pain"
+            android:tag="symptom_anal_pain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/symptom_diarrhea"
+            android:tag="symptom_diarrhea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/symptom_constipation"
+            android:tag="symptom_constipation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/symptom_indigestion"
+            android:tag="symptom_indigestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

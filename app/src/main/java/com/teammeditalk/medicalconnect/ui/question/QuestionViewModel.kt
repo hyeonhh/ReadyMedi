@@ -21,6 +21,7 @@ import com.teammeditalk.medicalconnect.data.serializer.UserAuthPreferencesSerial
 import com.teammeditalk.medicalconnect.data.serializer.UserHealthPreferencesSerializer.userHealthPreferencesStore
 import com.teammeditalk.medicalconnect.data.serializer.UserPreferencesSerializer.userPreferencesStore
 import com.teammeditalk.medicalconnect.ui.event.SingleLiveEvent
+import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,6 +50,11 @@ class QuestionViewModel
         fun setSymptomContentId(contentId: String) {
             _symptomContentId.value = contentId
         }
+
+        private val _pregnancyCheck = MutableStateFlow("")
+        val pregnancyCheck = _pregnancyCheck.asStateFlow()
+        private val _pregnancyCheckByKorean = MutableStateFlow("")
+        val pregnancyCheckByKorean = _pregnancyCheckByKorean.asStateFlow()
 
         private val _regionId = MutableStateFlow("")
         val regionId = _regionId.asStateFlow()
@@ -119,10 +125,6 @@ class QuestionViewModel
 
         fun setWomenMenstruationRegularity(content: String) {
             womenRegularity = content
-        }
-
-        fun setPregnancyByKorean(pregnancyAvailable: String) {
-            pregnancyAvailableByKorean = pregnancyAvailable
         }
 
         fun setOtherListByKorean(list: List<String>) {
@@ -291,6 +293,8 @@ class QuestionViewModel
 
         fun setPregnancyAvailability(content: String) {
             _selectedIsAvailablePregnancy.value = content
+            _pregnancyCheck.value = ResourceUtil.getForeignString(context, _userLanguage.value, content)
+            _pregnancyCheckByKorean.value = ResourceUtil.getKoreanString(context, content)
         }
 
         fun setJointInjuryHistory(content: String) {
@@ -495,7 +499,7 @@ class QuestionViewModel
                     otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
                     lastDate = _selectedWomenLastDate.value,
-                    isAvailablePregnancy = _selectedIsAvailablePregnancy.value,
+                    availablePregnancy = _selectedIsAvailablePregnancy.value,
                     regularity = _selectedRegularity.value,
                 )
 

@@ -34,16 +34,6 @@ class WomenSymptomFragment :
         womenCurrentSymptomBinding.womenVM = viewModel
         womenCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
 
-        lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
-                binding.layoutUserHealthInfo.tvFamilyDisease.text =
-                    if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(", ")
-                binding.layoutUserHealthInfo.tvDisease.text = if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(", ")
-                binding.layoutUserHealthInfo.tvDrug.text = if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(", ")
-                binding.layoutUserHealthInfo.tvAllergy.text = if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(", ")
-            }
-        }
-
         currentSymptomFrame.addView(womenCurrentSymptomBinding.root)
     }
 
@@ -115,6 +105,17 @@ class WomenSymptomFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        // 건강 정보 결연결
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                binding.layoutUserHealthInfo.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvDisease.text = if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvDrug.text = if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvAllergy.text = if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(", ")
+            }
+        }
 
         viewModel.getSymptom()
         inflater = LayoutInflater.from(requireContext())

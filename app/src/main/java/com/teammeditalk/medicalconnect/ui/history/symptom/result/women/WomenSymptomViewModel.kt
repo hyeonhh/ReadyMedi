@@ -27,6 +27,12 @@ class WomenSymptomViewModel
         savedStateHandle: SavedStateHandle,
         @ApplicationContext val context: Context,
     ) : ViewModel() {
+        private val _pregnancyCheck = MutableStateFlow("")
+        val pregnancyCheck = _pregnancyCheck.asStateFlow()
+
+        private val _pregnancyCheckByKorean = MutableStateFlow("")
+        val pregnancyCheckByKorean = _pregnancyCheckByKorean.asStateFlow()
+
         private val _typeList = MutableStateFlow("")
         val typeList = _typeList.asStateFlow()
 
@@ -145,6 +151,10 @@ class WomenSymptomViewModel
                             worseList.add(ResourceUtil.getForeignString(context, _userLanguage.value, it))
                             worseListByKorean.add(ResourceUtil.getKoreanString(context, it))
                         }
+
+                        _pregnancyCheck.value =
+                            ResourceUtil.getForeignString(context, _userLanguage.value, _womenResponse.value.availablePregnancy)
+                        _pregnancyCheckByKorean.value = ResourceUtil.getKoreanString(context, _womenResponse.value.availablePregnancy)
 
                         if (typeList.isEmpty()) {
                             _typeList.value = "해당 없음"

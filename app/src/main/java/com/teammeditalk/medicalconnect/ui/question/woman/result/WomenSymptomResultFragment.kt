@@ -93,17 +93,6 @@ class WomenSymptomResultFragment :
                     }
             }
         }
-
-        lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
-                with(binding) {
-                    layoutUserHealthInfo.tvDrug.text = it.drugList.toString()
-                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.toString()
-                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.toString()
-                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.toString()
-                }
-            }
-        }
     }
 
     override fun onBindLayout() {
@@ -114,6 +103,18 @@ class WomenSymptomResultFragment :
 
         setHospitalVersionReport()
         setMapDataBinding()
+
+        //  개인 건강 저옵
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                with(binding) {
+                    layoutUserHealthInfo.tvDrug.text = it.drugList.toString()
+                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.toString()
+                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.toString()
+                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.toString()
+                }
+            }
+        }
 
         binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
             binding.ivTooltip.visibility = View.INVISIBLE
