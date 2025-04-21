@@ -61,6 +61,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="뼈가 부러진 것 같아요"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textAppearance="@style/Label1_Normal"
             android:textColor="@color/gray60"
             app:layout_constraintBottom_toBottomOf="@+id/tv_symptom_title"

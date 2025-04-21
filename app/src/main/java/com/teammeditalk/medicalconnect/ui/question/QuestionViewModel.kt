@@ -425,6 +425,7 @@ class QuestionViewModel
                     worseList = _worseIdList.value,
                     otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
+                    additionalInputByKorean = _additionalInputTranslated.value,
                     injuryHistory = _injuryHistory.value,
                 )
 
@@ -465,6 +466,7 @@ class QuestionViewModel
                     worseList = _worseIdList.value,
                     otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
+                    additionalInputByKorean = _additionalInputTranslated.value,
                 )
 
             if (_userId.value != "") {
@@ -498,6 +500,7 @@ class QuestionViewModel
                     duration = _selectedDuration.value,
                     otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
+                    additionalInputByKorean = _additionalInputTranslated.value,
                     lastDate = _selectedWomenLastDate.value,
                     availablePregnancy = _selectedIsAvailablePregnancy.value,
                     regularity = _selectedRegularity.value,
@@ -536,6 +539,7 @@ class QuestionViewModel
                     worseList = _worseIdList.value,
                     otherSymptom = _otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
+                    additionalInputByKorean = _additionalInputTranslated.value,
                 )
 
             if (_userId.value != "") {
@@ -555,6 +559,7 @@ class QuestionViewModel
         private fun getUserHealthInfo() {
             viewModelScope.launch {
                 context.userHealthPreferencesStore.data.collectLatest {
+                    Timber.d("건강 데이터 :$it")
                     _userHealthInfo.value =
                         _userHealthInfo.value.copy(
                             diseaseList = it.diseaseInfoList,

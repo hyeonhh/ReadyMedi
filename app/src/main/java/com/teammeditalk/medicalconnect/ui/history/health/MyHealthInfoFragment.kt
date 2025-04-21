@@ -33,9 +33,7 @@ class MyHealthInfoFragment :
                     layoutUserDisease.tvDisease.text =
                         if (it.diseaseList.isEmpty()) {
                             "해당 없음"
-                        } else if (it.diseaseList.size >
-                            1
-                        ) {
+                        } else if (it.diseaseList.size > 1) {
                             "${it.diseaseList[0]}외 ${it.diseaseList.size - 1}"
                         } else {
                             it.diseaseList[0]

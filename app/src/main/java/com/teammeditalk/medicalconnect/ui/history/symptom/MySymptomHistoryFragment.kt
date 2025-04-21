@@ -25,6 +25,10 @@ class MySymptomHistoryFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        binding.lottie.visibility = View.VISIBLE
+        binding.emptyView.emptyLayout.visibility = View.GONE
+
         binding.recyclerView.adapter = adapter
 
         adapter.setOnItemClickListener(
@@ -81,14 +85,16 @@ class MySymptomHistoryFragment :
         )
         lifecycleScope.launch {
             viewModel.history.collectLatest {
-                if (it.isEmpty()) {
-                    binding.lottie.visibility = View.GONE
-                    binding.emptyView.emptyLayout.visibility = View.VISIBLE
-                } else {
-                    binding.emptyView.emptyLayout.visibility = View.GONE
-                    binding.lottie.visibility = View.GONE
-                    binding.recyclerView.visibility = View.VISIBLE
-                    adapter.setList(it)
+                if (it!= null ) {
+                    if (it.isEmpty()) {
+                        binding.lottie.visibility = View.GONE
+                        binding.emptyView.emptyLayout.visibility = View.VISIBLE
+                    } else {
+                        binding.emptyView.emptyLayout.visibility = View.GONE
+                        binding.lottie.visibility = View.GONE
+                        binding.recyclerView.visibility = View.VISIBLE
+                        adapter.setList(it)
+                    }
                 }
             }
         }

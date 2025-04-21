@@ -35,15 +35,15 @@ class MySymptomHistoryViewModel
     constructor(
         @ApplicationContext val context: Context,
     ) : ViewModel() {
-        private val _history = MutableStateFlow(listOf<SymptomHistory>())
+        private val _history = MutableStateFlow<List<SymptomHistory>?>(null)
         val history =
             _history
                 .map {
-                    it.sortedByDescending { it.timeStamp }
+                    it?.sortedByDescending { it.timeStamp }
                 }.stateIn(
                     scope = viewModelScope,
-                    started = SharingStarted.Eagerly,
-                    initialValue = emptyList(),
+                    started = SharingStarted.Lazily,
+                    initialValue = null,
                 )
 
         private val _userId = MutableStateFlow("")
