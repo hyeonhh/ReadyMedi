@@ -140,7 +140,7 @@
 
         <include
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/btn_next"
+            app:layout_constraintBottom_toTopOf="@id/btn_complete"
             android:id="@+id/layout_language_warn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,11 +171,11 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
+            android:id="@+id/btn_complete"
             style="@style/CustomButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/next"
+            android:text="@string/modify_complete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

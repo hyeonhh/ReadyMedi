@@ -52,6 +52,15 @@
         <action
             android:id="@+id/action_myHealthInfoFragment_to_mySymptomHistoryFragment"
             app:destination="@id/mySymptomHistoryFragment" />
+        <action
+            android:id="@+id/action_myHealthInfoFragment_to_editFamilyDiseaseFragment"
+            app:destination="@id/editFamilyDiseaseFragment" />
+        <action
+            android:id="@+id/action_myHealthInfoFragment_to_editAllergyFragment"
+            app:destination="@id/editAllergyFragment" />
+        <action
+            android:id="@+id/action_myHealthInfoFragment_to_editDrugFragment"
+            app:destination="@id/editDrugFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_my_symptom_history"
@@ -230,4 +239,19 @@
         android:id="@+id/useInsuranceFragment"
         android:name="com.teammeditalk.medicalconnect.ui.all.UseInsuranceFragment"
         android:label="UseInsuranceFragment" />
+    <fragment
+        android:id="@+id/editAllergyFragment"
+        tools:layout="@layout/edit_fragment_allergy"
+        android:name="com.teammeditalk.medicalconnect.ui.edit.allergy.EditAllergyFragment"
+        android:label="EditAllergyFragment" />
+    <fragment
+        android:id="@+id/editDrugFragment"
+        tools:layout="@layout/fragment_edit_drug"
+        android:name="com.teammeditalk.medicalconnect.ui.edit.drug.EditDrugFragment"
+        android:label="EditDrugFragment" />
+    <fragment
+        android:id="@+id/editFamilyDiseaseFragment"
+        tools:layout="@layout/fragment_edit_family_disease"
+        android:name="com.teammeditalk.medicalconnect.ui.edit.family.EditFamilyDiseaseFragment"
+        android:label="EditFamilyDiseaseFragment" />
 </navigation>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:background="@color/blue20"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:background="@android:color/transparent"
+            android:id="@+id/btn_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/ic_select_allergy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+
+
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="@string/allergy_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon" />
+
+
+
+        <include
+            android:id="@+id/layout_food_allergy"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/layout_food_allergy"/>
+
+        <include
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_food_allergy"
+            android:id="@+id/layout_drug_allergy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/layout_drug_allergy"/>
+
+        <include
+            app:layout_constraintTop_toBottomOf="@id/layout_drug_allergy"
+            android:layout_marginTop="10dp"
+            android:id="@+id/layout_other_allergy"
+            layout="@layout/layout_other_allergy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/CustomButtonStyle"
+            android:id="@+id/btn_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_complete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
