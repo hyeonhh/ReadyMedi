@@ -49,6 +49,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_menstrual_cycle"
+            app:titleTag="symptom_menstrual_cycle"
             android:tag="symptom_menstrual_cycle_desc"
             app:categoryContent="@string/symptom_menstrual_cycle_desc"
             android:layout_width="match_parent"
@@ -56,6 +57,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_pelvic_pain"
+            app:titleTag="symptom_pelvic_pain"
             android:tag="symptom_pelvic_pain_desc"
             app:categoryContent="@string/symptom_pelvic_pain_desc"
             android:layout_width="match_parent"
@@ -63,6 +65,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_menstrual_pain"
+            app:titleTag="symptom_menstrual_pain"
             android:tag="symptom_menstrual_pain_desc"
             app:categoryContent="@string/symptom_menstrual_pain_desc"
             android:layout_width="match_parent"
@@ -70,6 +73,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_vaginal_itching"
+            app:titleTag="symptom_vaginal_itching"
             android:tag="symptom_vaginal_itching_desc"
             app:categoryContent="@string/symptom_vaginal_itching_desc"
             android:layout_width="match_parent"
@@ -77,6 +81,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_discharge"
+            app:titleTag="symptom_discharge"
             android:tag="symptom_discharge_desc"
             app:categoryContent="@string/symptom_discharge_desc"
             android:layout_width="match_parent"

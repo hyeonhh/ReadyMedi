@@ -52,12 +52,23 @@ class InnerSymptomFragment :
         // 개인 건강 정보
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // 건강 정보 연결
                 launch {
                     viewModel.userHealthInfo.collectLatest {
-                        hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text = it.diseaseList.joinToString(", ")
-                        hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text = it.drugList.joinToString(", ")
-                        hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text = it.allergyList.joinToString(", ")
-                        hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text = it.familyDiseaseList.joinToString(", ")
+                        hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
+                            if (it.familyDiseaseList.isEmpty()) {
+                                getString(
+                                    R.string.not_applicable,
+                                )
+                            } else {
+                                it.familyDiseaseList.joinToString(", ")
+                            }
+                        hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =
+                            if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+                        hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text =
+                            if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+                        hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text =
+                            if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
                     }
                 }
                 launch {
@@ -68,6 +79,7 @@ class InnerSymptomFragment :
                 launch {
                     viewModel.innerResponse.collectLatest {
                         hospitalReportBinding.additionalInput.tvInput.text = it.additionalInputByKorean
+                        binding.layoutAdditionalInput.tvInput.text = it.additionalInput
                     }
                 }
                 launch {

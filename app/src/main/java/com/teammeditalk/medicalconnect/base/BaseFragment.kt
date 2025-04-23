@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
@@ -36,16 +35,6 @@ abstract class BaseFragment<B : ViewBinding>(
 
 //    protected open fun setupView() {}
 //    protected open fun setupDataBinding() {}
-
-    // 바인딩 변수 설정 유틸리티 메소드
-    protected fun <T : Any> setBindingVariable(
-        variableId: Int,
-        value: T,
-    ) {
-        if (_binding is ViewDataBinding) {
-            (_binding as ViewDataBinding).setVariable(variableId, value)
-        }
-    }
 
     protected open fun onBindLayout() = Unit
 

@@ -50,6 +50,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_diabetes"
+            app:titleTag="symptom_diabetes"
             android:tag="symptom_diabetes_desc"
             app:categoryContent="@string/symptom_diabetes_desc"
             android:layout_width="match_parent"
@@ -57,6 +58,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_thyroid"
+            app:titleTag="symptom_thyroid"
             android:tag="symptom_thyroid_desc"
             app:categoryContent="@string/symptom_thyroid_desc"
             android:layout_width="match_parent"
@@ -64,6 +66,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_cholesterol_bp"
+            app:titleTag="symptom_cholesterol_bp"
             android:tag="symptom_cholesterol_bp_desc"
             app:categoryContent="@string/symptom_cholesterol_bp_desc"
             android:layout_width="match_parent"

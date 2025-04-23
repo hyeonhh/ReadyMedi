@@ -55,6 +55,7 @@
                 android:tag="symptom_abdominal_pain_desc"
             app:categoryContent="@string/symptom_abdominal_pain_desc"
             app:categoryTitle="@string/symptom_abdominal_pain"
+                app:titleTag="layout_digestive"
             app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
@@ -63,6 +64,7 @@
                 android:tag="symptom_heartburn_desc"
                 app:categoryContent="@string/symptom_heartburn_desc"
                 app:categoryTitle="@string/symptom_heartburn"
+                app:titleTag="layout_digestive"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
@@ -71,6 +73,7 @@
                 android:tag="symptom_nausea_desc"
                 app:categoryContent="@string/symptom_nausea_desc"
                 app:categoryTitle="@string/symptom_nausea"
+                app:titleTag="layout_digestive"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
@@ -79,6 +82,7 @@
                 android:tag="symptom_bowel_issue_desc"
                 app:categoryContent="@string/symptom_bowel_issue_desc"
                 app:categoryTitle="@string/symptom_bowel_issue"
+                app:titleTag="layout_digestive"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
@@ -87,6 +91,7 @@
                 android:tag="symptom_indigestion_desc"
                 app:categoryContent="@string/symptom_indigestion_desc"
                 app:categoryTitle="@string/symptom_indigestion"
+                app:titleTag="layout_digestive"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
@@ -95,6 +100,7 @@
                 android:tag="symptom_chest_pain_desc"
                 app:categoryContent="@string/symptom_chest_pain_desc"
                 app:categoryTitle="@string/symptom_chest_pain"
+                app:titleTag="layout_digestive"
                 app:isCategorySelected="false" />
 
             <com.teammeditalk.medicalconnect.ui.util.SelectCategory
@@ -103,6 +109,8 @@
                 android:tag="symptom_heart_palpitation_desc"
                 app:categoryContent="@string/symptom_heart_palpitation_desc"
                 app:categoryTitle="@string/symptom_heart_palpitation"
+                app:titleTag="layout_digestive"
+
                 app:isCategorySelected="false" />
 
         </LinearLayout>

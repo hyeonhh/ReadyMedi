@@ -53,18 +53,33 @@ class QuestionViewModel
 
         private val _pregnancyCheck = MutableStateFlow("")
         val pregnancyCheck = _pregnancyCheck.asStateFlow()
+
         private val _pregnancyCheckByKorean = MutableStateFlow("")
         val pregnancyCheckByKorean = _pregnancyCheckByKorean.asStateFlow()
 
         private val _regionId = MutableStateFlow("")
         val regionId = _regionId.asStateFlow()
 
-        private val _sideEffectId = MutableStateFlow("")
-        val sideEffectId = _sideEffectId.asStateFlow()
+        private val _symptomTitle = MutableStateFlow("")
+        val symptomTitle =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getForeignString(context, _userLanguage.value, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Lazily,
+                    initialValue = "", // 초기값 설정
+                )
 
-        private val _symptomTitleId = MutableStateFlow("")
-        val symptomTitleId = _symptomTitleId.asStateFlow()
-
+        val symptomTitleByKorean =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getKoreanString(context, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Lazily,
+                    initialValue = "", // 초기값 설정
+                )
         private val _otherSymptomIdList = MutableStateFlow(emptyList<String>())
         val otherSymptomIdList = _otherSymptomIdList.asStateFlow()
 
@@ -73,6 +88,25 @@ class QuestionViewModel
 
         private val _symptomContentId = MutableStateFlow("")
         val symptomContentId = _symptomContentId.asStateFlow()
+
+        val symptomContent =
+            _symptomContentId
+                .map {
+                    ResourceUtil.getForeignString(context, _userLanguage.value, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Lazily,
+                    initialValue = "", // 초기값 설정
+                )
+        val symptomContentByKorean =
+            _symptomContentId
+                .map {
+                    ResourceUtil.getKoreanString(context, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Lazily,
+                    initialValue = "", // 초기값 설정
+                )
 
         private val _typeId = MutableStateFlow(emptyList<String>())
         val typeId = _typeId.asStateFlow()
@@ -199,6 +233,9 @@ class QuestionViewModel
         private val _sideEffect = MutableStateFlow("")
         val sideEffect = _sideEffect.asStateFlow()
 
+        private val _sideEffectByKorean = MutableStateFlow("")
+        val sideEffectByKorean = _sideEffectByKorean.asStateFlow()
+
         private val _anesthesiaHistory = MutableStateFlow(false)
         val anesthesiaHistory =
             _anesthesiaHistory
@@ -304,15 +341,21 @@ class QuestionViewModel
 
         fun setDentalSideEffect(content: String) {
             _sideEffect.value = content
+            translateDentalSideEffect()
         }
 
-        private fun translateEnglishToKorean(lang: String) {
+        private fun translateEnglishToKorean() {
+            if (_userLanguage.value == "ko") {
+                _additionalInputTranslated.value = _additionalInput.value
+                navigateScreen()
+                return
+            }
             viewModelScope.launch {
                 val options =
                     TranslatorOptions
                         .Builder()
                         .setSourceLanguage(
-                            when (lang) {
+                            when (_userLanguage.value) {
                                 "en" -> TranslateLanguage.ENGLISH
                                 "ja" -> TranslateLanguage.JAPANESE
                                 "zh" -> TranslateLanguage.CHINESE
@@ -348,12 +391,22 @@ class QuestionViewModel
         }
 
         private fun translateJointInjury() {
+            if (_userLanguage.value == "ko") {
+                _injuryHistoryTranslated.value = _injuryHistory.value
+                return
+            }
             viewModelScope.launch {
                 val options =
                     TranslatorOptions
                         .Builder()
-                        .setSourceLanguage(TranslateLanguage.KOREAN)
-                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                        .setSourceLanguage(
+                            when (_userLanguage.value) {
+                                "en" -> TranslateLanguage.ENGLISH
+                                "ja" -> TranslateLanguage.JAPANESE
+                                "zh" -> TranslateLanguage.CHINESE
+                                else -> TranslateLanguage.ENGLISH
+                            },
+                        ).setTargetLanguage(TranslateLanguage.KOREAN)
                         .build()
                 val koreanEnglishTranslator = Translation.getClient(options)
 
@@ -361,6 +414,37 @@ class QuestionViewModel
                     .translate(_injuryHistory.value)
                     .addOnSuccessListener {
                         _injuryHistoryTranslated.value = it
+                    }.addOnFailureListener { exception ->
+                        exception.printStackTrace()
+                        Timber.d("Failed to translate :${exception.message}")
+                    }
+            }
+        }
+
+        private fun translateDentalSideEffect() {
+            if (_userLanguage.value == "ko") {
+                _sideEffectByKorean.value = _sideEffect.value
+                return
+            }
+            viewModelScope.launch {
+                val options =
+                    TranslatorOptions
+                        .Builder()
+                        .setSourceLanguage(
+                            when (_userLanguage.value) {
+                                "en" -> TranslateLanguage.ENGLISH
+                                "ja" -> TranslateLanguage.JAPANESE
+                                "zh" -> TranslateLanguage.CHINESE
+                                else -> TranslateLanguage.ENGLISH
+                            },
+                        ).setTargetLanguage(TranslateLanguage.KOREAN)
+                        .build()
+                val koreanEnglishTranslator = Translation.getClient(options)
+
+                koreanEnglishTranslator
+                    .translate(_sideEffect.value)
+                    .addOnSuccessListener {
+                        _sideEffectByKorean.value = it
                     }.addOnFailureListener { exception ->
                         exception.printStackTrace()
                         Timber.d("Failed to translate :${exception.message}")
@@ -378,7 +462,7 @@ class QuestionViewModel
                 DentalQuestionResponse(
                     timeStamp = toDate,
                     hospitalType = _category.value,
-                    symptomTitle = _selectedSymptom.value.first,
+                    symptomTitle = _symptomTitle.value,
                     symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
                     type = _typeId.value,
@@ -388,8 +472,9 @@ class QuestionViewModel
                     otherSymptom = otherSymptomIdList.value,
                     additionalInput = _additionalInput.value,
                     additionalInputByKorean = _additionalInputTranslated.value,
-                    anesHistory = if (_anesthesiaHistory.value) "예" else "아니요",
+                    anesHistory = if (_anesthesiaHistory.value) "yes" else "no",
                     sideEffect = _sideEffect.value,
+                    sideEffectByKorean = _sideEffectByKorean.value,
                 )
 
             if (_userId.value != "") {
@@ -407,6 +492,7 @@ class QuestionViewModel
 
         // todo : 파베에 정형외과 데이터 저장
         fun saveJointResponse() {
+            Timber.d("jointResponse 저장")
             val timeStamp = System.currentTimeMillis()
             val sdf = SimpleDateFormat("yyyy-MM-dd kk:mm:ss")
             val toDate = sdf.format(timeStamp)
@@ -416,7 +502,7 @@ class QuestionViewModel
                     timeStamp = toDate,
                     region = _selectedRegion.value,
                     hospitalType = _category.value,
-                    symptomTitle = _selectedSymptom.value.first,
+                    symptomTitle = _symptomTitle.value,
                     symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
                     type = _typeId.value,
@@ -427,18 +513,22 @@ class QuestionViewModel
                     additionalInput = _additionalInput.value,
                     additionalInputByKorean = _additionalInputTranslated.value,
                     injuryHistory = _injuryHistory.value,
+                    injuryHistoryByKorean = _injuryHistoryTranslated.value,
                 )
 
             if (_userId.value != "") {
+                Timber.d("save joint resposne :${_userId.value}")
                 db
                     .collection("symptom_result_${_userId.value}")
                     .document(toDate.toString())
                     .set(_jointResult.value)
                     .addOnSuccessListener {
-                        Timber.d("success to save dental response")
+                        Timber.d("success to save joint response")
                     }.addOnFailureListener {
-                        Timber.d("failed  to save dental response, ${it.message}")
+                        Timber.e("failed  to save joint response, ${it.message}")
                     }
+            } else {
+                Timber.e("failed to save joint reposnse ${_userId.value}")
             }
         }
 
@@ -457,7 +547,7 @@ class QuestionViewModel
                     timeStamp = toDate,
                     region = _selectedRegion.value,
                     hospitalType = _category.value,
-                    symptomTitle = _selectedSymptom.value.first,
+                    symptomTitle = _symptomTitle.value,
                     symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
                     type = _typeId.value,
@@ -492,7 +582,7 @@ class QuestionViewModel
                 WomenQuestionResponse(
                     timeStamp = toDate,
                     hospitalType = _category.value,
-                    symptomTitle = _selectedSymptom.value.first,
+                    symptomTitle = _symptomTitle.value,
                     symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
                     type = _typeId.value,
@@ -530,7 +620,7 @@ class QuestionViewModel
                     timeStamp = toDate,
                     region = _selectedRegion.value,
                     hospitalType = _category.value,
-                    symptomTitle = _selectedSymptom.value.first,
+                    symptomTitle = _symptomTitle.value,
                     symptomContent = _symptomContentId.value,
                     startDate = _selectedDate.value,
                     type = _typeId.value,
@@ -610,7 +700,7 @@ class QuestionViewModel
         // 추가 전달
         fun setAdditionalInput(input: String) {
             _additionalInput.value = input
-            translateEnglishToKorean(_userLanguage.value)
+            translateEnglishToKorean()
         }
 
         // 증상 완화 요인
@@ -649,6 +739,7 @@ class QuestionViewModel
             hospitalCategory: String,
         ) {
             _selectedSymptom.value = selectedCategory to selectedSymptom
+            _symptomTitle.value = selectedCategory
             _category.value = hospitalCategory
 
             Timber.d("저장된 증상 카테고리 :${_selectedSymptom.value.first}\n증상 내용 : ${_selectedSymptom.value.second}\n병원 타입 : ${_category.value}")

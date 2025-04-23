@@ -57,7 +57,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{useGeneralVM ? generalVM.generalResponse.symptomTitle : questionVM.generalResult.symptomTitle}"
+            android:text="@{useGeneralVM ? generalVM.symptomTitle: questionVM.symptomTitle}"
             app:layout_constraintBottom_toBottomOf="@+id/textView25"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView25"
@@ -76,7 +76,7 @@
         <TextView
             android:textAlignment="textEnd"
             android:id="@+id/tv_symptom_content"
-            android:text="@{questionVM.selectedSymptom.second}"
+            android:text="@{useGeneralVM ? generalVM.symptomContent: questionVM.selectedSymptom.second }"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

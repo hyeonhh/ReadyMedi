@@ -14,8 +14,11 @@ import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -27,6 +30,27 @@ class InnerSymptomViewModel
         savedStateHandle: SavedStateHandle,
         @ApplicationContext val context: Context,
     ) : ViewModel() {
+        private val _symptomTitle = MutableStateFlow("")
+        val symptomTitle =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getForeignString(context, _userLanguage.value, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Lazily,
+                    initialValue = "",
+                )
+
+        val symptomTitleByKorean =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getKoreanString(context, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.Lazily,
+                    initialValue = "",
+                )
+
         private val _typeList = MutableStateFlow("")
         val typeList = _typeList.asStateFlow()
 
@@ -114,6 +138,8 @@ class InnerSymptomViewModel
                         it.toObject(InnerQuestionResponse::class.java)
                     if (result != null) {
                         _innerResponse.value = result
+
+                        _symptomTitle.value = _innerResponse.value.symptomTitle
 
                         val typeList = mutableListOf<String>()
                         val worseList = mutableListOf<String>()

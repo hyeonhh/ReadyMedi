@@ -7,13 +7,15 @@
         <variable
             name="viewModel"
             type="com.teammeditalk.medicalconnect.ui.question.QuestionViewModel" />
-        <variable
-            name="jointVM"
-            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.joint.JointSymptomViewModel" />
 
         <variable
             name="useJointVM"
             type="boolean" />
+        <variable
+            name="jointVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.joint.JointSymptomViewModel" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,14 +37,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/injury_history"
+            android:text="과거에 다쳐서 치료받은 경험"
             android:textAppearance="@style/Body1_Normal"
             app:layout_constraintBottom_toBottomOf="@+id/imageView9"
             app:layout_constraintStart_toEndOf="@+id/imageView9"
             app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
         <TextView
-            android:text="@{useJointVM? jointVM.jointResponse.injuryHistory: viewModel.injuryHistory}"
+            android:text="@{useJointVM ? jointVM.jointResponse.injuryHistoryByKorean: viewModel.injuryHistoryTranslated}"
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

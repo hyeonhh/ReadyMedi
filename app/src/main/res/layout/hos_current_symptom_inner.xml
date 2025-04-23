@@ -58,7 +58,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedSymptom.first}"
+            android:text="@{useInnerVM? innerVM.symptomTitleByKorean: viewModel.symptomTitleByKorean}"
             app:layout_constraintBottom_toBottomOf="@+id/textView25"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView25"

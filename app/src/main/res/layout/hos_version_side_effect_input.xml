@@ -6,7 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.teammeditalk.medicalconnect.ui.question.QuestionViewModel" />
+            type="com.teammeditalk.medicalconnect.ui.question.QuestionViewModel"/>
+        <variable
+            name="useDentalVM"
+            type="boolean" />
+
+        <variable
+            name="dentalVM"
+            type="com.teammeditalk.medicalconnect.ui.history.symptom.result.dental.DentalSymptomViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +43,7 @@
 
         <TextView
             android:id="@+id/tv_side_effect"
-            android:text="@{viewModel.sideEffect}"
+            android:text="@{useDentalVM? dentalVM.dentalResponse.sideEffectByKorean: viewModel.sideEffectByKorean}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"

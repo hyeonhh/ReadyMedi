@@ -92,6 +92,7 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:text="@string/lump"
+            android:tag="lump"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

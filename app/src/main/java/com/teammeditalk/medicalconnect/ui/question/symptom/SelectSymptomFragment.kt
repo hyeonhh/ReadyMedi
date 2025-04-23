@@ -10,6 +10,7 @@ import com.teammeditalk.medicalconnect.databinding.FragmentSelectSymptomBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import com.teammeditalk.medicalconnect.ui.util.SelectCategory
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class SelectSymptomFragment :
@@ -34,6 +35,8 @@ class SelectSymptomFragment :
 
         binding.btnNext.setOnClickListener {
             val name = resources.getResourceEntryName(selectedLayout)
+            Timber.d("selectedLayout :$selectedLayout")
+            Timber.d("name :$name")
 
             // todo : else문 안나오도록 하기 !
             val category =
@@ -43,13 +46,14 @@ class SelectSymptomFragment :
                     "layout_joint", "layout_injury" -> "정형외과"
                     "layout_dental" -> "치과"
                     "layout_breast" -> "일반외과"
-                    else -> "내과"
+                    else -> ""
                 }
             viewModel.selectSymptom(selectedSymptom = selectedSymptom, selectedCategory = selectedCategory, hospitalCategory = category)
 
             // todo : 한국어 버전도 저장!
             viewModel.setSymptomByKorean(selectedSymptomByKorean)
             viewModel.setSymptomContentId(selectedSymptomContentId)
+            Timber.d("카테고리 :$category")
 
             when (category) {
                 "치과" -> {
@@ -71,20 +75,20 @@ class SelectSymptomFragment :
         }
 
         with(binding.layoutRespiratory) {
-            for (child in layoutSymptomCategory.children) {
+            for (child in layoutRespiratory.children) {
                 child.setOnClickListener {
                     initSelectedSymptom()
                     it.isSelected = !it.isSelected
                     selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = it.getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
             }
             btnSymptom.setOnClickListener {
                 it.isSelected = !it.isSelected
-                layoutSymptomCategory.visibility = if (it.isSelected) View.VISIBLE else View.GONE
+                layoutRespiratory.visibility = if (it.isSelected) View.VISIBLE else View.GONE
             }
         }
 
@@ -95,7 +99,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -114,7 +118,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -132,7 +136,8 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
+                    Timber.d("selectedCategory :${it.getTitleId()}")
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -150,7 +155,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -168,7 +173,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -185,7 +190,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -203,7 +208,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -220,7 +225,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -237,8 +242,7 @@ class SelectSymptomFragment :
                     it.isSelected = !it.isSelected
                     if (it.isSelected) selectedLayout = (it.parent as View).id
                     selectedSymptom = (it as SelectCategory).getContent().second
-
-                    selectedCategory = (it as SelectCategory).getContent().first
+                    selectedCategory = it.getTitleId()
                     selectedSymptomByKorean = it.getKoreanString(it.tag.toString())
                     selectedSymptomContentId = it.tag.toString()
                 }
@@ -252,7 +256,7 @@ class SelectSymptomFragment :
 
     private fun initSelectedSymptom() {
         with(binding) {
-            layoutRespiratory.layoutSymptomCategory.apply {
+            layoutRespiratory.layoutRespiratory.apply {
                 for (child in this.children) {
                     child.isSelected = false
                 }

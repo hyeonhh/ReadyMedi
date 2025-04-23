@@ -105,16 +105,8 @@ class WomenSymptomResultFragment :
         setMapDataBinding()
 
         //  개인 건강 저옵
-        lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
-                with(binding) {
-                    layoutUserHealthInfo.tvDrug.text = it.drugList.toString()
-                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.toString()
-                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.toString()
-                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.toString()
-                }
-            }
-        }
+        binding.layoutUserHealthInfo.viewModel = viewModel
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
 
         binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
             binding.ivTooltip.visibility = View.INVISIBLE

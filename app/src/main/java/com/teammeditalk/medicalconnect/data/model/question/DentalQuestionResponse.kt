@@ -16,4 +16,5 @@ data class DentalQuestionResponse(
     val additionalInputByKorean: String = "",
     val anesHistory: String = "",
     val sideEffect: String = "",
+    val sideEffectByKorean: String = "",
 )

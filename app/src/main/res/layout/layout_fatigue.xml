@@ -49,12 +49,14 @@
 
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:titleTag="symptom_fatigue"
             app:categoryTitle="@string/symptom_fatigue"
             android:tag="symptom_fatigue_desc"
             app:categoryContent="@string/symptom_fatigue_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:titleTag="symptom_headache_dizziness"
             app:categoryTitle="@string/symptom_headache_dizziness"
             android:tag="symptom_headache_dizziness_desc"
             app:categoryContent="@string/symptom_headache_dizziness_desc"
@@ -62,18 +64,21 @@
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_muscle_pain"
+            app:titleTag="symptom_muscle_pain"
             android:tag="symptom_muscle_pain_desc"
             app:categoryContent="@string/symptom_muscle_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_insomnia"
+            app:titleTag="symptom_insomnia"
             android:tag="symptom_insomnia_desc"
             app:categoryContent="@string/symptom_insomnia_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:titleTag="symptom_weight_change"
             app:categoryTitle="@string/symptom_weight_change"
             android:tag="symptom_weight_change_desc"
             app:categoryContent="@string/symptom_weight_change_desc"

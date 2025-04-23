@@ -14,7 +14,6 @@ import com.teammeditalk.medicalconnect.databinding.LayoutWomenCurrentSymptomBind
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class WomenSymptomFragment :
@@ -24,6 +23,7 @@ class WomenSymptomFragment :
     private val viewModel: WomenSymptomViewModel by viewModels()
     private val navController by lazy { findNavController() }
     private lateinit var inflater: LayoutInflater
+    private lateinit var hospitalReportBinding: LayoutHospitalVersionWomenBinding
 
     private fun setCurrentSymptomBinding() {
         // 사용자용 현재 증상 레이아웃 연결하기
@@ -53,25 +53,12 @@ class WomenSymptomFragment :
     private fun setCurrentSymptomToHospital() {
         // 의료진용 보고서
         val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionWomenBinding.inflate(inflater, hospitalContentContainer, false)
+        hospitalReportBinding = LayoutHospitalVersionWomenBinding.inflate(inflater, hospitalContentContainer, false)
 
         // todo : additional_input & 공툥 요소 데이터 바인딩 처리하기
         hospitalReportBinding.currentSymptom.useWomenVM = true
         hospitalReportBinding.currentSymptom.womenVM = viewModel
         hospitalReportBinding.currentSymptom.lifecycleOwner = viewLifecycleOwner
-
-        lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
-                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
-                    if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(", ")
-                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =
-                    if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(", ")
-                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text =
-                    if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(", ")
-                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text =
-                    if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(", ")
-            }
-        }
 
         // todo : 뷰모델 연결하기
         lifecycleScope.launch {
@@ -81,8 +68,8 @@ class WomenSymptomFragment :
         }
         lifecycleScope.launch {
             viewModel.womenResponse.collectLatest {
-                Timber.d("데이터 :$it")
-                hospitalReportBinding.additionalInput.tvInput.text = it.additionalInput
+                hospitalReportBinding.additionalInput.tvInput.text = it.additionalInputByKorean
+                binding.layoutAdditionalInput.tvInput.text = it.additionalInput
             }
         }
         hospitalContentContainer.addView(hospitalReportBinding.root)
@@ -103,24 +90,46 @@ class WomenSymptomFragment :
         contentContainer3.addView(goToMapBinding.root)
     }
 
-    override fun onBindLayout() {
-        super.onBindLayout()
-
+    private fun setUserHealthInfo() {
         // 건강 정보 결연결
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
-                binding.layoutUserHealthInfo.tvFamilyDisease.text =
-                    if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(", ")
-                binding.layoutUserHealthInfo.tvDisease.text = if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(", ")
-                binding.layoutUserHealthInfo.tvDrug.text = if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(", ")
-                binding.layoutUserHealthInfo.tvAllergy.text = if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(", ")
+                val familyDiseaseList =
+                    if (it.familyDiseaseList.isEmpty()) {
+                        getString(
+                            R.string.not_applicable,
+                        )
+                    } else {
+                        it.familyDiseaseList.joinToString(", ")
+                    }
+
+                val diseaseList = if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+                val drugList = if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+                val allergyList = if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
+
+                binding.layoutUserHealthInfo.tvFamilyDisease.text = familyDiseaseList
+                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text = familyDiseaseList
+
+                binding.layoutUserHealthInfo.tvDisease.text = diseaseList
+                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text = diseaseList
+
+                binding.layoutUserHealthInfo.tvDrug.text = drugList
+                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text = drugList
+
+                binding.layoutUserHealthInfo.tvAllergy.text = allergyList
+                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text = allergyList
             }
         }
+    }
+
+    override fun onBindLayout() {
+        super.onBindLayout()
 
         viewModel.getSymptom()
         inflater = LayoutInflater.from(requireContext())
         setCurrentSymptomBinding()
         setCurrentSymptomToHospital()
+        setUserHealthInfo()
         setMapDataBinding()
         onSwitchClick()
 

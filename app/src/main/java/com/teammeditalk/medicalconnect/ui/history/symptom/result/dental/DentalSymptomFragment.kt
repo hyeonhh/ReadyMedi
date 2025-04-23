@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomDentalBinding
 import com.teammeditalk.medicalconnect.databinding.HosVersionSideEffectInputBinding
@@ -12,7 +13,6 @@ import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBin
 import com.teammeditalk.medicalconnect.databinding.LayoutDentalCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutDentalSideEffectInputBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
-import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -44,6 +44,10 @@ class DentalSymptomFragment :
         currentSymptomBinding.dentalVM = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
 
+        sideEffectBinding.dentalVM = viewModel
+        sideEffectBinding.useDentalVM = true
+        sideEffectBinding.lifecycleOwner = viewLifecycleOwner
+
         currentSymptomContainer.addView(currentSymptomBinding.root)
 
         // 현재 증상 내용 연결
@@ -56,10 +60,14 @@ class DentalSymptomFragment :
         // 건강 정보 연결
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
-                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text = it.drugList.joinToString(", ")
-                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text = it.diseaseList.joinToString(", ")
-                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text = it.allergyList.joinToString(", ")
-                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text = it.familyDiseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) getString(R.string.not_applicable) else it.familyDiseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =
+                    if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text =
+                    if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text =
+                    if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
             }
         }
 
@@ -67,6 +75,7 @@ class DentalSymptomFragment :
             viewModel.dentalResponse.collectLatest {
                 // todo :한국어로 번역하기
                 hospitalReportBinding.additionalInput.tvInput.text = it.additionalInputByKorean
+                binding.layoutAdditionalInput.tvInput.text = it.additionalInput
                 sideEffectBinding.tvSideEffect.text = it.sideEffect
             }
         }
@@ -87,6 +96,10 @@ class DentalSymptomFragment :
             LayoutDentalCurrentSymptomBinding.inflate(inflater, contentContainer, false)
         setHospitalVersionReport()
 
+        currentSymptomBinding.dentalVM = viewModel
+        currentSymptomBinding.useDentalVM = true
+        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+
         binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
             binding.ivTooltip.visibility = View.INVISIBLE
             if (isChecked) {
@@ -99,73 +112,22 @@ class DentalSymptomFragment :
         }
 
         lifecycleScope.launch {
-            viewModel.dentalResponse.collectLatest {
-                // 데이터가 있는지 확인
-                if (it.timeStamp != "") {
-                    val otherList = mutableListOf<String>()
-                    val worstList = mutableListOf<String>()
-                    val typeList = mutableListOf<String>()
-                    it.otherSymptom.forEach {
-                        otherList.add(
-                            ResourceUtil.getForeignString(
-                                requireContext(),
-                                viewModel.userLanguage.value,
-                                it,
-                            ),
-                        )
-                    }
-                    it.worseList.forEach {
-                        worstList.add(
-                            ResourceUtil.getForeignString(
-                                requireContext(),
-                                viewModel.userLanguage.value,
-                                it,
-                            ),
-                        )
-                    }
-                    it.type.forEach {
-                        typeList.add(
-                            ResourceUtil.getForeignString(
-                                requireContext(),
-                                viewModel.userLanguage.value,
-                                it,
-                            ),
-                        )
-                    }
-
-                    it.symptomContent.apply {
-                        val content =
-                            ResourceUtil.getForeignString(
-                                requireContext(),
-                                viewModel.userLanguage.value,
-                                this,
-                            )
-                        currentSymptomBinding.tvSymptomContent.text = content
-                    }
-
-                    currentSymptomBinding.tvOtherSymptom.text = otherList.joinToString(", ")
-                    currentSymptomBinding.tvSymptomWorseList.text = worstList.joinToString(", ")
-                    currentSymptomBinding.tvSymptomType.text = typeList.joinToString(", ")
-                }
-            }
-        }
-        lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
                 with(binding.layoutUserHealthInfo) {
                     tvDisease.text =
-                        if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(",")
+                        if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(",")
                     tvFamilyDisease.text =
                         if (it.familyDiseaseList.isEmpty()) {
-                            "해당 없음"
+                            getString(R.string.not_applicable)
                         } else {
                             it.familyDiseaseList.joinToString(
                                 ",",
                             )
                         }
                     tvDrug.text =
-                        if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(",")
+                        if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(",")
                     tvAllergy.text =
-                        if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(",")
+                        if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(",")
                 }
             }
         }
@@ -173,17 +135,19 @@ class DentalSymptomFragment :
         binding.btnBack.visibility = View.GONE
         binding.btnClose.setOnClickListener { navController.popBackStack() }
 
-        lifecycleScope.launch {
-            viewModel.dentalResponse.collectLatest {
-                binding.layoutAdditionalInput.tvInput.text = it.additionalInput
-            }
-        }
         val sideEffectBindingToUser =
             LayoutDentalSideEffectInputBinding.inflate(inflater, contentContainer2, false)
 
-        currentSymptomBinding.dentalVM = viewModel
-        currentSymptomBinding.useDentalVM = true
-        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+        sideEffectBindingToUser.useDentalVM = true
+        sideEffectBindingToUser.dentalVM = viewModel
+        sideEffectBindingToUser.lifecycleOwner = viewLifecycleOwner
+
+        lifecycleScope.launch {
+            viewModel.dentalResponse.collectLatest {
+                binding.layoutAdditionalInput.tvInput.text = it.additionalInput
+                // sideEffectBindingToUser.tvSideEffect.text = it.sideEffect
+            }
+        }
 
         contentContainer.addView(currentSymptomBinding.root)
         contentContainer2.addView(sideEffectBindingToUser.root)

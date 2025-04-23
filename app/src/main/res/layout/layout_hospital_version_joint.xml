@@ -51,7 +51,7 @@
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/layout_joint_history"/>
+            layout="@layout/layout_joint_history_hos_version"/>
 
         <include
             android:id="@+id/additional_input"

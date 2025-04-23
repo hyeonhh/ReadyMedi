@@ -20,6 +20,7 @@ object ResourceUtil {
         lang: String,
         resourceName: String,
     ): String {
+        if (resourceName == "") return ""
         val configuration = Configuration(context.resources.configuration)
         val locale =
             when (lang) {
@@ -38,9 +39,10 @@ object ResourceUtil {
         context: Context,
         resourceName: String,
     ): String {
+        if (resourceName == "") return ""
+
         val configuration = Configuration(context.resources.configuration)
         configuration.setLocale(Locale.KOREAN)
-
         // 한국어 설정이 적용된 새 Context 생성
         val koreanContext = context.createConfigurationContext(configuration)
 

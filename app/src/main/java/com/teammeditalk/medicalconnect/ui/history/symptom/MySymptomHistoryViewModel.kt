@@ -88,7 +88,7 @@ class MySymptomHistoryViewModel
                                     SymptomHistory(
                                         hospitalType = "치과",
                                         symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
-                                        symptomTitle = result.symptomTitle,
+                                        symptomTitle = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomTitle),
                                         timeStamp = result.timeStamp,
                                     ),
                                 )
@@ -101,7 +101,7 @@ class MySymptomHistoryViewModel
                                     SymptomHistory(
                                         hospitalType = "일반",
                                         symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
-                                        symptomTitle = result.symptomTitle,
+                                        symptomTitle = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomTitle),
                                         timeStamp = result.timeStamp,
                                     ),
                                 )
@@ -114,7 +114,7 @@ class MySymptomHistoryViewModel
                                     SymptomHistory(
                                         hospitalType = "정형",
                                         symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
-                                        symptomTitle = result.symptomTitle,
+                                        symptomTitle = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomTitle),
                                         timeStamp = result.timeStamp,
                                     ),
                                 )
@@ -127,7 +127,7 @@ class MySymptomHistoryViewModel
                                     SymptomHistory(
                                         hospitalType = "산부",
                                         symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
-                                        symptomTitle = result.symptomTitle,
+                                        symptomTitle = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomTitle),
                                         timeStamp = result.timeStamp,
                                     ),
                                 )
@@ -140,7 +140,7 @@ class MySymptomHistoryViewModel
                                     SymptomHistory(
                                         hospitalType = "내과",
                                         symptomContent = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomContent),
-                                        symptomTitle = result.symptomTitle,
+                                        symptomTitle = ResourceUtil.getForeignString(context, _userLanguage.value, result.symptomTitle),
                                         timeStamp = result.timeStamp,
                                     ),
                                 )

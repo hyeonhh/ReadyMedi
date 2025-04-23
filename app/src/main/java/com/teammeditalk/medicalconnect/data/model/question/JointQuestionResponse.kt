@@ -14,5 +14,6 @@ data class JointQuestionResponse(
     val otherSymptom: List<String> = emptyList(),
     val additionalInput: String = "",
     val injuryHistory: String = "",
+    val injuryHistoryByKorean: String = "",
     val additionalInputByKorean: String = "",
 )

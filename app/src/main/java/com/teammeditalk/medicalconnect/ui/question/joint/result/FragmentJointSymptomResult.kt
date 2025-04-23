@@ -28,13 +28,17 @@ class FragmentJointSymptomResult :
 
         val jointCurrentSymptomBinding = LayoutJointCurrentSymptomBinding.inflate(inflater, currentSymptomFrame, false)
 
-        val history = LayoutJointHistoryBinding.inflate(inflater, binding.layoutFrame2, false)
+        val historyBinding = LayoutJointHistoryBinding.inflate(inflater, binding.layoutFrame2, false)
 
         jointCurrentSymptomBinding.viewModel = viewModel
         jointCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
 
         currentSymptomFrame.addView(jointCurrentSymptomBinding.root)
-        binding.layoutFrame2.addView(history.root)
+
+        historyBinding.viewModel = viewModel
+        historyBinding.lifecycleOwner = viewLifecycleOwner
+
+        binding.layoutFrame2.addView(historyBinding.root)
     }
 
     private fun setHospitalVersionReport() {
@@ -52,6 +56,9 @@ class FragmentJointSymptomResult :
 
         hospitalReportBinding.symptom.viewModel = viewModel
         hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
+
+        hospitalReportBinding.injury.viewModel = viewModel
+        hospitalReportBinding.injury.lifecycleOwner = viewLifecycleOwner
 
         hospitalContentContainer.addView(hospitalReportBinding.root)
     }
@@ -71,11 +78,23 @@ class FragmentJointSymptomResult :
         contentContainer3.addView(goToMapBinding.root)
     }
 
+    private fun setHealthInfo() {
+        binding.layoutUserHealthInfo.viewModel = viewModel
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
+    }
+
+    private fun setAdditionalInput() {
+        binding.layoutAdditionalInput.viewModel = viewModel
+        binding.layoutAdditionalInput.lifecycleOwner = viewLifecycleOwner
+    }
+
     override fun onBindLayout() {
         super.onBindLayout()
 
         inflater = LayoutInflater.from(requireContext())
         setCurrentSymptomBinding()
+        setHealthInfo()
+        setAdditionalInput()
 
         setHospitalVersionReport()
         setMapDataBinding()

@@ -586,5 +586,6 @@
     <string name="additional_symptom_joints">손가락 마디 굵어짐</string>
     <string name="symptom_menorrhagia">월경 과다</string>
     <string name="symptom_anal_pain">항문 통증</string>
+    <string name="not_applicable">해당 없음</string>
 
 </resources>

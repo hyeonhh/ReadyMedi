@@ -9,9 +9,9 @@ import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
-import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionQuestionResultBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionJointBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutJointCurrentSymptomBinding
+import com.teammeditalk.medicalconnect.databinding.LayoutJointHistoryBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -24,57 +24,82 @@ class JointSymptomFragment :
     private val viewModel: JointSymptomViewModel by viewModels()
     private val navController by lazy { findNavController() }
     private lateinit var inflater: LayoutInflater
+    private lateinit var hospitalReportBinding: LayoutHospitalVersionJointBinding
+
+    private fun setInjuryHistoryBinding() {
+        val frame = binding.layoutFrame2
+
+        val injuryHistoryBinding = LayoutJointHistoryBinding.inflate(inflater, frame, false)
+
+        injuryHistoryBinding.jointVM = viewModel
+        injuryHistoryBinding.lifecycleOwner = viewLifecycleOwner
+        injuryHistoryBinding.useJointVM = true
+
+        frame.addView(injuryHistoryBinding.root)
+    }
 
     private fun setCurrentSymptomBinding() {
         // 사용자용 현재 증상 레이아웃 연결하기
         val currentSymptomFrame = binding.layoutFrame
 
         val jointCurrentSymptomBinding = LayoutJointCurrentSymptomBinding.inflate(inflater, currentSymptomFrame, false)
-        currentSymptomFrame.addView(jointCurrentSymptomBinding.root)
 
         jointCurrentSymptomBinding.useJointVM = true
         jointCurrentSymptomBinding.jointVM = viewModel
         jointCurrentSymptomBinding.lifecycleOwner = viewLifecycleOwner
-    }
-
-    private fun setHospitalVersionReport() {
-        val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
-        hospitalContentContainer.addView(hospitalReportBinding.root)
+        currentSymptomFrame.addView(jointCurrentSymptomBinding.root)
     }
 
     private fun setCurrentSymptomToHospital() {
         // 의료진용 보고서
         val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
+        hospitalReportBinding = LayoutHospitalVersionJointBinding.inflate(inflater, hospitalContentContainer, false)
 
-        val currentSymptomContainer = hospitalReportBinding.layoutFrame
-
-        val currentSymptomBinding = LayoutJointCurrentSymptomBinding.inflate(inflater, currentSymptomContainer, false)
+        hospitalReportBinding.currentSymptom.jointVM = viewModel
+        hospitalReportBinding.currentSymptom.useJointVM = true
+        hospitalReportBinding.currentSymptom.lifecycleOwner = viewLifecycleOwner
 
         // todo : additional_input & 공툥 요소 데이터 바인딩 처리하기
-        currentSymptomBinding.jointVM = viewModel
-        currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
-        currentSymptomContainer.addView(currentSymptomBinding.root)
 
-        hospitalReportBinding.symptom.jointVM = viewModel
         hospitalReportBinding.familyDiseaseAndDrug.jointVM = viewModel
-
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
         hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
+
+        hospitalReportBinding.injury.useJointVM = true
+        hospitalReportBinding.injury.jointVM = viewModel
+        hospitalReportBinding.injury.lifecycleOwner = viewLifecycleOwner
 
         // todo : 뷰모델 연결하기
 
         lifecycleScope.launch {
             viewModel.jointResponse.collectLatest {
-                hospitalReportBinding.additionalInput.tvInput.text = it.additionalInput
+                hospitalReportBinding.additionalInput.tvInput.text = it.additionalInputByKorean
+                binding.layoutAdditionalInput.tvInput.text = it.additionalInput
             }
         }
-//        hospitalReportBinding.additionalInput.jointVM = viewModel
-//        hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
+
+        lifecycleScope.launch {
+            viewModel.symptomContent.collectLatest {
+                hospitalReportBinding.symptom.txtSymptom.text = it
+            }
+        }
 
         hospitalContentContainer.addView(hospitalReportBinding.root)
+    }
+
+    private fun setUserHealthInfoHos() {
+        // 건강 정보 연결
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) getString(R.string.not_applicable) else it.familyDiseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =
+                    if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text =
+                    if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text =
+                    if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
+            }
+        }
     }
 
     private fun setMapDataBinding() {
@@ -105,16 +130,34 @@ class JointSymptomFragment :
         }
     }
 
+    private fun setHealthInfo() {
+        lifecycleScope.launch {
+            viewModel.userHealthInfo.collectLatest {
+                binding.layoutUserHealthInfo.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) "해당 없음" else it.familyDiseaseList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvDisease.text =
+                    if (it.diseaseList.isEmpty()) "해당 없음" else it.diseaseList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvDrug.text =
+                    if (it.drugList.isEmpty()) "해당 없음" else it.drugList.joinToString(", ")
+                binding.layoutUserHealthInfo.tvAllergy.text =
+                    if (it.allergyList.isEmpty()) "해당 없음" else it.allergyList.joinToString(", ")
+            }
+        }
+    }
+
     override fun onBindLayout() {
         super.onBindLayout()
 
         viewModel.getSymptom()
         inflater = LayoutInflater.from(requireContext())
+
+        setInjuryHistoryBinding()
         setCurrentSymptomBinding()
-        setHospitalVersionReport()
         setCurrentSymptomToHospital()
         setMapDataBinding()
         onSwitchClick()
+        setHealthInfo()
+        setUserHealthInfoHos()
 
         binding.btnBack.visibility = View.GONE
         binding.btnClose.setOnClickListener { navController.popBackStack() }

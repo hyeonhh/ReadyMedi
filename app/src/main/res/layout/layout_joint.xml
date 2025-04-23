@@ -49,12 +49,14 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_knee_pain"
+            app:titleTag="symptom_knee_pain"
             android:tag="symptom_knee_pain_desc"
             app:categoryContent="@string/symptom_knee_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
+            app:titleTag="symptom_shoulder_pain"
             app:categoryTitle="@string/symptom_shoulder_pain"
             android:tag="symptom_shoulder_pain_desc"
             app:categoryContent="@string/symptom_shoulder_pain_desc"
@@ -63,6 +65,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_back_pain"
+            app:titleTag="symptom_back_pain"
             android:tag="symptom_back_pain_desc"
             app:categoryContent="@string/symptom_back_pain_desc"
             android:layout_width="match_parent"
@@ -70,12 +73,14 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_neck_pain"
+            app:titleTag="symptom_neck_pain"
             android:tag="symptom_neck_pain_desc"
             app:categoryContent="@string/symptom_neck_pain_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_wrist_ankle_pain"
+            app:titleTag="symptom_wrist_ankle_pain"
             android:tag="symptom_wrist_ankle_pain_desc"
             app:categoryContent="@string/symptom_wrist_ankle_pain_desc"
             android:layout_width="match_parent"

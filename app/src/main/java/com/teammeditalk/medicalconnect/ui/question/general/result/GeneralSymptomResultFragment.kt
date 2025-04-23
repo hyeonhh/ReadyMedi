@@ -3,11 +3,7 @@ package com.teammeditalk.medicalconnect.ui.question.general.result
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.mlkit.nl.translate.TranslateLanguage
-import com.google.mlkit.nl.translate.Translation
-import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
@@ -16,9 +12,6 @@ import com.teammeditalk.medicalconnect.databinding.LayoutHospitalTypeBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutHospitalVersionGeneralBinding
 import com.teammeditalk.medicalconnect.ui.question.QuestionViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class GeneralSymptomResultFragment :
@@ -27,14 +20,6 @@ class GeneralSymptomResultFragment :
     ) {
     private val viewModel: QuestionViewModel by activityViewModels()
     private lateinit var inflater: LayoutInflater
-
-    private fun setAdditionalInput() {
-        lifecycleScope.launch {
-            viewModel.additionalInput.collectLatest {
-                binding.layoutAdditionalInput.tvInput.text = it
-            }
-        }
-    }
 
     private fun setCurrentSymptomBinding() {
         // 사용자용 현재 증상 레이아웃 연결하기
@@ -80,27 +65,9 @@ class GeneralSymptomResultFragment :
         contentContainer3.addView(goToMapBinding.root)
     }
 
-    private fun showSymptomResult() {
-        lifecycleScope.launch {
-            viewModel.additionalInput.collectLatest {
-                val options =
-                    TranslatorOptions
-                        .Builder()
-                        .setSourceLanguage(TranslateLanguage.KOREAN)
-                        .setTargetLanguage(TranslateLanguage.ENGLISH)
-                        .build()
-                val koreanEnglishTranslator = Translation.getClient(options)
-
-                koreanEnglishTranslator
-                    .translate(it)
-                    .addOnSuccessListener {
-                        binding.layoutAdditionalInput.tvInput.text = it
-                    }.addOnFailureListener { exception ->
-                        exception.printStackTrace()
-                        Timber.d("Failed to translate :${exception.message}")
-                    }
-            }
-        }
+    private fun setAdditionalLayout() {
+        binding.layoutAdditionalInput.viewModel = viewModel
+        binding.layoutAdditionalInput.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun onBindLayout() {
@@ -110,25 +77,16 @@ class GeneralSymptomResultFragment :
         setCurrentSymptomBinding()
         setHospitalVersionReport()
         setMapDataBinding()
-        setAdditionalInput()
+        setAdditionalLayout()
 
-        lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
-                with(binding) {
-                    layoutUserHealthInfo.tvDrug.text = it.drugList.toString()
-                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.toString()
-                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.toString()
-                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.toString()
-                }
-            }
-        }
+        binding.layoutUserHealthInfo.viewModel = viewModel
+        binding.layoutUserHealthInfo.lifecycleOwner = viewLifecycleOwner
 
         binding.btnSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             binding.ivTooltip.visibility = View.INVISIBLE
             if (isChecked) {
                 binding.layoutHospitalVersion.visibility = View.VISIBLE
                 binding.layoutUser.visibility = View.GONE
-                showSymptomResult()
             } else {
                 binding.layoutHospitalVersion.visibility = View.GONE
                 binding.layoutUser.visibility = View.VISIBLE

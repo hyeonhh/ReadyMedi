@@ -9,6 +9,7 @@
 
     <declare-styleable name="SelectCategory">
         <attr name="isCategorySelected" format="boolean"/>
+        <attr name="titleTag" format="string"/>
         <attr name="categoryTitle" format="string"/>
         <attr name="categoryContent" format="string"/>
         <attr name="categoryStrokeColor" format="color"/>

@@ -14,8 +14,11 @@ import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -35,6 +38,39 @@ class DentalSymptomViewModel
             getUserLanguage()
             getSymptom()
         }
+
+        private val _symptomTitle = MutableStateFlow("")
+        val symptomTitle =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getForeignString(context, _userLanguage.value, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    initialValue = "",
+                    started = SharingStarted.Lazily,
+                )
+
+        val symptomTitleByKorean =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getKoreanString(context, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    initialValue = "",
+                    started = SharingStarted.Lazily,
+                )
+
+        private val _symptomContent = MutableStateFlow("")
+        val symptomContent = _symptomContent.asStateFlow()
+
+        private val _typeList = MutableStateFlow("")
+        val typeList = _typeList.asStateFlow()
+
+        private val _otherList = MutableStateFlow("")
+        val otherList = _otherList.asStateFlow()
+
+        private val _worseList = MutableStateFlow("")
+        val worseList = _worseList.asStateFlow()
 
         private val _typeListByKorean = MutableStateFlow("")
         private val _symptomByKorean = MutableStateFlow("")
@@ -100,22 +136,40 @@ class DentalSymptomViewModel
                                 val typeList = mutableListOf<String>()
                                 val worseList = mutableListOf<String>()
 
+                                val typeListByKorean = mutableListOf<String>()
+                                val otherListByKorean = mutableListOf<String>()
+                                val worseListByKorean = mutableListOf<String>()
+
                                 _dentalResponse.value = result
+
+                                _symptomTitle.value = _dentalResponse.value.symptomTitle
+
+                                _symptomContent.value =
+                                    ResourceUtil.getForeignString(context, _userLanguage.value, _dentalResponse.value.symptomContent)
+
                                 _symptomByKorean.value = ResourceUtil.getKoreanString(context, _dentalResponse.value.symptomContent)
+
                                 _dentalResponse.value.otherSymptom.forEach {
+                                    otherListByKorean.add(ResourceUtil.getKoreanString(context, it))
                                     otherList.add(ResourceUtil.getKoreanString(context, it))
                                 }
 
                                 _dentalResponse.value.worseList.forEach {
+                                    worseListByKorean.add(ResourceUtil.getKoreanString(context, it))
                                     worseList.add(ResourceUtil.getKoreanString(context, it))
                                 }
                                 _dentalResponse.value.type.forEach {
-                                    typeList.add(ResourceUtil.getKoreanString(context, it))
+                                    typeList.add(ResourceUtil.getForeignString(context, _userLanguage.value, it))
+                                    typeListByKorean.add(ResourceUtil.getKoreanString(context, it))
                                 }
 
-                                _otherListByKorean.value = otherList.joinToString(", ")
-                                _worseListByKorean.value = worseList.joinToString(", ")
-                                _typeListByKorean.value = typeList.joinToString(", ")
+                                _otherListByKorean.value = otherListByKorean.joinToString(", ")
+                                _worseListByKorean.value = worseListByKorean.joinToString(", ")
+                                _typeListByKorean.value = typeListByKorean.joinToString(", ")
+
+                                _otherList.value = otherList.joinToString(", ")
+                                _worseList.value = worseList.joinToString(", ")
+                                _typeList.value = typeList.joinToString(", ")
                             }
                         }.addOnFailureListener {
                             it.printStackTrace()

@@ -5,12 +5,10 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.mlkit.nl.translate.TranslateLanguage
-import com.google.mlkit.nl.translate.Translation
-import com.google.mlkit.nl.translate.TranslatorOptions
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.HosCurrentSymptomDentalBinding
+import com.teammeditalk.medicalconnect.databinding.HosVersionSideEffectInputBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutCommonQuestionResultBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutDentalCurrentSymptomBinding
 import com.teammeditalk.medicalconnect.databinding.LayoutDentalSideEffectInputBinding
@@ -31,28 +29,7 @@ class DentalSymptomResultFragment :
     private lateinit var inflater: LayoutInflater
     private val viewModel: QuestionViewModel by activityViewModels()
 
-    private fun showSymptomResult() {
-        lifecycleScope.launch {
-            viewModel.additionalInput.collectLatest {
-                val options =
-                    TranslatorOptions
-                        .Builder()
-                        .setSourceLanguage(TranslateLanguage.KOREAN)
-                        .setTargetLanguage(TranslateLanguage.ENGLISH)
-                        .build()
-                val koreanEnglishTranslator = Translation.getClient(options)
-
-                koreanEnglishTranslator
-                    .translate(it)
-                    .addOnSuccessListener {
-                        binding.layoutAdditionalInput.tvInput.text = it
-                    }.addOnFailureListener { exception ->
-                        exception.printStackTrace()
-                        Timber.d("Failed to translate :${exception.message}")
-                    }
-            }
-        }
-
+    private fun setUserHealthInfo() {
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
                 with(binding) {
@@ -80,14 +57,9 @@ class DentalSymptomResultFragment :
         val sideEffectBindingToUser = LayoutDentalSideEffectInputBinding.inflate(inflater, sideEffectFrame, false)
         sideEffectFrame.addView(sideEffectBindingToUser.root)
 
+        sideEffectBindingToUser.useDentalVM = false
         sideEffectBindingToUser.viewModel = viewModel
         sideEffectBindingToUser.lifecycleOwner = viewLifecycleOwner
-    }
-
-    private fun setHospitalVersionReport() {
-        val hospitalContentContainer = binding.layoutHospitalVersion
-        val hospitalReportBinding = LayoutHospitalVersionQuestionResultBinding.inflate(inflater, hospitalContentContainer, false)
-        hospitalContentContainer.addView(hospitalReportBinding.root)
     }
 
     private fun setCurrentSymptomToHospital() {
@@ -99,19 +71,23 @@ class DentalSymptomResultFragment :
         val sideEffectContainer = hospitalReportBinding.layoutFrame2
 
         val currentSymptomBinding = HosCurrentSymptomDentalBinding.inflate(inflater, currentSymptomContainer, false)
-        val sideEffectBinding = LayoutDentalSideEffectInputBinding.inflate(inflater, sideEffectContainer, false)
+        val sideEffectBinding = HosVersionSideEffectInputBinding.inflate(inflater, sideEffectContainer, false)
 
         currentSymptomBinding.viewModel = viewModel
         currentSymptomBinding.lifecycleOwner = viewLifecycleOwner
+
+        sideEffectBinding.viewModel = viewModel
+        sideEffectBinding.lifecycleOwner = viewLifecycleOwner
+
         currentSymptomContainer.addView(currentSymptomBinding.root)
         sideEffectContainer.addView(sideEffectBinding.root)
 
         hospitalReportBinding.symptom.viewModel = viewModel
+        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
+
         hospitalReportBinding.familyDiseaseAndDrug.viewModel = viewModel
 
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
         hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
 
         hospitalReportBinding.additionalInput.viewModel = viewModel
         hospitalReportBinding.additionalInput.lifecycleOwner = viewLifecycleOwner
@@ -136,7 +112,6 @@ class DentalSymptomResultFragment :
 
     override fun onBindLayout() {
         super.onBindLayout()
-        showSymptomResult()
 
         inflater = LayoutInflater.from(requireContext())
 
@@ -148,11 +123,10 @@ class DentalSymptomResultFragment :
                 }
             }
         }
-
+        setUserHealthInfo()
         setCurrentSymptomBinding()
         setSideEffectBinding()
 
-        setHospitalVersionReport()
         setCurrentSymptomToHospital()
         setMapDataBinding()
 

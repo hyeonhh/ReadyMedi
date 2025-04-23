@@ -49,6 +49,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_breast_mass"
+            app:titleTag="symptom_breast_mass"
             android:tag="symptom_breast_mass_desc"
             app:categoryContent="@string/symptom_breast_mass_desc"
             android:layout_width="match_parent"
@@ -56,6 +57,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_breast_pain"
+            app:titleTag="symptom_breast_pain"
             android:tag="symptom_breast_pain_desc"
             app:categoryContent="@string/symptom_breast_pain_desc"
             android:layout_width="match_parent"
@@ -63,6 +65,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_nipple_discharge"
+            app:titleTag="symptom_nipple_discharge"
             android:tag="symptom_nipple_discharge_desc"
             app:categoryContent="@string/symptom_nipple_discharge_desc"
             android:layout_width="match_parent"

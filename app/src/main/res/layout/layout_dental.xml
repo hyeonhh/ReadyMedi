@@ -49,6 +49,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_tooth"
+            app:titleTag="symptom_tooth"
             android:tag="symptom_tooth_desc"
             app:categoryContent="@string/symptom_tooth_desc"
             android:layout_width="match_parent"
@@ -56,6 +57,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_cavity"
+            app:titleTag="symptom_cavity"
             android:tag="symptom_cavity_desc"
             app:categoryContent="@string/symptom_cavity_desc"
             android:layout_width="match_parent"
@@ -63,6 +65,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_tooth_fracture"
+            app:titleTag="symptom_tooth_fracture"
             android:tag="symptom_tooth_fracture_desc"
             app:categoryContent="@string/symptom_tooth_fracture_desc"
             android:layout_width="match_parent"
@@ -70,6 +73,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_gum"
+            app:titleTag="symptom_gum"
             android:tag="symptom_gum_desc"
             app:categoryContent="@string/symptom_gum_desc"
             android:layout_width="match_parent"
@@ -77,6 +81,7 @@
 
         <com.teammeditalk.medicalconnect.ui.util.SelectCategory
             app:categoryTitle="@string/symptom_jaw_joint"
+            app:titleTag="symptom_jaw_joint"
             android:tag="symptom_jaw_joint_desc"
             app:categoryContent="@string/symptom_jaw_joint_desc"
             android:layout_width="match_parent"

@@ -14,8 +14,11 @@ import com.teammeditalk.medicalconnect.ui.util.ResourceUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -27,6 +30,27 @@ class WomenSymptomViewModel
         savedStateHandle: SavedStateHandle,
         @ApplicationContext val context: Context,
     ) : ViewModel() {
+        private val _symptomTitle = MutableStateFlow("")
+        val symptomTitle =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getForeignString(context, _userLanguage.value, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    initialValue = "",
+                    started = SharingStarted.Lazily,
+                )
+
+        val symptomTitleByKorean =
+            _symptomTitle
+                .map {
+                    ResourceUtil.getKoreanString(context, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    initialValue = "",
+                    started = SharingStarted.Lazily,
+                )
+
         private val _pregnancyCheck = MutableStateFlow("")
         val pregnancyCheck = _pregnancyCheck.asStateFlow()
 
@@ -61,10 +85,25 @@ class WomenSymptomViewModel
         val womenResponse = _womenResponse.asStateFlow()
 
         private val _symptomContent = MutableStateFlow("")
-        val symptomContent = _symptomContent.asStateFlow()
+        val symptomContent =
+            _symptomContent
+                .map {
+                    ResourceUtil.getForeignString(context, _userLanguage.value, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    initialValue = "",
+                    started = SharingStarted.Lazily,
+                )
 
-        private val _symptomContentByKorean = MutableStateFlow("")
-        val symptomContentByKorean = _symptomContentByKorean.asStateFlow()
+        val symptomContentByKorean =
+            _symptomContent
+                .map {
+                    ResourceUtil.getKoreanString(context, it)
+                }.stateIn(
+                    scope = viewModelScope,
+                    initialValue = "",
+                    started = SharingStarted.Lazily,
+                )
 
         private val timeStamp: String =
             savedStateHandle.get<String>("timeStamp")
@@ -124,9 +163,8 @@ class WomenSymptomViewModel
                     if (result != null) {
                         _womenResponse.value = result
 
-                        _symptomContent.value =
-                            ResourceUtil.getForeignString(context, _userLanguage.value, _womenResponse.value.symptomContent)
-                        _symptomContentByKorean.value = ResourceUtil.getKoreanString(context, _womenResponse.value.symptomContent)
+                        _symptomTitle.value = _womenResponse.value.symptomTitle
+                        _symptomContent.value = _womenResponse.value.symptomContent
 
                         val typeList = mutableListOf<String>()
                         val otherList = mutableListOf<String>()
@@ -136,7 +174,6 @@ class WomenSymptomViewModel
                         val otherListByKorean = mutableListOf<String>()
                         val worseListByKorean = mutableListOf<String>()
 
-                        _symptomByKorean.value = ResourceUtil.getKoreanString(context, _womenResponse.value.symptomContent)
                         _womenResponse.value.type.forEach {
                             typeList.add(ResourceUtil.getForeignString(context, _userLanguage.value, it))
                             typeListByKorean.add(ResourceUtil.getKoreanString(context, it))

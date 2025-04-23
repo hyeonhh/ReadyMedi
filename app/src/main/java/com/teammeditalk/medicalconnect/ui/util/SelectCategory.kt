@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.databinding.ItemSymptomBinding
+import org.apache.commons.compress.harmony.archive.internal.nls.Messages.getString
 import java.util.Locale
 
 class SelectCategory(
@@ -18,6 +19,8 @@ class SelectCategory(
     private lateinit var binding: ItemSymptomBinding
     private lateinit var tvTitle: TextView
     private lateinit var tvContent: TextView
+
+    private lateinit var titleTag: String
 
     init {
         initView()
@@ -41,6 +44,8 @@ class SelectCategory(
         // 이 Context로 한국어 문자열 가져오기
         return koreanContext.getString(getResourceIdByName(resourceName))
     }
+
+    fun getTitleId(): String = titleTag
 
     fun getContent(): Pair<String, String> =
         tvTitle.text.toString() to
@@ -66,6 +71,7 @@ class SelectCategory(
                     isSelected = getBoolean(R.styleable.SelectCategory_isCategorySelected, false)
                     tvTitle.text = getString(R.styleable.SelectCategory_categoryTitle) ?: ""
                     tvContent.text = getString(R.styleable.SelectCategory_categoryContent) ?: ""
+                    titleTag = getString(R.styleable.SelectCategory_titleTag) ?: ""
                 } finally {
                     recycle()
                 }

@@ -41,14 +41,6 @@ class GeneralSymptomFragment :
         val hospitalContentContainer = binding.layoutHospitalVersion
         hospitalReportBinding = LayoutHospitalVersionGeneralBinding.inflate(inflater, hospitalContentContainer, false)
 
-        hospitalReportBinding.symptom.useGeneralVM = true
-        hospitalReportBinding.symptom.lifecycleOwner = viewLifecycleOwner
-
-        hospitalReportBinding.symptom.generalVM = viewModel
-        hospitalReportBinding.familyDiseaseAndDrug.generalVM = viewModel
-
-        hospitalReportBinding.familyDiseaseAndDrug.lifecycleOwner = viewLifecycleOwner
-
         hospitalReportBinding.currentSymptom.useGeneralVM = true
         hospitalReportBinding.currentSymptom.generalVM = viewModel
         hospitalReportBinding.currentSymptom.lifecycleOwner = viewLifecycleOwner
@@ -57,23 +49,27 @@ class GeneralSymptomFragment :
         lifecycleScope.launch {
             viewModel.generalResponse.collectLatest {
                 hospitalReportBinding.additionalInput.tvInput.text = it.additionalInputByKorean
+                binding.layoutAdditionalInput.tvInput.text = it.additionalInput
             }
         }
 
         lifecycleScope.launch {
-            viewModel.symptomByKorean.collectLatest {
+            viewModel.symptomContentByKorean.collectLatest {
                 hospitalReportBinding.symptom.txtSymptom.text = it
             }
         }
 
+        // 건강 정보 연결
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
-                with(binding) {
-                    hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text = it.drugList.joinToString(", ")
-                    hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text = it.diseaseList.joinToString(", ")
-                    hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text = it.familyDiseaseList.joinToString(", ")
-                    hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text = it.allergyList.joinToString(", ")
-                }
+                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) getString(R.string.not_applicable) else it.familyDiseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =
+                    if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text =
+                    if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text =
+                    if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
             }
         }
 
@@ -112,20 +108,37 @@ class GeneralSymptomFragment :
 
         viewModel.getSymptom()
         inflater = LayoutInflater.from(requireContext())
+
         setCurrentSymptomBinding()
         setHospitalVersionReport()
-        // setCurrentSymptomToHospital()
         setMapDataBinding()
 
         // 사용자 개인 정보
         lifecycleScope.launch {
             viewModel.userHealthInfo.collectLatest {
-                with(binding) {
-                    layoutUserHealthInfo.tvDrug.text = it.drugList.joinToString(", ")
-                    layoutUserHealthInfo.tvDisease.text = it.diseaseList.joinToString(", ")
-                    layoutUserHealthInfo.tvFamilyDisease.text = it.familyDiseaseList.joinToString(", ")
-                    layoutUserHealthInfo.tvAllergy.text = it.allergyList.joinToString(", ")
-                }
+                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) getString(R.string.not_applicable) else it.familyDiseaseList.joinToString(", ")
+
+                binding.layoutUserHealthInfo.tvFamilyDisease.text =
+                    if (it.familyDiseaseList.isEmpty()) getString(R.string.not_applicable) else it.familyDiseaseList.joinToString(", ")
+
+                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =
+                    if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+
+                binding.layoutUserHealthInfo.tvDisease.text =
+                    if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+
+                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text =
+                    if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+
+                binding.layoutUserHealthInfo.tvDrug.text =
+                    if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+
+                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text =
+                    if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
+
+                binding.layoutUserHealthInfo.tvAllergy.text =
+                    if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
             }
         }
 

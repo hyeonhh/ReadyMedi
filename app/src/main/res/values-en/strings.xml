@@ -575,5 +575,7 @@
     <string name="additional_symptom_joints">Swollen Finger Joints</string>
     <string name="symptom_menorrhagia">Heavy menstruation</string>
     <string name="symptom_anal_pain">Anal pain</string>
+    <string name="not_applicable">Not Applicable</string>
+
 
 </resources>

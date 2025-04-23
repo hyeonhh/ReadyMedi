@@ -60,7 +60,7 @@
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{useJointVM ? jointVM.jointResponse.symptomTitle: viewModel.selectedSymptom.first}"
+            android:text="@{useJointVM ? jointVM.symptomTitle: viewModel.symptomTitle}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -83,7 +83,7 @@
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{viewModel.selectedSymptom.second}"
+            android:text="@{useJointVM ? jointVM.symptomContent: viewModel.selectedSymptom.second}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:text="@{useJointVM ? jointVM.jointResponse.type.toString() : viewModel.selectedType}"
+            android:text="@{useJointVM ? jointVM.typeList : viewModel.selectedType}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -198,7 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:text="@{useJointVM ? jointVM.jointResponse.worseList.toString(): viewModel.selectedWorseList}"
+            android:text="@{useJointVM ? jointVM.worseList: viewModel.selectedWorseList}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView40" />
@@ -221,7 +221,7 @@
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{useJointVM ? jointVM.jointResponse.otherSymptom.toString(): viewModel.selectedOtherList}"
+            android:text="@{useJointVM ? jointVM.otherList: viewModel.selectedOtherList}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
