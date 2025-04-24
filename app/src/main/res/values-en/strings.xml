@@ -485,7 +485,7 @@
 
     <!-- Map Screen -->
     <string name="is_open">Open Now</string>
-    <string name="foreign_language_available">Foreign Languages Available</string>
+    <string name="foreign_language_available">Lang Avail</string>
 
     <!-- Loading Screen -->
     <string name="creating_report">Creating symptom report</string>

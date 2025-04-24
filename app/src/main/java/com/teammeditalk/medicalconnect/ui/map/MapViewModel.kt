@@ -24,6 +24,11 @@ class MapViewModel
         private val locationService: LocationService,
         private val foreignLanguageService: ForeignLanguageService,
     ) : ViewModel() {
+        private val _isHospitalSelected = MutableStateFlow(false)
+        val isHospitalSelected = _isHospitalSelected.asStateFlow()
+        private val _isPharSelected = MutableStateFlow(false)
+        val isPharSelected = _isPharSelected.asStateFlow()
+
         private val _langPharmacyList = MutableStateFlow(listOf<LangAvailablePharmacy>())
         val langPharmacyList = _langPharmacyList.asStateFlow()
 
@@ -35,6 +40,14 @@ class MapViewModel
 
         init {
             getGangNamForeignAvailableList()
+        }
+
+        fun setHospitalSelected(isSelected: Boolean) {
+            _isHospitalSelected.value = isSelected
+        }
+
+        fun setPharSelected(isSelected: Boolean) {
+            _isPharSelected.value = isSelected
         }
 
         // 외국어 가능 약국 리스트

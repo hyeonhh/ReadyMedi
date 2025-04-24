@@ -8,6 +8,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.data.model.search.SearchLocationItem
 import com.teammeditalk.medicalconnect.databinding.FragmentMapBottomSheetBinding
+import timber.log.Timber
 
 class MapInfoBottomSheet(
     private val info: SearchLocationItem,
@@ -30,9 +31,16 @@ class MapInfoBottomSheet(
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
+
+        Timber.d("정보 info :$info")
         if (info.availableForeignLanguageList.isEmpty()) {
             binding.ivLangAvailable.visibility = View.GONE
         } else {
+            if (info.type == "Hospital") {
+                binding.ivLangAvailable.setImageDrawable(resources.getDrawable(R.drawable.ic_translate_badge))
+            } else {
+                binding.ivLangAvailable.setImageDrawable(resources.getDrawable(R.drawable.ic_lang_available_phar))
+            }
             View.VISIBLE
         }
 
@@ -44,12 +52,7 @@ class MapInfoBottomSheet(
         binding.tvName.text = info.name
         binding.tvForeignLanguageAvailable.text =
             if (info.availableForeignLanguageList.isNotEmpty()) {
-                info.availableForeignLanguageList
-                    .toString()
-                    .replace(
-                        ",",
-                        " ",
-                    )
+                info.availableForeignLanguageList.joinToString(", ")
             } else {
                 "없음"
             }
@@ -57,5 +60,7 @@ class MapInfoBottomSheet(
 //        binding.tvTime.text = info.time.toString()
         binding.tvCategory.text = info.categoryName.replaceBeforeLast(" ", "")
         binding.tvPhone.text = info.phone
+
+        binding.txtInfo.text = info.placeUrl
     }
 }

@@ -14,7 +14,25 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0" >
+
+
+
+    </com.kakao.vectormap.MapView>
+
+    <ViewSwitcher
+        android:id="@+id/switcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hospitalTypeDropDownMenu"
+        app:layout_constraintStart_toEndOf="@+id/hospitalTypeDropDownMenu"
+        app:layout_constraintTop_toTopOf="@+id/hospitalTypeDropDownMenu">
+
+        <include layout="@layout/btn_foreign_lang_avail_selected" />
+
+        <include layout="@layout/btn_foreign_lang_avail_unselected" />
+    </ViewSwitcher>
 
     <com.teammeditalk.medicalconnect.ui.util.HospitalTypeDropDownMenu
         android:id="@+id/hospitalTypeDropDownMenu"
@@ -27,6 +45,7 @@
 
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/btn_is_open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,20 +61,6 @@
         app:layout_constraintStart_toEndOf="@+id/hospitalTypeDropDownMenu"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/btn_lang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/rectangle_map_filter_icon"
-        android:padding="10dp"
-        android:textColor="@color/gray70"
-        android:text="@string/foreign_language_available"
-        android:textAlignment="textEnd"
-        android:textAppearance="@style/Body3_Normal"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_is_open"
-        app:layout_constraintStart_toEndOf="@+id/btn_is_open"
-        app:layout_constraintTop_toTopOf="@+id/btn_is_open" />
 
     <ImageButton
         android:id="@+id/btn_pill"
@@ -66,7 +71,7 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_pill_selector"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_lang" />
+        app:layout_constraintTop_toBottomOf="@+id/switcher" />
 
     <ImageButton
         android:id="@+id/btn_hospital"

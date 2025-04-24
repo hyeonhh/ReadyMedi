@@ -14,7 +14,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
-import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -47,8 +46,8 @@ class MapFragment :
     ) {
     private var kakaoMap: KakaoMap? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var latitude = 0.0
-    private var longitude = 0.0
+    private var latitude = 37.5557
+    private var longitude = 126.9054
     private val excelHelper by lazy { ExcelHelper(requireContext()) }
     private val viewModel: MapViewModel by viewModels()
     private var hospitalLabelList: MutableList<Label> = mutableListOf()
@@ -155,6 +154,8 @@ class MapFragment :
     ) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.switcher.displayedChild = 1
+
         when (args.category) {
             "치과" -> {
                 binding.hospitalTypeDropDownMenu.setText("치과")
@@ -186,41 +187,54 @@ class MapFragment :
                 binding.hospitalTypeDropDownMenu.setIsSelected(it.isSelected)
                 showHospitalMenu()
             }
-            btnIsOpen.setOnClickListener {
+//            btnIsOpen.setOnClickListener {
+//                it.isSelected = !it.isSelected
+//                if (it.isSelected) {
+//                    btnIsOpen.setTextColor(getColor(requireContext(), R.color.white))
+//                } else {
+//                    btnIsOpen.setTextColor(getColor(requireContext(), R.color.gray70))
+//                }
+//            }
+            binding.switcher.setOnClickListener {
                 it.isSelected = !it.isSelected
                 if (it.isSelected) {
-                    btnIsOpen.setTextColor(getColor(requireContext(), R.color.white))
-                } else {
-                    btnIsOpen.setTextColor(getColor(requireContext(), R.color.gray70))
-                }
-            }
-            btnLang.setOnClickListener {
-                it.isSelected = !it.isSelected
-                if (it.isSelected) {
-                    btnLang.setTextColor(getColor(requireContext(), R.color.white))
-
-                    lifecycleScope.launch {
-                        viewModel.pharmacyList.collectLatest {
-                            val list =
-                                it
-                                    .filter {
+                    binding.switcher.displayedChild = 0
+                    if (viewModel.isPharSelected.value) {
+                        lifecycleScope.launch {
+                            viewModel.pharmacyList.collectLatest {
+                                val list =
+                                    it.filter {
                                         it.availableForeignLanguageList.isNotEmpty()
-                                    }.apply {
-                                        Timber.d("외국어 가능 약국 :$it")
                                     }
-                            val bitmap = vectorToBitmap(R.drawable.pha_pin)
-                            removePharLabel()
-                            putLabelOnLocation(bitmap, list)
+                                val bitmap = vectorToBitmap(R.drawable.pha_pin)
+                                removePharLabel()
+                                putLabelOnLocation(bitmap, list)
+                            }
+                        }
+                    }
+                    if (viewModel.isHospitalSelected.value) {
+                        lifecycleScope.launch {
+                            // todo : 외국어 가능 병원
+                            viewModel.hospitalList.collectLatest {
+                                val list =
+                                    it.filter {
+                                        it.availableForeignLanguageList.isNotEmpty()
+                                    }
+                                val bitmap = vectorToBitmap(R.drawable.hospital_pin)
+                                removeHospitalLabel()
+                                putLabelOnLocation(bitmap, list)
+                            }
                         }
                     }
                 } else {
-                    btnLang.setTextColor(getColor(requireContext(), R.color.gray70))
+                    binding.switcher.displayedChild = 1
                     removePharLabel()
                 }
             }
 
             btnHospital.setOnClickListener {
                 it.isSelected = !it.isSelected
+                viewModel.setHospitalSelected(it.isSelected)
                 if (hospitalLabelList.isEmpty() and it.isSelected) {
                     viewModel.searchHospitalByKeyword(latitude.toString(), longitude.toString(), 1)
                     getHospitalNearByMe()
@@ -228,8 +242,10 @@ class MapFragment :
                     removeHospitalLabel()
                 }
             }
+
             btnPill.setOnClickListener {
                 it.isSelected = !it.isSelected
+                viewModel.setPharSelected(it.isSelected)
                 if (pharLabelList.isEmpty() and it.isSelected) {
                     viewModel.searchPharmacyLocation(longitude.toString(), latitude.toString(), 1)
                     getPharmacyNearByMe()
@@ -292,16 +308,17 @@ class MapFragment :
                 fusedLocationClient.lastLocation.addOnSuccessListener {
                     it?.let {
                         val currentLatLng = LatLng.from(it.latitude, it.longitude)
+
                         latitude = it.latitude
                         longitude = it.longitude
-                        viewModel.getLocation(currentLatLng.latitude, currentLatLng.longitude)
+                        viewModel.getLocation(latitude, longitude)
                         viewModel.searchHospitalByKeyword(latitude.toString(), longitude.toString(), 1)
                         lifecycleScope.launch {
                             viewModel.langPharmacyList.collect {
                                 if (it.isNotEmpty()) {
                                     viewModel.searchPharmacyLocation(
-                                        currentLatLng.longitude.toString(),
-                                        currentLatLng.latitude.toString(),
+                                        longitude.toString(),
+                                        latitude.toString(),
                                         1,
                                     )
                                 }
@@ -332,7 +349,6 @@ class MapFragment :
                                     .from(LatLng.from(it.latitude, it.longitude))
                                     .setStyles(markerStyles)
 
-                            Timber.d("latitude :${it.latitude}, longitude:${it.longitude}")
                             layer = kakaoMap?.labelManager?.layer
 
                             // LabelLayer 가져오기
