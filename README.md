@@ -1,6 +1,10 @@
 ### ReadyMedi
 - 우리나라에서 외국인들이 의료서비스를 보다 편하게 활용할 수 있도록 언어적 도움을 주는 앱
 
+### 결과물
+- 아래 사이트에서 apk를 다운로드 한 후 앱을 사용해보세요! 
+- https://github.com/hyeonhh/ReadyMedi/releases/tag/ready-medi-v1.0.0
+
 ### 사용 기술
 - 구조 : MVVM
 - 의존성 주입 : Hilt
