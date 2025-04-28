@@ -24,6 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11">
 
         <com.google.android.material.chip.Chip
+            android:tag="spine_surgery"
             android:id="@+id/chip1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip2"
+            android:tag="abdominal_surgery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -39,6 +41,7 @@
 
         <com.google.android.material.chip.Chip
         android:id="@+id/chip3"
+            android:tag="esophageal_surgery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
             style="@style/CustomChipStyle"
@@ -46,6 +49,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
+            android:tag="tonsillectomy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -53,6 +57,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
+            android:tag="endoscopic_surgery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -60,6 +65,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
+            android:tag="colon_resection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -68,6 +74,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip7"
+            android:tag="cholecystectomy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -75,6 +82,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip8"
+            android:tag="gastrectomy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"

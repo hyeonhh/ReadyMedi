@@ -116,14 +116,14 @@
 
         <TextView
             android:id="@+id/tv_drug"
-            android:textAlignment="textEnd"
             android:layout_width="0dp"
-            android:layout_marginStart="10dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="@{viewModel.userHealthInfo.drugList.toString()}"
+            android:textAlignment="textEnd"
             app:layout_constraintBottom_toBottomOf="@+id/textView25"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView24"
+            app:layout_constraintStart_toEndOf="@+id/textView25"
             app:layout_constraintTop_toTopOf="@+id/textView25"
             app:layout_constraintVertical_bias="0.0" />
 

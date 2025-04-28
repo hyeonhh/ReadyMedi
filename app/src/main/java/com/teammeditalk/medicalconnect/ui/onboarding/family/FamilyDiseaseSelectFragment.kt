@@ -28,7 +28,7 @@ class FamilyDiseaseSelectFragment :
             with(binding.chipGroup) {
                 checkedChipIds.forEach {
                     val chip = findViewById<Chip>(it)
-                    familyDiseaseList.add(chip.text.toString())
+                    familyDiseaseList.add(chip.tag.toString())
                 }
             }
 

@@ -41,7 +41,7 @@ class SelectDrugFragment :
                 chipIds = checkedChipIds
                 checkedChipIds.forEach {
                     val chip = findViewById<Chip>(it)
-                    drugList.add(chip.text.toString())
+                    drugList.add(chip.tag.toString())
                 }
             }
             if (chipIds.isEmpty()) {
@@ -49,13 +49,18 @@ class SelectDrugFragment :
                 saveDrugInfo()
                 navController.navigate(R.id.allergySelectFragment)
             } else if (
+                // 선택한 약이 있는 경우
                 binding.layoutDrugDuration.layoutDrugDuration.editText.text
                     .isEmpty() or
                 binding.layoutDrugDuration.layoutDrugInputCount.editText.text
                     .isEmpty() or
-                binding.layoutDrugStart.drugExposedDropDownMenu
-                    .getTvTitle()
-                    .isEmpty()
+                (
+                    binding.layoutDrugStart.drugExposedDropDownMenu
+                        .getTvTitle()
+                        .isEmpty()
+                        and
+                        binding.editText.text.isEmpty()
+                )
             ) {
                 binding.layoutLanguageWarn.layoutLanguageWarn.visibility = View.VISIBLE
             } else {
@@ -67,14 +72,22 @@ class SelectDrugFragment :
     }
 
     private fun saveDrugInfo() {
+        if (binding.editText.text.isNotEmpty()) {
+            selectedDate = binding.editText.text.toString()
+            viewModel.saveUserDrugStartDate(selectedDate!!)
+            viewModel.saveUserDrug(drugList)
+        } else if (binding.layoutDrugStart.drugExposedDropDownMenu
+                .getTvTitle()
+                .isNotEmpty()
+        ) {
+            selectedDate = binding.layoutDrugStart.drugExposedDropDownMenu.getTvTitle()
+            viewModel.saveUserDrugStartDate(selectedDate!!)
+            viewModel.saveUserDrug(drugList)
+        }
         val duration = binding.layoutDrugDuration.layoutDrugDuration.editText.text
         val count = binding.layoutDrugDuration.layoutDrugInputCount.editText.text
         viewModel.saveUserDrugDuration(duration.toString())
         viewModel.saveUserDrugCount(count.toString())
-        if (selectedDate != null) {
-            viewModel.saveUserDrugStartDate(selectedDate!!)
-            viewModel.saveUserDrug(drugList)
-        }
     }
 
     override fun onDateSelected(date: CalendarDay) {

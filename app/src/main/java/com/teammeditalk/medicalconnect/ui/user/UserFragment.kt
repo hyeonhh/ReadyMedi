@@ -1,6 +1,5 @@
 package com.teammeditalk.medicalconnect.ui.user
 
-import android.content.Intent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,7 +12,6 @@ import com.google.firebase.auth.auth
 import com.teammeditalk.medicalconnect.R
 import com.teammeditalk.medicalconnect.base.BaseFragment
 import com.teammeditalk.medicalconnect.databinding.FragmentUserBinding
-import com.teammeditalk.medicalconnect.ui.auth.AuthActivity
 import com.teammeditalk.medicalconnect.ui.onboarding.language.LanguageUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -113,9 +111,7 @@ class UserFragment :
             // 로그아웃
             auth.signOut()
             viewModel.deleteUserData()
-
-            val intent = Intent(context, AuthActivity::class.java)
-            startActivity(intent)
+            // todo 재로그인 시 uid 없음 -> 재 시도 시 Uid가 생김
         }
         binding.btnBack.setOnClickListener { navController.popBackStack() }
     }

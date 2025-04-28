@@ -115,7 +115,7 @@ class GeneralSymptomFragment :
 
         // 사용자 개인 정보
         lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
+            viewModel.userHealthInfoByKorean.collectLatest {
                 hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
                     if (it.familyDiseaseList.isEmpty()) getString(R.string.not_applicable) else it.familyDiseaseList.joinToString(", ")
 

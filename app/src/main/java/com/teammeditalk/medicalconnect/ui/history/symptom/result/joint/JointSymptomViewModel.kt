@@ -82,8 +82,12 @@ class JointSymptomViewModel
         private val _userLanguage = MutableStateFlow("")
         val userLanguage = _userLanguage.asStateFlow()
 
+        //   유저 건강 정보
         private val _userHealthInfo = MutableStateFlow(HealthInfo())
         val userHealthInfo = _userHealthInfo.asStateFlow()
+
+        private val _userHealthInfoByKorean = MutableStateFlow(HealthInfo())
+        val userHealthInfoByKorean = _userHealthInfoByKorean.asStateFlow()
 
         // 언어 불러오기
         private fun getUserLanguage() {
@@ -95,17 +99,108 @@ class JointSymptomViewModel
         }
 
         private fun getUserHealthInfo() {
-            // 로컬에 저장된 내용 불러오기
             viewModelScope.launch {
                 context.userHealthPreferencesStore.data.collectLatest {
+                    Timber.d("건강 데이터 :$it")
+                    val diseaseList = mutableListOf<String>()
+                    val familyDiseaseList = mutableListOf<String>()
+                    val allergyList = mutableListOf<String>()
+                    val drugList = mutableListOf<String>()
+
+                    val diseaseListByKorean = mutableListOf<String>()
+                    val familyDiseaseListByKorean = mutableListOf<String>()
+                    val allergyListByKorean = mutableListOf<String>()
+                    val drugListByKorean = mutableListOf<String>()
+
+                    if (it.diseaseInfoList.isNotEmpty()) {
+                        it.diseaseInfoList.forEach {
+                            diseaseList.add(
+                                ResourceUtil.getForeignString(
+                                    context,
+                                    _userLanguage.value,
+                                    it,
+                                ),
+                            )
+                            diseaseListByKorean.add(
+                                ResourceUtil.getKoreanString(
+                                    context,
+                                    it,
+                                ),
+                            )
+                        }
+                    }
+                    if (it.familyDiseaseList.isNotEmpty()) {
+                        it.familyDiseaseList.forEach {
+                            familyDiseaseList.add(
+                                ResourceUtil.getForeignString(
+                                    context,
+                                    _userLanguage.value,
+                                    it,
+                                ),
+                            )
+                            familyDiseaseListByKorean.add(
+                                ResourceUtil.getKoreanString(
+                                    context,
+                                    it,
+                                ),
+                            )
+                        }
+                    }
+
+                    if (it.allergyInfoList.isNotEmpty()) {
+                        it.allergyInfoList.forEach {
+                            allergyList.add(
+                                ResourceUtil.getForeignString(
+                                    context,
+                                    _userLanguage.value,
+                                    it,
+                                ),
+                            )
+                            allergyListByKorean.add(
+                                ResourceUtil.getKoreanString(
+                                    context,
+                                    it,
+                                ),
+                            )
+                        }
+                    }
+
+                    if (it.drugInfoList.isNotEmpty()) {
+                        it.drugInfoList.forEach {
+                            drugList.add(
+                                ResourceUtil.getForeignString(
+                                    context,
+                                    _userLanguage.value,
+                                    it,
+                                ),
+                            )
+                            drugListByKorean.add(
+                                ResourceUtil.getKoreanString(
+                                    context,
+                                    it,
+                                ),
+                            )
+                        }
+                    }
                     _userHealthInfo.value =
                         _userHealthInfo.value.copy(
-                            diseaseList = it.diseaseInfoList,
-                            familyDiseaseList = it.familyDiseaseList,
-                            allergyList = it.allergyInfoList,
-                            drugList = it.drugInfoList,
+                            diseaseList = diseaseList,
+                            familyDiseaseList = familyDiseaseList,
+                            allergyList = allergyList,
+                            drugList = drugList,
                             drugTakingDuration = it.duration,
                             drugTakingCount = it.count,
+                            drugStartDate = it.startDate,
+                        )
+                    _userHealthInfoByKorean.value =
+                        _userHealthInfoByKorean.value.copy(
+                            diseaseList = diseaseListByKorean,
+                            familyDiseaseList = familyDiseaseListByKorean,
+                            allergyList = allergyListByKorean,
+                            drugList = drugListByKorean,
+                            drugTakingDuration = it.duration,
+                            drugTakingCount = it.count,
+                            drugStartDate = it.startDate,
                         )
                 }
             }

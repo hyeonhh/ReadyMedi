@@ -59,7 +59,7 @@ class DentalSymptomFragment :
 
         // 건강 정보 연결
         lifecycleScope.launch {
-            viewModel.userHealthInfo.collectLatest {
+            viewModel.userHealthInfoByKorean.collectLatest {
                 hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
                     if (it.familyDiseaseList.isEmpty()) getString(R.string.not_applicable) else it.familyDiseaseList.joinToString(", ")
                 hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text =

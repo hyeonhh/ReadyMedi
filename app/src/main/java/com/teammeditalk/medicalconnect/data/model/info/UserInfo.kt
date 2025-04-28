@@ -7,4 +7,5 @@ data class HealthInfo(
     val drugList: List<String> = emptyList(),
     val drugTakingDuration: String? = "",
     val drugTakingCount: Int = 0,
+    val drugStartDate: String = "",
 )

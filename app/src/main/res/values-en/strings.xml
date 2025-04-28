@@ -578,6 +578,8 @@
     <string name="not_applicable">Not Applicable</string>
     <string name="not_sure">"I'm not sure"</string>
     <string name="not_sure_text">If you\'re not sure which area hurts, please select the checkbox</string>
+    <string name="select_main_symptom">If you have multiple symptoms,\nplease select only one main symptom</string>
+    <string name="input_period_below">If it\'s difficult to select a period, please enter it below</string>
 
 
 </resources>

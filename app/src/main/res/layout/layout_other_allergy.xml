@@ -26,12 +26,14 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:id="@+id/chip1"
+            android:tag="pollen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/pollen" />
 
         <com.google.android.material.chip.Chip
+            android:tag="air"
             style="@style/CustomChipStyle"
             android:id="@+id/chip2"
             android:layout_width="wrap_content"
@@ -41,12 +43,14 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:id="@+id/chip3"
+            android:tag="mold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mold" />
 
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
+            android:tag="animal"
             android:id="@+id/chip4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

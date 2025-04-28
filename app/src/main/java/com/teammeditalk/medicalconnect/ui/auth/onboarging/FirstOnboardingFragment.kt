@@ -42,22 +42,6 @@ class FirstOnboardingFragment :
                                 .createFrom(credential.data)
 
                         firebaseAuthWithGoogle(googleIdTokenCredential.idToken)
-                        val uid = auth.uid
-                        val currentUser = auth.currentUser
-                        Timber.d("uid :$uid")
-                        lifecycleScope.launch {
-                            if (uid != null) {
-                                Timber.d("uid :$uid")
-                                viewModel.saveUid(uid)
-                                if (currentUser != null) {
-                                    val photoUrl = auth.currentUser!!.photoUrl
-                                    val nickName = auth.currentUser!!.displayName
-                                    viewModel.saveProfileUrl(photoUrl.toString(), nickName.toString())
-                                }
-                            } else {
-                                Timber.d("uid 없음 :$uid")
-                            }
-                        }
                     } catch (e: GoogleIdTokenParsingException) {
                         e.printStackTrace()
                         Timber.d("Received an invalid google id token response :${e.message}")
@@ -74,7 +58,20 @@ class FirstOnboardingFragment :
             .addOnCompleteListener(requireActivity()) {
                 if (it.isSuccessful) {
                     val user = auth.currentUser
-                    Timber.d("성공 :$user")
+                    val uid = auth.uid
+                    lifecycleScope.launch {
+                        if (uid != null) {
+                            Timber.d("uid :$uid")
+                            viewModel.saveUid(uid)
+                            if (user != null) {
+                                val photoUrl = auth.currentUser!!.photoUrl
+                                val nickName = auth.currentUser!!.displayName
+                                viewModel.saveProfileUrl(photoUrl.toString(), nickName.toString())
+                            }
+                        } else {
+                            Timber.d("uid 없음 :$uid")
+                        }
+                    }
                     val intent = Intent(requireContext(), OnBoardingActivity::class.java)
                     startActivity(intent)
                 } else {

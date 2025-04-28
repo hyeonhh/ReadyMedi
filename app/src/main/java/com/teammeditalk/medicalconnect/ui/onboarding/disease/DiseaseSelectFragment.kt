@@ -41,21 +41,21 @@ class DiseaseSelectFragment :
                 val checkedChipList = checkedChipIds
                 checkedChipList.forEach {
                     val chip = findViewById<Chip>(it)
-                    diseaseList.add(chip.text.toString())
+                    diseaseList.add(chip.tag.toString())
                 }
             }
             with(binding.layoutOtherDisease.chipGroup) {
                 val checkedChipList = checkedChipIds
                 checkedChipList.forEach {
                     val chip = findViewById<Chip>(it)
-                    diseaseList.add(chip.text.toString())
+                    diseaseList.add(chip.tag.toString())
                 }
             }
             with(binding.layoutSurgery.chipGroup) {
                 val checkedChipList = checkedChipIds
                 checkedChipList.forEach {
                     val chip = findViewById<Chip>(it)
-                    diseaseList.add(chip.text.toString())
+                    diseaseList.add(chip.tag.toString())
                 }
             }
             viewModel.saveUserDisease(diseaseList)

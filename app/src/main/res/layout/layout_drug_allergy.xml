@@ -26,6 +26,7 @@
 
 
         <com.google.android.material.chip.Chip
+            android:tag="pain_killer"
             android:id="@+id/chip1"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
@@ -33,30 +34,35 @@
             android:layout_marginTop="30dp"
             android:text="@string/pain_killer"/>
         <com.google.android.material.chip.Chip
+            android:tag="anti_inflammatory"
             android:id="@+id/chip2"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/anti_inflammatory"/>
         <com.google.android.material.chip.Chip
+            android:tag="aspirin"
             android:id="@+id/chip3"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/aspirin"/>
         <com.google.android.material.chip.Chip
+            android:tag="antibiotics"
             android:id="@+id/chip4"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/antibiotics"/>
         <com.google.android.material.chip.Chip
+            android:tag="anticonvulsant"
             android:id="@+id/chip5"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/anticonvulsant"/>
         <com.google.android.material.chip.Chip
+            android:tag="anticonvulsant"
             android:id="@+id/chip6"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"

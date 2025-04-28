@@ -137,7 +137,7 @@
 
             <TextView
                 android:id="@+id/tv_disease"
-                android:text="@{viewModel.userHealthInfo.diseaseList.toString()}"
+                android:text="@{viewModel.userHealthInfoByKorean.diseaseList.toString()}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -147,7 +147,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView63" />
 
             <TextView
-                android:text="@{viewModel.userHealthInfo.familyDiseaseList.toString()}"
+                android:text="@{viewModel.userHealthInfoByKorean.familyDiseaseList.toString()}"
                 android:id="@+id/tv_family_disease"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
 
             <TextView
                 android:id="@+id/tv_drug"
-                android:text="@{viewModel.userHealthInfo.drugList.toString}"
+                android:text="@{viewModel.userHealthInfoByKorean.drugList.toString}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -170,7 +170,7 @@
 
             <TextView
                 android:id="@+id/tv_allergy"
-                android:text="@{viewModel.userHealthInfo.allergyList.toString()}"
+                android:text="@{viewModel.userHealthInfoByKorean.allergyList.toString()}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"

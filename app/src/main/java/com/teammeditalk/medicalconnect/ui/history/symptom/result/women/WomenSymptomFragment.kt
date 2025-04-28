@@ -122,6 +122,33 @@ class WomenSymptomFragment :
         }
     }
 
+    private fun setUserHealthInfoHos() {
+        lifecycleScope.launch {
+            viewModel.userHealthInfoByKorean.collectLatest {
+                val familyDiseaseList =
+                    if (it.familyDiseaseList.isEmpty()) {
+                        getString(
+                            R.string.not_applicable,
+                        )
+                    } else {
+                        it.familyDiseaseList.joinToString(", ")
+                    }
+
+                val diseaseList = if (it.diseaseList.isEmpty()) getString(R.string.not_applicable) else it.diseaseList.joinToString(", ")
+                val drugList = if (it.drugList.isEmpty()) getString(R.string.not_applicable) else it.drugList.joinToString(", ")
+                val allergyList = if (it.allergyList.isEmpty()) getString(R.string.not_applicable) else it.allergyList.joinToString(", ")
+
+                hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text = familyDiseaseList
+
+                hospitalReportBinding.familyDiseaseAndDrug.tvDisease.text = diseaseList
+
+                hospitalReportBinding.familyDiseaseAndDrug.tvDrug.text = drugList
+
+                hospitalReportBinding.familyDiseaseAndDrug.tvAllergy.text = allergyList
+            }
+        }
+    }
+
     override fun onBindLayout() {
         super.onBindLayout()
 
@@ -130,6 +157,7 @@ class WomenSymptomFragment :
         setCurrentSymptomBinding()
         setCurrentSymptomToHospital()
         setUserHealthInfo()
+        setUserHealthInfoHos()
         setMapDataBinding()
         onSwitchClick()
 

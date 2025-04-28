@@ -54,7 +54,7 @@ class InnerSymptomFragment :
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 // 건강 정보 연결
                 launch {
-                    viewModel.userHealthInfo.collectLatest {
+                    viewModel.userHealthInfoByKorean.collectLatest {
                         hospitalReportBinding.familyDiseaseAndDrug.tvFamilyDisease.text =
                             if (it.familyDiseaseList.isEmpty()) {
                                 getString(

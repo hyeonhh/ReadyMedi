@@ -582,5 +582,7 @@
     <string name="not_applicable">不适用</string>
     <string name="not_sure">我不太确定</string>
     <string name="not_sure_text">如果您不确定哪个部位疼痛，请选择复选框</string>
+    <string name="select_main_symptom">如果您有多种症状，\n请只选择一个主要症状</string>
+    <string name="input_period_below">如果难以选择时间段，请在下方输入</string>
 
 </resources>

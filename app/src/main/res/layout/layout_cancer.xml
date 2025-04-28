@@ -24,6 +24,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip1"
+            android:tag="stomach_cancer"
             style="@style/CustomChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
         <com.google.android.material.chip.Chip
             style="@style/CustomChipStyle"
             android:id="@+id/chip2"
+            android:tag="liver_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/liver_cancer" />
@@ -40,12 +42,14 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
             style="@style/CustomChipStyle"
+            android:tag="colorectal_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/colorectal_cancer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
+            android:tag="lung_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -53,6 +57,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
+            android:tag="pancreatic_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -60,6 +65,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip7"
+            android:tag="oral_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -67,6 +73,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip8"
+            android:tag="breast_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -75,6 +82,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip9"
+            android:tag="thyroid_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
@@ -82,12 +90,14 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip10"
+            android:tag="skin_cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomChipStyle"
             android:text="@string/skin_cancer" />
 
         <com.google.android.material.chip.Chip
+            android:tag="cervical_cancer"
             android:id="@+id/chip11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

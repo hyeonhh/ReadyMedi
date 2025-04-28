@@ -27,20 +27,20 @@ class AllergySelectFragment :
             with(binding.layoutFoodAllergy.chipGroup) {
                 checkedChipIds.forEach {
                     val chip = findViewById<Chip>(it)
-                    allergyList.add(chip.text.toString())
+                    allergyList.add(chip.tag.toString())
                 }
             }
 
             with(binding.layoutDrugAllergy.chipGroup) {
                 checkedChipIds.forEach {
                     val chip = findViewById<Chip>(it)
-                    allergyList.add(chip.text.toString())
+                    allergyList.add(chip.tag.toString())
                 }
             }
             with(binding.layoutOtherAllergy.chipGroup) {
                 checkedChipIds.forEach {
                     val chip = findViewById<Chip>(it)
-                    allergyList.add(chip.text.toString())
+                    allergyList.add(chip.tag.toString())
                 }
             }
 

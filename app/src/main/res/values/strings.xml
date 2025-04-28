@@ -589,5 +589,7 @@
     <string name="not_applicable">해당 없음</string>
     <string name="not_sure">잘 모르겠어요</string>
     <string name="not_sure_text">어느 부위가 아픈지 잘 모르겠다면 체크박스를 선택해주세요</string>
+    <string name="select_main_symptom">여러 증상이 있다면\n대표 증상 1개만 선택해주세요</string>
+    <string name="input_period_below">기간을 선택하기 어려울 경우 아래에 입력해주세요</string>
 
 </resources>
