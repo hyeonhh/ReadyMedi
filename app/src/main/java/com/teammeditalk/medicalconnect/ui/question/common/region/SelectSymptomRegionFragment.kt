@@ -25,12 +25,18 @@ class SelectSymptomRegionFragment :
     private val viewModel: QuestionViewModel by activityViewModels()
     private val navController by lazy { findNavController() }
     private val args by navArgs<SelectSymptomRegionFragmentArgs>()
+    private var isChecked: Boolean = false
 
-    private lateinit var selectedBodyPart: String
+    private var selectedBodyPart = ""
     private var regionByKorean = ""
 
     override fun onBindLayout() {
         super.onBindLayout()
+
+        // 잘 모를 경우 체크박스
+        binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            this.isChecked = isChecked
+        }
 
         binding.ivImage.setImageDrawable(AppCompatResources.getDrawable(requireActivity(), R.drawable.ic_front))
         context?.getColor(R.color.white)?.let { it1 -> binding.tvFront.setTextColor(it1) }
@@ -60,12 +66,18 @@ class SelectSymptomRegionFragment :
             navController.popBackStack()
         }
         binding.btnNext.setOnClickListener {
-            if (selectedBodyPart == "") {
+            if (selectedBodyPart == "" && !isChecked) {
                 binding.warn.layoutLanguageWarn.visibility = View.VISIBLE
             } else {
-                binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
-                viewModel.setRegion(selectedBodyPart)
-                viewModel.setSymptomRegionByKorean(regionByKorean)
+                if (isChecked) {
+                    binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+                    viewModel.setRegion(resources.getString(R.string.not_sure))
+                    viewModel.setSymptomRegionByKorean("잘 모르겠어요")
+                } else {
+                    binding.warn.layoutLanguageWarn.visibility = View.INVISIBLE
+                    viewModel.setRegion(selectedBodyPart)
+                    viewModel.setSymptomRegionByKorean(regionByKorean)
+                }
                 when (args.hospitalType) {
                     "내과" -> {
                         val bundle = bundleOf("hospital_type" to "내과")
@@ -82,7 +94,6 @@ class SelectSymptomRegionFragment :
                 }
             }
         }
-
         setupBodyPartRegions()
     }
 

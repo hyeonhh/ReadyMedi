@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.teammeditalk.medicalconnect.data.serializer.UserAuthPreferencesSerializer.userAuthPreferencesStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -41,13 +42,15 @@ class AuthViewModel
         }
 
         suspend fun saveUid(uid: String) {
-            context.userAuthPreferencesStore.updateData {
-                it
-                    .toBuilder()
-                    .setUid(uid)
-                    .build()
-            }
-            getUid()
+            viewModelScope
+                .async {
+                    context.userAuthPreferencesStore.updateData {
+                        it
+                            .toBuilder()
+                            .setUid(uid)
+                            .build()
+                    }
+                }.await()
         }
 
         suspend fun saveProfileUrl(

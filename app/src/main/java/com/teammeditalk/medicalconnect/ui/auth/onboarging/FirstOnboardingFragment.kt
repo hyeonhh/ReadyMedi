@@ -49,13 +49,13 @@ class FirstOnboardingFragment :
                             if (uid != null) {
                                 Timber.d("uid :$uid")
                                 viewModel.saveUid(uid)
+                                if (currentUser != null) {
+                                    val photoUrl = auth.currentUser!!.photoUrl
+                                    val nickName = auth.currentUser!!.displayName
+                                    viewModel.saveProfileUrl(photoUrl.toString(), nickName.toString())
+                                }
                             } else {
                                 Timber.d("uid 없음 :$uid")
-                            }
-                            if (currentUser != null) {
-                                val photoUrl = auth.currentUser!!.photoUrl
-                                val nickName = auth.currentUser!!.displayName
-                                viewModel.saveProfileUrl(photoUrl.toString(), nickName.toString())
                             }
                         }
                     } catch (e: GoogleIdTokenParsingException) {

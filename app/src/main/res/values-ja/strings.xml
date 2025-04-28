@@ -577,6 +577,8 @@
     <string name="symptom_menorrhagia">月経過多</string>
     <string name="symptom_anal_pain">肛門痛</string>
     <string name="not_applicable">該当なし</string>
+    <string name="not_sure">よくわかりません</string>
+    <string name="not_sure_text">どこが痛いのかよくわからない場合は、チェックボックスを選択してください</string>
 
 
 </resources>

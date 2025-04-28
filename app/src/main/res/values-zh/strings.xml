@@ -580,5 +580,7 @@
     <string name="symptom_menorrhagia">月经过多</string>
     <string name="symptom_anal_pain">肛门疼痛</string>
     <string name="not_applicable">不适用</string>
+    <string name="not_sure">我不太确定</string>
+    <string name="not_sure_text">如果您不确定哪个部位疼痛，请选择复选框</string>
 
 </resources>

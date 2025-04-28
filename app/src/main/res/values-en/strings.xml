@@ -576,6 +576,8 @@
     <string name="symptom_menorrhagia">Heavy menstruation</string>
     <string name="symptom_anal_pain">Anal pain</string>
     <string name="not_applicable">Not Applicable</string>
+    <string name="not_sure">"I'm not sure"</string>
+    <string name="not_sure_text">If you\'re not sure which area hurts, please select the checkbox</string>
 
 
 </resources>
